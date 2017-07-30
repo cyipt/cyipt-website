@@ -1,4 +1,4 @@
-html,
+﻿html,
 body {
   margin: 0;
   padding: 0;
@@ -319,3 +319,6 @@ code {
     box-shadow: none;
   }
 }
+
+
+#mapid { height: 500px; }

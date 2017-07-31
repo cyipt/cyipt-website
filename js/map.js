@@ -19,8 +19,8 @@ var cyipt = (function ($) {
         //get data
         var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
         var geojsonLayer = new L.GeoJSON.AJAX(url,{
-            onEachFeature:popUp,
-            style:style
+            onEachFeature: cyipt.popUp,
+            style: cyipt.style
         });
         //add data to map
         geojsonLayer.addTo(map);
@@ -58,7 +58,7 @@ var cyipt = (function ($) {
 	  };
 
 //end of var cyipt
-});
+}(jQuery));
 
 
 

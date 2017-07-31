@@ -26,13 +26,19 @@ function popUp(f,l){
 function style(feature){
   console.log(feature);
   var styles = {};
-  styles.weight = 2;
-  styles.color = green;
+  styles.weight = 3;
+  if(f.properties.roadtype == "Cycleway Track Track"){
+    styles.color = "green";
+  //}else if(f.properties.roadtype == "Cycleway None None"){
+  //  styles.color = "blue";
+  }else{
+    styles.color = "red";
+  }
   return styles;
 }
 
 //Get maps
-var geojsonLayer = new L.GeoJSON.AJAX("../geojson/bristol/exist.geojson",{
+var geojsonLayer = new L.GeoJSON.AJAX("http://www.cyipt.bike/geojson/bristol/exist.geojson",{
   onEachFeature:popUp,
   style:style
 });

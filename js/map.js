@@ -83,10 +83,11 @@ var cyipt = (function ($) {
       //Function 4: Get data
       getdata: function (){
         //Fetch data based on map location
+        console.log(map);
         var apiData = {
           key: "eeb13e5103b09f19",
           groupyears: "1",
-          bbox: cyipt.map.getBounds().toBBoxString()
+          bbox: map.getBounds().toBBoxString()
         };
 
         $.ajax({

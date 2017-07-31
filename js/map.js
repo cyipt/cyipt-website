@@ -1,4 +1,4 @@
-//JS for the main map
+﻿//JS for the main map
 
 var map = L.map('map',{
 	center: [5,28],

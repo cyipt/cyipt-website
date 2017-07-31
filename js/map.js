@@ -97,7 +97,8 @@ var cyipt = (function ($) {
         };
 
         $.ajax({
-          url: "https://api.cyclestreets.net/v2/trafficcounts.locations",
+          url: "https://www.cyclescape.org/api/groups.json",
+          //url: "https://api.cyclestreets.net/v2/trafficcounts.locations",
           data: apiData ,
           error: function (jqXHR, error, exception) {
             console.log(error);

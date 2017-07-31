@@ -89,7 +89,7 @@ var cyipt = (function ($) {
       //Function 4: Get data
       getdata: function (_map){
         //Fetch data based on map location
-        console.log(_map);
+        //console.log(_map);
         var apiData = {
           key: "eeb13e5103b09f19",
           groupyears: "1",
@@ -103,8 +103,8 @@ var cyipt = (function ($) {
             console.log(error);
           },
           success: function (data, textStatus, jqXHR) {
-            console.log(data);
-            console.log(apiData);
+            //console.log(data);
+            //console.log(apiData);
             L.geoJSON(data,{
               onEachFeature: cyipt.popUp,
               style: cyipt.style

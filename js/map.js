@@ -70,6 +70,13 @@ var cyipt = (function ($) {
 
         });
 
+        //CHange the url as the map moves
+        var allMapLayers = {'base_layer_name': grayscale,
+                            'base_layer_name2': cyclemap,
+                            'overlay_name': geojsonLayer,
+                            'overlay_name2': geojsonLayer2};
+        new L.Hash(map, allMapLayers);
+
 
       },
 

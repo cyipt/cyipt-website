@@ -39,7 +39,7 @@ var cyipt = (function ($) {
 		    //  "Cycle Scores": geojsonLayer2
 	      };
 
-        //cyipt.getdata.addTo(map);
+        cyipt.getdata();
         L.control.layers(baseLayers, overlays).addTo(map);
 
 
@@ -86,7 +86,7 @@ var cyipt = (function ($) {
         var apiData = {
           key: "eeb13e5103b09f19",
           groupyears: "1",
-          bbox: map.getBounds().toBBoxString()
+          bbox: cyipt.map.getBounds().toBBoxString()
         };
 
         $.ajax({

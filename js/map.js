@@ -2,7 +2,7 @@
 
 var map = L.map('map',{
 	center: [51.454, -2.588],
-	zoom:10,
+	zoom:12,
 	minZoom:2,
 	maxZoom:18
 });
@@ -24,12 +24,13 @@ function popUp(f,l){
 
 //Define style
 function style(feature){
-  console.log(feature);
+  console.log(feature.properties.roadtype2);
+  var roadtype = feature.properties.roadtype2
   var styles = {};
   styles.weight = 3;
-  if(feature.properties.roadtype2 == "Cycleway Track Track"){
+  if(roadtype == "Cycleway Track Track"){
     styles.color = "green";
-  }else if(feature.properties.roadtype2 == "Cycleway None None"){
+  }else if(roadtype == "Cycleway None None"){
    styles.color = "blue";
   }else{
     styles.color = "red";
@@ -38,7 +39,8 @@ function style(feature){
 }
 
 //Get maps
-var geojsonLayer = new L.GeoJSON.AJAX("http://www.cyipt.bike/geojson/bristol/exist.geojson",{
+var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973"
+var geojsonLayer = new L.GeoJSON.AJAX(url,{
   onEachFeature:popUp,
   style:style
 });

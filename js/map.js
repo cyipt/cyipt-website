@@ -40,7 +40,12 @@ var cyipt = (function ($) {
 		    //  "Cycle Scores": geojsonLayer2
 	      };
 
-        cyipt.getdata(_map);
+
+	      _map.on('moveend', function() {
+          cyipt.getdata(_map);
+        });
+
+        //cyipt.getdata(_map);
         L.control.layers(baseLayers, overlays).addTo(_map);
 
 

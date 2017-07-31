@@ -3,6 +3,7 @@ var cyipt = (function ($) {
     // Internal class properties
 	  var _settings = {};
 	  var _map = {};
+	  var _layer = {};
 
 	  return{
 	    //Function 1
@@ -117,11 +118,13 @@ var cyipt = (function ($) {
           success: function (data, textStatus, jqXHR) {
             //console.log(data);
             //console.log(apiData);
-            L.geoJSON(data,{
+            _map.removeLayer(_layer);
+            _layer = L.geoJSON(data,{
               onEachFeature: cyipt.popUp,
               style: cyipt.style
             //});
-            }).addTo(_map);
+            });
+            _layer.addTo(_map);
           }
 
         });

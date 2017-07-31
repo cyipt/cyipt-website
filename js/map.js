@@ -45,6 +45,12 @@ var cyipt = (function ($) {
           cyipt.getdata(_map);
         });
 
+        $( "#national" ).change(function() {
+          cyipt.getdata(_map);
+        });
+
+
+
         //cyipt.getdata(_map);
         L.control.layers(baseLayers, overlays).addTo(_map);
 
@@ -90,9 +96,11 @@ var cyipt = (function ($) {
       getdata: function (_map){
         //Fetch data based on map location
         //console.log(_map);
+        var nat = $("select#national").filter(":selected").val();
+        console.log(nat);
         var apiData = {
-          key: "eeb13e5103b09f19",
-          groupyears: "1",
+          //key: "eeb13e5103b09f19",
+          //groupyears: "1",
           bbox: _map.getBounds().toBBoxString()
         };
 

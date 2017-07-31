@@ -1,6 +1,6 @@
-﻿/* CSS for Map */
+/* CSS for Map */
 
 html, body, #map{
-	height: 100%;
+	height: 500px;
 	width: 100%;
 }

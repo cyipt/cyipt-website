@@ -10,32 +10,6 @@ var cyipt = (function ($) {
         //Get base map
         var grayscale = new L.tileLayer.provider('OpenMapSurfer.Grayscale'), cyclemap = new L.tileLayer.provider('OpenStreetMap.Mapnik');
 
-        //Fetch data based on map location
-        var apiData = {
-          key: "eeb13e5103b09f19",
-          groupyears: "1",
-          bbox: "-2.647190,51.406166,-2.490635,51.502973"
-        };
-
-
-
-
-
-
-        var data = $.ajax({
-          url: "https://api.cyclestreets.net/v2/trafficcounts.locations?",
-          data: apiData ,
-          error: function (jqXHR, error, exception) {
-            console.log(error);
-          },
-          success: function (data, textStatus, jqXHR) {
-            console.log(data);
-          }
-
-        });
-
-
-
 
 
         //get data
@@ -51,10 +25,6 @@ var cyipt = (function ($) {
             onEachFeature: cyipt.popUp,
             style: cyipt.style
         });
-
-
-
-
 
 
         //Define groups
@@ -80,6 +50,25 @@ var cyipt = (function ($) {
         });
 
         L.control.layers(baseLayers, overlays).addTo(map);
+
+        //Fetch data based on map location
+        var apiData = {
+          key: "eeb13e5103b09f19",
+          groupyears: "1",
+          bbox: map.getBounds().toBBoxString()
+        };
+
+        var data = $.ajax({
+          url: "https://api.cyclestreets.net/v2/trafficcounts.locations",
+          data: apiData ,
+          error: function (jqXHR, error, exception) {
+            console.log(error);
+          },
+          success: function (data, textStatus, jqXHR) {
+            console.log(data);
+          }
+
+        });
 
 
       },

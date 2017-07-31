@@ -2,6 +2,7 @@ var cyipt = (function ($) {
     'use strict';
     // Internal class properties
 	  var _settings = {};
+	  var _map = {};
 
 	  return{
 	    //Function 1
@@ -11,7 +12,7 @@ var cyipt = (function ($) {
         var grayscale = new L.tileLayer.provider('OpenMapSurfer.Grayscale'), cyclemap = new L.tileLayer.provider('OpenStreetMap.Mapnik');
 
         //Set up map
-        var map = L.map('map',{
+        var _map = L.map('map',{
       	  center: [51.454, -2.588],
       	  zoom:12,
       	  minZoom:2,
@@ -25,7 +26,7 @@ var cyipt = (function ($) {
                             //'overlay_name': data
                             //'overlay_name2': geojsonLayer2
                             };
-        new L.Hash(map, allMapLayers);
+        new L.Hash(_map, allMapLayers);
 
         //Define groups
         var baseLayers = {
@@ -39,8 +40,8 @@ var cyipt = (function ($) {
 		    //  "Cycle Scores": geojsonLayer2
 	      };
 
-        cyipt.getdata();
-        L.control.layers(baseLayers, overlays).addTo(map);
+        cyipt.getdata(_map);
+        L.control.layers(baseLayers, overlays).addTo(_map);
 
 
       },
@@ -81,13 +82,13 @@ var cyipt = (function ($) {
       },
 
       //Function 4: Get data
-      getdata: function (){
+      getdata: function (_map){
         //Fetch data based on map location
-        console.log(map);
+        console.log(_map);
         var apiData = {
           key: "eeb13e5103b09f19",
           groupyears: "1",
-          bbox: map.getBounds().toBBoxString()
+          bbox: _map.getBounds().toBBoxString()
         };
 
         $.ajax({
@@ -103,7 +104,7 @@ var cyipt = (function ($) {
               onEachFeature: cyipt.popUp,
               style: cyipt.style
             //});
-            }).addTo(map);
+            }).addTo(_map);
           }
 
         });
@@ -124,7 +125,7 @@ var cyipt = (function ($) {
         //    style: cyipt.style
         //});
 
-        //geojsonLayer.addTo(map);
+        //geojsonLayer.addTo(_map);
 
 
       },

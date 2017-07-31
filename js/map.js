@@ -6,25 +6,28 @@ var cyipt = (function ($) {
 	  return{
       //Function 1
       initialise: function (){
-        var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
-        var geojsonLayer = new L.GeoJSON.AJAX(url,{
-        onEachFeature:popUp,
-        style:style
-        });
-
-        geojsonLayer.addTo(map);
-
+        //Set up map
         var map = L.map('map',{
       	  center: [51.454, -2.588],
       	  zoom:12,
       	  minZoom:2,
       	  maxZoom:18
         });
-
+        //Get base map
         L.tileLayer('http://{s}.tiles.mapbox.com/v3/ianmule.bg2v5cdi/{z}/{x}/{y}.png',{attribution:"Mapbox"}).addTo(map);
+
+        //get data
+        var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
+        var geojsonLayer = new L.GeoJSON.AJAX(url,{
+            onEachFeature:popUp,
+            style:style
+        });
+        //add data to map
+        geojsonLayer.addTo(map);
       },
 
       //Function 2: Define Popups
+      //Loop though variaibles and add them to the popup
       popUp: function (f,l){
           var out = [];
           if (f.properties){

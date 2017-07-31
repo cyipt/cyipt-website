@@ -20,11 +20,11 @@ var cyipt = (function ($) {
         });
 
         //get data
-        var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
-        var geojsonLayer = new L.GeoJSON.AJAX(url,{
-            onEachFeature: cyipt.popUp,
-            style: cyipt.style
-        });
+        //var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
+        //var geojsonLayer = new L.GeoJSON(url,{
+        //    onEachFeature: cyipt.popUp,
+        //    style: cyipt.style
+        //});
 
         //get data
         //var url2 = "https://api.cyclestreets.net/v2/mapdata?key=eeb13e5103b09f19&limit=400&types=way&zoom=17&bbox=-2.594340%2C51.451647%2C-2.584523%2C51.458025";
@@ -33,26 +33,10 @@ var cyipt = (function ($) {
         //    style: cyipt.style
         //});
 
-        geojsonLayer.addTo(map);
-
-
-        //Define groups
-        var baseLayers = {
-		      "Grayscale": grayscale,
-		      "Open Cycle Map": cyclemap
-	      };
-
-        var overlays = {
-		      "Trafic Counts": geojsonLayer
-		    //  "Cycle Scores": geojsonLayer2
-	      };
+        //geojsonLayer.addTo(map);
 
 
 
-
-        //map.setZoom(12);
-
-        L.control.layers(baseLayers, overlays).addTo(map);
 
         //Fetch data based on map location
         var apiData = {
@@ -69,17 +53,41 @@ var cyipt = (function ($) {
           },
           success: function (data, textStatus, jqXHR) {
             console.log(data);
+            L.geoJSON(data).addTo(map);
           }
 
         });
 
+
+
+
+
         //CHange the url as the map moves
         var allMapLayers = {'base_layer_name': grayscale,
                             'base_layer_name2': cyclemap,
-                            'overlay_name': geojsonLayer
+                            'overlay_name': data
                             //'overlay_name2': geojsonLayer2
                             };
         new L.Hash(map, allMapLayers);
+
+        //Define groups
+        var baseLayers = {
+		      "Grayscale": grayscale,
+		      "Open Cycle Map": cyclemap
+	      };
+
+        var overlays = {
+		      "Trafic Counts": data
+		     // "Trafic Counts": geojsonLayer
+		    //  "Cycle Scores": geojsonLayer2
+	      };
+
+
+
+
+        //map.setZoom(12);
+
+        L.control.layers(baseLayers, overlays).addTo(map);
 
 
       },

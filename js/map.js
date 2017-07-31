@@ -11,7 +11,17 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v3/ianmule.bg2v5cdi/{z}/{x}/{y}.png',{a
 
 //Add some GeoJSON
 
-var geojsonLayer = new L.GeoJSON.AJAX("../geojson/bristol/exist.geojson");
+function popUp(f,l){
+    var out = [];
+    if (f.properties){
+        for(key in f.properties){
+            out.push(key+": "+f.properties[key]);
+        }
+        l.bindPopup(out.join("<br />"));
+    }
+}
+
+var geojsonLayer = new L.GeoJSON.AJAX("../geojson/bristol/exist.geojson",{onEachFeature:popUp});
 geojsonLayer.addTo(map);
 
 //var district_boundary = new L.geoJson();

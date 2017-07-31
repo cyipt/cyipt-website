@@ -6,19 +6,9 @@ var cyipt = (function ($) {
 	  return{
       //Function 1
       initialise: function (){
-        //Set up map
-        var map = L.map('map',{
-      	  center: [51.454, -2.588],
-      	  zoom:12,
-      	  minZoom:2,
-      	  maxZoom:18
-        });
+
         //Get base map
-        //L.tileLayer('http://{s}.tiles.mapbox.com/v3/ianmule.bg2v5cdi/{z}/{x}/{y}.png',{attribution:"Mapbox"}).addTo(map);
-
-
-        //Alterative base map
-        L.tileLayer.provider('OpenMapSurfer.Grayscale').addTo(map);
+        var grayscale = new L.tileLayer.provider('OpenMapSurfer.Grayscale'), cyclemap = new L.tileLayer.provider('OpenStreetMap.Mapnik');
 
         //get data
         var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
@@ -26,8 +16,39 @@ var cyipt = (function ($) {
             onEachFeature: cyipt.popUp,
             style: cyipt.style
         });
-        //add data to map
-        geojsonLayer.addTo(map);
+
+        //get data
+        var url2 = "https://api.cyclestreets.net/v2/mapdata?key=eeb13e5103b09f19&limit=400&types=way&zoom=17&bbox=-2.594340%2C51.451647%2C-2.584523%2C51.458025";
+        var geojsonLayer2 = new L.GeoJSON.AJAX(url2,{
+            onEachFeature: cyipt.popUp,
+            style: cyipt.style
+        });
+
+        //Define groups
+        var baseLayers = {
+		      "Grayscale": grayscale,
+		      "Open Cycle Map": cyclemap
+	      };
+
+        var overlays = {
+		      "Trafic Counts": geojsonLayer,
+		      "Cycle Scores": geojsonLayer2
+	      };
+
+
+
+        //Set up map
+        var map = L.map('map',{
+      	  center: [51.454, -2.588],
+      	  zoom:12,
+      	  minZoom:2,
+      	  maxZoom:18,
+      	  layers: [grayscale, geojsonLayer]
+        });
+
+        L.control.layers(baseLayers, overlays).addTo(map);
+
+
       },
 
       //Function 2: Define Popups

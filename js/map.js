@@ -27,10 +27,10 @@ function style(feature){
   console.log(feature);
   var styles = {};
   styles.weight = 3;
-  if(f.properties.roadtype == "Cycleway Track Track"){
+  if(feature.properties.roadtype2 == "Cycleway Track Track"){
     styles.color = "green";
-  //}else if(f.properties.roadtype == "Cycleway None None"){
-  //  styles.color = "blue";
+  }else if(feature.properties.roadtype2 == "Cycleway None None"){
+   styles.color = "blue";
   }else{
     styles.color = "red";
   }

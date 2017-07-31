@@ -1,8 +1,8 @@
-﻿//JS for the main map
+//JS for the main map
 
 var map = L.map('map',{
-	center: [5,28],
-	zoom:3,
+	center: [51.454, -2.588],
+	zoom:8,
 	minZoom:2,
 	maxZoom:18
 });
@@ -11,7 +11,7 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v3/ianmule.bg2v5cdi/{z}/{x}/{y}.png',{a
 
 //Add some GeoJSON
 
-var geojsonLayer = new L.GeoJSON.AJAX("../geojson/bristol/exist.geojson");       
+var geojsonLayer = new L.GeoJSON.AJAX("../geojson/bristol/exist.geojson");
 geojsonLayer.addTo(map);
 
 //var district_boundary = new L.geoJson();

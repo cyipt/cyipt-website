@@ -96,11 +96,14 @@ var cyipt = (function ($) {
       getdata: function (_map){
         //Fetch data based on map location
         //console.log(_map);
-        var nat = $("select#national").filter(":selected").val();
+        //clearLayers();
+        var nat = $('#national').find(":selected").val();
+
         console.log(nat);
         var apiData = {
           //key: "eeb13e5103b09f19",
           //groupyears: "1",
+          national: nat,
           bbox: _map.getBounds().toBBoxString()
         };
 

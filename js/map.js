@@ -10,6 +10,15 @@ var cyipt = (function ($) {
         //Get base map
         var grayscale = new L.tileLayer.provider('OpenMapSurfer.Grayscale'), cyclemap = new L.tileLayer.provider('OpenStreetMap.Mapnik');
 
+        //Set up map
+        var map = L.map('map',{
+      	  center: [51.454, -2.588],
+      	  zoom:12,
+      	  minZoom:2,
+      	  maxZoom:18,
+      	  layers: [grayscale]
+        });
+
 
 
         //get data
@@ -19,12 +28,18 @@ var cyipt = (function ($) {
             style: cyipt.style
         });
 
+
+
+
+
         //get data
         var url2 = "https://api.cyclestreets.net/v2/mapdata?key=eeb13e5103b09f19&limit=400&types=way&zoom=17&bbox=-2.594340%2C51.451647%2C-2.584523%2C51.458025";
         var geojsonLayer2 = new L.GeoJSON.AJAX(url2,{
             onEachFeature: cyipt.popUp,
             style: cyipt.style
         });
+
+        geojsonLayer.addTo(map);
 
 
         //Define groups
@@ -40,16 +55,7 @@ var cyipt = (function ($) {
 
 
 
-        //Set up map
-        var map = L.map('map',{
-      	  center: [51.454, -2.588],
-      	  zoom:12,
-      	  minZoom:2,
-      	  maxZoom:18,
-      	  layers: [grayscale]
-        });
 
-        geojsonLayer.addTo(map);
         //map.setZoom(12);
 
         L.control.layers(baseLayers, overlays).addTo(map);

@@ -46,8 +46,11 @@ var cyipt = (function ($) {
       	  zoom:12,
       	  minZoom:2,
       	  maxZoom:18,
-      	  layers: [grayscale, geojsonLayer]
+      	  layers: [grayscale]
         });
+
+        geojsonLayer.addTo(map);
+        //map.setZoom(12);
 
         L.control.layers(baseLayers, overlays).addTo(map);
 

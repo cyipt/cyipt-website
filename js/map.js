@@ -44,19 +44,23 @@ var cyipt = (function ($) {
 
       //Function 3: Define style
       style: function (feature){
-        console.log(feature.properties);
+        //console.log(feature.properties.car_pcu);
+        //console.log(feature.geometry.coordinates);
         var value = feature.properties.car_pcu;
         var styles = {};
+        //console.log(value);
         styles.weight = 3;
         //styles.color = "red";
         if(value > 10000){
           styles.color = "green";
         }else if(value > 1000){
-         styles.color = "blue";
+          styles.color = "blue";
         }else{
           styles.color = "red";
         }
+        //console.log(styles.color);
         return styles;
+
       }
 
     //End of return

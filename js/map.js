@@ -10,6 +10,34 @@ var cyipt = (function ($) {
         //Get base map
         var grayscale = new L.tileLayer.provider('OpenMapSurfer.Grayscale'), cyclemap = new L.tileLayer.provider('OpenStreetMap.Mapnik');
 
+        //Fetch data based on map location
+        var apiData = {
+          key: "eeb13e5103b09f19",
+          groupyears: "1",
+          bbox: "-2.647190,51.406166,-2.490635,51.502973"
+        };
+
+
+
+
+
+
+        var data = $.ajax({
+          url: "https://api.cyclestreets.net/v2/trafficcounts.locations?",
+          data: apiData ,
+          error: function (jqXHR, error, exception) {
+            console.log(error);
+          },
+          success: function (data, textStatus, jqXHR) {
+            console.log(data);
+          }
+
+        });
+
+
+
+
+
         //get data
         var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
         var geojsonLayer = new L.GeoJSON.AJAX(url,{
@@ -23,6 +51,11 @@ var cyipt = (function ($) {
             onEachFeature: cyipt.popUp,
             style: cyipt.style
         });
+
+
+
+
+
 
         //Define groups
         var baseLayers = {

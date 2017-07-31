@@ -24,7 +24,7 @@ function popUp(f,l){
 
 //Define style
 function style(feature){
-  consol.log(feature);
+  console.log(feature);
 
 }
 
@@ -37,15 +37,4 @@ var geojsonLayer = new L.GeoJSON.AJAX("../geojson/bristol/exist.geojson",{
 
 geojsonLayer.addTo(map);
 
-//var district_boundary = new L.geoJson();
-//district_boundary.addTo(map);
 
-//$.ajax({
-//dataType: "json",
-//url: "../geojson/bristol/exist.geojson",
-//success: function(data) {
-//    $(data.features).each(function(key, data) {
-//        district_boundary.addData(data);
-//    });
-//}
-//}).error(function() {});

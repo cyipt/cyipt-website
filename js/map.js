@@ -25,7 +25,10 @@ function popUp(f,l){
 //Define style
 function style(feature){
   console.log(feature);
-
+  var styles = {};
+  styles.weight = 2;
+  styles.color = green;
+  return styles;
 }
 
 //Get maps

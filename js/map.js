@@ -4,56 +4,7 @@ var cyipt = (function ($) {
 	  var _settings = {};
 
 	  return{
-	    //Function 4: Get data
-      getdata: function (){
-        //Fetch data based on map location
-        var apiData = {
-          key: "eeb13e5103b09f19",
-          groupyears: "1",
-          bbox: map.getBounds().toBBoxString()
-        };
-
-        $.ajax({
-          url: "https://api.cyclestreets.net/v2/trafficcounts.locations",
-          data: apiData ,
-          error: function (jqXHR, error, exception) {
-            console.log(error);
-          },
-          success: function (data, textStatus, jqXHR) {
-            console.log(data);
-            console.log(apiData);
-            L.geoJSON(data,{
-              onEachFeature: cyipt.popUp,
-              style: cyipt.style
-            });
-            //}).addTo(map);
-          }
-
-        });
-
-        // OLD METHOD FOR REFERENCE
-
-        //get data
-        //var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
-        //var geojsonLayer = new L.GeoJSON(url,{
-        //    onEachFeature: cyipt.popUp,
-        //    style: cyipt.style
-        //});
-
-        //get data
-        //var url2 = "https://api.cyclestreets.net/v2/mapdata?key=eeb13e5103b09f19&limit=400&types=way&zoom=17&bbox=-2.594340%2C51.451647%2C-2.584523%2C51.458025";
-        //var geojsonLayer2 = new L.GeoJSON.AJAX(url2,{
-        //    onEachFeature: cyipt.popUp,
-        //    style: cyipt.style
-        //});
-
-        //geojsonLayer.addTo(map);
-
-
-      },
-
-
-      //Function 1
+	    //Function 1
       initialise: function (){
 
         //Get base map
@@ -88,7 +39,7 @@ var cyipt = (function ($) {
 		    //  "Cycle Scores": geojsonLayer2
 	      };
 
-        cyipt.getdata.addTo(map);
+        //cyipt.getdata.addTo(map);
         L.control.layers(baseLayers, overlays).addTo(map);
 
 
@@ -127,7 +78,55 @@ var cyipt = (function ($) {
         //console.log(styles.color);
         return styles;
 
-      }
+      },
+
+      //Function 4: Get data
+      getdata: function (){
+        //Fetch data based on map location
+        var apiData = {
+          key: "eeb13e5103b09f19",
+          groupyears: "1",
+          bbox: map.getBounds().toBBoxString()
+        };
+
+        $.ajax({
+          url: "https://api.cyclestreets.net/v2/trafficcounts.locations",
+          data: apiData ,
+          error: function (jqXHR, error, exception) {
+            console.log(error);
+          },
+          success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            console.log(apiData);
+            L.geoJSON(data,{
+              onEachFeature: cyipt.popUp,
+              style: cyipt.style
+            //});
+            }).addTo(map);
+          }
+
+        });
+
+        // OLD METHOD FOR REFERENCE
+
+        //get data
+        //var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
+        //var geojsonLayer = new L.GeoJSON(url,{
+        //    onEachFeature: cyipt.popUp,
+        //    style: cyipt.style
+        //});
+
+        //get data
+        //var url2 = "https://api.cyclestreets.net/v2/mapdata?key=eeb13e5103b09f19&limit=400&types=way&zoom=17&bbox=-2.594340%2C51.451647%2C-2.584523%2C51.458025";
+        //var geojsonLayer2 = new L.GeoJSON.AJAX(url2,{
+        //    onEachFeature: cyipt.popUp,
+        //    style: cyipt.style
+        //});
+
+        //geojsonLayer.addTo(map);
+
+
+      },
 
     //End of return
 	  };

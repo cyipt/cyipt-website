@@ -21,26 +21,59 @@
 
 <div id ="content">
   <div id="sidebar">
+  <p><b> Layers:</b> click to expand </p>
   <button class="accordion">Campaign Groups</button>
     <div class="panel">
       <p>Show local or local & national groups</p>
-      <div>
-        <select id="national" name="national">
+      <select id="data-group" name="data-group">
+          <option value="0" selected="selected">Hidden</option>
+          <option value="1">Show</option>
+      </select>
+
+      <select id="national" name="national">
           <option value="0" selected="selected">Local</option>
           <option value="1">National</option>
-        </select>
-      </div>
+      </select>
+      <p>Souce: BikeData</p>
     </div>
 
-  <button class="accordion">Option 2</button>
+  <button class="accordion">Existing Infrastructure</button>
     <div class="panel">
-      <p>Lorem ipsum...</p>
+      <select id="data-exist" name="data-exist">
+          <option value="0" selected="selected">Hidden</option>
+          <option value="1">Show</option>
+      </select>
+      <p>Souce: CyIPT</p>
     </div>
 
-  <button class="accordion">Option 3</button>
+  <button class="accordion">Recommended Infrastructure</button>
     <div class="panel">
-      <p>Lorem ipsum...</p>
+      <select id="data-rec" name="data-rec">
+          <option value="0" selected="selected">Hidden</option>
+          <option value="1">Show</option>
+      </select>
+      <p>Souce: CyIPT</p>
     </div>
+
+
+  <button class="accordion">Traffic Counts</button>
+    <div class="panel">
+      <select id="data-traffic" name="data-traffic">
+          <option value="0" selected="selected">Hidden</option>
+          <option value="1">Show</option>
+      </select>
+      <p>Souce: BikeData</p>
+    </div>
+
+  <button class="accordion">Collisions</button>
+    <div class="panel">
+      <select id="data-col" name="data-col">
+          <option value="0" selected="selected">Hidden</option>
+          <option value="1">Show</option>
+      </select>
+      <p>Souce: BikeData</p>
+    </div>
+
   </div>
 
   <script>
@@ -60,8 +93,6 @@
   }
   </script>
 
-
-
  <div id="map">
    <script src="../js/map.js"></script>
    <script type="text/javascript">
@@ -72,13 +103,6 @@
  </div>
 
 </div>
-
-
-
-
-
-
-
 
 </body>
 </html>

@@ -6,6 +6,21 @@ var cyipt = (function ($) {
 	  var _layer = {};
 	  var _layers = new Array("","","","","","","","");
 
+	  // Layer definitions
+	  var _layerConfig = {
+       	'traffic': {
+       		'apiCall': 'https://api.cyclestreets.net/v2/trafficcounts.locations',
+       	},
+       	'collisions': {
+       		'apiCall': 'https://api.cyclestreets.net/v2/collisions.locations'
+       	},
+       	'groups': {
+       	  'apiCall': 'https://www.cyclescape.org/api/groups.json'
+       	}
+       	// etc.
+    };
+
+
 	  return{
 	    //Function 1
       initialise: function (){
@@ -16,7 +31,7 @@ var cyipt = (function ($) {
         var satelite  = new L.tileLayer.provider('Esri.WorldImagery') ;
 
         var cyclemap = L.tileLayer('http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}', {
-	          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org              /copyright">OpenStreetMap</a>',
+	          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	          apikey: 'bf09fff64f1443028994661047c077f5',
 	          maxZoom: 22
         });
@@ -132,9 +147,10 @@ var cyipt = (function ($) {
         };
 
         //Cycling Groups from API
+        var layerId = 'groups';
         if(datagroup == 1){
           $.ajax({
-          url: "https://www.cyclescape.org/api/groups.json",
+          url: _layerConfig[layerId]['apiCall'],
           data: groupVars ,
           error: function (jqXHR, error, exception) {
             console.log(error);
@@ -152,6 +168,55 @@ var cyipt = (function ($) {
         }else{
           _map.removeLayer(_layers[0]);
         }
+
+        //Traffic from API
+        var layerId = 'traffic';
+        if(datatraffic == 1){
+          $.ajax({
+          url: _layerConfig[layerId]['apiCall'],
+          data: trafficVars,
+          //bbox: _map.getBounds().toBBoxString(),
+          error: function (jqXHR, error, exception) {
+            console.log(error);
+          },
+          success: function (data, textStatus, jqXHR) {
+            _map.removeLayer(_layers[3]);
+            _layers[3] = L.geoJSON(data,{
+              onEachFeature: cyipt.popUp,
+              style: cyipt.style
+            });
+            _layers[3].addTo(_map);
+          }
+
+          });
+        }else{
+          _map.removeLayer(_layers[3]);
+        }
+
+        //Collisions from API
+        var layerId = 'collisions';
+        if(datacol == 1){
+          $.ajax({
+          url: _layerConfig[layerId]['apiCall'],
+          //url: _layerConfig['collisions']['apiCall'], //Martin example repace with dot notation
+          data: colVars ,
+          error: function (jqXHR, error, exception) {
+            console.log(error);
+          },
+          success: function (data, textStatus, jqXHR) {
+            _map.removeLayer(_layers[4]);
+            _layers[4] = L.geoJSON(data,{
+              onEachFeature: cyipt.popUp,
+              //style: cyipt.style
+            });
+            _layers[4].addTo(_map);
+          }
+
+          });
+        }else{
+          _map.removeLayer(_layers[4]);
+        }
+
 
         // existing infrastrucutre from geojson
         if(dataexist == 1){
@@ -192,50 +257,6 @@ var cyipt = (function ($) {
           }
         }else{
           _map.removeLayer(_layers[2]);
-        }
-
-        //Traffic from API
-        if(datatraffic == 1){
-          $.ajax({
-          url: "https://api.cyclestreets.net/v2/trafficcounts.locations",
-          data: trafficVars ,
-          error: function (jqXHR, error, exception) {
-            console.log(error);
-          },
-          success: function (data, textStatus, jqXHR) {
-            _map.removeLayer(_layers[3]);
-            _layers[3] = L.geoJSON(data,{
-              onEachFeature: cyipt.popUp,
-              style: cyipt.style
-            });
-            _layers[3].addTo(_map);
-          }
-
-          });
-        }else{
-          _map.removeLayer(_layers[3]);
-        }
-
-        //Collisions from API
-        if(datacol == 1){
-          $.ajax({
-          url: "https://api.cyclestreets.net/v2/collisions.locations",
-          data: colVars ,
-          error: function (jqXHR, error, exception) {
-            console.log(error);
-          },
-          success: function (data, textStatus, jqXHR) {
-            _map.removeLayer(_layers[4]);
-            _layers[4] = L.geoJSON(data,{
-              onEachFeature: cyipt.popUp,
-              //style: cyipt.style
-            });
-            _layers[4].addTo(_map);
-          }
-
-          });
-        }else{
-          _map.removeLayer(_layers[4]);
         }
 
 

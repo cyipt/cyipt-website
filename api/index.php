@@ -22,15 +22,19 @@ try {
 }
 
 
-/*
-$name = (isSet ($_GET['name']) ? $_GET['name'] : '');
+$bbox = (isSet ($_GET['bbox']) ? $_GET['bbox'] : '');
 
-if (!$name) {
-	$response = array ('error' => "No name was supplied.");
+if (!$bbox) {
+	$response = array ('error' => "No bbox was supplied.");
 	echo json_encode ($response);
 	die;
 }
-*/
+
+
+list ($w, $s, $e, $n) = explode (',', $bbox);
+
+
+
 
 # Construct the query
 $query = "
@@ -38,12 +42,16 @@ $query = "
 		*,
 		ST_AsGeoJSON(geotext) AS geotext
 	FROM bristol
-	LIMIT 10
+	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+	LIMIT 100
 ;";
 
 # Select the data
 $preparedStatement = $databaseConnection->prepare ($query);
-//$preparedStatement->bindParam (':name', $name);
+$preparedStatement->bindParam (':w', $w);
+$preparedStatement->bindParam (':s', $s);
+$preparedStatement->bindParam (':e', $e);
+$preparedStatement->bindParam (':n', $n);
 $data = array ();
 if ($preparedStatement->execute ()) {
 	while ($row = $preparedStatement->fetch ()) {

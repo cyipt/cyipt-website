@@ -32,8 +32,16 @@ if (!$name) {
 }
 */
 
+# Construct the query
+$query = "
+	SELECT
+		*,
+		ST_AsGeoJSON(geotext) AS geotext
+	FROM bristol
+	LIMIT 10
+;";
+
 # Select the data
-$query = "SELECT * FROM bristol LIMIT 10 ;";
 $preparedStatement = $databaseConnection->prepare ($query);
 //$preparedStatement->bindParam (':name', $name);
 $data = array ();
@@ -43,8 +51,13 @@ if ($preparedStatement->execute ()) {
 	}
 }
 
+foreach ($data as $index => $row) {
+	$data[$index]['geotext'] = json_decode ($row['geotext'], true);
+}
 
-echo json_encode ($data);
+
+header ('Content-Type: application/json');
+echo json_encode ($data, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 
 
 ?>

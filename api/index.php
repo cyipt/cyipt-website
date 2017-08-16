@@ -1,10 +1,15 @@
+<?php
+
+
+
 # Define the settings, using the credentials above
 $settings = array (
 	'hostname' => 'localhost',
 	'username' => 'cyipt',
-	'password' => file_get_contents('/tmp/cyipt-password.txt'),
+	'password' => trim (file_get_contents('/tmp/cyipt-password.txt')),
 	'database' => 'cyipt',
 );
+
 
 # Connect to the database
 # We use the PDO database abstraction library, and provide a DSN connection string in this format: 'pgsql:host=localhost;dbname=example'
@@ -15,6 +20,7 @@ try {
 	print "Error!: " . $e->getMessage ();
 	die;
 }
+
 
 /*
 $name = (isSet ($_GET['name']) ? $_GET['name'] : '');
@@ -29,7 +35,7 @@ if (!$name) {
 # Select the data
 $query = "SELECT * FROM bristol LIMIT 10 ;";
 $preparedStatement = $databaseConnection->prepare ($query);
-$preparedStatement->bindParam (':name', $name);
+//$preparedStatement->bindParam (':name', $name);
 $data = array ();
 if ($preparedStatement->execute ()) {
 	while ($row = $preparedStatement->fetch ()) {

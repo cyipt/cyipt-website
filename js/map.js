@@ -16,6 +16,9 @@ var cyipt = (function ($) {
        	},
        	'groups': {
        	  'apiCall': 'https://www.cyclescape.org/api/groups.json'
+       	},
+       	'apitest': {
+       	  'apiCall': '/api/index.php'
        	}
        	// etc.
     };
@@ -145,6 +148,11 @@ var cyipt = (function ($) {
 
         };
 
+
+        var apitestVars = {
+
+        };
+
         //Cycling Groups from API
         var layerId = 'groups';
         if(datagroup == 1){
@@ -191,6 +199,32 @@ var cyipt = (function ($) {
           });
         }else{
           _map.removeLayer(_layers[3]);
+        }
+
+
+        //API test
+        var layerId = 'apitest';
+	      var data = apitestVars;
+	      data.bbox = _map.getBounds().toBBoxString();
+        if(datatraffic == 1){
+          $.ajax({
+          url: _layerConfig[layerId]['apiCall'],
+          data: data,
+          error: function (jqXHR, error, exception) {
+            console.log(error);
+          },
+          success: function (data, textStatus, jqXHR) {
+            _map.removeLayer(_layers[5]);
+            _layers[5] = L.geoJSON(data,{
+              onEachFeature: cyipt.popUp,
+              style: cyipt.style
+            });
+            _layers[5].addTo(_map);
+          }
+
+          });
+        }else{
+          _map.removeLayer(_layers[5]);
         }
 
         //Collisions from API

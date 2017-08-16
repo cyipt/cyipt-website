@@ -126,6 +126,7 @@ var cyipt = (function ($) {
         var datarec = $('#data-rec').find(":selected").val();
         var datatraffic = $('#data-traffic').find(":selected").val();
         var datacol = $('#data-col').find(":selected").val();
+        var dataapitest = $('#data-api').find(":selected").val();
 
         //variable for api calls
         var trafficVars = {
@@ -206,7 +207,7 @@ var cyipt = (function ($) {
         var layerId = 'apitest';
 	      var data = apitestVars;
 	      data.bbox = _map.getBounds().toBBoxString();
-        if(datatraffic == 1){
+        if(dataapitest == 1){
           $.ajax({
           url: _layerConfig[layerId]['apiCall'],
           data: data,

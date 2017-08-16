@@ -37,6 +37,7 @@ list ($w, $s, $e, $n) = explode (',', $bbox);
 
 
 
+
 # Construct the query
 $query = "
 	SELECT
@@ -44,7 +45,7 @@ $query = "
 		ST_AsGeoJSON(geotext) AS geotext
 	FROM bristol
 	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-	LIMIT 100
+	LIMIT 1000
 ;";
 
 # Select the data

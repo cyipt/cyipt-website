@@ -56,8 +56,22 @@ foreach ($data as $index => $row) {
 }
 
 
+$geojson = array ();
+$geojson['type'] = 'FeatureCollection';
+$geojson['features'] = array ();
+foreach ($data as $row) {
+	$properties = $row;
+	unset ($properties['geotext']);
+	$geojson['features'][] = array (
+		'type' => 'Feature',
+		'geometry' => $row['geotext'],
+		'properties' => $properties,
+	);
+}
+
+
 header ('Content-Type: application/json');
-echo json_encode ($data, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+echo json_encode ($geojson, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 
 
 ?>

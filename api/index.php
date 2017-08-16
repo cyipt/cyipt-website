@@ -49,11 +49,18 @@ $query = "
 ;";
 
 # Select the data
-$preparedStatement = $databaseConnection->prepare ($query);
-$preparedStatement->bindParam (':w', $w);
-$preparedStatement->bindParam (':s', $s);
-$preparedStatement->bindParam (':e', $e);
-$preparedStatement->bindParam (':n', $n);
+#!# The try/catch isn't actually working
+try {
+	$preparedStatement = $databaseConnection->prepare ($query);
+	$preparedStatement->bindParam (':w', $w);
+	$preparedStatement->bindParam (':s', $s);
+	$preparedStatement->bindParam (':e', $e);
+	$preparedStatement->bindParam (':n', $n);
+} catch (PDOException $e) {
+	print "Error!: " . $e->getMessage ();
+	die;
+}
+
 $data = array ();
 if ($preparedStatement->execute ()) {
 	while ($row = $preparedStatement->fetch ()) {

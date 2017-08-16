@@ -1,7 +1,6 @@
 Postgres install and usage notes:
 
-`
-
+```
 # Install PostgreSQL main program and PostGIS plugin
 brew install postgresql
 brew install postgis
@@ -40,4 +39,4 @@ CREATE ROLE cyipt WITH LOGIN PASSWORD 'cyipttest';
 # GUI also available at: https://www.pgadmin.org/
 psql -h localhost cyipt cyipt -W
 
-`
+```

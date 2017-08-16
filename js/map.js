@@ -127,8 +127,7 @@ var cyipt = (function ($) {
         //variable for api calls
         var trafficVars = {
           key: "eeb13e5103b09f19",
-          groupyears: "1",
-          bbox: _map.getBounds().toBBoxString()
+          groupyears: "1"
         };
 
         var groupVars = {
@@ -171,11 +170,12 @@ var cyipt = (function ($) {
 
         //Traffic from API
         var layerId = 'traffic';
+	var data = trafficVars;
+	data.bbox = _map.getBounds().toBBoxString();
         if(datatraffic == 1){
           $.ajax({
           url: _layerConfig[layerId]['apiCall'],
-          data: trafficVars,
-          //bbox: _map.getBounds().toBBoxString(),
+          data: data,
           error: function (jqXHR, error, exception) {
             console.log(error);
           },

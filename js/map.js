@@ -9,32 +9,62 @@ var cyipt = (function ($) {
 	  // Layer definitions
 	  var _layerConfig = {
        	'traffic': {
-       		'apiCall': 'https://api.cyclestreets.net/v2/trafficcounts.locations',
+       	  'layerNumber' : 3,
+       	  'apiCall': 'https://api.cyclestreets.net/v2/trafficcounts.locations',
+       	  'lineColourField': 'car_pcu',
+  			  'lineColourStops': [
+    				[40000, '#ff0000'],
+    				[20000, '#d43131'],
+    				[10000, '#e27474'],
+    				[5000, '#f6b879'],
+    				[2000, '#fce8af'],
+    				[0, '#61fa61']
+  			    ],
+			    'linewidth' : '5',
+			    'data' : {
+			        'key': "eeb13e5103b09f19",
+              'groupyears' : "1"
+			      }
+
        	},
        	'collisions': {
-       		'apiCall': 'https://api.cyclestreets.net/v2/collisions.locations'
+       	  'layerNumber' : 4,
+       		'apiCall': 'https://api.cyclestreets.net/v2/collisions.locations' ,
+       		'data' : {
+              'key': "eeb13e5103b09f19",
+              'jitter': "1"
+          }
        	},
        	'groups': {
-       	  'apiCall': 'https://www.cyclescape.org/api/groups.json'
+       	  'layerNumber' : 0,
+       	  'apiCall': 'https://www.cyclescape.org/api/groups.json',
+       	  'data' : {
+          }
        	},
        	'apitest': {
-       	  'apiCall': 'http://www.cyipt.bike/api/index.php'
+       	  'layerNumber' : 5,
+       	  'apiCall': 'http://www.cyipt.bike/api/index.php',
+       	  'data' : {
+          }
        	},
        	'pct': {
+       	  'layerNumber' : 6,
        	  'apiCall': 'http://www.cyipt.bike/api/pct/index.php',
        	  'lineColourField': 'pctcensus',
 			    'lineColourStops': [
-			        [9999999, '#ff0000'],	// Colour and line values based on GMCC site
+			        [9999999, '#ff0000'],
       				[2000, '#fe7fe1'],
       				[1000, '#7f7ffe'],
-      				[500, '#95adfd'],	// Colour and line values based on GMCC site
+      				[500, '#95adfd'],
       				[250, '#96d6fd'],
       				[100, '#7efefd'],
       				[50, '#d6fe7f'],
       				[10, '#fefe94'],
       				[0, '#cdcdcd']
       				],
-      		'linewidth' : '5'
+      		'linewidth' : '5',
+      		'data' : {
+          }
        	}
        	// etc.
     };
@@ -43,20 +73,15 @@ var cyipt = (function ($) {
 	  return{
 	    //Function 1
       initialise: function (){
-
         //Get base map
         var grayscale = new L.tileLayer.provider('OpenMapSurfer.Grayscale');
         var openmap = new L.tileLayer.provider('OpenStreetMap.Mapnik');
         var satelite  = new L.tileLayer.provider('Esri.WorldImagery') ;
-
         var cyclemap = L.tileLayer('http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}', {
 	          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	          apikey: 'bf09fff64f1443028994661047c077f5',
 	          maxZoom: 22
         });
-
-
-
         //Set up map
         var _map = L.map('map',{
       	  center: [51.454, -2.588],
@@ -65,7 +90,6 @@ var cyipt = (function ($) {
       	  maxZoom:18,
       	  layers: [grayscale]
         });
-
         //CHange the url as the map moves
         var allMapLayers = {'grayscale': grayscale,
                             'osm': openmap,
@@ -75,7 +99,6 @@ var cyipt = (function ($) {
                             //'overlay_name2': geojsonLayer2
                             };
         new L.Hash(_map, allMapLayers);
-
         //Define groups
         var baseLayers = {
 		      "Grayscale": grayscale,
@@ -83,12 +106,10 @@ var cyipt = (function ($) {
 		      "Open Cycle Map":cyclemap,
 		      "Satelite": satelite
 	      };
-
         // Watch for changes in the map
 	      _map.on('moveend', function() {
           cyipt.getdata(_map);
         });
-
         //need watcher for changing menus
         L.control.layers(baseLayers).addTo(_map);
 
@@ -107,14 +128,14 @@ var cyipt = (function ($) {
       },
 
       //Function 3: Define style
-      style: function (feature){
-        //console.log(feature.properties.car_pcu);
+      style: function (feature,layerID){
+        //console.log(layerID);
         //console.log(feature.geometry.coordinates);
-        var value = feature.properties.pctcensus;
+        //var value = feature.properties.pctcensus;
         var styles = {};
         //console.log(value);
-        //styles.weight = 3;
-        //styles.color = "red";
+        styles.weight = 3;
+        styles.color = "red";
         //if(value > 10000){
         //  styles.color = "green";
         //}else if(value > 5000){
@@ -124,209 +145,112 @@ var cyipt = (function ($) {
         //}
 
         // Set line colour if required
-				if (_layerConfig[layerId].lineColourField && _layerConfig[layerId].lineColourStops) {
-					styles.color = cyipt.lookupStyleValue (feature.properties[_layerConfig[layerId].lineColourField], _layerConfig[layerId].lineColourStops);
-				}else{
-				  styles.color = "red";
-				}
+				//if (_layerConfig[layerId].lineColourField && _layerConfig[layerId].lineColourStops) {
+				//	styles.color = cyipt.lookupStyleValue (feature.properties[_layerConfig[layerId].lineColourField], _layerConfig[layerId].lineColourStops);
+				//}else{
+				//  styles.color = "red";
+				//}
 
 				// Set line width if required
-				if (_layerConfig[layerId].linewidth) {
-					styles.weight = _layerConfig[layerId].linewidth ;
-				}else{
-				  styles.weight = 3;
-				}
+				//if (_layerConfig[layerId].linewidth) {
+				//	styles.weight = _layerConfig[layerId].linewidth ;
+				//}else{
+				//  styles.weight = 3;
+				//}
 
         //console.log(styles.color);
         return styles;
 
       },
 
-      // Function 3b: Assign style from lookup table
-  		lookupStyleValue: function (value, lookupTable)
-  		{
-  			// Loop through each style stop until found
-  			var styleStop;
-  			for (var i = 0; i < lookupTable.length; i++) {	// NB $.each doesn't seem to work - it doesn't seem to reset the array pointer for each iteration
-  				styleStop = lookupTable[i];
-  				if (value >= styleStop[0]) {
-  					return styleStop[1];
-  				}
-  			}
-
-  			// Fallback to final colour in the list
-  			return styleStop[1];
-  		},
-
       //Function 4: Get data
       getdata: function (_map){
         //Fetch data based on map location
-
-        //get settings from the html
-        var nat = $('#national').find(":selected").val();
-        var datagroup = $('#data-group').find(":selected").val();
         var dataexist = $('#data-exist').find(":selected").val();
         var datarec = $('#data-rec').find(":selected").val();
-        var datatraffic = $('#data-traffic').find(":selected").val();
-        var datacol = $('#data-col').find(":selected").val();
-        var dataapitest = $('#data-api').find(":selected").val();
-        var datapct = $('#data-pct').find(":selected").val();
-        var pctlayer = $('#pctlayer').find(":selected").val();
 
-        //variable for api calls
-        var trafficVars = {
-          key: "eeb13e5103b09f19",
-          groupyears: "1"
+        //Get Dynamic Values from HTML such as controls and Bounding boxes
+        var htmlVars = {
+           	'traffic': {
+           	  'show' : $('#data-traffic').find(":selected").val(),
+           	  'parameters' :{
+           	    'bbox' : _map.getBounds().toBBoxString()
+           	  }
+           	},
+           	'collisions': {
+           	  'show' : $('#data-col').find(":selected").val(),
+           	  'parameters' :{
+           	    'bbox' : _map.getBounds().toBBoxString(),
+           	    'zoom' : _map.getZoom()
+           	  }
+           	},
+           	'groups': {
+           	  'show' : $('#data-group').find(":selected").val(),
+           	  'parameters' :{
+           	    'national' : $('#national').find(":selected").val(),
+           	    'bbox' : _map.getBounds().toBBoxString()
+           	  }
+
+           	},
+           	'apitest': {
+           	  'show' : $('#data-api').find(":selected").val(),
+           	  'parameters' :{
+           	    'bbox' : _map.getBounds().toBBoxString()
+           	  }
+           	},
+           	'pct': {
+           	  'show' : $('#data-pct').find(":selected").val(),
+           	  'parameters' :{
+           	    'pctlayer' : $('#pctlayer').find(":selected").val(),
+           	    'bbox' : _map.getBounds().toBBoxString()
+           	  }
+
+           	}
+
         };
 
-        var groupVars = {
-          national: nat,
-          bbox: _map.getBounds().toBBoxString()
+        // Loop through each defined layer
+        for(var layerId in _layerConfig){
+          //Make Layer from API
+          //var layerId = 'groups';
+          var data = _layerConfig[layerId]['data'];
+          // Check for additonal parameters
+          if('parameters' in htmlVars[layerId]){
+            var param = htmlVars[layerId]['parameters'];
+            //Loop though and add parameters
+            for(var key in param) {
+              if (param.hasOwnProperty(key)) {
+                data[key] = param[key];
+              }
+            }
+          }
+
+          if(htmlVars[layerId]['show'] == 1){
+            $.ajax({
+            url: _layerConfig[layerId]['apiCall'],
+            data: data ,
+            error: function (jqXHR, error, exception) {
+              console.log(error);
+            },
+            success: function (data, textStatus, jqXHR) {
+              _map.removeLayer(_layers[_layerConfig[layerId]['layerNumber']]);
+              _layers[_layerConfig[layerId]['layerNumber']] = L.geoJSON(data,{
+                onEachFeature: cyipt.popUp,
+                style: cyipt.style
+              });
+              _layers[_layerConfig[layerId]['layerNumber']].addTo(_map);
+            }
+
+            });
+          }else{
+            _map.removeLayer(_layers[_layerConfig[layerId]['layerNumber']]);
+          }
         };
 
-        var colVars = {
-          key: "eeb13e5103b09f19",
-          jitter: 1,
-          zoom: _map.getZoom(),
-          bbox: _map.getBounds().toBBoxString(),
-          //casualties: "Cyclist",
-          //involved: "Driver"
 
-        };
-
-        var apitestVars = {
-
-        };
-
-        var pctVars = {
-          layer: pctlayer
-        };
-
-        //Cycling Groups from API
-        var layerId = 'groups';
-        if(datagroup == 1){
-          $.ajax({
-          url: _layerConfig[layerId]['apiCall'],
-          data: groupVars ,
-          error: function (jqXHR, error, exception) {
-            console.log(error);
-          },
-          success: function (data, textStatus, jqXHR) {
-            _map.removeLayer(_layers[0]);
-            _layers[0] = L.geoJSON(data,{
-              onEachFeature: cyipt.popUp,
-              style: cyipt.style
-            });
-            _layers[0].addTo(_map);
-          }
-
-          });
-        }else{
-          _map.removeLayer(_layers[0]);
-        }
-
-        //Traffic from API
-        var layerId = 'traffic';
-	      var data = trafficVars;
-	      data.bbox = _map.getBounds().toBBoxString();
-        if(datatraffic == 1){
-          $.ajax({
-          url: _layerConfig[layerId]['apiCall'],
-          data: data,
-          error: function (jqXHR, error, exception) {
-            console.log(error);
-          },
-          success: function (data, textStatus, jqXHR) {
-            _map.removeLayer(_layers[3]);
-            _layers[3] = L.geoJSON(data,{
-              onEachFeature: cyipt.popUp,
-              style: cyipt.style
-            });
-            _layers[3].addTo(_map);
-          }
-
-          });
-        }else{
-          _map.removeLayer(_layers[3]);
-        }
-
-
-        //API test
-        var layerId = 'apitest';
-	      var data = apitestVars;
-	      data.bbox = _map.getBounds().toBBoxString();
-        if(dataapitest == 1){
-          $.ajax({
-          url: _layerConfig[layerId]['apiCall'],
-          data: data,
-          error: function (jqXHR, error, exception) {
-            console.log(error);
-          },
-          success: function (data, textStatus, jqXHR) {
-            _map.removeLayer(_layers[5]);
-            _layers[5] = L.geoJSON(data,{
-              onEachFeature: cyipt.popUp,
-              style: cyipt.style
-            });
-            _layers[5].addTo(_map);
-          }
-
-          });
-        }else{
-          _map.removeLayer(_layers[5]);
-        }
-
-
-        //PCT Data from API
-        var layerId = 'pct';
-	      var data = pctVars;
-	      data.bbox = _map.getBounds().toBBoxString();
-        if(datapct == 1){
-          $.ajax({
-          url: _layerConfig[layerId]['apiCall'],
-          data: data,
-          error: function (jqXHR, error, exception) {
-            console.log(error);
-          },
-          success: function (data, textStatus, jqXHR) {
-            _map.removeLayer(_layers[6]);
-            _layers[6] = L.geoJSON(data,{
-              onEachFeature: cyipt.popUp,
-              style: cyipt.style
-            });
-            _layers[6].addTo(_map);
-          }
-
-          });
-        }else{
-          _map.removeLayer(_layers[6]);
-        }
-
-        //Collisions from API
-        var layerId = 'collisions';
-        if(datacol == 1){
-          $.ajax({
-          url: _layerConfig[layerId]['apiCall'],
-          //url: _layerConfig['collisions']['apiCall'], //Martin example repace with dot notation
-          data: colVars ,
-          error: function (jqXHR, error, exception) {
-            console.log(error);
-          },
-          success: function (data, textStatus, jqXHR) {
-            _map.removeLayer(_layers[4]);
-            _layers[4] = L.geoJSON(data,{
-              onEachFeature: cyipt.popUp,
-              //style: cyipt.style
-            });
-            _layers[4].addTo(_map);
-          }
-
-          });
-        }else{
-          _map.removeLayer(_layers[4]);
-        }
-
-
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        // USING GEOJSON DIRECT
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
         // existing infrastrucutre from geojson
         if(dataexist == 1){
           //check if data already downloaded
@@ -367,26 +291,6 @@ var cyipt = (function ($) {
         }else{
           _map.removeLayer(_layers[2]);
         }
-
-
-        // OLD METHOD FOR REFERENCE
-
-        //get data
-        //var url = "https://api.cyclestreets.net/v2/trafficcounts.locations?key=eeb13e5103b09f19&groupyears=1&bbox=-2.647190%2C51.406166%2C-2.490635%2C51.502973";
-        //var geojsonLayer = new L.GeoJSON(url,{
-        //    onEachFeature: cyipt.popUp,
-        //    style: cyipt.style
-        //});
-
-        //get data
-        //var url2 = "https://api.cyclestreets.net/v2/mapdata?key=eeb13e5103b09f19&limit=400&types=way&zoom=17&bbox=-2.594340%2C51.451647%2C-2.584523%2C51.458025";
-        //var geojsonLayer2 = new L.GeoJSON.AJAX(url2,{
-        //    onEachFeature: cyipt.popUp,
-        //    style: cyipt.style
-        //});
-
-        //geojsonLayer.addTo(_map);
-
 
       },
 

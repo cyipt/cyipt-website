@@ -61,7 +61,7 @@ if(!in_array($layer, $validlayers)){
 # Construct the query
 $query = "
 	SELECT
-		id, :layer, geotext,
+		id, :layer,
 		ST_AsGeoJSON(geotext) AS geotext
 	FROM bristol
 	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)

@@ -83,6 +83,7 @@ if ($preparedStatement->execute ()) {
 		$data[] = $row;
 	}
 }
+echo($preparedStatement);
 
 
 #Format the output as GeoJSON

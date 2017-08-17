@@ -25,7 +25,7 @@ try {
 $bbox = (isSet ($_GET['bbox']) ? $_GET['bbox'] : '');
 $layer = (isSet ($_GET['layer']) ? $_GET['layer'] : '');
 
-echo(1)
+echo(1);
 #Check BBOX is Provided
 if (!$bbox) {
 	$response = array ('error' => "No bbox was supplied.");
@@ -33,11 +33,10 @@ if (!$bbox) {
 	die;
 }
 
-/*
 #Check BBOX is valid
 list ($w, $s, $e, $n) = explode (',', $bbox);
 
-if(!(is_numeric($w) && is_numeric($w) && is_numeric($w) && is_numeric($w) &&)){
+if(!(is_numeric($w) && is_numeric($s) && is_numeric($e) && is_numeric($n) )){
   $response = array ('error' => "BBox was invalid");
 	echo json_encode ($response);
 	die;
@@ -51,14 +50,14 @@ if (!$layer) {
 }
 
 #Check layer is valid
-$validlayers = array("pctcensus", "pctgov",	"pctgen",	"pctdutch",	"pctebike")
+$validlayers = array("pctcensus", "pctgov",	"pctgen",	"pctdutch",	"pctebike");
 if(!in_array($layer, $validlayers)){
   $response = array ('error' => "Layer was invalid");
 	echo json_encode ($response);
 	die;
 }
 
-echo(2)
+echo(2);
 # Construct the query
 $query = "
 	SELECT
@@ -84,7 +83,7 @@ if ($preparedStatement->execute ()) {
 	}
 }
 
-echo(3)
+echo(3);
 #Format the output as GeoJSON
 foreach ($data as $index => $row) {
 	$data[$index]['geotext'] = json_decode ($row['geotext'], true);
@@ -106,5 +105,5 @@ foreach ($data as $row) {
 header ('Content-Type: application/json');
 echo json_encode ($geojson, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 
-*/
+
 ?>

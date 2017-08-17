@@ -21,7 +21,20 @@ var cyipt = (function ($) {
        	  'apiCall': 'http://www.cyipt.bike/api/index.php'
        	},
        	'pct': {
-       	  'apiCall': 'http://www.cyipt.bike/api/pct/index.php'
+       	  'apiCall': 'http://www.cyipt.bike/api/pct/index.php',
+       	  'lineColourField': 'pctcensus',
+			    'lineColourStops': [
+			        [9999999, '#ff0000'],	// Colour and line values based on GMCC site
+      				[2000, '#fe7fe1'],
+      				[1000, '#7f7ffe'],
+      				[500, '#95adfd'],	// Colour and line values based on GMCC site
+      				[250, '#96d6fd'],
+      				[100, '#7efefd'],
+      				[50, '#d6fe7f'],
+      				[10, '#fefe94'],
+      				[0, '#cdcdcd']
+      				],
+      		'linewidth' : '5'
        	}
        	// etc.
     };
@@ -97,22 +110,53 @@ var cyipt = (function ($) {
       style: function (feature){
         //console.log(feature.properties.car_pcu);
         //console.log(feature.geometry.coordinates);
-        var value = feature.properties.car_pcu;
+        var value = feature.properties.pctcensus;
         var styles = {};
         //console.log(value);
-        styles.weight = 3;
+        //styles.weight = 3;
         //styles.color = "red";
-        if(value > 10000){
-          styles.color = "green";
-        }else if(value > 5000){
-          styles.color = "blue";
-        }else{
-          styles.color = "red";
-        }
+        //if(value > 10000){
+        //  styles.color = "green";
+        //}else if(value > 5000){
+        //  styles.color = "blue";
+        //}else{
+        //  styles.color = "red";
+        //}
+
+        // Set line colour if required
+				if (_layerConfig[layerId].lineColourField && _layerConfig[layerId].lineColourStops) {
+					styles.color = cyipt.lookupStyleValue (feature.properties[_layerConfig[layerId].lineColourField], _layerConfig[layerId].lineColourStops);
+				}else{
+				  styles.color = "red";
+				}
+
+				// Set line width if required
+				if (_layerConfig[layerId].linewidth) {
+					styles.weight = _layerConfig[layerId].linewidth ;
+				}else{
+				  styles.weight = 3;
+				}
+
         //console.log(styles.color);
         return styles;
 
       },
+
+      // Function 3b: Assign style from lookup table
+  		lookupStyleValue: function (value, lookupTable)
+  		{
+  			// Loop through each style stop until found
+  			var styleStop;
+  			for (var i = 0; i < lookupTable.length; i++) {	// NB $.each doesn't seem to work - it doesn't seem to reset the array pointer for each iteration
+  				styleStop = lookupTable[i];
+  				if (value >= styleStop[0]) {
+  					return styleStop[1];
+  				}
+  			}
+
+  			// Fallback to final colour in the list
+  			return styleStop[1];
+  		},
 
       //Function 4: Get data
       getdata: function (_map){

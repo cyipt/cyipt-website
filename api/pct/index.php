@@ -16,6 +16,7 @@ $settings = array (
 try {
 	$databaseConnection = new PDO ("pgsql:host={$settings['hostname']};dbname={$settings['database']}", $settings['username'], $settings['password']);
 	$databaseConnection->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION, PDO::FETCH_ASSOC);
+	$databaseConnection->setAttribute (PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
 	print "Error!: " . $e->getMessage ();
 	die;
@@ -67,7 +68,7 @@ if($layer == "pctcensus"){
 	FROM bristol
 	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
 	AND pctcensus > 0
-	LIMIT 1000
+	LIMIT 10000
   ;";
 }else if($layer == "pctgov"){
   $query = "

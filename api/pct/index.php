@@ -57,24 +57,66 @@ if(!in_array($layer, $validlayers)){
 	die;
 }
 
-
 # Construct the query
-$query = "
+# must use the right query for each possible layer
+if($layer == "pctcensus"){
+  $query = "
 	SELECT
-		id, :layer,
+		id, pctcensus,
 		ST_AsGeoJSON(geotext) AS geotext
 	FROM bristol
 	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-	AND :layer > 0
+	AND pctcensus > 0
 	LIMIT 1000
-;";
+  ;";
+}else if($layer == "pctgov"){
+  $query = "
+	SELECT
+		id, pctgov,
+		ST_AsGeoJSON(geotext) AS geotext
+	FROM bristol
+	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+	AND pctgov > 0
+	LIMIT 1000
+  ;";
+}else if($layer == "pctgen"){
+  $query = "
+	SELECT
+		id, pctgen,
+		ST_AsGeoJSON(geotext) AS geotext
+	FROM bristol
+	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+	AND pctgen > 0
+	LIMIT 1000
+  ;";
+}else if($layer == "pctdutch"){
+  $query = "
+	SELECT
+		id, pctdutch,
+		ST_AsGeoJSON(geotext) AS geotext
+	FROM bristol
+	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+	AND pctdutch > 0
+	LIMIT 1000
+  ;";
+}else if($layer == "pctebike"){
+  $query = "
+	SELECT
+		id, pctebike,
+		ST_AsGeoJSON(geotext) AS geotext
+	FROM bristol
+	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+	AND pctebike > 0
+	LIMIT 1000
+  ;";
+}else{
+  $response = array ('error' => "Unable to select query");
+	echo json_encode ($response);
+	die;
+}
 
-echo($query);
-echo($layer);
-echp($w);
 # Select the data
 $preparedStatement = $databaseConnection->prepare ($query);
-$preparedStatement->bindParam (':layer', $layer);
 $preparedStatement->bindParam (':w', $w);
 $preparedStatement->bindParam (':s', $s);
 $preparedStatement->bindParam (':e', $e);

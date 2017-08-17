@@ -24,7 +24,7 @@ try {
 
 #Get Variables
 $bbox = (isSet ($_GET['bbox']) ? $_GET['bbox'] : '');
-$layer = (isSet ($_GET['layer']) ? $_GET['layer'] : '');
+$layer = (isSet ($_GET['pctlayer']) ? $_GET['layer'] : '');
 
 
 #Check BBOX is Provided

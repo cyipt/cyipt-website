@@ -69,6 +69,7 @@ $query = "
 	LIMIT 1000
 ;";
 
+echo($query);
 # Select the data
 $preparedStatement = $databaseConnection->prepare ($query);
 $preparedStatement->bindParam (':layer', $layer);

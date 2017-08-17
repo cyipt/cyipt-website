@@ -18,7 +18,10 @@ var cyipt = (function ($) {
        	  'apiCall': 'https://www.cyclescape.org/api/groups.json'
        	},
        	'apitest': {
-       	  'apiCall': '/api/index.php'
+       	  'apiCall': 'http://www.cyipt.bike/api/index.php'
+       	},
+       	'pct': {
+       	  'apiCall': 'http://www.cyipt.bike/api/pct/index.php'
        	}
        	// etc.
     };
@@ -74,13 +77,9 @@ var cyipt = (function ($) {
         });
 
         //need watcher for changing menus
-
-
         L.control.layers(baseLayers).addTo(_map);
 
       },
-
-
 
       //Function 2: Define Popups
       //Loop though variaibles and add them to the popup
@@ -127,6 +126,8 @@ var cyipt = (function ($) {
         var datatraffic = $('#data-traffic').find(":selected").val();
         var datacol = $('#data-col').find(":selected").val();
         var dataapitest = $('#data-api').find(":selected").val();
+        var datapct = $('#data-pct').find(":selected").val();
+        var pctlayer = $('#pctlayer').find(":selected").val();
 
         //variable for api calls
         var trafficVars = {
@@ -149,9 +150,12 @@ var cyipt = (function ($) {
 
         };
 
-
         var apitestVars = {
 
+        };
+
+        var pctVars = {
+          layer: pctlayer
         };
 
         //Cycling Groups from API
@@ -179,8 +183,8 @@ var cyipt = (function ($) {
 
         //Traffic from API
         var layerId = 'traffic';
-	var data = trafficVars;
-	data.bbox = _map.getBounds().toBBoxString();
+	      var data = trafficVars;
+	      data.bbox = _map.getBounds().toBBoxString();
         if(datatraffic == 1){
           $.ajax({
           url: _layerConfig[layerId]['apiCall'],
@@ -206,6 +210,32 @@ var cyipt = (function ($) {
         //API test
         var layerId = 'apitest';
 	      var data = apitestVars;
+	      data.bbox = _map.getBounds().toBBoxString();
+        if(dataapitest == 1){
+          $.ajax({
+          url: _layerConfig[layerId]['apiCall'],
+          data: data,
+          error: function (jqXHR, error, exception) {
+            console.log(error);
+          },
+          success: function (data, textStatus, jqXHR) {
+            _map.removeLayer(_layers[5]);
+            _layers[5] = L.geoJSON(data,{
+              onEachFeature: cyipt.popUp,
+              style: cyipt.style
+            });
+            _layers[5].addTo(_map);
+          }
+
+          });
+        }else{
+          _map.removeLayer(_layers[5]);
+        }
+
+
+        //PCT Data from API
+        var layerId = 'pct';
+	      var data = pctVars;
 	      data.bbox = _map.getBounds().toBBoxString();
         if(dataapitest == 1){
           $.ajax({

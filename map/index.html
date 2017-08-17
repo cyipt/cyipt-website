@@ -52,7 +52,7 @@
           <option value="0" selected="selected">Hidden</option>
           <option value="1">Show</option>
       </select>
-      <p>Souce: CyIPT</p>
+      <p>Source: CyIPT</p>
     </div>
 
 
@@ -62,7 +62,7 @@
           <option value="0" selected="selected">Hidden</option>
           <option value="1">Show</option>
       </select>
-      <p>Souce: BikeData</p>
+      <p>Source: BikeData</p>
     </div>
 
   <button class="accordion">Collisions</button>
@@ -71,7 +71,7 @@
           <option value="0" selected="selected">Hidden</option>
           <option value="1">Show</option>
       </select>
-      <p>Souce: BikeData</p>
+      <p>Source: BikeData</p>
     </div>
 
     <button class="accordion">API Test</button>
@@ -81,6 +81,25 @@
           <option value="1">Show</option>
       </select>
       <p>Source: CyIPT PostGIS</p>
+    </div>
+
+    <button class="accordion">Propensity to Cycle Tool</button>
+    <div class="panel">
+      <select id="data-pct" name="data-pct">
+          <option value="0" selected="selected">Hidden</option>
+          <option value="1">Show</option>
+      </select>
+
+      <select id="pctlayer" name="pctlayer">
+          <option value="pctcensus" selected="selected">Census 2011</option>
+          <option value="pctgov">Government Target</option>
+          <option value="pctgen">Gender Equality</option>
+          <option value="pctdutch">Go Dutch</option>
+          <option value="pctebike">Ebikes</option>
+      </select>
+
+      <p>Source: PCT</p>
+      <p>Analysis By: CyIPT</p>
     </div>
 
   </div>

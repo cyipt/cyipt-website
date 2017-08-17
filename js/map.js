@@ -237,7 +237,7 @@ var cyipt = (function ($) {
         var layerId = 'pct';
 	      var data = pctVars;
 	      data.bbox = _map.getBounds().toBBoxString();
-        if(dataapitest == 1){
+        if(datapct == 1){
           $.ajax({
           url: _layerConfig[layerId]['apiCall'],
           data: data,
@@ -245,17 +245,17 @@ var cyipt = (function ($) {
             console.log(error);
           },
           success: function (data, textStatus, jqXHR) {
-            _map.removeLayer(_layers[5]);
-            _layers[5] = L.geoJSON(data,{
+            _map.removeLayer(_layers[6]);
+            _layers[6] = L.geoJSON(data,{
               onEachFeature: cyipt.popUp,
               style: cyipt.style
             });
-            _layers[5].addTo(_map);
+            _layers[6].addTo(_map);
           }
 
           });
         }else{
-          _map.removeLayer(_layers[5]);
+          _map.removeLayer(_layers[6]);
         }
 
         //Collisions from API

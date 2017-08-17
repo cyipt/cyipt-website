@@ -78,7 +78,6 @@ $preparedStatement->bindParam (':s', $s);
 $preparedStatement->bindParam (':e', $e);
 $preparedStatement->bindParam (':n', $n);
 $data = array ();
-echo($preparedStatement);
 
 if ($preparedStatement->execute ()) {
 	while ($row = $preparedStatement->fetch ()) {

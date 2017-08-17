@@ -70,6 +70,8 @@ $query = "
 ;";
 
 echo($query);
+echo($layer);
+echp($w);
 # Select the data
 $preparedStatement = $databaseConnection->prepare ($query);
 $preparedStatement->bindParam (':layer', $layer);

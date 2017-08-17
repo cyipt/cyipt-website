@@ -1,4 +1,6 @@
+
 <?php
+
 #Api Call to get PCT data
 # Define the settings, using the credentials above
 $settings = array (
@@ -31,6 +33,7 @@ if (!$bbox) {
 	die;
 }
 
+/*
 #Check BBOX is valid
 list ($w, $s, $e, $n) = explode (',', $bbox);
 
@@ -103,4 +106,5 @@ foreach ($data as $row) {
 header ('Content-Type: application/json');
 echo json_encode ($geojson, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 
+*/
 ?>

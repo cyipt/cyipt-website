@@ -25,7 +25,7 @@ try {
 $bbox = (isSet ($_GET['bbox']) ? $_GET['bbox'] : '');
 $layer = (isSet ($_GET['layer']) ? $_GET['layer'] : '');
 
-echo(1);
+
 #Check BBOX is Provided
 if (!$bbox) {
 	$response = array ('error' => "No bbox was supplied.");
@@ -57,7 +57,7 @@ if(!in_array($layer, $validlayers)){
 	die;
 }
 
-echo(2);
+
 # Construct the query
 $query = "
 	SELECT
@@ -83,7 +83,7 @@ if ($preparedStatement->execute ()) {
 	}
 }
 
-echo(3);
+
 #Format the output as GeoJSON
 foreach ($data as $index => $row) {
 	$data[$index]['geotext'] = json_decode ($row['geotext'], true);

@@ -95,8 +95,6 @@ var cyipt = (function ($) {
                             'osm': openmap,
                             'ocm': cyclemap,
                             'satelite' : satelite
-                            //'overlay_name': data
-                            //'overlay_name2': geojsonLayer2
                             };
         new L.Hash(_map, allMapLayers);
         //Define groups
@@ -127,41 +125,19 @@ var cyipt = (function ($) {
           }
       },
 
+
       //Function 3: Define style
-      style: function (feature,layerID){
-        //console.log(layerID);
-        //console.log(feature.geometry.coordinates);
-        //var value = feature.properties.pctcensus;
+      style: function (feature){
+        //console.log(_layer);
         var styles = {};
-        //console.log(value);
         styles.weight = 3;
         styles.color = "red";
-        //if(value > 10000){
-        //  styles.color = "green";
-        //}else if(value > 5000){
-        //  styles.color = "blue";
-        //}else{
-        //  styles.color = "red";
-        //}
 
-        // Set line colour if required
-				//if (_layerConfig[layerId].lineColourField && _layerConfig[layerId].lineColourStops) {
-				//	styles.color = cyipt.lookupStyleValue (feature.properties[_layerConfig[layerId].lineColourField], _layerConfig[layerId].lineColourStops);
-				//}else{
-				//  styles.color = "red";
-				//}
-
-				// Set line width if required
-				//if (_layerConfig[layerId].linewidth) {
-				//	styles.weight = _layerConfig[layerId].linewidth ;
-				//}else{
-				//  styles.weight = 3;
-				//}
-
-        //console.log(styles.color);
         return styles;
 
       },
+
+
 
       //Function 4: Get data
       getdata: function (_map){
@@ -210,13 +186,13 @@ var cyipt = (function ($) {
         };
 
         // Loop through each defined layer
-        for(var layerId in _layerConfig){
+        for(var _layer in _layerConfig){
           //Make Layer from API
-          //var layerId = 'groups';
-          var data = _layerConfig[layerId]['data'];
+          //var _layer = 'groups';
+          var data = _layerConfig[_layer]['data'];
           // Check for additonal parameters
-          if('parameters' in htmlVars[layerId]){
-            var param = htmlVars[layerId]['parameters'];
+          if('parameters' in htmlVars[_layer]){
+            var param = htmlVars[_layer]['parameters'];
             //Loop though and add parameters
             for(var key in param) {
               if (param.hasOwnProperty(key)) {
@@ -225,27 +201,32 @@ var cyipt = (function ($) {
             }
           }
 
-          if(htmlVars[layerId]['show'] == 1){
+          if(htmlVars[_layer]['show'] == 1){
+            //console.log(_layer);
             $.ajax({
-            url: _layerConfig[layerId]['apiCall'],
+            url: _layerConfig[_layer]['apiCall'],
             data: data ,
             error: function (jqXHR, error, exception) {
+              //console.log(_layer);
               console.log(error);
             },
             success: function (data, textStatus, jqXHR) {
-              _map.removeLayer(_layers[_layerConfig[layerId]['layerNumber']]);
-              _layers[_layerConfig[layerId]['layerNumber']] = L.geoJSON(data,{
+              //console.log(_layer);
+              _map.removeLayer(_layers[_layerConfig[_layer]['layerNumber']]);
+              _layers[_layerConfig[_layer]['layerNumber']] = L.geoJSON(data,{
                 onEachFeature: cyipt.popUp,
                 style: cyipt.style
               });
-              _layers[_layerConfig[layerId]['layerNumber']].addTo(_map);
+              _layers[_layerConfig[_layer]['layerNumber']].addTo(_map);
             }
 
             });
+            //console.log(_layer);
           }else{
-            _map.removeLayer(_layers[_layerConfig[layerId]['layerNumber']]);
+            _map.removeLayer(_layers[_layerConfig[_layer]['layerNumber']]);
           }
         };
+
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////

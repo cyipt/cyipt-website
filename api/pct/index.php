@@ -79,7 +79,7 @@ if(!(is_numeric($zoom))){
 # must use the right query for each possible layer
 if($layer == "pctcensus"){
   #Select based on Zoom
-  if($zoom <= 13){
+  if($zoom <= 14){
     $query = "
   	SELECT
   		id, pctcensus,
@@ -89,7 +89,7 @@ if($layer == "pctcensus"){
   	AND pctcensus > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 16 && $zoom >= 14){
+  }else if($zoom <= 17 && $zoom >= 15){
     $query = "
   	SELECT
   		id, pctcensus,
@@ -112,7 +112,7 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctgov"){
   #Select based on Zoom
-  if($zoom <= 13){
+  if($zoom <= 14){
     $query = "
   	SELECT
   		id, pctgov,
@@ -122,7 +122,7 @@ if($layer == "pctcensus"){
   	AND pctgov > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 16 && $zoom >= 14){
+  }else if($zoom <= 17 && $zoom >= 15){
     $query = "
   	SELECT
   		id, pctgov,
@@ -145,7 +145,7 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctgen"){
   #Select based on Zoom
-  if($zoom <= 13){
+  if($zoom <= 14){
     $query = "
   	SELECT
   		id, pctgen,
@@ -155,7 +155,7 @@ if($layer == "pctcensus"){
   	AND pctgen > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 16 && $zoom >= 14){
+  }else if($zoom <= 17 && $zoom >= 15){
     $query = "
   	SELECT
   		id, pctgen,
@@ -178,7 +178,7 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctdutch"){
   #Select based on Zoom
-  if($zoom <= 13){
+  if($zoom <= 14){
     $query = "
   	SELECT
   		id, pctdutch,
@@ -188,7 +188,7 @@ if($layer == "pctcensus"){
   	AND pctdutch > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 16 && $zoom >= 14){
+  }else if($zoom <= 17 && $zoom >= 15){
     $query = "
   	SELECT
   		id, pctdutch,
@@ -211,7 +211,7 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctebike"){
   #Select based on Zoom
-  if($zoom <= 13){
+  if(){
     $query = "
   	SELECT
   		id, pctebike,
@@ -221,7 +221,7 @@ if($layer == "pctcensus"){
   	AND pctebike > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 16 && $zoom >= 14){
+  }else if($zoom <= 17 && $zoom >= 15){
     $query = "
   	SELECT
   		id, pctebike,

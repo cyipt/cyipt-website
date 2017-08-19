@@ -79,7 +79,7 @@ if(!(is_numeric($zoom))){
 # must use the right query for each possible layer
 if($layer == "pctcensus"){
   #Select based on Zoom
-  if($zoom <= 12){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctcensus,
@@ -87,9 +87,9 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctcensus > 500
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
-  }else if($zoom <= 15 && $zoom >= 13){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctcensus,
@@ -97,7 +97,7 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctcensus > 50
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }else{
     $query = "
@@ -107,12 +107,12 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctcensus > 0
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }
 }else if($layer == "pctgov"){
   #Select based on Zoom
-  if($zoom <= 12){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctgov,
@@ -120,9 +120,9 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgov > 500
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
-  }else if($zoom <= 15 && $zoom >= 13){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctgov,
@@ -130,7 +130,7 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgov > 50
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }else{
     $query = "
@@ -140,12 +140,12 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgov > 0
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }
 }else if($layer == "pctgen"){
   #Select based on Zoom
-  if($zoom <= 12){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctgen,
@@ -153,9 +153,9 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgen > 500
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
-  }else if($zoom <= 15 && $zoom >= 13){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctgen,
@@ -163,7 +163,7 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgen > 50
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }else{
     $query = "
@@ -173,12 +173,12 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgen > 0
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }
 }else if($layer == "pctdutch"){
   #Select based on Zoom
-  if($zoom <= 12){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctdutch,
@@ -186,9 +186,9 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctdutch > 500
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
-  }else if($zoom <= 15 && $zoom >= 13){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctdutch,
@@ -196,7 +196,7 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctdutch > 50
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }else{
     $query = "
@@ -206,12 +206,12 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctdutch > 0
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }
 }else if($layer == "pctebike"){
   #Select based on Zoom
-  if($zoom <= 12){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctebike,
@@ -219,9 +219,9 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctebike > 500
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
-  }else if($zoom <= 15 && $zoom >= 13){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctebike,
@@ -229,7 +229,7 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctebike > 50
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }else{
     $query = "
@@ -239,7 +239,7 @@ if($layer == "pctcensus"){
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctebike > 0
-  	LIMIT 1000
+  	LIMIT 2000
     ;";
   }
 

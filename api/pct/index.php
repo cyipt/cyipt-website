@@ -24,6 +24,7 @@ try {
 
 #Get Variables
 $bbox = (isSet ($_GET['bbox']) ? $_GET['bbox'] : '');
+$zoom = (isSet ($_GET['zoom']) ? $_GET['zoom'] : '');
 $layer = (isSet ($_GET['pctlayer']) ? $_GET['pctlayer'] : '');
 
 
@@ -58,58 +59,190 @@ if(!in_array($layer, $validlayers)){
 	die;
 }
 
+#Check Zoom is Provided
+if (!$zoom) {
+	$response = array ('error' => "No zoom was supplied.");
+	echo json_encode ($response);
+	die;
+}
+
+#Check Zoom is valid
+if(!(is_numeric($zoom))){
+  $response = array ('error' => "Zoom was invalid");
+	echo json_encode ($response);
+	die;
+}
+
+
+
 # Construct the query
 # must use the right query for each possible layer
 if($layer == "pctcensus"){
-  $query = "
-	SELECT
-		id, pctcensus,
-		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
-	FROM bristol
-	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-	AND pctcensus > 0
-	LIMIT 10000
-  ;";
+  #Select based on Zoom
+  if($zoom <= 12){
+    $query = "
+  	SELECT
+  		id, pctcensus,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctcensus > 500
+  	LIMIT 1000
+    ;";
+  }else if($zoom <= 15 && $zoom >= 13){
+    $query = "
+  	SELECT
+  		id, pctcensus,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctcensus > 50
+  	LIMIT 1000
+    ;";
+  }else{
+    $query = "
+  	SELECT
+  		id, pctcensus,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctcensus > 0
+  	LIMIT 1000
+    ;";
+  }
 }else if($layer == "pctgov"){
-  $query = "
-	SELECT
-		id, pctgov,
-		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
-	FROM bristol
-	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-	AND pctgov > 0
-	LIMIT 1000
-  ;";
+  #Select based on Zoom
+  if($zoom <= 12){
+    $query = "
+  	SELECT
+  		id, pctgov,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctgov > 500
+  	LIMIT 1000
+    ;";
+  }else if($zoom <= 15 && $zoom >= 13){
+    $query = "
+  	SELECT
+  		id, pctgov,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctgov > 50
+  	LIMIT 1000
+    ;";
+  }else{
+    $query = "
+  	SELECT
+  		id, pctgov,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctgov > 0
+  	LIMIT 1000
+    ;";
+  }
 }else if($layer == "pctgen"){
-  $query = "
-	SELECT
-		id, pctgen,
-		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
-	FROM bristol
-	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-	AND pctgen > 0
-	LIMIT 2000
-  ;";
+  #Select based on Zoom
+  if($zoom <= 12){
+    $query = "
+  	SELECT
+  		id, pctgen,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctgen > 500
+  	LIMIT 1000
+    ;";
+  }else if($zoom <= 15 && $zoom >= 13){
+    $query = "
+  	SELECT
+  		id, pctgen,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctgen > 50
+  	LIMIT 1000
+    ;";
+  }else{
+    $query = "
+  	SELECT
+  		id, pctgen,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctgen > 0
+  	LIMIT 1000
+    ;";
+  }
 }else if($layer == "pctdutch"){
-  $query = "
-	SELECT
-		id, pctdutch,
-		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
-	FROM bristol
-	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-	AND pctdutch > 0
-	LIMIT 3000
-  ;";
+  #Select based on Zoom
+  if($zoom <= 12){
+    $query = "
+  	SELECT
+  		id, pctdutch,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctdutch > 500
+  	LIMIT 1000
+    ;";
+  }else if($zoom <= 15 && $zoom >= 13){
+    $query = "
+  	SELECT
+  		id, pctdutch,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctdutch > 50
+  	LIMIT 1000
+    ;";
+  }else{
+    $query = "
+  	SELECT
+  		id, pctdutch,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctdutch > 0
+  	LIMIT 1000
+    ;";
+  }
 }else if($layer == "pctebike"){
-  $query = "
-	SELECT
-		id, pctebike,
-		ST_AsGeoJSON(geotext) AS geotext
-	FROM bristol
-	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-	AND pctebike > 0
-	LIMIT 1000
-  ;";
+  #Select based on Zoom
+  if($zoom <= 12){
+    $query = "
+  	SELECT
+  		id, pctebike,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctebike > 500
+  	LIMIT 1000
+    ;";
+  }else if($zoom <= 15 && $zoom >= 13){
+    $query = "
+  	SELECT
+  		id, pctebike,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctebike > 50
+  	LIMIT 1000
+    ;";
+  }else{
+    $query = "
+  	SELECT
+  		id, pctebike,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctebike > 0
+  	LIMIT 1000
+    ;";
+  }
+
 }else{
   $response = array ('error' => "Unable to select query");
 	echo json_encode ($response);

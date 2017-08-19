@@ -178,7 +178,8 @@ var cyipt = (function ($) {
            	  'show' : $('#data-pct').find(":selected").val(),
            	  'parameters' :{
            	    'pctlayer' : $('#pctlayer').find(":selected").val(),
-           	    'bbox' : _map.getBounds().toBBoxString()
+           	    'bbox' : _map.getBounds().toBBoxString(),
+           	    'zoom' : _map.getZoom()
            	  }
 
            	}

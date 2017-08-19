@@ -74,7 +74,7 @@ if($layer == "pctcensus"){
   $query = "
 	SELECT
 		id, pctgov,
-		ST_Simplify(ST_AsGeoJSON(geotext), 0.1)  AS geotext
+		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
 	FROM bristol
 	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
 	AND pctgov > 0

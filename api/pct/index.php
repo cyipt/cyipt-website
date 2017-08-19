@@ -64,7 +64,7 @@ if($layer == "pctcensus"){
   $query = "
 	SELECT
 		id, pctcensus,
-		ST_AsGeoJSON(geotext) AS geotext
+		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
 	FROM bristol
 	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
 	AND pctcensus > 0
@@ -84,21 +84,21 @@ if($layer == "pctcensus"){
   $query = "
 	SELECT
 		id, pctgen,
-		ST_AsGeoJSON(geotext) AS geotext
+		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
 	FROM bristol
 	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
 	AND pctgen > 0
-	LIMIT 1000
+	LIMIT 2000
   ;";
 }else if($layer == "pctdutch"){
   $query = "
 	SELECT
 		id, pctdutch,
-		ST_AsGeoJSON(geotext) AS geotext
+		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
 	FROM bristol
 	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
 	AND pctdutch > 0
-	LIMIT 1000
+	LIMIT 3000
   ;";
 }else if($layer == "pctebike"){
   $query = "

@@ -211,7 +211,7 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctebike"){
   #Select based on Zoom
-  if(){
+  if($zoom <= 14){
     $query = "
   	SELECT
   		id, pctebike,

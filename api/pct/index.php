@@ -1,5 +1,7 @@
-
 <?php
+
+#Allow development on a local machine
+header ('Access-Control-Allow-Origin: *');
 
 #Api Call to get PCT data
 # Define the settings, using the credentials above

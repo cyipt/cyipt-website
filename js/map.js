@@ -12,7 +12,7 @@ var cyipt = (function ($) {
        	  'layerNumber' : 3,
        	  'apiCall': 'https://api.cyclestreets.net/v2/trafficcounts.locations',
        	  'styles' : {
-         	    'linewidth' : '5'
+         	    'linewidth' : '10'
        	  },
        	  'colours' : {
        	    'ColourField': 'car_pcu',
@@ -53,7 +53,7 @@ var cyipt = (function ($) {
        	  'layerNumber' : 6,
        	  'apiCall': 'http://www.cyipt.bike/api/pct/index.php',
        	  'styles' : {
-       	      'linewidth' : '5',
+       	      'linewidth' : '10',
        	  },
        	  'colours' : {
        	    'ColourField': 'ncycles',
@@ -144,6 +144,9 @@ var cyipt = (function ($) {
         }
 
         if(_layerConfig[_layerID]['colours']){
+          //console.log(feature['properties']);
+          console.log(_layerID)
+          //console.log([_layerConfig[_layerID]['colours']['ColourField']]);
           styles.color = cyipt.getcolour(parseInt(feature['properties'][_layerConfig[_layerID]['colours']['ColourField']]),10)
         }else{
           //DO nothing
@@ -220,7 +223,7 @@ var cyipt = (function ($) {
           //Make Layer from API
           _layerID = _layer ;
           //console.log(_layer);
-          //console.log(_layerID);
+          console.log(_layerID);
           var data = _layerConfig[_layer]['data'];
           // Check for additonal parameters
           if('parameters' in htmlVars[_layer]){
@@ -233,10 +236,10 @@ var cyipt = (function ($) {
             }
           }
 
-          if(htmlVars[_layer]['show'] == 1){
+          if(htmlVars[_layerID]['show'] == 1){
             //console.log(_layer);
             $.ajax({
-            url: _layerConfig[_layer]['apiCall'],
+            url: _layerConfig[_layerID]['apiCall'],
             data: data ,
             error: function (jqXHR, error, exception) {
               //console.log(_layer);
@@ -244,18 +247,18 @@ var cyipt = (function ($) {
             },
             success: function (data, textStatus, jqXHR) {
               //console.log(_layer);
-              _map.removeLayer(_layers[_layerConfig[_layer]['layerNumber']]);
-              _layers[_layerConfig[_layer]['layerNumber']] = L.geoJSON(data,{
+              _map.removeLayer(_layers[_layerConfig[_layerID]['layerNumber']]);
+              _layers[_layerConfig[_layerID]['layerNumber']] = L.geoJSON(data,{
                 onEachFeature: cyipt.popUp,
                 style: cyipt.style
               });
-              _layers[_layerConfig[_layer]['layerNumber']].addTo(_map);
+              _layers[_layerConfig[_layerID]['layerNumber']].addTo(_map);
             }
 
             });
             //console.log(_layer);
           }else{
-            _map.removeLayer(_layers[_layerConfig[_layer]['layerNumber']]);
+            _map.removeLayer(_layers[_layerConfig[_layerID]['layerNumber']]);
           }
         };
 

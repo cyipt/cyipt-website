@@ -81,7 +81,7 @@ if(!(is_numeric($zoom))){
 # must use the right query for each possible layer
 if($layer == "pctcensus"){
   #Select based on Zoom
-  if($zoom <= 14){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctcensus AS ncycles,
@@ -91,7 +91,7 @@ if($layer == "pctcensus"){
   	AND pctcensus > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 16){
+  }else if($zoom <= 17 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctcensus AS ncycles,
@@ -114,7 +114,7 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctgov"){
   #Select based on Zoom
-  if($zoom <= 14){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctgov AS ncycles,
@@ -124,7 +124,7 @@ if($layer == "pctcensus"){
   	AND pctgov > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 16){
+  }else if($zoom <= 17 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctgov AS ncycles,
@@ -147,7 +147,7 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctgen"){
   #Select based on Zoom
-  if($zoom <= 14){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctgen AS ncycles,
@@ -157,7 +157,7 @@ if($layer == "pctcensus"){
   	AND pctgen > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 16){
+  }else if($zoom <= 17 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctgen AS ncycles,
@@ -180,7 +180,7 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctdutch"){
   #Select based on Zoom
-  if($zoom <= 14){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctdutch AS ncycles,
@@ -190,7 +190,7 @@ if($layer == "pctcensus"){
   	AND pctdutch > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 16){
+  }else if($zoom <= 17 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctdutch AS ncycles,
@@ -213,7 +213,7 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctebike"){
   #Select based on Zoom
-  if($zoom <= 14){
+  if($zoom <= 13){
     $query = "
   	SELECT
   		id, pctebike AS ncycles,
@@ -223,7 +223,7 @@ if($layer == "pctcensus"){
   	AND pctebike > 500
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 16){
+  }else if($zoom <= 17 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctebike AS ncycles,

@@ -3,7 +3,7 @@ var cyipt = (function ($) {
     // Internal class properties
 	  var _settings = {};
 	  var _map = {};
-	  var _layer = {};
+	  var _layerID = {};
 	  var _layers = new Array("","","","","","","","");
 
 	  // Layer definitions
@@ -11,20 +11,24 @@ var cyipt = (function ($) {
        	'traffic': {
        	  'layerNumber' : 3,
        	  'apiCall': 'https://api.cyclestreets.net/v2/trafficcounts.locations',
-       	  'lineColourField': 'car_pcu',
-  			  'lineColourStops': [
-    				[40000, '#ff0000'],
-    				[20000, '#d43131'],
-    				[10000, '#e27474'],
-    				[5000, '#f6b879'],
-    				[2000, '#fce8af'],
-    				[0, '#61fa61']
-  			    ],
-			    'linewidth' : '5',
-			    'data' : {
+       	  'styles' : {
+         	    'linewidth' : '5'
+       	  },
+       	  'colours' : {
+       	    'ColourField': 'car_pcu',
+         	  'ColourStops': [
+      			        { "min": 40000, "max": 9999999999999, "col": '#95adfd' },
+            				{ "min": 20000, "max": 20000,  "col": '#96d6fd' },
+            				{ "min": 10000, "max": 20000,  "col": '#7efefd' },
+            				{ "min": 5000,  "max": 10000,  "col": '#d6fe7f' },
+            				{ "min": 2000,  "max": 5000,   "col": '#fefe94' },
+            				{ "min": 0,     "max": 2000,   "col": '#cdcdcd' },
+            				],
+       	  },
+       	  'data' : {
 			        'key': "eeb13e5103b09f19",
               'groupyears' : "1"
-			      }
+			    }
 
        	},
        	'collisions': {
@@ -38,33 +42,33 @@ var cyipt = (function ($) {
        	'groups': {
        	  'layerNumber' : 0,
        	  'apiCall': 'https://www.cyclescape.org/api/groups.json',
-       	  'data' : {
-          }
+       	  'data' : {}
        	},
        	'apitest': {
        	  'layerNumber' : 5,
        	  'apiCall': 'http://www.cyipt.bike/api/index.php',
-       	  'data' : {
-          }
+       	  'data' : {}
        	},
        	'pct': {
        	  'layerNumber' : 6,
        	  'apiCall': 'http://www.cyipt.bike/api/pct/index.php',
-       	  'lineColourField': 'pctcensus',
-			    'lineColourStops': [
-			        [9999999, '#ff0000'],
-      				[2000, '#fe7fe1'],
-      				[1000, '#7f7ffe'],
-      				[500, '#95adfd'],
-      				[250, '#96d6fd'],
-      				[100, '#7efefd'],
-      				[50, '#d6fe7f'],
-      				[10, '#fefe94'],
-      				[0, '#cdcdcd']
-      				],
-      		'linewidth' : '5',
-      		'data' : {
-          }
+       	  'styles' : {
+       	      'linewidth' : '5',
+       	  },
+       	  'colours' : {
+       	    'ColourField': 'ncycles',
+         	  'ColourStops': [
+      			        { "min": 2000, "max": 9999999999999, "col": '#fe7fe1' },
+            				{ "min": 1000, "max": 2000, "col": '#7f7ffe' },
+            				{ "min": 500,  "max": 1000, "col": '#95adfd' },
+            				{ "min": 250,  "max": 500,  "col": '#96d6fd' },
+            				{ "min": 100,  "max": 250,  "col": '#7efefd' },
+            				{ "min": 50,   "max": 100,  "col": '#d6fe7f' },
+            				{ "min": 10,   "max": 50,   "col": '#fefe94' },
+            				{ "min": 0,    "max": 10,   "col": '#cdcdcd' },
+            				],
+       	  },
+       	  'data' : {}
        	}
        	// etc.
     };
@@ -128,16 +132,40 @@ var cyipt = (function ($) {
 
       //Function 3: Define style
       style: function (feature){
-        //console.log(_layer);
         var styles = {};
-        styles.weight = 3;
-        styles.color = "red";
+        //console.log(_layerID);
+        if(_layerConfig[_layerID]['styles']){
+          //If style exists get it from the settings
+          styles = _layerConfig[_layerID]['styles'];
+        }else{
+          //Otherwise get use defualt style
+          styles.weight = 3;
+          styles.color = "red";
+        }
 
+        if(_layerConfig[_layerID]['colours']){
+          styles.color = cyipt.getcolour(parseInt(feature['properties'][_layerConfig[_layerID]['colours']['ColourField']]),10)
+        }else{
+          //DO nothing
+        }
         return styles;
-
       },
 
 
+      getcolour: function(val){
+          var colours = _layerConfig[_layerID]['colours']['ColourStops']
+          var arrayLength = colours.length;
+          var res = 0;
+          for (var i = 0; i < arrayLength; i++) {
+              if(colours[i]['min'] <= val && colours[i]['max'] >= val){
+                  res = colours[i]['col'];
+              }else{
+                  //Do Nothing
+              }
+
+          }
+          return(res);
+      },
 
       //Function 4: Get data
       getdata: function (_map){
@@ -188,8 +216,11 @@ var cyipt = (function ($) {
 
         // Loop through each defined layer
         for(var _layer in _layerConfig){
+
           //Make Layer from API
-          //var _layer = 'groups';
+          _layerID = _layer ;
+          console.log(_layer);
+          console.log(_layerID);
           var data = _layerConfig[_layer]['data'];
           // Check for additonal parameters
           if('parameters' in htmlVars[_layer]){

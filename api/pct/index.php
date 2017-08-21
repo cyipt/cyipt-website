@@ -84,7 +84,7 @@ if($layer == "pctcensus"){
   if($zoom <= 14){
     $query = "
   	SELECT
-  		id, pctcensus,
+  		id, pctcensus AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)

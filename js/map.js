@@ -219,8 +219,8 @@ var cyipt = (function ($) {
 
           //Make Layer from API
           _layerID = _layer ;
-          console.log(_layer);
-          console.log(_layerID);
+          //console.log(_layer);
+          //console.log(_layerID);
           var data = _layerConfig[_layer]['data'];
           // Check for additonal parameters
           if('parameters' in htmlVars[_layer]){

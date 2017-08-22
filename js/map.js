@@ -3,6 +3,7 @@ var cyipt = (function ($) {
     // Internal class properties
 	  var _settings = {};
 	  var _map = {};
+	  //_map = new L.Map('map');
 	  var _layerID = {};
 	  var _layers = new Array("","","","","","","","");
 
@@ -12,7 +13,7 @@ var cyipt = (function ($) {
        	  'layerNumber' : 3,
        	  'apiCall': 'https://api.cyclestreets.net/v2/trafficcounts.locations',
        	  'styles' : {
-         	    'linewidth' : '10'
+         	    'weight' : '8'
        	  },
        	  'colours' : {
        	    'ColourField': 'car_pcu',
@@ -48,7 +49,7 @@ var cyipt = (function ($) {
        	  'layerNumber' : 6,
        	  'apiCall': 'http://www.cyipt.bike/api/pct/index.php',
        	  'styles' : {
-       	      'linewidth' : '10',
+       	      'weight' : '8',
        	  },
        	  'colours' : {
        	    'ColourField': 'ncycles',
@@ -82,7 +83,7 @@ var cyipt = (function ($) {
 	          maxZoom: 22
         });
         //Set up map
-        var _map = L.map('map',{
+        _map = L.map('map',{
       	  center: [51.454, -2.588],
       	  zoom:12,
       	  minZoom:2,
@@ -128,7 +129,8 @@ var cyipt = (function ($) {
       //Function 3: Define style
       style: function (feature){
         var styles = {};
-
+        //console.log('In style');
+        //console.log(_layerID);
         if(_layerConfig[_layerID]['styles']){
           //If style exists get it from the settings
           styles = _layerConfig[_layerID]['styles'];
@@ -139,7 +141,6 @@ var cyipt = (function ($) {
         }
 
         if(_layerConfig[_layerID]['colours']){
-
           styles.color = cyipt.getcolour(parseInt(feature['properties'][_layerConfig[_layerID]['colours']['ColourField']]),10)
         }else{
           //DO nothing
@@ -149,21 +150,23 @@ var cyipt = (function ($) {
 
 
       getcolour: function(val){
+          //console.log('In get colour');
+          //console.log(_layerID);
           var colours = _layerConfig[_layerID]['colours']['ColourStops']
           var arrayLength = colours.length;
-          var res = 0;
+          var res = '#000';  //If not match then black
           for (var i = 0; i < arrayLength; i++) {
               if(colours[i]['min'] <= val && colours[i]['max'] >= val){
                   res = colours[i]['col'];
-              }else{
-                  //Do Nothing
               }
-
           }
           return(res);
       },
 
       fetchdata: function(lyr, data){
+        //_layerID = lyr;
+        //console.log('In fetch data');
+        //console.log(_layerID);
         $.ajax({
             url: _layerConfig[lyr]['apiCall'],
             data: data ,
@@ -171,17 +174,14 @@ var cyipt = (function ($) {
               console.log(error);
             },
             success: function (data, textStatus, jqXHR) {
-              console.log('lyr at start of sucess is')
-              console.log(lyr);
-              console.log(_layerConfig[lyr]['layerNumber']);
-              console.log(_layers)
-              cyipt._map.removeLayer(_layers[_layerConfig[lyr]['layerNumber']]);
+              //Remove Old layer
+              _map.removeLayer(_layers[_layerConfig[lyr]['layerNumber']]);
+              //style data
               _layers[_layerConfig[lyr]['layerNumber']] = L.geoJSON(data,{
                 onEachFeature: cyipt.popUp,
                 style: cyipt.style
               });
-              console.log('lyr at end of If htmlvars is')
-              console.log(lyr)
+              //Add to map
               _layers[_layerConfig[lyr]['layerNumber']].addTo(_map);
             }
 
@@ -191,10 +191,9 @@ var cyipt = (function ($) {
 
       //Function 4: Get data
       getdata: function (_map){
-        //Fetch data based on map location
-        var dataexist = $('#data-exist').find(":selected").val();
-        var datarec = $('#data-rec').find(":selected").val();
 
+        //console.log('In get data');
+        //console.log(_layerID);
         //Get Dynamic Values from HTML such as controls and Bounding boxes
         var htmlVars = {
            	'traffic': {
@@ -230,18 +229,11 @@ var cyipt = (function ($) {
 
         };
 
-        //var i = 0
-        //console.log('i before for loop is')
-        //console.log(i)
         // Loop through each defined layer
         for(var _layer in _layerConfig){
-          //i = i + 1
-          //console.log('i in for loop is')
-          //console.log(i)
-          //Make Layer from API
           _layerID = _layer ;
-          console.log('_layerID after setting is')
-          console.log(_layerID);
+          //console.log('In get data for loop');
+          //console.log(_layerID);
           var data = _layerConfig[_layer]['data'];
           // Check for additonal parameters
           if('parameters' in htmlVars[_layer]){
@@ -253,44 +245,18 @@ var cyipt = (function ($) {
               }
             }
           }
-
+          //If layer active get data
           if(htmlVars[_layerID]['show'] == 1){
-            console.log('_layerID at start of If htmlvars is')
-            console.log(_layerID);
+            //console.log('In htmlVars')
+            //console.log(_layerID)
             //console.log(htmlVars[_layerID]['show'])
-            console.log(_layers)
-            //cyipt.fetchdata(_layerID, data)
-            $.ajax({
-            url: _layerConfig[_layerID]['apiCall'],
-            data: data ,
-            error: function (jqXHR, error, exception) {
-              console.log(error);
-            },
-            success: function (data, textStatus, jqXHR) {
-              console.log('_layerID at start of sucess is')
-              console.log(_layerID);
-              _map.removeLayer(_layers[_layerConfig[_layerID]['layerNumber']]);
-              _layers[_layerConfig[_layerID]['layerNumber']] = L.geoJSON(data,{
-                onEachFeature: cyipt.popUp,
-                style: cyipt.style
-              });
-              //console.log('_layerID at end of If htmlvars is')
-              //console.log(_layerID)
-              _layers[_layerConfig[_layerID]['layerNumber']].addTo(_map);
-            }
-            });
-
+            cyipt.fetchdata(_layerID, data)
           }else{
             _map.removeLayer(_layers[_layerConfig[_layerID]['layerNumber']]);
           }
-
-          //_layerID = "BLANK" ;
-          //console.log('_layerID at end of loop is')
-          //console.log(_layerID);
+        //End of For Loop
         }
-
-        console.log('_layerID outside for loop is')
-        console.log(_layerID);
+        //_layerID = "NULL"
 
       },
 

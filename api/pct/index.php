@@ -81,17 +81,27 @@ if(!(is_numeric($zoom))){
 # must use the right query for each possible layer
 if($layer == "pctcensus"){
   #Select based on Zoom
-  if($zoom <= 13){
+  if($zoom <= 10){
+    $query = "
+  	SELECT
+  		id, pctcensus AS ncycles,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctcensus > 1000
+  	LIMIT 2000
+    ;";
+  }else if($zoom <= 13 && $zoom >= 11){
     $query = "
   	SELECT
   		id, pctcensus AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctcensus > 500
+  	AND pctcensus > 100
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 14){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctcensus AS ncycles,
@@ -114,17 +124,27 @@ if($layer == "pctcensus"){
   }
 }else if($layer == "pctgov"){
   #Select based on Zoom
-  if($zoom <= 13){
+  if($zoom <= 10){
+    $query = "
+  	SELECT
+  		id, pctgov AS ncycles,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctgov > 1000
+  	LIMIT 2000
+    ;";
+  }else if($zoom <= 13 && $zoom >= 11){
     $query = "
   	SELECT
   		id, pctgov AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctgov > 500
+  	AND pctgov > 100
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 14){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctgov AS ncycles,
@@ -146,18 +166,27 @@ if($layer == "pctcensus"){
     ;";
   }
 }else if($layer == "pctgen"){
-  #Select based on Zoom
-  if($zoom <= 13){
+  if($zoom <= 10){
+    $query = "
+  	SELECT
+  		id, pctgen AS ncycles,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctgen > 1000
+  	LIMIT 2000
+    ;";
+  }else if($zoom <= 13 && $zoom >= 11){
     $query = "
   	SELECT
   		id, pctgen AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctgen > 500
+  	AND pctgen > 100
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 14){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctgen AS ncycles,
@@ -179,18 +208,27 @@ if($layer == "pctcensus"){
     ;";
   }
 }else if($layer == "pctdutch"){
-  #Select based on Zoom
-  if($zoom <= 13){
+  if($zoom <= 10){
+    $query = "
+  	SELECT
+  		id, pctdutch AS ncycles,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctdutch > 1000
+  	LIMIT 2000
+    ;";
+  }else if($zoom <= 13 && $zoom >= 11){
     $query = "
   	SELECT
   		id, pctdutch AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctdutch > 500
+  	AND pctdutch > 100
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 14){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctdutch AS ncycles,
@@ -212,18 +250,27 @@ if($layer == "pctcensus"){
     ;";
   }
 }else if($layer == "pctebike"){
-  #Select based on Zoom
-  if($zoom <= 13){
+  if($zoom <= 10){
+    $query = "
+  	SELECT
+  		id, pctebike AS ncycles,
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
+  	FROM bristol
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND pctebike > 1000
+  	LIMIT 2000
+    ;";
+  }else if($zoom <= 13 && $zoom >= 11){
     $query = "
   	SELECT
   		id, pctebike AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctebike > 500
+  	AND pctebike > 100
   	LIMIT 2000
     ;";
-  }else if($zoom <= 17 && $zoom >= 14){
+  }else if($zoom <= 16 && $zoom >= 14){
     $query = "
   	SELECT
   		id, pctebike AS ncycles,

@@ -21,7 +21,6 @@
 
 <div id ="content">
   <div id="sidebar">
-  <p><b> Layers:</b> click to expand </p>
   <button class="accordion">Campaign Groups</button>
     <div class="panel">
       <p>Show local or local & national groups</p>
@@ -36,25 +35,6 @@
       </select>
       <p>Souce: BikeData</p>
     </div>
-
-  <button class="accordion">Existing Infrastructure</button>
-    <div class="panel">
-      <select id="data-exist" name="data-exist">
-          <option value="0" selected="selected">Hidden</option>
-          <option value="1">Show</option>
-      </select>
-      <p>Souce: CyIPT</p>
-    </div>
-
-  <button class="accordion">Recommended Infrastructure</button>
-    <div class="panel">
-      <select id="data-rec" name="data-rec">
-          <option value="0" selected="selected">Hidden</option>
-          <option value="1">Show</option>
-      </select>
-      <p>Source: CyIPT</p>
-    </div>
-
 
   <button class="accordion">Traffic Counts</button>
     <div class="panel">
@@ -74,16 +54,7 @@
       <p>Source: BikeData</p>
     </div>
 
-    <button class="accordion">API Test</button>
-    <div class="panel">
-      <select id="data-api" name="data-api">
-          <option value="0" selected="selected">Hidden</option>
-          <option value="1">Show</option>
-      </select>
-      <p>Source: CyIPT PostGIS</p>
-    </div>
-
-    <button class="accordion">Propensity to Cycle Tool</button>
+  <button class="accordion">Propensity to Cycle Tool</button>
     <div class="panel">
       <select id="data-pct" name="data-pct">
           <option value="0" selected="selected">Hidden</option>
@@ -109,15 +80,15 @@
   var i;
 
   for (i = 0; i < acc.length; i++) {
-      acc[i].onclick = function(){
-          this.classList.toggle("active");
-          var panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-              panel.style.display = "none";
-          } else {
-              panel.style.display = "block";
-          }
+    acc[i].onclick = function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight){
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
       }
+    }
   }
   </script>
 

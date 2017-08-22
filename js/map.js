@@ -197,20 +197,21 @@ var cyipt = (function ($) {
         //Get Dynamic Values from HTML such as controls and Bounding boxes
         var htmlVars = {
            	'traffic': {
-           	  'show' : $('#data-traffic').find(":selected").val(),
+           	  'show' : document.getElementById("data-traffic").checked,
            	  'parameters' :{
            	    'bbox' : _map.getBounds().toBBoxString()
            	  }
            	},
            	'collisions': {
-           	  'show' : $('#data-col').find(":selected").val(),
+           	  'show' : document.getElementById("data-collisions").checked,
            	  'parameters' :{
            	    'bbox' : _map.getBounds().toBBoxString(),
            	    'zoom' : _map.getZoom()
            	  }
            	},
            	'groups': {
-           	  'show' : $('#data-group').find(":selected").val(),
+           	  //'show' : $('#data-group').find(":selected").val(),
+           	  'show' : document.getElementById("data-group").checked,
            	  'parameters' :{
            	    'national' : $('#national').find(":selected").val(),
            	    'bbox' : _map.getBounds().toBBoxString()
@@ -218,7 +219,7 @@ var cyipt = (function ($) {
 
            	},
            	'pct': {
-           	  'show' : $('#data-pct').find(":selected").val(),
+           	  'show' : document.getElementById("data-pct").checked,
            	  'parameters' :{
            	    'pctlayer' : $('#pctlayer').find(":selected").val(),
            	    'bbox' : _map.getBounds().toBBoxString(),

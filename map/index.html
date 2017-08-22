@@ -19,16 +19,12 @@
   <a href="/about">About</a>
 </div>
 
+
 <div id ="content">
   <div id="sidebar">
-  <button class="accordion">Campaign Groups</button>
+  <button class="accordion">Campaign Groups <input type="checkbox" id="data-group" value="0"> </button>
     <div class="panel">
       <p>Show local or local & national groups</p>
-      <select id="data-group" name="data-group">
-          <option value="0" selected="selected">Hidden</option>
-          <option value="1">Show</option>
-      </select>
-
       <select id="national" name="national">
           <option value="0" selected="selected">Local</option>
           <option value="1">National</option>
@@ -36,31 +32,18 @@
       <p>Souce: BikeData</p>
     </div>
 
-  <button class="accordion">Traffic Counts</button>
+  <button class="accordion">Traffic Counts <input type="checkbox" id="data-traffic" value="0"> </button>
     <div class="panel">
-      <select id="data-traffic" name="data-traffic">
-          <option value="0" selected="selected">Hidden</option>
-          <option value="1">Show</option>
-      </select>
       <p>Source: BikeData</p>
     </div>
 
-  <button class="accordion">Collisions</button>
+  <button class="accordion">Collisions <input type="checkbox" id="data-collisions" value="0"></button>
     <div class="panel">
-      <select id="data-col" name="data-col">
-          <option value="0" selected="selected">Hidden</option>
-          <option value="1">Show</option>
-      </select>
       <p>Source: BikeData</p>
     </div>
 
-  <button class="accordion">Propensity to Cycle Tool</button>
+  <button class="accordion">Propensity to Cycle Tool <input type="checkbox" id="data-pct" value="0"> </button>
     <div class="panel">
-      <select id="data-pct" name="data-pct">
-          <option value="0" selected="selected">Hidden</option>
-          <option value="1">Show</option>
-      </select>
-
       <select id="pctlayer" name="pctlayer">
           <option value="pctcensus" selected="selected">Census 2011</option>
           <option value="pctgov">Government Target</option>

@@ -44,11 +44,6 @@ var cyipt = (function ($) {
        	  'apiCall': 'https://www.cyclescape.org/api/groups.json',
        	  'data' : {}
        	},
-       	'apitest': {
-       	  'layerNumber' : 5,
-       	  'apiCall': 'http://www.cyipt.bike/api/index.php',
-       	  'data' : {}
-       	},
        	'pct': {
        	  'layerNumber' : 6,
        	  'apiCall': 'http://www.cyipt.bike/api/pct/index.php',
@@ -133,7 +128,7 @@ var cyipt = (function ($) {
       //Function 3: Define style
       style: function (feature){
         var styles = {};
-        //console.log(_layerID);
+
         if(_layerConfig[_layerID]['styles']){
           //If style exists get it from the settings
           styles = _layerConfig[_layerID]['styles'];
@@ -144,9 +139,7 @@ var cyipt = (function ($) {
         }
 
         if(_layerConfig[_layerID]['colours']){
-          //console.log(feature['properties']);
-          console.log(_layerID)
-          //console.log([_layerConfig[_layerID]['colours']['ColourField']]);
+
           styles.color = cyipt.getcolour(parseInt(feature['properties'][_layerConfig[_layerID]['colours']['ColourField']]),10)
         }else{
           //DO nothing
@@ -169,6 +162,32 @@ var cyipt = (function ($) {
           }
           return(res);
       },
+
+      fetchdata: function(lyr, data){
+        $.ajax({
+            url: _layerConfig[lyr]['apiCall'],
+            data: data ,
+            error: function (jqXHR, error, exception) {
+              console.log(error);
+            },
+            success: function (data, textStatus, jqXHR) {
+              console.log('lyr at start of sucess is')
+              console.log(lyr);
+              console.log(_layerConfig[lyr]['layerNumber']);
+              console.log(_layers)
+              cyipt._map.removeLayer(_layers[_layerConfig[lyr]['layerNumber']]);
+              _layers[_layerConfig[lyr]['layerNumber']] = L.geoJSON(data,{
+                onEachFeature: cyipt.popUp,
+                style: cyipt.style
+              });
+              console.log('lyr at end of If htmlvars is')
+              console.log(lyr)
+              _layers[_layerConfig[lyr]['layerNumber']].addTo(_map);
+            }
+
+            })
+      },
+
 
       //Function 4: Get data
       getdata: function (_map){
@@ -199,12 +218,6 @@ var cyipt = (function ($) {
            	  }
 
            	},
-           	'apitest': {
-           	  'show' : $('#data-api').find(":selected").val(),
-           	  'parameters' :{
-           	    'bbox' : _map.getBounds().toBBoxString()
-           	  }
-           	},
            	'pct': {
            	  'show' : $('#data-pct').find(":selected").val(),
            	  'parameters' :{
@@ -217,12 +230,17 @@ var cyipt = (function ($) {
 
         };
 
+        //var i = 0
+        //console.log('i before for loop is')
+        //console.log(i)
         // Loop through each defined layer
         for(var _layer in _layerConfig){
-
+          //i = i + 1
+          //console.log('i in for loop is')
+          //console.log(i)
           //Make Layer from API
           _layerID = _layer ;
-          //console.log(_layer);
+          console.log('_layerID after setting is')
           console.log(_layerID);
           var data = _layerConfig[_layer]['data'];
           // Check for additonal parameters
@@ -237,76 +255,42 @@ var cyipt = (function ($) {
           }
 
           if(htmlVars[_layerID]['show'] == 1){
-            //console.log(_layer);
+            console.log('_layerID at start of If htmlvars is')
+            console.log(_layerID);
+            //console.log(htmlVars[_layerID]['show'])
+            console.log(_layers)
+            //cyipt.fetchdata(_layerID, data)
             $.ajax({
             url: _layerConfig[_layerID]['apiCall'],
             data: data ,
             error: function (jqXHR, error, exception) {
-              //console.log(_layer);
               console.log(error);
             },
             success: function (data, textStatus, jqXHR) {
-              //console.log(_layer);
+              console.log('_layerID at start of sucess is')
+              console.log(_layerID);
               _map.removeLayer(_layers[_layerConfig[_layerID]['layerNumber']]);
               _layers[_layerConfig[_layerID]['layerNumber']] = L.geoJSON(data,{
                 onEachFeature: cyipt.popUp,
                 style: cyipt.style
               });
+              //console.log('_layerID at end of If htmlvars is')
+              //console.log(_layerID)
               _layers[_layerConfig[_layerID]['layerNumber']].addTo(_map);
             }
-
             });
-            //console.log(_layer);
+
           }else{
             _map.removeLayer(_layers[_layerConfig[_layerID]['layerNumber']]);
           }
-        };
 
-
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////
-        // USING GEOJSON DIRECT
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-        // existing infrastrucutre from geojson
-        if(dataexist == 1){
-          //check if data already downloaded
-          console.log(_layers[1]);
-          if(_layers[1] === ""){
-            //get data
-            var url = "http://www.cyipt.bike/geojson/bristol/exist.geojson";
-            _layers[1] = new L.GeoJSON.AJAX(url,{
-              onEachFeature: cyipt.popUp,
-              style: cyipt.style
-            });
-            _layers[1].addTo(_map);
-          }else{
-            //otherwise just re-add to map
-            _layers[1].addTo(_map);
-          }
-        }else{
-          _map.removeLayer(_layers[1]);
+          //_layerID = "BLANK" ;
+          //console.log('_layerID at end of loop is')
+          //console.log(_layerID);
         }
 
-
-        // recommended  infrastrucutre from geojson
-        if(datarec == 1){
-          //check if data already downloaded
-          console.log(_layers[2]);
-          if(_layers[2] === ""){
-            //get data
-            var url2 = "http://www.cyipt.bike/geojson/bristol/proposed.geojson";
-            _layers[2] = new L.GeoJSON.AJAX(url2,{
-              onEachFeature: cyipt.popUp,
-              style: cyipt.style
-            });
-            _layers[2].addTo(_map);
-          }else{
-            //otherwise just re-add to map
-            _layers[2].addTo(_map);
-          }
-        }else{
-          _map.removeLayer(_layers[2]);
-        }
+        console.log('_layerID outside for loop is')
+        console.log(_layerID);
 
       },
 
@@ -315,8 +299,3 @@ var cyipt = (function ($) {
 
 //end of var cyipt
 }(jQuery));
-
-
-
-
-

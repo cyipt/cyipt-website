@@ -108,7 +108,7 @@ if($layer == "pctcensus"){
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctcensus > 50
+  	AND pctcensus > 100
   	LIMIT 2000
     ;";
   }else{
@@ -151,7 +151,7 @@ if($layer == "pctcensus"){
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctgov > 50
+  	AND pctgov > 100
   	LIMIT 2000
     ;";
   }else{
@@ -193,7 +193,7 @@ if($layer == "pctcensus"){
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctgen > 50
+  	AND pctgen > 100
   	LIMIT 2000
     ;";
   }else{
@@ -235,7 +235,7 @@ if($layer == "pctcensus"){
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctdutch > 50
+  	AND pctdutch > 100
   	LIMIT 2000
     ;";
   }else{
@@ -267,7 +267,7 @@ if($layer == "pctcensus"){
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctebike > 100
+  	AND pctebike > 500
   	LIMIT 2000
     ;";
   }else if($zoom <= 16 && $zoom >= 14){
@@ -277,7 +277,7 @@ if($layer == "pctcensus"){
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
   	FROM bristol
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND pctebike > 50
+  	AND pctebike > 100
   	LIMIT 2000
     ;";
   }else{

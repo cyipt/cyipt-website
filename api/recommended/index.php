@@ -64,11 +64,21 @@ if(!(is_numeric($zoom))){
 # Construct the query
 # show nothin if too zoomed out
 
-if($zoom > 10){
+if($zoom >= 11 && $zoom <= 15){
   $query = "
   	SELECT
   		id, Recommended,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
+  	FROM roads
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND Recommended != 'None'
+  	LIMIT 2000
+    ;";
+}else if($zoom >= 16){
+  $query = "
+  	SELECT
+  		id, Recommended,
+  		ST_AsGeoJSON(geotext, 0.3)  AS geotext
   	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND Recommended != 'None'

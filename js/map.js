@@ -68,6 +68,27 @@ var cyipt = (function ($) {
             				],
        	  },
        	  'data' : {}
+       	},
+       	'recommended': {
+       	  'layerNumber' : 1,
+       	  'apiCall': 'http://www.cyipt.bike/api/recommended/index.php',
+       	  'styles' : {
+       	      'weight' : '8',
+       	  },
+       	  'colours' : {
+       	    'ColourField': 'recommended',
+         	  'ColourStops': [
+      			        { "val": "Cycle Lanes",                         "col": '#fe7fe1' },
+            				{ "val": "Cycle Lanes with light segregation",  "col": '#7f7ffe' },
+            				{ "val": "Cycle Street",                        "col": '#95adfd' },
+            				{ "val": "Cycle Lane on Path",                  "col": '#96d6fd' },
+            				{ "val": "Stepped Cycle Tracks",                "col": '#7efefd' },
+            				{ "val": "Segregated Cycle Track on Path",      "col": '#d6fe7f' },
+            				{ "val": "Segregated Cycle Track",              "col": '#fefe94' },
+            				{ "val": "None",                                "col": '#cdcdcd' },
+            				],
+       	  },
+       	  'data' : {}
        	}
        	// etc.
     };
@@ -143,6 +164,9 @@ var cyipt = (function ($) {
           //PCT Layer
           styles = _layerConfig.pct.styles;
           styles.color = cyipt.getcolour(feature['properties'][_layerConfig.pct.colours.ColourField],'pct')
+        }else if(feature.properties.recommended){
+          styles = _layerConfig.recommended.styles;
+          styles.color = cyipt.getcolourCat(feature['properties'][_layerConfig.recommended.colours.ColourField],'recommended')
         }else{
           //Otherwise get use defualt style
           styles.weight = 3;
@@ -172,6 +196,24 @@ var cyipt = (function ($) {
           }
           return(res);
       },
+
+
+      getcolourCat: function(val,lyr){
+          //console.log('In get colour');
+          //console.log(_layerID);
+          var colours = _layerConfig[lyr]['colours']['ColourStops']
+          var arrayLength = colours.length;
+          var res = '#000';  //If not match then black
+          //console.log(val);
+          for (var i = 0; i < arrayLength; i++) {
+              if(colours[i]['val'] == val){
+                  res = colours[i]['col'];
+              }
+          }
+          return(res);
+      },
+
+
 
       fetchdata: function(lyr, data){
         //_layerID = lyr;
@@ -232,6 +274,14 @@ var cyipt = (function ($) {
            	  'show' : document.getElementById("data-pct").checked,
            	  'parameters' :{
            	    'pctlayer' : $('#pctlayer').find(":selected").val(),
+           	    'bbox' : _map.getBounds().toBBoxString(),
+           	    'zoom' : _map.getZoom()
+           	  }
+
+           	},
+           	'recommended': {
+           	  'show' : document.getElementById("data-recommended").checked,
+           	  'parameters' :{
            	    'bbox' : _map.getBounds().toBBoxString(),
            	    'zoom' : _map.getZoom()
            	  }

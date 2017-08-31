@@ -18,12 +18,12 @@ var cyipt = (function ($) {
        	  'colours' : {
        	    'ColourField': 'car_pcu',
          	  'ColourStops': [
-      			        { "min": 40000, "max": 9999999999999, "col": '#95adfd' },
-            				{ "min": 20000, "max": 20000,  "col": '#96d6fd' },
-            				{ "min": 10000, "max": 20000,  "col": '#7efefd' },
-            				{ "min": 5000,  "max": 10000,  "col": '#d6fe7f' },
-            				{ "min": 2000,  "max": 5000,   "col": '#fefe94' },
-            				{ "min": 0,     "max": 2000,   "col": '#cdcdcd' },
+      			        { "min": 40000, "max": 9999999999999, "col": '#b2182b' },
+            				{ "min": 20000, "max": 40000,  "col": '#ef8a62' },
+            				{ "min": 10000, "max": 20000,  "col": '#fddbc7' },
+            				{ "min": 5000,  "max": 10000,  "col": '#d1e5f0' },
+            				{ "min": 2000,  "max": 5000,   "col": '#67a9cf' },
+            				{ "min": 0,     "max": 2000,   "col": '#2166ac' },
             				],
        	  },
        	  'data' : {
@@ -38,7 +38,10 @@ var cyipt = (function ($) {
        		'data' : {
               'key': "eeb13e5103b09f19",
               'jitter': "1"
-          }
+          },
+          'styles' : {
+         	    'color' : '#d6fe7f'
+       	  }
        	},
        	'groups': {
        	  'layerNumber' : 0,
@@ -130,29 +133,36 @@ var cyipt = (function ($) {
       style: function (feature){
         var styles = {};
         //console.log('In style');
-        //console.log(_layerID);
-        if(_layerConfig[_layerID]['styles']){
-          //If style exists get it from the settings
-          styles = _layerConfig[_layerID]['styles'];
+        //console.log(feature);
+        //Give up an hard code layer checks
+        if(feature.properties.car_pcu){
+          //Traffic Layer
+          styles = _layerConfig.traffic.styles;
+          styles.color = cyipt.getcolour(parseInt(feature['properties'][_layerConfig.traffic.colours.ColourField], 10),'traffic')
+        }else if(feature.properties.ncycles){
+          //PCT Layer
+          styles = _layerConfig.pct.styles;
+          styles.color = cyipt.getcolour(feature['properties'][_layerConfig.pct.colours.ColourField],'pct')
         }else{
           //Otherwise get use defualt style
           styles.weight = 3;
           styles.color = "red";
         }
 
-        if(_layerConfig[_layerID]['colours']){
-          styles.color = cyipt.getcolour(parseInt(feature['properties'][_layerConfig[_layerID]['colours']['ColourField']]),10)
-        }else{
+        //if(_layerConfig[_layerID]['colours']){
+        //  styles.color = cyipt.getcolour(parseInt(feature['properties'][_layerConfig[_layerID]['colours']['ColourField']]),10)
+        //}else{
           //DO nothing
-        }
+       // }
+        //console.log(styles)
         return styles;
       },
 
 
-      getcolour: function(val){
+      getcolour: function(val,lyr){
           //console.log('In get colour');
           //console.log(_layerID);
-          var colours = _layerConfig[_layerID]['colours']['ColourStops']
+          var colours = _layerConfig[lyr]['colours']['ColourStops']
           var arrayLength = colours.length;
           var res = '#000';  //If not match then black
           for (var i = 0; i < arrayLength; i++) {

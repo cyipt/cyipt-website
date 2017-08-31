@@ -45,13 +45,6 @@ if(!(is_numeric($w) && is_numeric($s) && is_numeric($e) && is_numeric($n) )){
 	die;
 }
 
-#Check Layer is Provided
-if (!$layer) {
-	$response = array ('error' => "No layer was supplied.");
-	echo json_encode ($response);
-	die;
-}
-
 #Check Zoom is Provided
 if (!$zoom) {
 	$response = array ('error' => "No zoom was supplied.");

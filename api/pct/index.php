@@ -86,7 +86,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctcensus AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctcensus > 1000
   	LIMIT 2000
@@ -96,7 +96,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctcensus AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctcensus > 500
   	LIMIT 2000
@@ -106,7 +106,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctcensus AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctcensus > 100
   	LIMIT 2000
@@ -116,7 +116,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctcensus AS ncycles,
   		ST_AsGeoJSON(geotext)  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctcensus > 0
   	LIMIT 2000
@@ -129,7 +129,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctgov AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgov > 1000
   	LIMIT 2000
@@ -139,7 +139,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctgov AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgov > 500
   	LIMIT 2000
@@ -149,7 +149,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctgov AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgov > 100
   	LIMIT 2000
@@ -159,7 +159,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctgov AS ncycles,
   		ST_AsGeoJSON(geotext)  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgov > 0
   	LIMIT 2000
@@ -171,7 +171,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctgen AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgen > 1000
   	LIMIT 2000
@@ -181,7 +181,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctgen AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgen > 500
   	LIMIT 2000
@@ -191,7 +191,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctgen AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgen > 100
   	LIMIT 2000
@@ -201,7 +201,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctgen AS ncycles,
   		ST_AsGeoJSON(geotext)  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctgen > 0
   	LIMIT 2000
@@ -213,7 +213,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctdutch AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctdutch > 1000
   	LIMIT 2000
@@ -223,7 +223,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctdutch AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctdutch > 500
   	LIMIT 2000
@@ -233,7 +233,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctdutch AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctdutch > 100
   	LIMIT 2000
@@ -243,7 +243,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctdutch AS ncycles,
   		ST_AsGeoJSON(geotext)  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctdutch > 0
   	LIMIT 2000
@@ -255,7 +255,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctebike AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctebike > 1000
   	LIMIT 2000
@@ -265,7 +265,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctebike AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctebike > 500
   	LIMIT 2000
@@ -275,7 +275,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctebike AS ncycles,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctebike > 100
   	LIMIT 2000
@@ -285,7 +285,7 @@ if($layer == "pctcensus"){
   	SELECT
   		id, pctebike AS ncycles,
   		ST_AsGeoJSON(geotext)  AS geotext
-  	FROM bristol
+  	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND pctebike > 0
   	LIMIT 2000

@@ -32,6 +32,26 @@ var cyipt = (function ($) {
 			    }
 
        	},
+       	'trafficosm': {
+       	  'layerNumber' : 2,
+       	  'apiCall': 'http://www.cyipt.bike/api/traffic/index.php',
+       	  'styles' : {
+         	    'weight' : '8'
+       	  },
+       	  'colours' : {
+       	    'ColourField': 'aadt',
+         	  'ColourStops': [
+      			        { "min": 40000, "max": 9999999999999, "col": '#b2182b' },
+            				{ "min": 20000, "max": 40000,  "col": '#ef8a62' },
+            				{ "min": 10000, "max": 20000,  "col": '#fddbc7' },
+            				{ "min": 5000,  "max": 10000,  "col": '#d1e5f0' },
+            				{ "min": 2000,  "max": 5000,   "col": '#67a9cf' },
+            				{ "min": 0,     "max": 2000,   "col": '#2166ac' },
+            				],
+       	  },
+       	  'data' : {}
+
+       	},
        	'collisions': {
        	  'layerNumber' : 4,
        		'apiCall': 'https://api.cyclestreets.net/v2/collisions.locations' ,
@@ -167,6 +187,10 @@ var cyipt = (function ($) {
         }else if(feature.properties.recommended){
           styles = _layerConfig.recommended.styles;
           styles.color = cyipt.getcolourCat(feature['properties'][_layerConfig.recommended.colours.ColourField],'recommended')
+        }else if(feature.properties.aadt){
+          // OSM Traffic Layer
+          styles = _layerConfig.trafficosm.styles;
+          styles.color = cyipt.getcolour(feature['properties'][_layerConfig.trafficosm.colours.ColourField],'trafficosm')
         }else{
           //Otherwise get use defualt style
           styles.weight = 3;
@@ -252,6 +276,13 @@ var cyipt = (function ($) {
            	  'show' : document.getElementById("data-traffic").checked,
            	  'parameters' :{
            	    'bbox' : _map.getBounds().toBBoxString()
+           	  }
+           	},
+           	'trafficosm': {
+           	  'show' : document.getElementById("data-trafficosm").checked,
+           	  'parameters' :{
+           	    'bbox' : _map.getBounds().toBBoxString(),
+           	    'zoom' : _map.getZoom()
            	  }
            	},
            	'collisions': {

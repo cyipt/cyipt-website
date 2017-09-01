@@ -68,11 +68,11 @@ if($zoom >= 11 && $zoom <= 15){
   $query = "
   	SELECT
   		id, aadt,
-  		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.2))  AS geotext
   	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND aadt IS NOT NULL
-  	LIMIT 2000
+  	LIMIT 5000
     ;";
 }else if($zoom >= 16){
   $query = "
@@ -82,7 +82,7 @@ if($zoom >= 11 && $zoom <= 15){
   	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND aadt IS NOT NULL
-  	LIMIT 2000
+  	LIMIT 5000
     ;";
 }else{
   $response = array ('error' => "Too far zoomed out");

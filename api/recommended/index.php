@@ -123,7 +123,7 @@ foreach ($data as $row) {
 }
 
 header ('Content-Type: application/json');
-echo json_encode ($geojson, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+echo json_encode ($geojson, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 
 
 ?>

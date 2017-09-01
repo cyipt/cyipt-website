@@ -64,7 +64,7 @@ if(!(is_numeric($zoom))){
 # Construct the query
 # show nothin if too zoomed out
 
-if($zoom >= 11 && $zoom <= 15){
+if($zoom >= 11 && $zoom <= 12){
   $query = "
   	SELECT
   		id, aadt,
@@ -72,9 +72,9 @@ if($zoom >= 11 && $zoom <= 15){
   	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND aadt IS NOT NULL
-  	LIMIT 5000
+  	LIMIT 10000
     ;";
-}else if($zoom >= 16){
+}else if($zoom >= 13){
   $query = "
   	SELECT
   		id, aadt,

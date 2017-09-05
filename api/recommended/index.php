@@ -72,13 +72,13 @@ if($zoom >= 11 && $zoom <= 15){
   	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND Recommended != 'None'
-  	LIMIT 2000
+  	LIMIT 5000
     ;";
 }else if($zoom >= 16){
   $query = "
   	SELECT
   		id, Recommended,
-  		ST_AsGeoJSON(geotext, 0.3)  AS geotext
+  		ST_AsGeoJSON(geotext)  AS geotext
   	FROM roads
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND Recommended != 'None'

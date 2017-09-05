@@ -98,13 +98,13 @@ var cyipt = (function ($) {
        	  'colours' : {
        	    'ColourField': 'recommended',
          	  'ColourStops': [
-      			        { "val": "Cycle Lanes",                         "col": '#fe7fe1' },
+      			        { "val": "Cycle Lanes",                         "col": '#FF0000' },
             				{ "val": "Cycle Lanes with light segregation",  "col": '#7f7ffe' },
-            				{ "val": "Cycle Street",                        "col": '#95adfd' },
+            				{ "val": "Cycle Street",                        "col": '#7FE500' },
             				{ "val": "Cycle Lane on Path",                  "col": '#96d6fd' },
-            				{ "val": "Stepped Cycle Tracks",                "col": '#7efefd' },
-            				{ "val": "Segregated Cycle Track on Path",      "col": '#d6fe7f' },
-            				{ "val": "Segregated Cycle Track",              "col": '#fefe94' },
+            				{ "val": "Stepped Cycle Tracks",                "col": '#FADE5B' },
+            				{ "val": "Segregated Cycle Track on Path",      "col": '#A020F0' },
+            				{ "val": "Segregated Cycle Track",              "col": '#FFC400' },
             				{ "val": "None",                                "col": '#cdcdcd' },
             				],
        	  },

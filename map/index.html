@@ -22,34 +22,13 @@
 
 <div id ="content">
   <div id="sidebar">
-  <button class="accordion">Campaign Groups <input type="checkbox" id="data-group" value="0"> </button>
-    <div class="panel">
-      <p>Show local or local & national groups</p>
-      <select id="national" name="national">
-          <option value="0" selected="selected">Local</option>
-          <option value="1">National</option>
-      </select>
-      <p>Souce: BikeData</p>
-    </div>
-
-  <button class="accordion">Traffic Counts <input type="checkbox" id="data-traffic" value="0"> </button>
-    <div class="panel">
-      <p>Source: BikeData</p>
-    </div>
-
-  <button class="accordion">Traffic Counts (OSM)<input type="checkbox" id="data-trafficosm" value="0"> </button>
-    <div class="panel">
-      <p>This layer applies DfT point traffic counts to the road network</p>
-      <p>Source: DfT</p>
-      <p>Analysis By: CyIPT</p>
-    </div>
-
-  <button class="accordion">Collisions <input type="checkbox" id="data-collisions" value="0"></button>
-    <div class="panel">
-      <p>Source: BikeData</p>
-    </div>
 
   <button class="accordion">Recommended Infrastructure<input type="checkbox" id="data-recommended" value="0"></button>
+    <div class="panel">
+      <p>Source: CyIPT</p>
+    </div>
+
+  <button class="accordion">Existing Infrastructure<input type="checkbox" id="data-existing" value="0"></button>
     <div class="panel">
       <p>Source: CyIPT</p>
     </div>
@@ -80,6 +59,31 @@
       <p>Note: Zoom in for smaller flows</p>
       <p>Source: PCT</p>
       <p>Analysis By: CyIPT</p>
+    </div>
+
+  <button class="accordion">Traffic Counts  </button>
+    <div class="panel">
+      <p>Simple <input type="checkbox" id="data-traffic" value="0"> </p>
+      <p>Source: BikeData</p>
+      <p>Complex <input type="checkbox" id="data-trafficosm" value="0"> </p>
+      <p>This layer applies DfT point traffic counts to the road network</p>
+      <p>Source: DfT</p>
+      <p>Analysis By: CyIPT</p>
+    </div>
+
+  <button class="accordion">Collisions <input type="checkbox" id="data-collisions" value="0"></button>
+    <div class="panel">
+      <p>Source: BikeData</p>
+    </div>
+
+  <button class="accordion">Campaign Groups <input type="checkbox" id="data-group" value="0"> </button>
+    <div class="panel">
+      <p>Show local or local & national groups</p>
+      <select id="national" name="national">
+          <option value="0" selected="selected">Local</option>
+          <option value="1">National</option>
+      </select>
+      <p>Souce: BikeData</p>
     </div>
 
   </div>

@@ -5,7 +5,7 @@ var cyipt = (function ($) {
 	  var _map = {};
 	  //_map = new L.Map('map');
 	  var _layerID = {};
-	  var _layers = new Array("","","","","","","","");
+	  var _layers = new Array("","","","","","","","","","","","");
 
 	  // Layer definitions
 	  var _layerConfig = {
@@ -110,6 +110,34 @@ var cyipt = (function ($) {
        	  },
        	  'data' : {}
        	},
+       	'existing': {
+       	  'layerNumber' : 7,
+       	  'apiCall': 'http://www.cyipt.bike/api/existing/index.php',
+       	  'styles' : {
+       	      'weight' : '8',
+       	  },
+       	  'colours' : {
+       	    'ColourField': 'existing',
+         	  'ColourStops': [
+      			        { "val":	"no lane",	            col: '#fdae61' },
+                    { "val":	"share_busway no",	    col: '#96d6fd' },
+                    { "val":	"lane no",	            col: '#fdae61' },
+                    { "val":	"share_busway lane",	  col: '#f46d43' },
+                    { "val":	"lane lane",	          col: '#FF0000' },
+                    { "val":	"track track",	        col: '#FFC400' },
+                    { "val":	"no share_busway",	    col: '#96d6fd' },
+                    { "val":	"no track",	            col: '#fee090' },
+                    { "val":	"track no",	            col: '#fee090' },
+                    { "val":	"lane share_busway",	  col: '#f46d43' },
+                    { "val":	"track share_busway",	  col: '#FADE5B' },
+                    { "val":	"share_busway share_busway",	col: '#7f7ffe' },
+                    { "val":	"share_busway track",	  col: '#FADE5B' },
+                    { "val":	"track lane",	          col: '#FADE5B' },
+                    { "val":	"lane track",	          col: '#FADE5B' }
+            				],
+       	  },
+       	  'data' : {}
+       	},
        	'width': {
        	  'layerNumber' : 5,
        	  'apiCall': 'http://www.cyipt.bike/api/width/index.php',
@@ -206,8 +234,13 @@ var cyipt = (function ($) {
           styles = _layerConfig.pct.styles;
           styles.color = cyipt.getcolour(feature['properties'][_layerConfig.pct.colours.ColourField],'pct')
         }else if(feature.properties.recommended){
+          //recommended infra
           styles = _layerConfig.recommended.styles;
           styles.color = cyipt.getcolourCat(feature['properties'][_layerConfig.recommended.colours.ColourField],'recommended')
+        }else if(feature.properties.existing){
+          //existing infra
+          styles = _layerConfig.existing.styles;
+          styles.color = cyipt.getcolourCat(feature['properties'][_layerConfig.existing.colours.ColourField],'existing')
         }else if(feature.properties.aadt){
           // OSM Traffic Layer
           styles = _layerConfig.trafficosm.styles;
@@ -346,6 +379,14 @@ var cyipt = (function ($) {
            	},
            	'recommended': {
            	  'show' : document.getElementById("data-recommended").checked,
+           	  'parameters' :{
+           	    'bbox' : _map.getBounds().toBBoxString(),
+           	    'zoom' : _map.getZoom()
+           	  }
+
+           	},
+           	'existing': {
+           	  'show' : document.getElementById("data-existing").checked,
            	  'parameters' :{
            	    'bbox' : _map.getBounds().toBBoxString(),
            	    'zoom' : _map.getZoom()

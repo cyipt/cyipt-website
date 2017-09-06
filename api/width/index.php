@@ -78,7 +78,7 @@ if(!in_array($layer, $validlayers)){
 
 # Construct the query
 # show nothin if too zoomed out
-if($zoom >= 11 && $zoom <= 15){
+if($zoom >= 15 && $zoom <= 16){
   if($layer == "road"){
     $query = "
     	SELECT
@@ -100,7 +100,7 @@ if($zoom >= 11 && $zoom <= 15){
     	LIMIT 5000
       ;";
   }
-}else if($zoom >= 16){
+}else if($zoom >= 17){
   if($layer == "road"){
     $query = "
     	SELECT

@@ -109,6 +109,27 @@ var cyipt = (function ($) {
             				],
        	  },
        	  'data' : {}
+       	},
+       	'width': {
+       	  'layerNumber' : 5,
+       	  'apiCall': 'http://www.cyipt.bike/api/width/index.php',
+       	  'styles' : {
+       	      'weight' : '8',
+       	  },
+       	  'colours' : {
+       	    'ColourField': 'width',
+         	  'ColourStops': [
+      			        { "min": 14,  "max": 99999999, "col": '#4575b4' },
+            				{ "min": 12,  "max": 14, "col": '#74add1' },
+            				{ "min": 10,  "max": 12, "col": '#abd9e9' },
+            				{ "min": 8,   "max": 10, "col": '#e0f3f8' },
+            				{ "min": 6,   "max": 8,  "col": '#fee090' },
+            				{ "min": 4,   "max": 6,  "col": '#fdae61' },
+            				{ "min": 2,   "max": 4,  "col": '#f46d43' },
+            				{ "min": 0,   "max": 2,  "col": '#d73027' },
+            				],
+       	  },
+       	  'data' : {}
        	}
        	// etc.
     };
@@ -191,6 +212,10 @@ var cyipt = (function ($) {
           // OSM Traffic Layer
           styles = _layerConfig.trafficosm.styles;
           styles.color = cyipt.getcolour(feature['properties'][_layerConfig.trafficosm.colours.ColourField],'trafficosm')
+        }else if(feature.properties.width){
+          //Road width Layer
+          styles = _layerConfig.width.styles;
+          styles.color = cyipt.getcolour(feature['properties'][_layerConfig.width.colours.ColourField],'width')
         }else{
           //Otherwise get use defualt style
           styles.weight = 3;
@@ -305,6 +330,15 @@ var cyipt = (function ($) {
            	  'show' : document.getElementById("data-pct").checked,
            	  'parameters' :{
            	    'pctlayer' : $('#pctlayer').find(":selected").val(),
+           	    'bbox' : _map.getBounds().toBBoxString(),
+           	    'zoom' : _map.getZoom()
+           	  }
+
+           	},
+           	'width': {
+           	  'show' : document.getElementById("data-width").checked,
+           	  'parameters' :{
+           	    'widthlayer' : $('#widthlayer').find(":selected").val(),
            	    'bbox' : _map.getBounds().toBBoxString(),
            	    'zoom' : _map.getZoom()
            	  }

@@ -115,6 +115,45 @@ button.accordion.active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
+/* colour legend */
 
+.legend {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
 
+.CycleLanes {
+  background: #FF0000;
+}
+
+.LigthSeg {
+  background: #7f7ffe;
+}
+
+.CycleStreet {
+  background: #7FE500;
+}
+
+.CycleLanePath {
+  background: #96d6fd;
+}
+
+.Stepped {
+  background: #FADE5B;
+}
+
+.SegregatedPath {
+  background: #A020F0;
+}
+
+.SegregatedTrack {
+  background: #FFC400;
+}
+
+.None {
+  background: #cdcdcd;
+}
 

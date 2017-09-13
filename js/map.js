@@ -63,6 +63,14 @@ var cyipt = (function ($) {
          	    'color' : '#d6fe7f'
        	  }
        	},
+       	'collisionscyipt': {
+       	  'layerNumber' : 8,
+       		'apiCall': 'http://www.cyipt.bike/api/pct/collisions.php' ,
+       		'data' : {},
+          'styles' : {
+         	    'color' : '#d6fe7f'
+       	  }
+       	},
        	'groups': {
        	  'layerNumber' : 0,
        	  'apiCall': 'https://www.cyclescape.org/api/groups.json',
@@ -345,6 +353,13 @@ var cyipt = (function ($) {
            	},
            	'collisions': {
            	  'show' : document.getElementById("data-collisions").checked,
+           	  'parameters' :{
+           	    'bbox' : _map.getBounds().toBBoxString(),
+           	    'zoom' : _map.getZoom()
+           	  }
+           	},
+           	'collisionscyipt': {
+           	  'show' : document.getElementById("data-collisionscyipt").checked,
            	  'parameters' :{
            	    'bbox' : _map.getBounds().toBBoxString(),
            	    'zoom' : _map.getZoom()

@@ -26,6 +26,13 @@
   <button class="accordion">Recommended Infrastructure<input type="checkbox" id="data-recommended" value="0"></button>
     <div class="panel">
       <p>Source: CyIPT</p>
+      <p><div class="legend CycleStreet"></div> Cycle Street</p>
+      <p><div class="legend CycleLanes"></div> Cycle Lanes</p>
+      <p><div class="legend LigthSeg"></div> Cycle Lanes with light segregation</p>
+      <p><div class="legend Stepped"></div> Stepped Cycle Tracks</p>
+      <p><div class="legend SegregatedTrack"></div> Segregated Cycle Track</p>
+      <p><div class="legend CycleLanePath"></div> Cycle Lane on Path</p>
+      <p><div class="legend SegregatedPath"></div> Segregated Cycle Track on Path</p>
     </div>
 
   <button class="accordion">Existing Infrastructure<input type="checkbox" id="data-existing" value="0"></button>
@@ -71,9 +78,11 @@
       <p>Analysis By: CyIPT</p>
     </div>
 
-  <button class="accordion">Collisions <input type="checkbox" id="data-collisions" value="0"></button>
+  <button class="accordion">Collisions </button>
     <div class="panel">
-      <p>Source: BikeData</p>
+      <p>BikeData Version <input type="checkbox" id="data-collisions" value="0"></p>
+      <p>CyIPT: Points Version <input type="checkbox" id="data-collisionscyipt" value="0"></p>
+      <p>Source: DfT / Stats19</p>
     </div>
 
   <button class="accordion">Campaign Groups <input type="checkbox" id="data-group" value="0"> </button>

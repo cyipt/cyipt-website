@@ -55,7 +55,7 @@ if (!$zoom) {
 }
 
 #Check Zoom is valid
-if(!(is_numeric($zoom))){
+if(!(is_numeric($zoom))){4326)
   $response = array ('error' => "Zoom was invalid");
 	echo json_encode ($response);
 	die;
@@ -71,10 +71,10 @@ if($zoom >= 15){
     $query = "
   	SELECT
   		AccRefGlobal, DateTime, Severity,
-  		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
+  		ST_AsGeoJSON(geotext)  AS geotext
   	FROM accidents
-  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	LIMIT 2000
+  	WHERE geotext @ ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	LIMIT 1000
     ;";
 
 

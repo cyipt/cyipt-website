@@ -55,7 +55,7 @@ if (!$zoom) {
 }
 
 #Check Zoom is valid
-if(!(is_numeric($zoom))){4326)
+if(!(is_numeric($zoom))){
   $response = array ('error' => "Zoom was invalid");
 	echo json_encode ($response);
 	die;

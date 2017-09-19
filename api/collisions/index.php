@@ -106,8 +106,8 @@ if(!(is_numeric($yearto)) || $yearto < 1985 || $yearto > 2015 ){
 }
 
 #Convert year from and year to into date time
-$yearfrom <- $yearfrom . '-01-01 00:00:00';
-$yearto <- $yearto . '-12-31 23:59:59';
+$yearfrom = $yearfrom . '-01-01 00:00:00';
+$yearto = $yearto . '-12-31 23:59:59';
 
 
 

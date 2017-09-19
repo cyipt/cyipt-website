@@ -188,7 +188,7 @@ var cyipt = (function ($) {
       	  center: [51.454, -2.588],
       	  zoom:12,
       	  minZoom:2,
-      	  maxZoom:18,
+      	  maxZoom:19,
       	  layers: [grayscale]
         });
         //CHange the url as the map moves
@@ -361,6 +361,9 @@ var cyipt = (function ($) {
            	'collisionscyipt': {
            	  'show' : document.getElementById("data-collisionscyipt").checked,
            	  'parameters' :{
+           	    'yearfrom' : $('#collisions-year-from').find(":selected").val(),
+           	    'yearto' : $('#collisions-year-to').find(":selected").val(),
+           	    'severity': $('#collisions-severity').find(":selected").val(),
            	    'bbox' : _map.getBounds().toBBoxString(),
            	    'zoom' : _map.getZoom()
            	  }

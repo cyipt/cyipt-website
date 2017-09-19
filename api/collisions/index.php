@@ -118,11 +118,11 @@ $yearto <- $yearto . '-12-31 23:59:59';
 if($zoom >= 15){
     $query = "
   	SELECT
-  		AccRefGlobal, DateTime, Severity,
+  		AccRefGlobal, DateTime, severity,
   		ST_AsGeoJSON(geotext)  AS geotext
   	FROM accidents
   	WHERE geotext @ ST_MakeEnvelope(:w, :s, :e, :n, 4326)
-  	AND Severity = :severity
+  	AND severity = :severity
   	AND DateTime  BETWEEN :yearfrom and :yearto
   	LIMIT 500
     ;";
@@ -152,7 +152,9 @@ if ($preparedStatement->execute ()) {
 }
 
 echo $query;
-echo $preparedStatement;
+echo $yearfrom;
+echo $yearto;
+#echo $preparedStatement;
 
 
 #Format the output as GeoJSON
@@ -176,7 +178,7 @@ foreach ($data as $row) {
 
 header ('Content-Type: application/json');
 
-#echo json_encode ($geojson, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+echo json_encode ($geojson, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 
 
 ?>

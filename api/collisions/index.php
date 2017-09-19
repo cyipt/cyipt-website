@@ -151,9 +151,9 @@ if ($preparedStatement->execute ()) {
 	}
 }
 
-echo $query;
-echo $yearfrom;
-echo $yearto;
+#echo $query;
+#echo $yearfrom;
+#echo $yearto;
 #echo $preparedStatement;
 
 

@@ -172,6 +172,7 @@ foreach ($data as $row) {
 }
 
 header ('Content-Type: application/json');
+echo $query
 echo json_encode ($geojson, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
 
 

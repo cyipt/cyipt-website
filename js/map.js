@@ -67,9 +67,14 @@ var cyipt = (function ($) {
        	  'layerNumber' : 8,
        		'apiCall': 'http://www.cyipt.bike/api/collisions/index.php' ,
        		'data' : {},
-          'styles' : {
-         	    'color' : '#d6fe7f'
-       	  }
+          'colours' : {
+       	    'ColourField': 'severity',
+         	  'ColourStops': [
+      			        { "value": 1, "col": 'redIcon' },
+            				{ "value": 2, "col": 'orangeIcon' },
+            				{ "value": 3, "col": 'yellowIcon' },
+            				],
+       	  },
        	},
        	'groups': {
        	  'layerNumber' : 0,
@@ -141,7 +146,9 @@ var cyipt = (function ($) {
                     { "val":	"share_busway share_busway",	col: '#7f7ffe' },
                     { "val":	"share_busway track",	  col: '#FADE5B' },
                     { "val":	"track lane",	          col: '#FADE5B' },
-                    { "val":	"lane track",	          col: '#FADE5B' }
+                    { "val":	"lane track",	          col: '#FADE5B' },
+                    { "val":	"no no",	              col: '#215CD2' },
+                    { "val":	"Not Applicable no",	  col: '#215CD2' }
             				],
        	  },
        	  'data' : {}
@@ -169,6 +176,27 @@ var cyipt = (function ($) {
        	}
        	// etc.
     };
+
+    var redIcon = L.icon({
+    iconUrl: 'images/marker-red.png',
+    iconSize:     [25, 41], // size of the icon
+    iconAnchor:   [12, 40], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+
+    var orangeIcon = L.icon({
+    iconUrl: 'images/marker-orange.png',
+    iconSize:     [25, 41],
+    iconAnchor:   [12, 40],
+    popupAnchor:  [0, 0]
+    });
+
+    var yellowIcon = L.icon({
+    iconUrl: 'images/marker-yellow.png',
+    iconSize:     [25, 41],
+    iconAnchor:   [12, 40],
+    popupAnchor:  [0, 0]
+    });
 
 
 	  return{
@@ -257,6 +285,10 @@ var cyipt = (function ($) {
           //Road width Layer
           styles = _layerConfig.width.styles;
           styles.color = cyipt.getcolour(feature['properties'][_layerConfig.width.colours.ColourField],'width')
+        }else if(feature.properties.severity){
+          //Collisions CyIPT Points
+
+
         }else{
           //Otherwise get use defualt style
           styles.weight = 3;
@@ -274,8 +306,7 @@ var cyipt = (function ($) {
 
 
       getcolour: function(val,lyr){
-          //console.log('In get colour');
-          //console.log(_layerID);
+
           var colours = _layerConfig[lyr]['colours']['ColourStops']
           var arrayLength = colours.length;
           var res = '#000';  //If not match then black
@@ -289,8 +320,6 @@ var cyipt = (function ($) {
 
 
       getcolourCat: function(val,lyr){
-          //console.log('In get colour');
-          //console.log(_layerID);
           var colours = _layerConfig[lyr]['colours']['ColourStops']
           var arrayLength = colours.length;
           var res = '#000';  //If not match then black
@@ -305,10 +334,9 @@ var cyipt = (function ($) {
 
 
 
+
+
       fetchdata: function(lyr, data){
-        //_layerID = lyr;
-        //console.log('In fetch data');
-        //console.log(_layerID);
         $.ajax({
             url: _layerConfig[lyr]['apiCall'],
             data: data ,
@@ -334,8 +362,6 @@ var cyipt = (function ($) {
       //Function 4: Get data
       getdata: function (_map){
 
-        //console.log('In get data');
-        //console.log(_layerID);
         //Get Dynamic Values from HTML such as controls and Bounding boxes
         var htmlVars = {
            	'traffic': {
@@ -417,8 +443,6 @@ var cyipt = (function ($) {
         // Loop through each defined layer
         for(var _layer in _layerConfig){
           _layerID = _layer ;
-          //console.log('In get data for loop');
-          //console.log(_layerID);
           var data = _layerConfig[_layer]['data'];
           // Check for additonal parameters
           if('parameters' in htmlVars[_layer]){
@@ -432,9 +456,6 @@ var cyipt = (function ($) {
           }
           //If layer active get data
           if(htmlVars[_layerID]['show'] == 1){
-            //console.log('In htmlVars')
-            //console.log(_layerID)
-            //console.log(htmlVars[_layerID]['show'])
             cyipt.fetchdata(_layerID, data)
           }else{
             _map.removeLayer(_layers[_layerConfig[_layerID]['layerNumber']]);

@@ -77,8 +77,8 @@ if($zoom >= 11 && $zoom <= 15){
   	OR roadtypes.roadtype = 'Cycleway'
   	OR roadtypes.roadtype = 'Living Street'
   	OR roadtypes.roadtype = 'Segregated Cycleway'
-  	OR roadtypes.roadtype = 'Segregated Shared Path'
-  	OR roadtypes.roadtype = 'Shared Path'
+
+
   	LIMIT 5000
     ;";
 }else if($zoom >= 16){

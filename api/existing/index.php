@@ -74,6 +74,11 @@ if($zoom >= 11 && $zoom <= 15){
   	INNER JOIN roadtypes ON roads.rtid = roadtypes.rtid
   	WHERE roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND NOT (roadtypes.cyclewayleft = 'no' AND roadtypes.cyclewayright = 'no')
+  	OR roadtypes.roadtype = 'Cycleway'
+  	OR roadtypes.roadtype = 'Living Street'
+  	OR roadtypes.roadtype = 'Segregated Cycleway'
+  	OR roadtypes.roadtype = 'Segregated Shared Path'
+  	OR roadtypes.roadtype = 'Shared Path'
   	LIMIT 5000
     ;";
 }else if($zoom >= 16){
@@ -86,6 +91,11 @@ if($zoom >= 11 && $zoom <= 15){
   	INNER JOIN roadtypes ON roads.rtid = roadtypes.rtid
   	WHERE roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	AND NOT (roadtypes.cyclewayleft = 'no' AND roadtypes.cyclewayright = 'no')
+  	OR roadtypes.roadtype = 'Cycleway'
+  	OR roadtypes.roadtype = 'Living Street'
+  	OR roadtypes.roadtype = 'Segregated Cycleway'
+  	OR roadtypes.roadtype = 'Segregated Shared Path'
+  	OR roadtypes.roadtype = 'Shared Path'
   	LIMIT 2000
     ;";
 }else{

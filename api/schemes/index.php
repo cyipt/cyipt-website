@@ -64,10 +64,10 @@ if(!(is_numeric($zoom))){
 # Construct the query
 # show nothin if too zoomed out
 
-if($zoom >= 1 && $zoom <= 14){
+if($zoom >= 10 && $zoom <= 14){
   $query = "
   	SELECT
-  		idGlobal, schtype, cost
+  		idGlobal, schtype, cost,
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
   	FROM schemes
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
@@ -76,7 +76,7 @@ if($zoom >= 1 && $zoom <= 14){
 }else if($zoom >= 15){
   $query = "
   	SELECT
-  		idGlobal, schtype, cost
+  		idGlobal, schtype, cost,
   		ST_AsGeoJSON(geotext)  AS geotext
   	FROM schemes
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)

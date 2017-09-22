@@ -20,11 +20,66 @@
 </div>
 
 
+
 <div id ="content">
   <div id="sidebar">
-
+  <h3>CyIPT is a tool to aid decision making, not to make the decisions for you</h3>
   <button class="accordion">Recommended Infrastructure<input type="checkbox" id="data-recommended" value="0"></button>
     <div class="panel">
+      <p>Source: CyIPT</p>
+      <p><div class="legend CycleStreet"></div> Cycle Street</p>
+      <p><div class="legend CycleLanes"></div> Cycle Lanes</p>
+      <p><div class="legend LigthSeg"></div> Cycle Lanes with light segregation</p>
+      <p><div class="legend Stepped"></div> Stepped Cycle Tracks</p>
+      <p><div class="legend SegregatedTrack"></div> Segregated Cycle Track</p>
+      <p><div class="legend CycleLanePath"></div> Cycle Lane on Path</p>
+      <p><div class="legend SegregatedPath"></div> Segregated Cycle Track on Path</p>
+    </div>
+
+
+  <button class="accordion">Schemes<input type="checkbox" id="data-schemes" value="0"></button>
+    <div class="panel">
+      <p>Grouping of the Recommended Infrastructure into fundable schemes</p>
+      <p>Costs Estimates:</p>
+      <p>
+      <select id="schemes-cost-from" name="schemes-cost-from">
+          <option value=1 selected="selected">Any</option>
+          <option value=50000>£50,000</option>
+          <option value=100000>£100,000</option>
+          <option value=250000>£250,000</option>
+          <option value=500000>£500,000</option>
+          <option value=750000>£750,000</option>
+          <option value=1000000>£1,000,000</option>
+          <option value=2000000>£2,000,000</option>
+          <option value=3000000>£3,000,000</option>
+          <option value=4000000>£4,000,000</option>
+          <option value=5000000>£5,000,000</option>
+          <option value=6000000>£6,000,000</option>
+          <option value=7000000>£7,000,000</option>
+          <option value=8000000>£8,000,000</option>
+          <option value=9000000>£9,000,000</option>
+          <option value=10000000>£10,000,000</option>
+      </select>
+      to
+      <select id="schemes-cost-to" name="schemes-cost-to">
+          <option value=50000>£50,000</option>
+          <option value=100000>£100,000</option>
+          <option value=250000>£250,000</option>
+          <option value=500000>£500,000</option>
+          <option value=750000>£750,000</option>
+          <option value=1000000>£1,000,000</option>
+          <option value=2000000>£2,000,000</option>
+          <option value=3000000>£3,000,000</option>
+          <option value=4000000>£4,000,000</option>
+          <option value=5000000>£5,000,000</option>
+          <option value=6000000>£6,000,000</option>
+          <option value=7000000>£7,000,000</option>
+          <option value=8000000>£8,000,000</option>
+          <option value=9000000>£9,000,000</option>
+          <option value=10000000>£10,000,000</option>
+          <option value=999999999 selected="selected">Any</option>
+      </select>
+      </p>
       <p>Source: CyIPT</p>
       <p><div class="legend CycleStreet"></div> Cycle Street</p>
       <p><div class="legend CycleLanes"></div> Cycle Lanes</p>

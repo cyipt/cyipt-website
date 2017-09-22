@@ -123,6 +123,28 @@ var cyipt = (function ($) {
        	  },
        	  'data' : {}
        	},
+       	'schemes': {
+       	  'layerNumber' : 9,
+       	  'apiCall': 'http://www.cyipt.bike/api/schemes/index.php',
+       	  'styles' : {
+       	     'weight' : '8',
+
+       	  },
+       	  'colours' : {
+       	    'ColourField': 'schtype',
+         	  'ColourStops': [
+      			        { "val": "Cycle Lanes",                         "col": '#FF0000' },
+            				{ "val": "Cycle Lanes with light segregation",  "col": '#7f7ffe' },
+            				{ "val": "Cycle Street",                        "col": '#7FE500' },
+            				{ "val": "Cycle Lane on Path",                  "col": '#96d6fd' },
+            				{ "val": "Stepped Cycle Tracks",                "col": '#FADE5B' },
+            				{ "val": "Segregated Cycle Track on Path",      "col": '#A020F0' },
+            				{ "val": "Segregated Cycle Track",              "col": '#FFC400' },
+            				{ "val": "None",                                "col": '#cdcdcd' },
+            				],
+       	  },
+       	  'data' : {}
+       	},
        	'existing': {
        	  'layerNumber' : 7,
        	  'apiCall': 'http://www.cyipt.bike/api/existing/index.php',
@@ -273,6 +295,10 @@ var cyipt = (function ($) {
           //recommended infra
           styles = _layerConfig.recommended.styles;
           styles.color = cyipt.getcolourCat(feature['properties'][_layerConfig.recommended.colours.ColourField],'recommended')
+        }else if(feature.properties.schtype){
+          //schemes
+          styles = _layerConfig.schemes.styles;
+          styles.color = cyipt.getcolourCat(feature['properties'][_layerConfig.schemes.colours.ColourField],'schemes')
         }else if(feature.properties.existing){
           //existing infra
           styles = _layerConfig.existing.styles;
@@ -294,6 +320,8 @@ var cyipt = (function ($) {
           styles.weight = 3;
           styles.color = "red";
         }
+
+        //var highlight = highlightOptions(weight = 5,color = "#666", bringToFront = TRUE);
 
         //if(_layerConfig[_layerID]['colours']){
         //  styles.color = cyipt.getcolour(parseInt(feature['properties'][_layerConfig[_layerID]['colours']['ColourField']]),10)
@@ -426,6 +454,16 @@ var cyipt = (function ($) {
            	  'parameters' :{
            	    'bbox' : _map.getBounds().toBBoxString(),
            	    'zoom' : _map.getZoom()
+           	  }
+
+           	},
+           	'schemes': {
+           	  'show' : document.getElementById("data-schemes").checked,
+           	  'parameters' :{
+           	    'bbox' : _map.getBounds().toBBoxString(),
+           	    'zoom' : _map.getZoom(),
+           	    'costfrom' : $('#schemes-cost-from').find(":selected").val(),
+           	    'costto' : $('#schemes-cost-to').find(":selected").val(),
            	  }
 
            	},

@@ -121,6 +121,8 @@ if($zoom >= 10 && $zoom <= 14){
 
 # Select the data
 $preparedStatement = $databaseConnection->prepare ($query);
+$preparedStatement->bindParam (':costfrom', $costfrom);
+$preparedStatement->bindParam (':costto', $costto);
 $preparedStatement->bindParam (':w', $w);
 $preparedStatement->bindParam (':s', $s);
 $preparedStatement->bindParam (':e', $e);
@@ -133,9 +135,6 @@ if ($preparedStatement->execute ()) {
 	}
 }
 
-echo $costfrom;
-echo $costto;
-echo $query;
 
 #Format the output as GeoJSON
 foreach ($data as $index => $row) {

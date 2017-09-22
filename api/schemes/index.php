@@ -27,6 +27,8 @@ try {
 #Get Variables
 $bbox = (isSet ($_GET['bbox']) ? $_GET['bbox'] : '');
 $zoom = (isSet ($_GET['zoom']) ? $_GET['zoom'] : '');
+$costfrom = (isSet ($_GET['costfrom']) ? $_GET['costfrom'] : '');
+$costto = (isSet ($_GET['costto']) ? $_GET['costto'] : '');
 
 
 #Check BBOX is Provided
@@ -59,6 +61,33 @@ if(!(is_numeric($zoom))){
 	die;
 }
 
+#Check cost from is Provided
+if (!$costfrom) {
+	$response = array ('error' => "No costfrom was supplied.");
+	echo json_encode ($response);
+	die;
+}
+
+#Check cost from is valid
+if(!(is_numeric($costfrom)) || $costfrom < 0 || $costfrom > 999999999){
+  $response = array ('error' => "costfrom was invalid");
+	echo json_encode ($response);
+	die;
+}
+
+#Check cost To is Provided
+if (!$costto) {
+	$response = array ('error' => "No costto was supplied.");
+	echo json_encode ($response);
+	die;
+}
+
+#Check cost To is valid
+if(!(is_numeric($costto)) || $costto < 0 || $costto > 999999999 ){
+  $response = array ('error' => "costto was invalid");
+	echo json_encode ($response);
+	die;
+}
 
 
 # Construct the query
@@ -68,9 +97,10 @@ if($zoom >= 10 && $zoom <= 14){
   $query = "
   	SELECT
   		idGlobal, schtype, cost,
-  		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
+  		ST_AsGeoJSON(ST_Simplify(geotext, 0.1))  AS geotext
   	FROM schemes
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND cost BETWEEN :costfrom and :costto
   	LIMIT 1000
     ;";
 }else if($zoom >= 15){
@@ -80,6 +110,7 @@ if($zoom >= 10 && $zoom <= 14){
   		ST_AsGeoJSON(geotext)  AS geotext
   	FROM schemes
   	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	AND cost BETWEEN :costfrom and :costto
   	LIMIT 1000
     ;";
 }else{

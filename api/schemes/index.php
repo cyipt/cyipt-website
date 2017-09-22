@@ -70,7 +70,7 @@ if($zoom >= 1 && $zoom <= 14){
   		idGlobal, schtype, cost
   		ST_AsGeoJSON(ST_Simplify(geotext, 0.3))  AS geotext
   	FROM schemes
-  	WHERE roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	LIMIT 1000
     ;";
 }else if($zoom >= 15){
@@ -79,7 +79,7 @@ if($zoom >= 1 && $zoom <= 14){
   		idGlobal, schtype, cost
   		ST_AsGeoJSON(geotext)  AS geotext
   	FROM schemes
-  	WHERE roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
+  	WHERE geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)
   	LIMIT 1000
     ;";
 }else{

@@ -102,6 +102,12 @@ if ($preparedStatement->execute ()) {
 	}
 }
 
+echo query;
+echo w;
+echo s;
+echo e;
+echo n;
+
 #Format the output as GeoJSON
 foreach ($data as $index => $row) {
 	$data[$index]['geotext'] = json_decode ($row['geotext'], true);

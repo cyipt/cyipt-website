@@ -134,7 +134,7 @@ if ($preparedStatement->execute ()) {
 }
 
 echo $costfrom;
-echo $costo
+echo $costo;
 echo $query;
 
 #Format the output as GeoJSON

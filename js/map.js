@@ -376,6 +376,16 @@ var cyipt = (function ($) {
 				}
 				layer.bindPopup(out.join("<br />"));
 			}
+			
+			// Highlight features on hover; see: http://leafletjs.com/examples/choropleth/
+			layer.on('mouseover', function () {
+				this.setStyle ({
+					weight: 20
+				});
+			});
+			layer.on('mouseout', function () {
+				_layers[_layerConfig[lyr]['layerNumber']].resetStyle(this);
+			});
 		},
 		
               });

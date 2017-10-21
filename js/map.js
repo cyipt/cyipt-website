@@ -264,21 +264,6 @@ var cyipt = (function ($) {
 
       },
 
-      //Function 2: Define Popups
-      //Loop though variaibles and add them to the popup
-      onEachFeature: function (feature, layer){
-          
-          // Create popup
-          var out = [];
-          if (feature.properties){
-              for(var key in feature.properties){
-                  out.push(key+": "+ feature.properties[key]);
-              }
-              layer.bindPopup(out.join("<br />"));
-          }
-      },
-
-
       //Function 3: Define style
       style: function (feature){
         var styles = {};
@@ -378,8 +363,21 @@ var cyipt = (function ($) {
               _map.removeLayer(_layers[_layerConfig[lyr]['layerNumber']]);
               //style data
               _layers[_layerConfig[lyr]['layerNumber']] = L.geoJSON(data,{
-                onEachFeature: cyipt.onEachFeature,
-                style: cyipt.style
+		
+                style: cyipt.style,
+		
+                onEachFeature: function (feature, layer){
+		
+			// Create popup
+			var out = [];
+			if (feature.properties){
+				for(var key in feature.properties){
+					out.push(key+": "+ feature.properties[key]);
+				}
+				layer.bindPopup(out.join("<br />"));
+			}
+		},
+		
               });
               //Add to map
               _layers[_layerConfig[lyr]['layerNumber']].addTo(_map);

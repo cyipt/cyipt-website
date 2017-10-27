@@ -243,7 +243,10 @@ var cyipt = (function ($) {
         });
 	
 	// Add geolocation control
-	L.control.locate().addTo(_map);
+	_map.addControl(L.control.locate({
+		icon: 'fa fa-location-arrow',
+		locateOptions: {maxZoom: 17}
+	}));
 	
         //CHange the url as the map moves
         var allMapLayers = {'grayscale': grayscale,

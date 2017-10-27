@@ -241,6 +241,10 @@ var cyipt = (function ($) {
       	  maxZoom:19,
       	  layers: [grayscale]
         });
+	
+	// Add geolocation control
+	L.control.locate().addTo(_map);
+	
         //CHange the url as the map moves
         var allMapLayers = {'grayscale': grayscale,
                             'osm': openmap,

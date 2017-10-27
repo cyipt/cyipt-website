@@ -34,7 +34,7 @@ var cyipt = (function ($) {
        	},
        	'trafficosm': {
        	  'layerNumber' : 2,
-       	  'apiCall': '/api/traffic/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/traffic/index.php',
        	  'styles' : {
          	    'weight' : '8'
        	  },
@@ -65,7 +65,7 @@ var cyipt = (function ($) {
        	},
        	'collisionscyipt': {
        	  'layerNumber' : 8,
-       		'apiCall': '/api/collisions/index.php' ,
+       		'apiCall': 'https://www.cyipt.bike/api/collisions/index.php' ,
        		'data' : {},
           'colours' : {
        	    'ColourField': 'severity',
@@ -83,7 +83,7 @@ var cyipt = (function ($) {
        	},
        	'pct': {
        	  'layerNumber' : 6,
-       	  'apiCall': '/api/pct/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/pct/index.php',
        	  'styles' : {
        	      'weight' : '8',
        	  },
@@ -104,7 +104,7 @@ var cyipt = (function ($) {
        	},
        	'recommended': {
        	  'layerNumber' : 1,
-       	  'apiCall': '/api/recommended/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/recommended/index.php',
        	  'styles' : {
        	      'weight' : '8',
        	  },
@@ -125,7 +125,7 @@ var cyipt = (function ($) {
        	},
        	'schemes': {
        	  'layerNumber' : 9,
-       	  'apiCall': '/api/schemes/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/schemes/index.php',
        	  'styles' : {
        	     'weight' : '8',
 
@@ -147,7 +147,7 @@ var cyipt = (function ($) {
        	},
        	'existing': {
        	  'layerNumber' : 7,
-       	  'apiCall': '/api/existing/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/existing/index.php',
        	  'styles' : {
        	      'weight' : '8',
        	  },
@@ -177,7 +177,7 @@ var cyipt = (function ($) {
        	},
        	'width': {
        	  'layerNumber' : 5,
-       	  'apiCall': '/api/width/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/width/index.php',
        	  'styles' : {
        	      'weight' : '8',
        	  },

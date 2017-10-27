@@ -228,8 +228,8 @@ var cyipt = (function ($) {
         var grayscale = new L.tileLayer.provider('OpenMapSurfer.Grayscale');
         var openmap = new L.tileLayer.provider('OpenStreetMap.Mapnik');
         var satelite  = new L.tileLayer.provider('Esri.WorldImagery') ;
-        var cyclemap = L.tileLayer('http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}', {
-	          attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        var cyclemap = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}', {
+	          attribution: '&copy; <a href="https://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	          apikey: 'bf09fff64f1443028994661047c077f5',
 	          maxZoom: 22
         });

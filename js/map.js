@@ -227,6 +227,9 @@ var cyipt = (function ($) {
         //Get base map
         var grayscale = new L.tileLayer.provider('OpenMapSurfer.Grayscale');
         var openmap = new L.tileLayer.provider('OpenStreetMap.Mapnik');
+        var pctbase = L.tileLayer('https://npttile.vs.mythic-beasts.com/olc/{z}/{x}/{y}.png', {
+	          maxZoom: 20
+        });
         var satelite  = new L.tileLayer.provider('Esri.WorldImagery') ;
         var cyclemap = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}', {
 	          attribution: '&copy; <a href="https://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -241,17 +244,18 @@ var cyipt = (function ($) {
       	  maxZoom:19,
       	  layers: [grayscale]
         });
-	
+
 	// Add geolocation control
 	_map.addControl(L.control.locate({
 		icon: 'fa fa-location-arrow',
 		locateOptions: {maxZoom: 17}
 	}));
-	
+
         //CHange the url as the map moves
         var allMapLayers = {'grayscale': grayscale,
                             'osm': openmap,
                             'ocm': cyclemap,
+                            'pct-raster': pctbase,
                             'satelite' : satelite
                             };
         new L.Hash(_map, allMapLayers);
@@ -260,6 +264,7 @@ var cyipt = (function ($) {
 		      "Grayscale": grayscale,
 		      "Open Street Map": openmap,
 		      "Open Cycle Map":cyclemap,
+		      "PCT Raster - Census 2011": pctbase,
 		      "Satelite": satelite
 	      };
         // Watch for changes in the map
@@ -370,11 +375,11 @@ var cyipt = (function ($) {
               _map.removeLayer(_layers[_layerConfig[lyr]['layerNumber']]);
               //style data
               _layers[_layerConfig[lyr]['layerNumber']] = L.geoJSON(data,{
-		
+
                 style: cyipt.style,
-		
+
                 onEachFeature: function (feature, layer){
-		
+
 			// Create popup
 			var out = [];
 			if (feature.properties){
@@ -383,7 +388,7 @@ var cyipt = (function ($) {
 				}
 				layer.bindPopup(out.join("<br />"));
 			}
-			
+
 			// Highlight features on hover; see: http://leafletjs.com/examples/choropleth/
 			layer.on('mouseover', function () {
 				this.setStyle ({
@@ -394,7 +399,7 @@ var cyipt = (function ($) {
 				_layers[_layerConfig[lyr]['layerNumber']].resetStyle(this);
 			});
 		},
-		
+
               });
               //Add to map
               _layers[_layerConfig[lyr]['layerNumber']].addTo(_map);

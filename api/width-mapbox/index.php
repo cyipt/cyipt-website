@@ -143,25 +143,25 @@ if ($preparedStatement->execute ()) {
 }
 
 #Format the output as GeoJSON
-foreach ($data as $index => $row) {
-	$data[$index]['geotext'] = json_decode ($row['geotext'], true);
-}
+#foreach ($data as $index => $row) {
+#	$data[$index]['geotext'] = json_decode ($row['geotext'], true);
+#}
 
-$geojson = array ();
-$geojson['type'] = 'FeatureCollection';
-$geojson['features'] = array ();
-foreach ($data as $row) {
-	$properties = $row;
-	unset ($properties['geotext']);
-	$geojson['features'][] = array (
-		'type' => 'Feature',
-		'geometry' => $row['geotext'],
-		'properties' => $properties,
-	);
-}
+#$geojson = array ();
+#$geojson['type'] = 'FeatureCollection';
+#$geojson['features'] = array ();
+#foreach ($data as $row) {
+#	$properties = $row;
+#	unset ($properties['geotext']);
+#	$geojson['features'][] = array (
+#		'type' => 'Feature',
+#		'geometry' => $row['geotext'],
+#		'properties' => $properties,
+#	);
+#}
 
-header ('Content-Type: application/json');
-echo json_encode ($geojson, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+#header ('Content-Type: application/json');
+#echo json_encode ($geojson, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_#SLASHES);
 
 
 ?>

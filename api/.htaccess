@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^(example)$ /api/index.php?action=$1 [L,QSA]
+

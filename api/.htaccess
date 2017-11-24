@@ -1,3 +1,3 @@
 RewriteEngine On
-RewriteRule ^(example)$ /api/index.php?action=$1 [L,QSA]
+RewriteRule ^v1/(example).(json)$ /api/index.php?action=$1&format=$2 [L,QSA]
 

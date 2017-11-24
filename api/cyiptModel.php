@@ -342,6 +342,12 @@ class cyiptModel
 		# Set filters based on zoom
 		switch (true) {
 			
+			# Nearest
+			case ($this->zoom >= 17):
+				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
+				$constraints[] = "{$layer} > 0";
+				break;
+				
 			# Near
 			case ($this->zoom >= 14 && $this->zoom <= 16):
 				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.1)) AS geometry';
@@ -362,9 +368,8 @@ class cyiptModel
 				
 			# Other
 			default:
-				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
-				$constraints[] = "{$layer} > 0";
-				break;
+				$error = 'Please zoom in.';
+				return false;
 		}
 		
 		# Return the model

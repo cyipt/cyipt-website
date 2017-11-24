@@ -90,14 +90,14 @@ class cyiptModel
 		);
 		$constraints = array (
 			'roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
-			"	(
+			"(
 				NOT (roadtypes.cyclewayleft = 'no' AND roadtypes.cyclewayright = 'no')
 			  	    OR roadtypes.roadtype = 'Cycleway'
 			  	    OR roadtypes.roadtype = 'Living Street'
 			  	    OR roadtypes.roadtype = 'Segregated Cycleway'
 			  	    OR roadtypes.roadtype = 'Segregated Shared Path'
 			  	    OR roadtypes.roadtype = 'Shared Path'
-				)",
+			 )",
 		);
 		$parameters = $this->bbox;
 		$limit = false;
@@ -232,6 +232,62 @@ class cyiptModel
 		# Return the model
 		return array (
 			'table' => 'roads',
+			'fields' => $fields,
+			'constraints' => $constraints,
+			'parameters' => $parameters,
+			'limit' => $limit,
+		);
+	}
+	
+	
+	# Collisions
+	public function collisionsModel (&$error = false)
+	{
+		# Show nothing if too zoomed out
+		if ($this->zoom < 15) {
+			$error = 'Please zoom in.';
+			return false;
+		}
+		
+		# URL parameters
+		if (!isSet ($this->get['yearfrom']) || !is_numeric ($this->get['yearfrom']) || ($this->get['yearfrom'] < 1985) || ($this->get['yearfrom'] > 2015)) {
+			$error = 'A valid start year must be supplied.';
+			return false;
+		}
+		if (!isSet ($this->get['yearto']) || !is_numeric ($this->get['yearto']) || ($this->get['yearto'] < 1985) || ($this->get['yearto'] > 2015)) {
+			$error = 'A valid start year must be supplied.';
+			return false;
+		}
+		if ($this->get['yearfrom'] > $this->get['yearto']) {
+			$error = 'The start year must not be after the finish year.';
+			return false;
+		}
+		if (!isSet ($this->get['severity']) || !is_numeric ($this->get['severity']) || !in_array ($this->get['severity'], array ("1", "2", "3"), true)) {
+			$error = 'A valid severity value must be supplied.';
+			return false;
+		}
+		
+		# Base values
+		$fields = array (
+			'AccRefGlobal',
+			'DateTime',
+			'severity',
+			'ST_AsGeoJSON(geotext) AS geometry',
+		);
+		$constraints = array (
+			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
+			'severity = :severity',
+			'DateTime BETWEEN :yearfrom and :yearto'
+		);
+		$parameters = $this->bbox;
+		$parameters['yearfrom'] = $this->get['yearfrom'] . '-01-01 00:00:00';
+		$parameters['yearto']   = $this->get['yearto']   . '-12-31 23:59:59';
+		$parameters['severity'] = $this->get['severity'];
+		$limit = 500;
+		
+		# Return the model
+		return array (
+			'table' => 'accidents',
 			'fields' => $fields,
 			'constraints' => $constraints,
 			'parameters' => $parameters,

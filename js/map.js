@@ -65,7 +65,7 @@ var cyipt = (function ($) {
        	},
        	'collisionscyipt': {
        	  'layerNumber' : 8,
-       		'apiCall': 'https://www.cyipt.bike/api/collisions/index.php' ,
+       		'apiCall': 'https://www.cyipt.bike/api/v1/collisions.json' ,
        		'data' : {},
           'colours' : {
        	    'ColourField': 'severity',

@@ -80,6 +80,77 @@ class cyiptModel
 	}
 	
 	
+	# Schemes
+	public function schemesModel (&$error = false)
+	{
+		# Show nothing if too zoomed out
+		if ($this->zoom < 15) {
+			$error = 'Please zoom in.';
+			return false;
+		}
+		
+		# URL parameters
+		if (!isSet ($this->get['costfrom']) || !is_numeric ($this->get['costfrom']) || ($this->get['costfrom'] < 0) || ($this->get['costfrom'] > 999999999)) {
+			$error = 'A valid start cost must be supplied.';
+			return false;
+		}
+		if (!isSet ($this->get['costto']) || !is_numeric ($this->get['costto']) || ($this->get['costto'] < 0) || ($this->get['costto'] > 999999999)) {
+			$error = 'A valid start cost must be supplied.';
+			return false;
+		}
+		if ($this->get['costfrom'] > $this->get['costto']) {
+			$error = 'The start cost must not be after the finish cost.';
+			return false;
+		}
+		
+		# Base values
+		$fields = array (
+			'idGlobal',
+			'schtype',
+			'cost',
+			'ST_AsGeoJSON(geotext) AS geometry',
+		);
+		$constraints = array (
+			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
+			'cost BETWEEN :costfrom and :costto'
+		);
+		$parameters = $this->bbox;
+		$parameters['costfrom'] = $this->get['costfrom'];
+		$parameters['costto']   = $this->get['costto'];
+		$limit = 1000;
+		
+		# Set filters based on zoom
+		switch (true) {
+			
+			# Near
+			case ($this->zoom >= 15):
+				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
+				$limit = 2000;
+				break;
+				
+			# Far
+			case ($this->zoom >= 10 && $this->zoom <= 14):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.1)) AS geometry';
+				$limit = 5000;
+				break;
+				
+			# Show nothing if too zoomed out
+			default:
+				$error = 'Please zoom in.';
+				return false;
+		}
+		
+		# Return the model
+		return array (
+			'table' => 'schemes',
+			'fields' => $fields,
+			'constraints' => $constraints,
+			'parameters' => $parameters,
+			'limit' => $limit,
+		);
+	}
+	
+	
 	# Existing infrastructure
 	public function existingModel (&$error = false)
 	{

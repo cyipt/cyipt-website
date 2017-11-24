@@ -125,7 +125,7 @@ var cyipt = (function ($) {
        	},
        	'schemes': {
        	  'layerNumber' : 9,
-       	  'apiCall': 'https://www.cyipt.bike/api/schemes/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/v1/schemes.json',
        	  'styles' : {
        	     'weight' : '8',
 

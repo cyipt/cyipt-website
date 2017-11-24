@@ -104,7 +104,7 @@ var cyipt = (function ($) {
        	},
        	'recommended': {
        	  'layerNumber' : 1,
-       	  'apiCall': 'https://www.cyipt.bike/api/recommended/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/v1/recommended.json',
        	  'styles' : {
        	      'weight' : '8',
        	  },

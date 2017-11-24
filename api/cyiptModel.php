@@ -36,7 +36,7 @@ class cyiptModel
 	# Recommended infrastructure
 	public function recommendedModel (&$error = false)
 	{
-		# Base filters
+		# Base values
 		$fields = array (
 			'id',
 			'Recommended',
@@ -61,6 +61,53 @@ class cyiptModel
 			case ($this->zoom >= 11 && $this->zoom <= 15):
 				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.3)) AS geometry';
 				$limit = 5000;
+				break;
+				
+			# Show nothing if too zoomed out
+			default:
+				$error = 'Please zoom in.';
+				return false;
+		}
+		
+		# Return the model
+		return array (
+			'table' => 'roads',
+			'fields' => $fields,
+			'constraints' => $constraints,
+			'parameters' => $parameters,
+			'limit' => $limit,
+		);
+	}
+	
+	
+	# Traffic data
+	public function trafficModel (&$error = false)
+	{
+		# Base values
+		$fields = array (
+			'id',
+			'aadt',
+		);
+		$constraints = array (
+			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
+			'aadt IS NOT NULL',
+		);
+		$parameters = $this->bbox;
+		$limit = false;
+		
+		# Set filters based on zoom
+		switch (true) {
+			
+			# Near
+			case ($this->zoom >= 13):
+				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
+				$limit = 5000;
+				break;
+				
+			# Far
+			case ($this->zoom >= 11 && $this->zoom <= 12):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.2)) AS geometry';
+				$limit = 10000;
 				break;
 				
 			# Show nothing if too zoomed out

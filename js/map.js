@@ -34,7 +34,7 @@ var cyipt = (function ($) {
        	},
        	'trafficosm': {
        	  'layerNumber' : 2,
-       	  'apiCall': 'https://www.cyipt.bike/api/traffic/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/v1/traffic.json',
        	  'styles' : {
          	    'weight' : '8'
        	  },

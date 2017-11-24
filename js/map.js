@@ -177,7 +177,7 @@ var cyipt = (function ($) {
        	},
        	'width': {
        	  'layerNumber' : 5,
-       	  'apiCall': 'https://www.cyipt.bike/api/width/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/v1/width.json',
        	  'styles' : {
        	      'weight' : '8',
        	  },

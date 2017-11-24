@@ -240,6 +240,73 @@ class cyiptModel
 	}
 	
 	
+	# PCT
+	public function pctModel (&$error = false)
+	{
+		# Layer
+		$layers = array (
+			'pctcensus',
+			'pctgov',
+			'pctgen',
+			'pctdutch',
+			'pctebike',
+		);
+		if (!isSet ($this->get['pctlayer']) || !in_array ($this->get['pctlayer'], $layers)) {
+			$error = 'A valid layer must be supplied.';
+			return false;
+		}
+		$layer = $this->get['pctlayer'];
+		
+		# Base values
+		$fields = array (
+			'id',
+			"{$layer} AS ncycles"
+		);
+		$constraints = array (
+			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
+		);
+		$parameters = $this->bbox;
+		$limit = 2000;
+		
+		# Set filters based on zoom
+		switch (true) {
+			
+			# Near
+			case ($this->zoom >= 14 && $this->zoom <= 16):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.1)) AS geometry';
+				$constraints[] = "{$layer} > 100";
+				break;
+				
+			# Nearer
+			case ($this->zoom >= 11 && $this->zoom <= 13):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.2)) AS geometry';
+				$constraints[] = "{$layer} > 500";
+				break;
+				
+			# Far
+			case ($this->zoom <= 10):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.3)) AS geometry';
+				$constraints[] = "{$layer} > 1000";
+				break;
+				
+			# Other
+			default:
+				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
+				$constraints[] = "{$layer} > 0";
+				break;
+		}
+		
+		# Return the model
+		return array (
+			'table' => 'roads',
+			'fields' => $fields,
+			'constraints' => $constraints,
+			'parameters' => $parameters,
+			'limit' => $limit,
+		);
+	}
+	
+	
 	# Collisions
 	public function collisionsModel (&$error = false)
 	{

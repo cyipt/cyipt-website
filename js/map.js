@@ -83,7 +83,7 @@ var cyipt = (function ($) {
        	},
        	'pct': {
        	  'layerNumber' : 6,
-       	  'apiCall': 'https://www.cyipt.bike/api/pct/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/v1/pct.json',
        	  'styles' : {
        	      'weight' : '8',
        	  },

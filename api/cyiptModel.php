@@ -80,6 +80,60 @@ class cyiptModel
 	}
 	
 	
+	# Existing infrastructure
+	public function existingModel (&$error = false)
+	{
+		# Base values
+		$fields = array (
+			'roads.id',
+			"CONCAT(roadtypes.cyclewayleft,' ',roadtypes.cyclewayright) AS existing",
+		);
+		$constraints = array (
+			'roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
+			"	(
+				NOT (roadtypes.cyclewayleft = 'no' AND roadtypes.cyclewayright = 'no')
+			  	    OR roadtypes.roadtype = 'Cycleway'
+			  	    OR roadtypes.roadtype = 'Living Street'
+			  	    OR roadtypes.roadtype = 'Segregated Cycleway'
+			  	    OR roadtypes.roadtype = 'Segregated Shared Path'
+			  	    OR roadtypes.roadtype = 'Shared Path'
+				)",
+		);
+		$parameters = $this->bbox;
+		$limit = false;
+		
+		# Set filters based on zoom
+		switch (true) {
+			
+			# Near
+			case ($this->zoom >= 16):
+				$fields[] = 'ST_AsGeoJSON(roads.geotext) AS geometry';
+				$limit = 2000;
+				break;
+				
+			# Far
+			case ($this->zoom >= 11 && $this->zoom <= 15):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(roads.geotext, 0.3)) AS geometry';
+				$limit = 5000;
+				break;
+				
+			# Show nothing if too zoomed out
+			default:
+				$error = 'Please zoom in.';
+				return false;
+		}
+		
+		# Return the model
+		return array (
+			'table' => 'roads INNER JOIN roadtypes ON roads.rtid = roadtypes.rtid',
+			'fields' => $fields,
+			'constraints' => $constraints,
+			'parameters' => $parameters,
+			'limit' => $limit,
+		);
+	}
+	
+	
 	# Traffic data
 	public function trafficModel (&$error = false)
 	{

@@ -147,7 +147,7 @@ var cyipt = (function ($) {
        	},
        	'existing': {
        	  'layerNumber' : 7,
-       	  'apiCall': 'https://www.cyipt.bike/api/existing/index.php',
+       	  'apiCall': 'https://www.cyipt.bike/api/v1/existing.json',
        	  'styles' : {
        	      'weight' : '8',
        	  },

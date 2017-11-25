@@ -100,7 +100,7 @@ class api
 		# Start the HTML
 		$html = "\n
 			<style type=\"text/css\">
-				body {max-width: 800px; margin: 0 auto; font-family: arial;}
+				body {max-width: 1000px; margin: 0 auto; font-family: arial;}
 				div.apicall {border-top: 1px solid gray;; padding: 20px; margin-bottom: 20px;}
 				h1 {margin: 1.5em 0 1em;}
 				h2 {}
@@ -113,7 +113,7 @@ class api
 		";
 		
 		$html .= "\n<h1>CyIPT API documentation</h1>";
-		$html .= "\n<p>Welcome to the API for the CyIPT proect.</p>";
+		$html .= "\n<p>Welcome to the API for the CyIPT project.</p>";
 		$html .= "\n<p>Please note that this API is subject to change without notice.</p>";
 		$html .= "\n<p>All calls return GeoJSON.</p>";
 		

@@ -7,7 +7,7 @@ class api
 	private $databaseConnection;
 	
 	# Supported formats
-	private $formats = array ('json');
+	private $formats = array ('json', 'csv');
 	
 	
 	# Defaults
@@ -86,11 +86,21 @@ class api
 			return $this->error ($error);
 		}
 		
-		# Convert to GeoJSON
-		$geojson = $this->asGeojson ($data);
-		
-		# Transmit data
-		return $this->response ($geojson);
+		# Output the data
+		switch ($format) {
+			
+			# GeoJSON
+			case 'json':
+				$geojson = $this->asGeojson ($data);
+				return $this->responseJson ($geojson);
+				break;
+				
+			# CSV
+			case 'csv':
+				$csv = $this->asCsv ($data);
+				return $this->responseCsv ($csv, $_GET['action']);
+				break;
+		}
 	}
 	
 	
@@ -114,7 +124,7 @@ class api
 		$html .= "\n<h1>CyIPT API documentation</h1>";
 		$html .= "\n<p>Welcome to the API for the CyIPT project.</p>";
 		$html .= "\n<p>Please note that this API is subject to change without notice.</p>";
-		$html .= "\n<p>All calls return GeoJSON.</p>";
+		$html .= "\n<p>Use <tt>.json</tt> to return GeoJSON, or <tt>.csv</tt> to return CSV. The examples below use the GeoJSON output format.</p>";
 		
 		# Load the class
 		$cyiptModel = new cyiptModel (NULL, NULL, $_GET);
@@ -366,19 +376,72 @@ class api
 	{
 		# Assemble and return the error
 		$data = array ('error' => $string);
-		return $this->response ($data);
+		return $this->responseJson ($data);
 	}
 	
 	
-	# Function to transmit the data
-	private function response ($data)
+	# Function to transmit data as JSON
+	private function responseJson ($jsonArray)
 	{
 		# Allow any client to connect, and permit on localhost
 		header ('Access-Control-Allow-Origin: *');
 		
 		# Send the response, encoded as JSON
 		header ('Content-Type: application/json');
-		echo json_encode ($data, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+		echo json_encode ($jsonArray, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+	}
+	
+	
+	# Function to convert a multi-dimensional keyed array to a CSV
+	public static function asCsv ($data)
+	{
+		# Create the headers
+		$headers = array ();
+		foreach ($data as $line => $values) {
+			foreach ($values as $key => $value) {
+				$headers[] = $key;
+			}
+			$headersLine = implode (',', $headers);
+			break;	// First row of data is enough
+		}
+		
+		# Start the CSV with the headers
+		$csv = array ();
+		$csv[] = $headersLine;
+		
+		# Convert the array into an array of data strings, one array item per row
+		foreach ($data as $line => $values) {
+			$csvLine = array ();
+			foreach ($values as $key => $value) {
+				if (substr_count ($value, '"')) {
+					$value = '"' . str_replace ('"', '""', $value) . '"';
+				}
+				$csvLine[] = $value;
+			}
+			$csv[] = implode (',', $csvLine);
+		}
+		
+		# Compile the CSV lines (each of which will end with a newline already)
+		$csvString = implode ("\n", $csv);
+		
+		# Return the CSV data
+		return $csvString;
+	}
+	
+	
+	# Function to transmit data as CSV
+	private function responseCsv ($csvString, $filenameBase)
+	{
+		# Construct the filename
+		$filenameBase .= '_savedAt' . date ('Ymd-His');
+		$filename = $filenameBase . '.csv';
+		
+		# Publish, by sending a header and then echoing the data
+		header ('Content-type: application/octet-stream');
+		header ('Content-Disposition: attachment; filename="' . $filename . '"');
+		
+		# Send the response
+		echo $csvString;
 	}
 }
 

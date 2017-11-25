@@ -28,6 +28,14 @@ class api
 		# Load settings
 		$this->settings = $this->defaults ();
 		
+		# Load subclass
+		require_once ('./cyiptModel.php');
+		
+		# Documentation page
+		if (isSet ($_GET['action']) && $_GET['action'] == 'documentation') {
+			return $this->documentation ();
+		}
+		
 		# Connect to the database, providing a DSN connection string in this format: 'pgsql:host=localhost;dbname=example'
 		try {
 			$this->databaseConnection = new PDO ("pgsql:host={$this->settings['hostname']};dbname={$this->settings['database']}", $this->settings['username'], $this->settings['password']);
@@ -57,7 +65,6 @@ class api
 		}
 		
 		# Load the model, passing in API parameters
-		require_once ('./cyiptModel.php');
 		$this->cyiptModel = new cyiptModel ($bbox, $zoom, $_GET);
 		
 		# Ensure a valid action has been supplied
@@ -84,6 +91,106 @@ class api
 		
 		# Transmit data
 		return $this->response ($geojson);
+	}
+	
+	
+	# Documentation page
+	public function documentation ()
+	{
+		# Start the HTML
+		$html = "\n
+			<style type=\"text/css\">
+				body {max-width: 800px; margin: 0 auto; font-family: arial;}
+				div.apicall {border-top: 1px solid gray;; padding: 20px; margin-bottom: 20px;}
+				h1 {margin: 1.5em 0 1em;}
+				h2 {}
+				h2 a {font-size: 0.6em; color: #ccc; text-decoration: none; font-weight: normal;}
+				dl dt {margin-top: 1.2em; margin-bottom: 0.5em;}
+				dl dt tt {margin-left: 0.5em; font-style: italic;}
+				.example {padding: 10px 10px 10px 15px; background-color: #eee;}
+				.example p:first-child {text-transform: uppercase; float: right; padding: 0; margin: 0; color: #999; font-size: 0.74em;}
+			</style>
+		";
+		
+		$html .= "\n<h1>CyIPT API documentation</h1>";
+		$html .= "\n<p>Welcome to the API for the CyIPT proect.</p>";
+		$html .= "\n<p>Please note that this API is subject to change without notice.</p>";
+		$html .= "\n<p>All calls return GeoJSON.</p>";
+		
+		# Load the class
+		$cyiptModel = new cyiptModel (NULL, NULL, $_GET);
+		
+		# Determine the documentation methods in the class
+		$apiCalls = array ();
+		$methods = get_class_methods ($cyiptModel);
+		foreach ($methods as $method) {
+			if (preg_match ('/^([a-z]+)Documentation$/', $method, $matches)) {
+				$apiCall = $matches[1];
+				$apiCalls[$apiCall] = $method;
+			}
+		}
+		
+		# Load the specifications
+		$specifications = array ();
+		foreach ($apiCalls as $apiCall => $method) {
+			$specifications[$apiCall] = $cyiptModel->{$method} ();
+		}
+		
+		# Define standard fields
+		$standardFields = array (
+			'bbox' => array (
+				'type' => 'string',
+				'values' => 'w,s,e,n',
+				'description' => 'Bounding box of the map canvas.',
+			),
+			'zoom' => array (
+				'type' => 'int',
+				'description' => 'Zoom level of the map.',
+			),
+		);
+		
+		# Substitute standard field specification details
+		foreach ($specifications as $apiCall => $method) {
+			foreach ($method['fields'] as $field => $attributes) {
+				if (isSet ($standardFields[$field])) {
+					$specifications[$apiCall]['fields'][$field] = $standardFields[$field];
+				}
+			}
+		}
+		
+		# Add jump list
+		$html .= "\n<p>Jump to:</p>";
+		$html .= "\n<ul>";
+		foreach ($specifications as $apiCall => $method) {
+			$html .= "\n\t<li><a href=\"#{$apiCall}\">" . htmlspecialchars ($method['name']) . '</a></li>';
+		}
+		$html .= "\n</ul>";
+		
+		# Add each documentation block
+		foreach ($specifications as $apiCall => $method) {
+			$html .= "
+				<div class=\"apicall\">
+					<h2 id=\"{$apiCall}\"><a href=\"#{$apiCall}\">#</a> " . htmlspecialchars ($method['name']) . "</h2>
+					<p><pre>/v1/{$apiCall}.json</pre></p>
+					<div class=\"example\">
+						<p>Example</p>
+						<p><a href=\"" . htmlspecialchars ($method['example']) . '">' . htmlspecialchars ($method['example']) . "</a></p>
+					</div>
+					<h3>Required fields</h3>
+					<dl>
+			";
+			foreach ($method['fields'] as $field => $attributes) {
+				$html .= "
+					<dt>{$field} <tt>" . htmlspecialchars ($attributes['type']) . (isSet ($attributes['values']) ? ', ' . htmlspecialchars ($attributes['values']) : '') . "</tt></dt>
+						<dd>" . htmlspecialchars ($attributes['description']) . "</dd>
+				";
+			}
+			$html .= "\n</dl>";
+			$html .= "\n</div>";
+		}
+		
+		# Show the HTML
+		echo $html;
 	}
 	
 	

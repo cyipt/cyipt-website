@@ -80,6 +80,20 @@ class cyiptModel
 	}
 	
 	
+	# Documentation
+	public static function recommendedDocumentation ()
+	{
+		return array (
+			'name' => 'Recommended infrastructure',
+			'example' => '/api/v1/recommended.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15',
+			'fields' => array (
+				'bbox' => '%bbox',
+				'zoom' => '%zoom',
+			),
+		);
+	}
+	
+	
 	# Schemes
 	public function schemesModel (&$error = false)
 	{
@@ -147,6 +161,22 @@ class cyiptModel
 			'constraints' => $constraints,
 			'parameters' => $parameters,
 			'limit' => $limit,
+		);
+	}
+	
+	
+	# Documentation
+	public static function schemesDocumentation ()
+	{
+		return array (
+			'name' => 'Schemes',
+			'example' => '/api/v1/schemes.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&costfrom=50000&costto=750000',
+			'fields' => array (
+				'bbox' => '%bbox',
+				'zoom' => '%zoom',
+				'costfrom' => array ('type' => 'int', 'values' => '0-999999999', 'description' => 'Start cost', ),
+				'costto' => array ('type' => 'int', 'values' => '0-999999999', 'description' => 'Finish cost', ),
+			),
 		);
 	}
 	
@@ -278,6 +308,21 @@ class cyiptModel
 	}
 	
 	
+	# Documentation
+	public static function widthDocumentation ()
+	{
+		return array (
+			'name' => 'Road width',
+			'example' => '/api/v1/width.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&widthlayer=road',
+			'fields' => array (
+				'bbox' => '%bbox',
+				'zoom' => '%zoom',
+				'widthlayer' => array ('type' => 'string', 'values' => 'road|path', 'description' => 'PCT layer: road (Road only), path (Road and roadside)', ),
+			),
+		);
+	}
+	
+	
 	# PCT
 	public function pctModel (&$error = false)
 	{
@@ -350,6 +395,21 @@ class cyiptModel
 	}
 	
 	
+	# Documentation
+	public static function pctDocumentation ()
+	{
+		return array (
+			'name' => 'Propensity to Cycle Tool',
+			'example' => '/api/v1/pct.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&pctlayer=pctcensus',
+			'fields' => array (
+				'bbox' => '%bbox',
+				'zoom' => '%zoom',
+				'pctlayer' => array ('type' => 'string', 'values' => 'pctcensus|pctgov|pctgen|pctdutch|pctebike', 'description' => 'PCT layer', ),
+			),
+		);
+	}
+	
+	
 	# Traffic data
 	public function trafficModel (&$error = false)
 	{
@@ -393,6 +453,20 @@ class cyiptModel
 			'constraints' => $constraints,
 			'parameters' => $parameters,
 			'limit' => $limit,
+		);
+	}
+	
+	
+	# Documentation
+	public static function trafficDocumentation ()
+	{
+		return array (
+			'name' => 'Traffic counts',
+			'example' => '/api/v1/traffic.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15',
+			'fields' => array (
+				'bbox' => '%bbox',
+				'zoom' => '%zoom',
+			),
 		);
 	}
 	
@@ -449,6 +523,23 @@ class cyiptModel
 			'constraints' => $constraints,
 			'parameters' => $parameters,
 			'limit' => $limit,
+		);
+	}
+	
+	
+	# Documentation
+	public static function collisionsDocumentation ()
+	{
+		return array (
+			'name' => 'Collisions',
+			'example' => '/api/v1/collisions.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&yearfrom=2013&yearto=2015&severity=1',
+			'fields' => array (
+				'bbox' => '%bbox',
+				'zoom' => '%zoom',
+				'yearfrom' => array ('type' => 'int', 'values' => '1985-2015', 'description' => 'Start year', ),
+				'yearto' => array ('type' => 'int', 'values' => '1985-2015', 'description' => 'Finish year', ),
+				'severity' => array ('type' => 'int', 'values' => '1|2|3', 'description' => 'Severity: 1 (fatal), 2 (serious), 3 (slight)', ),
+			),
 		);
 	}
 }

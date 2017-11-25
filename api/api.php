@@ -101,9 +101,8 @@ class api
 		$html = "\n
 			<style type=\"text/css\">
 				body {max-width: 1000px; margin: 0 auto; font-family: arial;}
-				div.apicall {border-top: 1px solid gray;; padding: 20px; margin-bottom: 20px;}
+				div.apicall {border-top: 1px solid gray; padding: 20px 0; margin-bottom: 20px;}
 				h1 {margin: 1.5em 0 1em;}
-				h2 {}
 				h2 a {font-size: 0.6em; color: #ccc; text-decoration: none; font-weight: normal;}
 				dl dt {margin-top: 1.2em; margin-bottom: 0.5em;}
 				dl dt tt {margin-left: 0.5em; font-style: italic;}

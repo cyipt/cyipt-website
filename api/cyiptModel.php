@@ -493,7 +493,7 @@ class cyiptModel
 			$error = 'The start year must not be after the finish year.';
 			return false;
 		}
-		if (!isSet ($this->get['severity']) || !is_numeric ($this->get['severity']) || !in_array ($this->get['severity'], array (1, 2, 3), true)) {
+		if (!isSet ($this->get['severity']) || !is_numeric ($this->get['severity']) || !in_array ($this->get['severity'], array ("1", "2", "3"), true)) {
 			$error = 'A valid severity value must be supplied.';
 			return false;
 		}

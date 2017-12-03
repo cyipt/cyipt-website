@@ -120,7 +120,7 @@ class cyiptModel
 		# Base values
 		$fields = array (
 			'idGlobal',
-			'schtype',
+			'infratype',
 			'cost',
 			'ST_AsGeoJSON(geotext) AS geometry',
 		);

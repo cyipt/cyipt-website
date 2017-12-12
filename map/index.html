@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
- <title>CyIPT Test Map</title>
- <link rel="stylesheet" href="../js/lib/leaflet-1.2.0/leaflet.css" />
- <script type="text/javascript" src="../js/lib/leaflet-1.2.0/leaflet.js"></script>
- <script type="text/javascript" src="../js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
- <script type="text/javascript" src="../js/lib/leaflet-providers/leaflet-providers.js"></script>
- <script type="text/javascript" src="../js/lib/leaflet-fullHash/leaflet-fullHash.js"></script>
- <script type="text/javascript" src="../js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.js"></script>
- <link rel="stylesheet" href="../js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.css" />
- <link rel="stylesheet" href="../js/lib/font-awesome/4.7.0/css/font-awesome.min.css" />
- <link rel="stylesheet" href="../css/main.css" />
-</head>
+	<head>
+		<title>Cycling Infrastructure Prioritisation Toolkit (CyIPT)</title>
+		
+		<!-- Libraries -->
+		<link rel="stylesheet" href="../js/lib/leaflet-1.2.0/leaflet.css" />
+		<script type="text/javascript" src="../js/lib/leaflet-1.2.0/leaflet.js"></script>
+		<script type="text/javascript" src="../js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../js/lib/leaflet-providers/leaflet-providers.js"></script>
+		<script type="text/javascript" src="../js/lib/leaflet-fullHash/leaflet-fullHash.js"></script>
+		<script type="text/javascript" src="../js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.js"></script>
+		<link rel="stylesheet" href="../js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.css" />
+		<link rel="stylesheet" href="../js/lib/font-awesome/4.7.0/css/font-awesome.min.css" />
+		
+		<!-- CyIPT web application -->
+		<script src="../js/map.js"></script>
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/fonts.css" />
+		<script type="text/javascript">
+  			$(function() {
+  				cyipt.initialise();
+  			});
+		</script>
+   		
+	</head>
+	
+	<body>
+		
+		<header>
+			<div id="logo"><img src="../images/logo_small.png" alt="CyIPT logo" /></div>
+			<h1>Cycling Infrastructure Prioritisation Toolkit (CyIPT)</h1>
+			<p>A DfT-funded research project at the University of Leeds</p>
+		</header>
 
-<body>
-
-<div class="topnav" id="myTopnav">
-  <a href="/">Home</a>
-  <a href="/map">Map</a>
-  <a href="/about">About</a>
-</div>
-
-
-
-<div id ="content">
-  <div id="sidebar">
-  <h3>CyIPT is a tool to aid decision making, not to make the decisions for you</h3>
-  <button class="accordion">Recommended Infrastructure<input type="checkbox" id="data-recommended" value="0"></button>
+		<main>
+			<nav>
+				
+				<p>Note: CyIPT is a tool to aid decision-making, not to make the decisions for you.</p>
+				
+  <button class="accordion">Recommended Infrastructure <input type="checkbox" id="data-recommended" value="0"></button>
     <div class="panel">
       <p>Source: CyIPT</p>
-      <p><div class="legend CycleStreet"></div> Cycle Street</p>
-      <p><div class="legend CycleLanes"></div> Cycle Lanes</p>
-      <p><div class="legend LigthSeg"></div> Cycle Lanes with light segregation</p>
-      <p><div class="legend Stepped"></div> Stepped Cycle Tracks</p>
-      <p><div class="legend SegregatedTrack"></div> Segregated Cycle Track</p>
-      <p><div class="legend CycleLanePath"></div> Cycle Lane on Path</p>
-      <p><div class="legend SegregatedPath"></div> Segregated Cycle Track on Path</p>
+      <table>
+	<tr><td><div class="legend CycleStreet"></div></td><td>Cycle street</td></tr>
+	<tr><td><div class="legend CycleLanes"></div></td><td>Cycle lanes</td></tr>
+	<tr><td><div class="legend LigthSeg"></div></td><td>Cycle Lanes with light segregation</td></tr>
+	<tr><td><div class="legend Stepped"></div></td><td>Stepped (hybrid) cycle tracks</td></tr>
+	<tr><td><div class="legend SegregatedTrack"></div></td><td>Segregated cycle track</td></tr>
+	<tr><td><div class="legend CycleLanePath"></div></td><td>Cycle lane on path</td></tr>
+      </table>
     </div>
 
 
@@ -223,19 +236,16 @@
           <option value=3>Slight</option>
       </select></p>
 
-      <p>Source: DfT / Stats19</p>
+      <p>Source: DfT / STATS19</p>
     </div>
+			</nav>
 
- <div id="map">
-   <script src="../js/map.js"></script>
-   <script type="text/javascript">
-  		$(function() {
-  			cyipt.initialise();
-  		});
-   </script>
- </div>
+			<div id="map"></div>
+		</main>
+		
+		<footer>
+			<p>University of Leeds, with project partners CycleStreets, University of the West of England, and Phil Jones Associates &nbsp;||&nbsp; Funded by the UK Department for Transport &nbsp;||&nbsp; <a href="https://github.com/cyipt/">Open source, open data</a></p>
+		</footer>
 
-</div>
-
-</body>
+	</body>
 </html>

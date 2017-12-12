@@ -372,7 +372,9 @@ var cyipt = (function ($) {
             },
             success: function (data, textStatus, jqXHR) {
               //Remove Old layer
-              _map.removeLayer(_layers[_layerConfig[lyr]['layerNumber']]);
+              if (_layers[_layerConfig[lyr]['layerNumber']] != '') {
+                _map.removeLayer(_layers[_layerConfig[lyr]['layerNumber']]);
+              }
               //style data
               _layers[_layerConfig[lyr]['layerNumber']] = L.geoJSON(data,{
 
@@ -518,7 +520,9 @@ var cyipt = (function ($) {
           if(htmlVars[_layerID]['show'] == 1){
             cyipt.fetchdata(_layerID, data)
           }else{
-            _map.removeLayer(_layers[_layerConfig[_layerID]['layerNumber']]);
+            if (_layers[_layerConfig[_layerID]['layerNumber']] != '') {
+              _map.removeLayer(_layers[_layerConfig[_layerID]['layerNumber']]);
+            }
           }
         //End of For Loop
         }

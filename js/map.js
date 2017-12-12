@@ -76,11 +76,6 @@ var cyipt = (function ($) {
             				],
        	  },
        	},
-       	'groups': {
-       	  'layerNumber' : 0,
-       	  'apiCall': 'https://www.cyclescape.org/api/groups.json',
-       	  'data' : {}
-       	},
        	'pct': {
        	  'layerNumber' : 6,
        	  'apiCall': 'https://www.cyipt.bike/api/v1/pct.json',
@@ -467,15 +462,6 @@ var cyipt = (function ($) {
            	    'bbox' : _map.getBounds().toBBoxString(),
            	    'zoom' : _map.getZoom()
            	  }
-           	},
-           	'groups': {
-           	  //'show' : $('#data-group').find(":selected").val(),
-           	  'show' : document.getElementById("data-group").checked,
-           	  'parameters' :{
-           	    'national' : $('#national').find(":selected").val(),
-           	    'bbox' : _map.getBounds().toBBoxString()
-           	  }
-
            	},
            	'pct': {
            	  'show' : document.getElementById("data-pct").checked,

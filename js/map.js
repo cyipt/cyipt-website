@@ -131,7 +131,7 @@ var cyipt = (function ($) {
 
        	  },
        	  'colours' : {
-       	    'ColourField': 'schtype',
+       	    'ColourField': 'infratype',
          	  'ColourStops': [
       			        { "val": "Cycle Lanes",                         "col": '#FF0000' },
             				{ "val": "Cycle Lanes with light segregation",  "col": '#7f7ffe' },
@@ -294,7 +294,7 @@ var cyipt = (function ($) {
           //recommended infra
           styles = _layerConfig.recommended.styles;
           styles.color = cyipt.getcolourCat(feature['properties'][_layerConfig.recommended.colours.ColourField],'recommended')
-        }else if(feature.properties.schtype){
+        }else if(feature.properties.infratype){
           //schemes
           styles = _layerConfig.schemes.styles;
           styles.color = cyipt.getcolourCat(feature['properties'][_layerConfig.schemes.colours.ColourField],'schemes')

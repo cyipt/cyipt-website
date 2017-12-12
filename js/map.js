@@ -224,6 +224,10 @@ var cyipt = (function ($) {
 	  return{
 	    //Function 1
       initialise: function (){
+	
+	// Load accordion
+	cyipt.accordion ();
+	
         //Get base map
         var grayscale = new L.tileLayer.provider('OpenMapSurfer.Grayscale');
         var openmap = new L.tileLayer.provider('OpenStreetMap.Mapnik');
@@ -275,6 +279,24 @@ var cyipt = (function ($) {
         L.control.layers(baseLayers).addTo(_map);
 
       },
+	
+	
+	accordion: function () {
+	  var acc = document.getElementsByClassName("accordion");
+	  var i;
+	
+	  for (i = 0; i < acc.length; i++) {
+	    acc[i].onclick = function() {
+	      this.classList.toggle("active");
+	      var panel = this.nextElementSibling;
+	      if (panel.style.maxHeight){
+	        panel.style.maxHeight = null;
+	      } else {
+	        panel.style.maxHeight = panel.scrollHeight + "px";
+	      }
+	    }
+	  }
+	},
 
       //Function 3: Define style
       style: function (feature){

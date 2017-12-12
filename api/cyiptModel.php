@@ -475,7 +475,7 @@ class cyiptModel
 	public function collisionsModel (&$error = false)
 	{
 		# Show nothing if too zoomed out
-		if ($this->zoom < 15) {
+		if ($this->zoom < 13) {
 			$error = 'Please zoom in.';
 			return false;
 		}

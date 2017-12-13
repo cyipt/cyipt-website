@@ -121,7 +121,7 @@ class cyiptModel
 		$fields = array (
 			'idGlobal',
 			'infratype',
-			'cost',
+			'CAST(cost AS int)',
 			'ST_AsGeoJSON(geotext) AS geometry',
 		);
 		$constraints = array (

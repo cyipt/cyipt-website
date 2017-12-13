@@ -3,23 +3,38 @@
 	<head>
 		<title>Cycling Infrastructure Prioritisation Toolkit (CyIPT)</title>
 		
-		<!-- Libraries -->
-		<link rel="stylesheet" href="../js/lib/leaflet-1.2.0/leaflet.css" />
-		<script type="text/javascript" src="../js/lib/leaflet-1.2.0/leaflet.js"></script>
-		<script type="text/javascript" src="../js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="../js/lib/leaflet-providers/leaflet-providers.js"></script>
-		<script type="text/javascript" src="../js/lib/leaflet-fullHash/leaflet-fullHash.js"></script>
-		<script type="text/javascript" src="../js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.js"></script>
-		<link rel="stylesheet" href="../js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.css" />
-		<link rel="stylesheet" href="../js/lib/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<!-- Dependencies -->
+		<link rel="stylesheet" href="/js/lib/leaflet-1.2.0/leaflet.css" />
+		<script type="text/javascript" src="/js/lib/leaflet-1.2.0/leaflet.js"></script>
+		<script type="text/javascript" src="/js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="/js/lib/leaflet-providers/leaflet-providers.js"></script>
+		<script type="text/javascript" src="/js/lib/leaflet-fullHash/leaflet-fullHash.js"></script>
+		<script type="text/javascript" src="/js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.js"></script>
+		<link rel="stylesheet" href="/js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.css" />
+		<link rel="stylesheet" href="/js/lib/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<script src="/js/lib/js-cookie/js.cookie.js"></script>
+		<script src="/js/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+		<script src="/js/lib/vex-js/4.0.1/js/vex.combined.min.js"></script>
+		<link rel="stylesheet" href="/js/lib/vex-js/4.0.1/css/vex.min.css" />
+		<link rel="stylesheet" href="/js/lib/vex-js/4.0.1/css/vex-theme-plain.min.css" />
+		
+		<!-- LayerViewer library, providing the application logic -->
+		<script type="text/javascript" src="/js/lib/Leaflet.LayerViewer/src/Leaflet.LayerViewer.js"></script>
+		<link rel="stylesheet" type="text/css" href="/js/lib/Leaflet.LayerViewer/src/Leaflet.LayerViewer.css" />
+		<script type="text/javascript" src="/js/lib/Leaflet.LayerViewer/lib/geocoder.js"></script>
 		
 		<!-- CyIPT web application -->
-		<script src="../js/map.js"></script>
-		<link rel="stylesheet" href="../css/main.css" />
-		<link rel="stylesheet" href="../css/fonts.css" />
+		<script src="/js/cyipt.js"></script>
+		<link rel="stylesheet" href="/css/main.css" />
+		<link rel="stylesheet" href="/css/fonts.css" />
 		<script type="text/javascript">
   			$(function() {
-  				cyipt.initialise();
+				var config = {
+					baseUrl: '/map/',
+					apiKey: 'c047ed46f7b50b18',
+				};
+  				cyipt.initialise(config);
   			});
 		</script>
    		
@@ -28,8 +43,12 @@
 	<body>
 		
 		<header>
-			<div id="logo"><img src="../images/logo_small.png" alt="CyIPT logo" /></div>
-			<h1>Cycling Infrastructure Prioritisation Toolkit (CyIPT)</h1>
+			<div id="logo"><a href="/map/"><img src="/images/logo_small.png" alt="CyIPT logo" /></a></div>
+			<ul id="menu">
+				<li><a href="#about">About</a></li>
+				<li><a href="#contacts">Contacts</a></li>
+			</ul>
+			<h1><a href="/map/">Cycling Infrastructure Prioritisation Toolkit (CyIPT)</a></h1>
 			<p>A DfT-funded research project at the University of Leeds</p>
 		</header>
 
@@ -37,27 +56,23 @@
 			<nav>
 				
 				<p>Note: CyIPT is a tool to aid decision-making, not to make the decisions for you.</p>
-				
-  <button class="accordion">Recommended Infrastructure <input type="checkbox" id="data-recommended" value="0"></button>
-    <div class="panel">
-      <p>Source: CyIPT</p>
-      <table>
-	<tr><td><div class="legend CycleStreet"></div></td><td>Cycle street</td></tr>
-	<tr><td><div class="legend CycleLanes"></div></td><td>Cycle lanes</td></tr>
-	<tr><td><div class="legend LigthSeg"></div></td><td>Cycle Lanes with light segregation</td></tr>
-	<tr><td><div class="legend Stepped"></div></td><td>Stepped (hybrid) cycle tracks</td></tr>
-	<tr><td><div class="legend SegregatedTrack"></div></td><td>Segregated cycle track</td></tr>
-	<tr><td><div class="legend CycleLanePath"></div></td><td>Cycle lane on path</td></tr>
-      </table>
-    </div>
 
 
-  <button class="accordion">Schemes<input type="checkbox" id="data-schemes" value="0"></button>
-    <div class="panel">
-      <p>Grouping of the Recommended Infrastructure into fundable schemes</p>
-      <p>Costs Estimates:</p>
-      <p>
-      <select id="schemes-cost-from" name="schemes-cost-from">
+<div id="selector">
+<form id="data">
+<div id="sections">
+
+
+<!--
+
+<div id="accordion">
+	
+	<h3 title="Grouping of the Recommended Infrastructure into fundable schemes"><input type="checkbox" id="show_schemes" /> Schemes</h3>
+	<div id="schemes" class="filters">
+		<p>Grouping of the Recommended Infrastructure into fundable schemes</p>
+		<p>Costs Estimates:</p>
+		<p>
+      <select name="costfrom">
           <option value=1 selected="selected">Any</option>
           <option value=50000>£50,000</option>
           <option value=100000>£100,000</option>
@@ -76,7 +91,74 @@
           <option value=10000000>£10,000,000</option>
       </select>
       to
-      <select id="schemes-cost-to" name="schemes-cost-to">
+      <select name="costto">
+          <option value=50000>£50,000</option>
+          <option value=100000>£100,000</option>
+          <option value=250000>£250,000</option>
+          <option value=500000>£500,000</option>
+          <option value=750000>£750,000</option>
+          <option value=1000000>£1,000,000</option>
+          <option value=2000000>£2,000,000</option>
+          <option value=3000000>£3,000,000</option>
+          <option value=4000000>£4,000,000</option>
+          <option value=5000000>£5,000,000</option>
+          <option value=6000000>£6,000,000</option>
+          <option value=7000000>£7,000,000</option>
+          <option value=8000000>£8,000,000</option>
+          <option value=9000000>£9,000,000</option>
+          <option value=10000000>£10,000,000</option>
+          <option value=999999999 selected="selected">Any</option>
+      </select>
+      </p>
+      <p>Source: CyIPT</p>
+      <p><div class="legend CycleStreet"></div> Cycle Street</p>
+      <p><div class="legend CycleLanes"></div> Cycle Lanes</p>
+      <p><div class="legend LigthSeg"></div> Cycle Lanes with light segregation</p>
+      <p><div class="legend Stepped"></div> Stepped Cycle Tracks</p>
+      <p><div class="legend SegregatedTrack"></div> Segregated Cycle Track</p>
+      <p><div class="legend CycleLanePath"></div> Cycle Lane on Path</p>
+      <p><div class="legend SegregatedPath"></div> Segregated Cycle Track on Path</p>
+	</div>
+	
+	<h3 title="Existing cycle infrastructure, providing a baseline for improvement">Existing infrastructure</h3>
+	<p>Content</p>
+	
+	
+	
+</div>
+
+<br />
+<br />
+<br />
+
+-->
+
+
+  <button class="accordion"><span title="Our recommendation for schemes, which group the proposals for recommended cycle infrastructure together.">Schemes <input type="checkbox" id="show_schemes" /></span></button>
+    <div id="schemes" class="panel filters">
+      <p>Grouping of the Recommended Infrastructure into fundable schemes</p>
+      <p>Costs Estimates:</p>
+      <p>
+      <select name="costfrom">
+          <option value=1 selected="selected">Any</option>
+          <option value=50000>£50,000</option>
+          <option value=100000>£100,000</option>
+          <option value=250000>£250,000</option>
+          <option value=500000>£500,000</option>
+          <option value=750000>£750,000</option>
+          <option value=1000000>£1,000,000</option>
+          <option value=2000000>£2,000,000</option>
+          <option value=3000000>£3,000,000</option>
+          <option value=4000000>£4,000,000</option>
+          <option value=5000000>£5,000,000</option>
+          <option value=6000000>£6,000,000</option>
+          <option value=7000000>£7,000,000</option>
+          <option value=8000000>£8,000,000</option>
+          <option value=9000000>£9,000,000</option>
+          <option value=10000000>£10,000,000</option>
+      </select>
+      to
+      <select name="costto">
           <option value=50000>£50,000</option>
           <option value=100000>£100,000</option>
           <option value=250000>£250,000</option>
@@ -105,13 +187,27 @@
       <p><div class="legend SegregatedPath"></div> Segregated Cycle Track on Path</p>
     </div>
 
-  <button class="accordion">Existing Infrastructure<input type="checkbox" id="data-existing" value="0"></button>
+  <button class="accordion"><span title="Recommended cycle infrastructure, based on our analysis of all the factors below.">Recommended infrastructure <input type="checkbox" id="show_recommended" /></span></button>
+    <div id="recommended" class="panel filters">
+      <p>Source: CyIPT</p>
+      <table>
+	<tr><td><div class="legend CycleStreet"></div></td><td>Cycle street</td></tr>
+	<tr><td><div class="legend CycleLanes"></div></td><td>Cycle lanes</td></tr>
+	<tr><td><div class="legend LigthSeg"></div></td><td>Cycle Lanes with light segregation</td></tr>
+	<tr><td><div class="legend Stepped"></div></td><td>Stepped (hybrid) cycle tracks</td></tr>
+	<tr><td><div class="legend SegregatedTrack"></div></td><td>Segregated cycle track</td></tr>
+	<tr><td><div class="legend CycleLanePath"></div></td><td>Cycle lane on path</td></tr>
+      </table>
+    </div>
+
+
+  <button class="accordion"><span title="Existing cycle infrastructure, providing a baseline for improvement.">Existing infrastructure <input type="checkbox" id="show_existing" /></span></button>
     <div class="panel">
       <p>Source: CyIPT</p>
     </div>
 
-  <button class="accordion">Road Width<input type="checkbox" id="data-width" value="0"> </button>
-    <div class="panel">
+  <button class="accordion"><span title="Calculations of the width of roads/paths, which helps determine the potential space available for cycle infrastructure.">Road widths <input type="checkbox" id="show_width" /></span></button>
+    <div id="width" class="panel filters">
       <select id="widthlayer" name="widthlayer">
           <option value="road" selected="selected">Road Only</option>
           <option value="path">Road and Roadside</option>
@@ -130,8 +226,8 @@
 
     </div>
 
-  <button class="accordion">Propensity to Cycle Tool <input type="checkbox" id="data-pct" value="0"> </button>
-    <div class="panel">
+  <button class="accordion"><span title="Data from the DfT-funded Propensity to Cycle Tool (pct.bike).">Propensity to Cycle Tool <input type="checkbox" id="show_pct" /></span></button>
+    <div id="pct" class="panel filters">
       <select id="pctlayer" name="pctlayer">
           <option value="pctcensus" selected="selected">Census 2011</option>
           <option value="pctgov">Government Target</option>
@@ -140,29 +236,24 @@
           <option value="pctebike">Ebikes</option>
       </select>
 
-      <img src="../images/pct-scale.png" alt="PCT Scale">
+      <img src="/images/pct-scale.png" alt="PCT Scale">
       <br>
       <p>Note: Zoom in for smaller flows</p>
       <p>Source: PCT</p>
       <p>Analysis By: CyIPT</p>
     </div>
 
-  <button class="accordion">Traffic Counts  </button>
+  <button class="accordion"><span title="Traffic counts, from official DfT statistics, allocated to each road.">Traffic counts <input type="checkbox" id="show_traffic" /></span></button>
     <div class="panel">
-      <p>Simple <input type="checkbox" id="data-traffic" value="0"> </p>
-      <p>Source: BikeData</p>
-      <p>Complex <input type="checkbox" id="data-trafficosm" value="0"> </p>
       <p>This layer applies DfT point traffic counts to the road network</p>
       <p>Source: DfT</p>
       <p>Analysis By: CyIPT</p>
     </div>
 
-  <button class="accordion">Collisions </button>
-    <div class="panel">
-      <p>BikeData Version <input type="checkbox" id="data-collisions" value="0"></p>
-      <p>CyIPT: Points Version <input type="checkbox" id="data-collisionscyipt" value="0"></p>
+  <button class="accordion"><span title="DfT collision data, from STATS19.">Collisions <input type="checkbox" id="show_collisions" /></span></button>
+    <div id="collisions" class="panel filters">
       <p>Years:
-      <select id="collisions-year-from" name="collisions-year-from">
+      <select name="yearfrom">
           <option value=1985 selected="selected">1985</option>
           <option value=1986>1986</option>
           <option value=1987>1987</option>
@@ -196,7 +287,7 @@
           <option value=2015>2015</option>
       </select>
       to
-      <select id="collisions-year-to" name="collisions-year-to">
+      <select name="yearto">
           <option value=1985>1985</option>
           <option value=1986>1986</option>
           <option value=1987>1987</option>
@@ -230,21 +321,38 @@
           <option value=2015 selected="selected">2015</option>
       </select>
       </p>
-      <p> Severity: <select id="collisions-severity" name="collisions-severity">
-          <option value=1 selected="selected">Fatal</option>
-          <option value=2>Serious</option>
-          <option value=3>Slight</option>
+      <p>Severity: <select name="severity">
+          <option value="fatal" selected="selected">Fatal</option>
+          <option value="serious">Serious</option>
+          <option value="slight">Slight</option>
       </select></p>
 
       <p>Source: DfT / STATS19</p>
     </div>
+
+</div>
+</form>
+</div>
+
 			</nav>
 
+			<div id="geocoder">
+				<input type="text" name="location" autocomplete="off" placeholder="Search locations and move map" tabindex="1" spellcheck="false" />
+			</div>
+			
 			<div id="map"></div>
+			
+			<div id="about">
+				<p>More details about the CyIPT project will be here shortly.</p>
+			</div>
+			
+			<div id="contacts">
+				<p>You can contact us by e-mail at info<span>&#64;</span>cyipt.bike.</p>
+			</div>
 		</main>
 		
 		<footer>
-			<p>University of Leeds, with project partners CycleStreets, University of the West of England, and Phil Jones Associates &nbsp;||&nbsp; Funded by the UK Department for Transport &nbsp;||&nbsp; <a href="https://github.com/cyipt/">Open source, open data</a></p>
+			<p>University of Leeds, with project partners: CycleStreets, University of the West of England, and Phil Jones Associates &nbsp;||&nbsp; Funded by the UK Department for Transport &nbsp;||&nbsp; <a href="https://github.com/cyipt/">Open source, open data</a></p>
 		</footer>
 
 	</body>

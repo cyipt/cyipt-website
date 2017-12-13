@@ -38,12 +38,12 @@ class cyiptModel
 	{
 		# Base values
 		$fields = array (
-			'id',
-			'Recommended',
+			// 'id',
+			'recommended',
 		);
 		$constraints = array (
 			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
-			"Recommended != 'None'",
+			"recommended != 'None'",
 		);
 		$parameters = $this->bbox;
 		$limit = false;
@@ -119,8 +119,8 @@ class cyiptModel
 		
 		# Base values
 		$fields = array (
-			'idGlobal',
-			'infratype',
+			// 'idGlobal AS id',
+			'infratype AS type',
 			'CAST(cost AS int)',
 			'ST_AsGeoJSON(geotext) AS geometry',
 		);
@@ -186,7 +186,13 @@ class cyiptModel
 	{
 		# Base values
 		$fields = array (
-			'roads.id',
+			// 'roads.id',
+			'name',
+			'region',
+			// 'existing AS description',
+			'roadtypes.cyclewayleft',
+			'roadtypes.cyclewayright',
+			#!# This is used only for colouring - ideally should not expose this
 			"CONCAT(roadtypes.cyclewayleft,' ',roadtypes.cyclewayright) AS existing",
 		);
 		$constraints = array (
@@ -254,7 +260,9 @@ class cyiptModel
 	{
 		# Base values
 		$fields = array (
-			'id',
+			// 'id',
+			'name',
+			'region',
 		);
 		$constraints = array (
 			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
@@ -342,8 +350,8 @@ class cyiptModel
 		
 		# Base values
 		$fields = array (
-			'id',
-			"{$layer} AS ncycles"
+			// 'id',
+			"{$layer} AS cycles"
 		);
 		$constraints = array (
 			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
@@ -415,8 +423,8 @@ class cyiptModel
 	{
 		# Base values
 		$fields = array (
-			'id',
-			'aadt',
+			// 'id',
+			'aadt AS daily_total',
 		);
 		$constraints = array (
 			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
@@ -493,16 +501,18 @@ class cyiptModel
 			$error = 'The start year must not be after the finish year.';
 			return false;
 		}
-		if (!isSet ($this->get['severity']) || !is_numeric ($this->get['severity']) || !in_array ($this->get['severity'], array ("1", "2", "3"), true)) {
+		$severityCodes = array ('fatal' => 1, 'serious' => 2, 'slight' => 3);
+		if (!isSet ($this->get['severity']) || !array_key_exists ($this->get['severity'], $severityCodes)) {
 			$error = 'A valid severity value must be supplied.';
 			return false;
 		}
+		$severity = $severityCodes[$this->get['severity']];
 		
 		# Base values
 		$fields = array (
-			'AccRefGlobal',
-			'DateTime',
-			'severity',
+			'AccRefGlobal AS id',
+			'DateTime AS datetime',
+			"(CASE severity WHEN 1 then 'fatal' WHEN 2 then 'serious' WHEN 3 then 'slight' END) AS severity",
 			'ST_AsGeoJSON(geotext) AS geometry',
 		);
 		$constraints = array (
@@ -513,7 +523,7 @@ class cyiptModel
 		$parameters = $this->bbox;
 		$parameters['yearfrom'] = $this->get['yearfrom'] . '-01-01 00:00:00';
 		$parameters['yearto']   = $this->get['yearto']   . '-12-31 23:59:59';
-		$parameters['severity'] = $this->get['severity'];
+		$parameters['severity'] = $severity;
 		$limit = 500;
 		
 		# Return the model

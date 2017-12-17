@@ -44,6 +44,10 @@ var cyipt = (function ($) {
 		// Drawing
 		enableDrawing: false,
 		
+		// Region switcher
+		regionsFile: '/regions.geojson',
+		regionsField: 'region_name',
+		
 		// Pages
 		pages: [
 			'about',

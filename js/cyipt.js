@@ -54,6 +54,9 @@ var cyipt = (function ($) {
 			'contacts'
 		],
 		
+		// Password protection
+		password: false,
+		
 		// Tileserver URLs, each as [path, options, label]
 		tileUrls: {
 			grayscale: [

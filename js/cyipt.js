@@ -89,6 +89,8 @@ var cyipt = (function ($) {
 		
 		schemes: {
 			apiCall: '/v1/schemes.json',
+			name: 'Schemes',
+			description: 'Our recommendation for schemes, which group the proposals for recommended cycle infrastructure together.',
 			lineColourField: 'type',
 			lineColourStops: [
 				['Cycle Lanes', '#ff0000'],
@@ -99,11 +101,14 @@ var cyipt = (function ($) {
 				['Segregated Cycle Track on Path', '#a020f0'],
 				['Segregated Cycle Track', '#ffc400'],
 				['None', '#cdcdcd']
-			]
+			],
+			intervals: true
 		},
 		
 		recommended: {
 			apiCall: '/v1/recommended.json',
+			name: 'Recommended infrastructure',
+			description: 'Recommended cycle infrastructure, based on our analysis of all the other factors listed.',
 			lineColourField: 'recommended',
 			lineColourStops: [
 				['Cycle Lanes', '#ff0000'],
@@ -114,11 +119,14 @@ var cyipt = (function ($) {
 				['Segregated Cycle Track on Path', '#a020f0'],
 				['Segregated Cycle Track', '#ffc400'],
 				['None', '#cdcdcd']
-			]
+			],
+			intervals: true
 		},
 		
 		existing: {
 			apiCall: '/v1/existing.json',
+			name: 'Existing infrastructure',
+			description: 'Existing cycle infrastructure, providing a baseline for improvement.',
 			lineColourField: 'existing',
 			lineColourStops: [
 				['no lane', '#fdae61'],
@@ -138,11 +146,14 @@ var cyipt = (function ($) {
 				['lane track', '#fade5b'],
 				['no no', '#215cd2'],
 				['Not Applicable no', '#215cd2']
-			]
+			],
+			intervals: true
 		},
 		
 		width: {
 			apiCall: '/v1/width.json',
+			name: 'Road widths',
+			description: 'Calculations of the width of roads/paths, which helps determine the potential space available for cycle infrastructure.',
 			lineColourField: 'width',
 			lineColourStops: [
 				[14, '#4575b4'],
@@ -153,11 +164,23 @@ var cyipt = (function ($) {
 				[4, '#fdae61'],
 				[2, '#f46d43'],
 				[0, '#d73027'],
+			],
+			intervals: [
+				['14+ m', '#4575b4'],
+				['12-14 m', '#74add1'],
+				['10-12 m', '#abd9e9'],
+				['8-10 m', '#e0f3f8'],
+				['6-8 m', '#fee090'],
+				['4-6 m ', '#fdae61'],
+				['2-4 m', '#f46d43'],
+				['0-2 m', '#d73027'],
 			]
 		},
 		
 		pct: {
 			apiCall: '/v1/pct.json',
+			name: 'Propensity to Cycle Tool',
+			description: 'Data from the DfT-funded Propensity to Cycle Tool (pct.bike).',
 			lineColourField: 'cycles',
 			lineColourStops: [
 				[2000, '#fe7fe1'],
@@ -168,11 +191,14 @@ var cyipt = (function ($) {
 				[50, '#d6fe7f'],
 				[10, '#fefe94'],
 				[0, '#cdcdcd']
-			]
+			],
+			intervals: 'range'
 		},
 		
 		traffic: {
 			apiCall: '/v1/traffic.json',
+			name: 'Traffic counts',
+			description: 'Traffic counts, from official DfT statistics, allocated to each road.',
 			lineColourField: 'daily_total',
 			lineColourStops: [
 				[40000, '#b2182b'],
@@ -181,11 +207,14 @@ var cyipt = (function ($) {
 				[5000, '#d1e5f0'],
 				[2000, '#67a9cf'],
 				[0, '#2166ac']
-			]
+			],
+			intervals: 'range'
 		},
 		
 		collisions: {
-			apiCall: '/v1/collisions.json'
+			apiCall: '/v1/collisions.json',
+			name: 'Collisions',
+			description: 'DfT collision data, from STATS19.'
 			/*
 			iconField: 'severity',
 			icons: {

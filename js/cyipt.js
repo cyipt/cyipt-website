@@ -90,55 +90,55 @@ var cyipt = (function ($) {
 		schemes: {
 			apiCall: '/v1/schemes.json',
 			lineColourField: 'type',
-			lineColourStops: {
-				'Cycle Lanes': '#ff0000',
-				'Cycle Lanes with light segregation': '#7f7ffe',
-				'Cycle Street': '#7fe500',
-				'Cycle Lane on Path': '#96d6fd',
-				'Stepped Cycle Tracks': '#fade5b',
-				'Segregated Cycle Track on Path': '#a020f0',
-				'Segregated Cycle Track': '#ffc400',
-				'None': '#cdcdcd'
-			}
+			lineColourStops: [
+				['Cycle Lanes', '#ff0000'],
+				['Cycle Lanes with light segregation', '#7f7ffe'],
+				['Cycle Street', '#7fe500'],
+				['Cycle Lane on Path', '#96d6fd'],
+				['Stepped Cycle Tracks', '#fade5b'],
+				['Segregated Cycle Track on Path', '#a020f0'],
+				['Segregated Cycle Track', '#ffc400'],
+				['None', '#cdcdcd']
+			]
 		},
 		
 		recommended: {
 			apiCall: '/v1/recommended.json',
 			lineColourField: 'recommended',
-			lineColourStops: {
-				'Cycle Lanes': '#ff0000',
-				'Cycle Lanes with light segregation': '#7f7ffe',
-				'Cycle Street': '#7fe500',
-				'Cycle Lane on Path': '#96d6fd',
-				'Stepped Cycle Tracks': '#fade5b',
-				'Segregated Cycle Track on Path': '#a020f0',
-				'Segregated Cycle Track': '#ffc400',
-				'None': '#cdcdcd'
-			}
+			lineColourStops: [
+				['Cycle Lanes', '#ff0000'],
+				['Cycle Lanes with light segregation', '#7f7ffe'],
+				['Cycle Street', '#7fe500'],
+				['Cycle Lane on Path', '#96d6fd'],
+				['Stepped Cycle Tracks', '#fade5b'],
+				['Segregated Cycle Track on Path', '#a020f0'],
+				['Segregated Cycle Track', '#ffc400'],
+				['None', '#cdcdcd']
+			]
 		},
 		
 		existing: {
 			apiCall: '/v1/existing.json',
 			lineColourField: 'existing',
-			lineColourStops: {
-				'no lane': '#fdae61', 
-				'share_busway no': '#96d6fd', 
-				'lane no': '#fdae61', 
-				'share_busway lane': '#f46d43', 
-				'lane lane': '#ff0000', 
-				'track track': '#ffc400', 
-				'no share_busway': '#96d6fd', 
-				'no track': '#fee090', 
-				'track no': '#fee090', 
-				'lane share_busway': '#f46d43', 
-				'track share_busway': '#fade5b', 
-				'share_busway share_busway': '#7f7ffe', 
-				'share_busway track': '#fade5b', 
-				'track lane': '#fade5b', 
-				'lane track': '#fade5b', 
-				'no no': '#215cd2', 
-				'Not Applicable no': '#215cd2'
-			}
+			lineColourStops: [
+				['no lane', '#fdae61'],
+				['share_busway no', '#96d6fd'],
+				['lane no', '#fdae61'],
+				['share_busway lane', '#f46d43'],
+				['lane lane', '#ff0000'],
+				['track track', '#ffc400'],
+				['no share_busway', '#96d6fd'],
+				['no track', '#fee090'],
+				['track no', '#fee090'],
+				['lane share_busway', '#f46d43'],
+				['track share_busway', '#fade5b'],
+				['share_busway share_busway', '#7f7ffe'],
+				['share_busway track', '#fade5b'],
+				['track lane', '#fade5b'],
+				['lane track', '#fade5b'],
+				['no no', '#215cd2'],
+				['Not Applicable no', '#215cd2']
+			]
 		},
 		
 		width: {

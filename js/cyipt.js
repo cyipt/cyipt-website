@@ -75,6 +75,11 @@ var cyipt = (function ($) {
 				{maxZoom: 19, attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'},
 				'Grayscale'
 			],
+			npct: [
+				'https://npttile.vs.mythic-beasts.com/olc/{z}/{x}/{-y}.png',
+				{maxZoom: 15, attribution: 'Propensity to Cycle Tool &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'},
+				'PCT LSOA route network'
+			],
 			osopendata: [
 				'https://{s}.tile.cyclestreets.net/osopendata/{z}/{x}/{y}.png',
 				{maxZoom: 19, attribution: 'Contains Ordnance Survey data &copy; Crown copyright and database right 2010'},

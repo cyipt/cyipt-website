@@ -39,6 +39,7 @@ nav #accordion div.filters {
     overflow: hidden;	/* i.e. hidden by default */
     transition: max-height 0.2s ease-out;
 }
+nav #accordion div.filters p:first-child {margin-top: 0;}
 nav #accordion h3:after {
     content: '\02795'; /* Unicode character for 'plus' sign (+) */
     font-size: 13px;

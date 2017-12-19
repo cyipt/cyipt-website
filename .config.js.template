@@ -1,0 +1,5 @@
+
+// CyIPT application config
+var config = {
+	apiKey: 'CYCLESTREETS_GEOCODER_API_KEY'
+};

@@ -253,30 +253,12 @@ var cyipt = (function ($) {
 		},
 		
 		
-		// Accordion UI
+		// Accordion UI; does not use jQuery UI accordion, as that is not compatible with workable checkbox handling
 		accordion: function ()
 		{
-/*
-			$('#accordion').accordion({
-				collapsible: true,
-				active: false,
-				icons: false
-			});
-			
-			$('#accordion').find('input[type="checkbox"]').on('click', function(e) {
-				setTimeout (function() {
-					this.checked = !this.checked;
-				}.bind(this), 100);
-				e.preventDefault();
-			});
-			
-			return;
-*/
-			
-			var acc = document.getElementsByClassName('accordion');
-			var i;
-			for (i = 0; i < acc.length; i++) {
-				acc[i].onclick = function () {
+			var accordion = $('#sections h3');
+			$.each (accordion, function (index, element) {
+				$(element).click (function () {
 					this.classList.toggle ('active');
 					var panel = this.nextElementSibling;
 					if (panel.style.maxHeight) {
@@ -284,13 +266,8 @@ var cyipt = (function ($) {
 					} else {
 						panel.style.maxHeight = panel.scrollHeight + 'px';
 					}
-					
-					// Stop propagation
-					$('form#data input[type="checkbox"]').click(function(e) {
-						e.stopPropagation();
-					});
-				}
-			}
+				});
+			});
 		}
 	};
 	

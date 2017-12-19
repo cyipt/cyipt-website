@@ -27,65 +27,27 @@ footer p {margin: 0; padding: 7px 10px 0 15px; font-size: 0.84em; text-align: ri
 footer p a {color: gray; text-decoration: none;}
 
 /* Nav */
-nav > p {margin: 15px 15px 25px;}
+nav > p {margin: 15px;}
 
 /* Accordion */
-.ui-accordion .ui-accordion-content {padding: 0 15px;}
-
-
-
-#sidebar{
-position: absolute;
-top: 60px;
-bottom: 5px;
-left: 0;
-width: 250px; /*Width of frame div*/
-height: 90%;
-overflow: hidden; /*Disable scrollbars. Set to "scroll" to enable*/
-background: white;
-color: black;
-}
-
-
-/* Style the buttons that are used to open and close the accordion panel */
-button.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-button.accordion.active, button.accordion:hover {
-    background-color: #ddd;
-}
-
-/* Style the accordion panel. Note: hidden by default */
-div.panel {
-    padding: 0 18px;
+nav #accordion {padding: 10px 15px 15px;}
+nav #accordion h3 {margin: 0 0 15px; padding: 5px 10px 5px 5px; background-color: #eee; border-radius: 4px; cursor: default;}
+nav #accordion div.filters {
+    padding: 0 10px;
     background-color: white;
     max-height: 0;
-    overflow: hidden;
+    overflow: hidden;	/* i.e. hidden by default */
     transition: max-height 0.2s ease-out;
 }
-
-div.panel table td {vertical-align: top; font-size: 0.75em;}
-
-button.accordion:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
+nav #accordion h3:after {
+    content: '\02795'; /* Unicode character for 'plus' sign (+) */
     font-size: 13px;
     color: #777;
     float: right;
     margin-left: 5px;
 }
-
-button.accordion.active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
+nav #accordion h3.active:after {
+    content: "\2796"; /* Unicode character for 'minus' sign (-) */
 }
 
 /* Geocoder */

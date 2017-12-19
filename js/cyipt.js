@@ -38,7 +38,8 @@ var cyipt = (function ($) {
 		
 		// Standard styling
 		style: {
-			weight: 6
+			weight: 6,
+			opacity: 0.7
 		},
 		
 		// Drawing

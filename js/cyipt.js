@@ -20,7 +20,7 @@ var cyipt = (function ($) {
 			longitude: -2.5738,
 			zoom: 13
 		},
-		defaultTileLayer: 'grayscale',
+		defaultTileLayer: 'mapnik',
 		
 		// Default layers ticked
 		defaultLayers: ['recommended'],
@@ -59,20 +59,20 @@ var cyipt = (function ($) {
 		
 		// Tileserver URLs, each as [path, options, label]
 		tileUrls: {
-			grayscale: [
-				'https://korona.geog.uni-heidelberg.de/tiles/roadsg/x={x}&y={y}&z={z}',
-				{maxZoom: 19, attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'},
-				'Grayscale'
+			mapnik: [
+				'https://{s}.tile.cyclestreets.net/mapnik/{z}/{x}/{y}.png',
+				{maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'},
+				'OpenStreetMap style'
 			],
 			opencyclemap: [
 				'https://{s}.tile.cyclestreets.net/opencyclemap/{z}/{x}/{y}@2x.png',
 				{maxZoom: 21, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors; <a href="https://www.thunderforest.com/">Thunderforest</a>'},
 				'OpenCycleMap'
 			],
-			mapnik: [
-				'https://{s}.tile.cyclestreets.net/mapnik/{z}/{x}/{y}.png',
-				{maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'},
-				'OpenStreetMap style'
+			grayscale: [
+				'https://korona.geog.uni-heidelberg.de/tiles/roadsg/x={x}&y={y}&z={z}',
+				{maxZoom: 19, attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'},
+				'Grayscale'
 			],
 			osopendata: [
 				'https://{s}.tile.cyclestreets.net/osopendata/{z}/{x}/{y}.png',

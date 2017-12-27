@@ -40,14 +40,15 @@ nav #accordion div.filters {
     transition: max-height 0.2s ease-out;
 }
 nav #accordion div.filters p:first-child {margin-top: 0;}
-nav #accordion h3:after {
+nav #accordion h3:before {
     content: '\02795'; /* Unicode character for 'plus' sign (+) */
     font-size: 13px;
     color: #777;
     float: right;
-    margin-left: 5px;
+    margin-top: 2px;
+    margin-left: 8px;
 }
-nav #accordion h3.active:after {
+nav #accordion h3.active:before {
     content: "\2796"; /* Unicode character for 'minus' sign (-) */
 }
 

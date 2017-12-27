@@ -51,6 +51,8 @@ nav #accordion h3.active:after {
     content: "\2796"; /* Unicode character for 'minus' sign (-) */
 }
 
+nav h3 a {font-size: 0.73em; margin-left: 10px;}
+
 /* Geocoder */
 #geocoder {left: 310px; top: 12px;}
 

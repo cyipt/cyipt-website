@@ -42,6 +42,9 @@ var cyipt = (function ($) {
 			opacity: 0.7
 		},
 		
+		// Enable hover
+		hover: true,
+		
 		// Drawing
 		enableDrawing: false,
 		
@@ -90,7 +93,7 @@ var cyipt = (function ($) {
 				{maxZoom: 19, attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'},
 				'Satellite'
 			]
-		},
+		}
 	};
 	
 	// Layer definitions

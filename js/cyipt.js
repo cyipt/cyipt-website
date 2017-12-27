@@ -160,7 +160,8 @@ var cyipt = (function ($) {
 				['Not Applicable no', '#215cd2']
 			],
 			intervals: true,
-			popupHtml: '<table>'
+			popupHtml: '<p>{%osmeditlink}</p>'
+				+ '<table>'
 				+ '<tr><td>Name:</td><td><strong>{properties.name}</strong></td></tr>'
 				+ '<tr><td>Region:</td><td><strong>{properties.region}</strong></td></tr>'
 				+ '<tr><td>Cycleway on left?</td><td><strong>{properties.cyclewayleft}</strong></td></tr>'

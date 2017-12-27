@@ -124,7 +124,7 @@ class api
 		$html .= "\n<h1>CyIPT API documentation</h1>";
 		$html .= "\n<p>Welcome to the API for the CyIPT project.</p>";
 		$html .= "\n<p>Please note that this API is subject to change without notice.</p>";
-		$html .= "\n<p>Use <tt>.json</tt> to return GeoJSON, or <tt>.csv</tt> to return CSV. The examples below use the GeoJSON output format.</p>";
+		$html .= "\n<p>Use <tt>.json</tt> to return GeoJSON, or <tt>.csv</tt> (or <tt>.json</tt> with <tt>&amp;format=csv</tt>) to return CSV. The examples below use the GeoJSON output format.</p>";
 		
 		# Load the class
 		$cyiptModel = new cyiptModel (NULL, NULL, $_GET);

@@ -159,7 +159,14 @@ var cyipt = (function ($) {
 				['no no', '#215cd2'],
 				['Not Applicable no', '#215cd2']
 			],
-			intervals: true
+			intervals: true,
+			popupHtml: '<table>'
+				+ '<tr><td>Name:</td><td><strong>{properties.name}</strong></td></tr>'
+				+ '<tr><td>Region:</td><td><strong>{properties.region}</strong></td></tr>'
+				+ '<tr><td>Cycleway on left?</td><td><strong>{properties.cyclewayleft}</strong></td></tr>'
+				+ '<tr><td>Cycleway on right?</td><td><strong>{properties.cyclewayright}</strong></td></tr>'
+				+ '<tr><td>Existing infrastructure:</td><td><strong>{properties.existing}</strong></td></tr>'
+				+ '</table>'
 		},
 		
 		width: {

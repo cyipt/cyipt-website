@@ -51,6 +51,7 @@ nav #accordion h3:before {
 nav #accordion h3.active:before {
     content: "\2796"; /* Unicode character for 'minus' sign (-) */
 }
+nav .export {position: relative; top: -15px;}
 
 nav h3 a {font-size: 0.73em; margin-left: 10px;}
 

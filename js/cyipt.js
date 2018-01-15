@@ -48,6 +48,9 @@ var cyipt = (function ($) {
 		// Drawing
 		enableDrawing: false,
 		
+		// Enable map scale
+		enableScale: true,
+		
 		// Region switcher
 		regionsFile: '/regions.geojson',
 		regionsField: 'region_name',

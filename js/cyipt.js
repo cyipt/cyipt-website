@@ -61,6 +61,9 @@ var cyipt = (function ($) {
 			'contacts'
 		],
 		
+		// Beta switch
+		enableBetaSwitch: true,
+		
 		// Password protection
 		password: false,
 		

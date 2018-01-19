@@ -73,6 +73,11 @@ class api
 			return $this->error ($error);
 		}
 		
+		# Set beta if required
+		if (isSet ($_GET['beta']) && $_GET['beta'] == '1') {
+			return $this->cyiptModel->enableBetaMode ();
+		}
+		
 		# Get the model
 		$model = $this->cyiptModel->{$method} ($error);		// e.g. $this->cyiptModel->example ($error)
 		if ($error) {

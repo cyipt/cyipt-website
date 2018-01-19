@@ -3,6 +3,10 @@
 # CyIPT model
 class cyiptModel
 {
+	# Class properties
+	private $tablePrefix = false;
+	
+	
 	# Constructor
 	public function __construct ($bbox, $zoom, $get)
 	{
@@ -11,6 +15,13 @@ class cyiptModel
 		$this->zoom = $zoom;	// Validated
 		$this->get = $get;		// Unvalidated contents of $_GET, i.e. query string values
 		
+	}
+	
+	
+	# Beta mode
+	public function enableBetaMode ()
+	{
+		$this->tablePrefix = 'alt_';
 	}
 	
 	
@@ -71,7 +82,7 @@ class cyiptModel
 		
 		# Return the model
 		return array (
-			'table' => 'roads',
+			'table' => $this->tablePrefix . 'roads',
 			'fields' => $fields,
 			'constraints' => $constraints,
 			'parameters' => $parameters,
@@ -186,24 +197,24 @@ class cyiptModel
 	{
 		# Base values
 		$fields = array (
-			// 'roads.id',
+			// "{$this->tablePrefix}roads.id",
 			'name',
 			'region',
 			// 'existing AS description',
-			'roadtypes.cyclewayleft',
-			'roadtypes.cyclewayright',
+			"{$this->tablePrefix}roadtypes.cyclewayleft",
+			"{$this->tablePrefix}roadtypes.cyclewayright",
 			#!# This is used only for colouring - ideally should not expose this
-			"CONCAT(roadtypes.cyclewayleft,' ',roadtypes.cyclewayright) AS existing",
+			"CONCAT({$this->tablePrefix}roadtypes.cyclewayleft,' ',{$this->tablePrefix}roadtypes.cyclewayright) AS existing",
 		);
 		$constraints = array (
-			'roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
+			"{$this->tablePrefix}roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)",
 			"(
-				NOT (roadtypes.cyclewayleft = 'no' AND roadtypes.cyclewayright = 'no')
-			  	    OR roadtypes.roadtype = 'Cycleway'
-			  	    OR roadtypes.roadtype = 'Living Street'
-			  	    OR roadtypes.roadtype = 'Segregated Cycleway'
-			  	    OR roadtypes.roadtype = 'Segregated Shared Path'
-			  	    OR roadtypes.roadtype = 'Shared Path'
+				NOT ({$this->tablePrefix}roadtypes.cyclewayleft = 'no' AND {$this->tablePrefix}roadtypes.cyclewayright = 'no')
+			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Cycleway'
+			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Living Street'
+			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Segregated Cycleway'
+			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Segregated Shared Path'
+			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Shared Path'
 			 )",
 		);
 		$parameters = $this->bbox;
@@ -214,13 +225,13 @@ class cyiptModel
 			
 			# Near
 			case ($this->zoom >= 16):
-				$fields[] = 'ST_AsGeoJSON(roads.geotext) AS geometry';
+				$fields[] = "ST_AsGeoJSON({$this->tablePrefix}roads.geotext) AS geometry";
 				$limit = 2000;
 				break;
 				
 			# Far
 			case ($this->zoom >= 11 && $this->zoom <= 15):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(roads.geotext, 0.3)) AS geometry';
+				$fields[] = "ST_AsGeoJSON(ST_Simplify({$this->tablePrefix}roads.geotext, 0.3)) AS geometry";
 				$limit = 5000;
 				break;
 				
@@ -232,7 +243,7 @@ class cyiptModel
 		
 		# Return the model
 		return array (
-			'table' => 'roads INNER JOIN roadtypes ON roads.rtid = roadtypes.rtid',
+			'table' => "{$this->tablePrefix}roads INNER JOIN {$this->tablePrefix}roadtypes ON roads.rtid = {$this->tablePrefix}roadtypes.rtid",
 			'fields' => $fields,
 			'constraints' => $constraints,
 			'parameters' => $parameters,
@@ -307,7 +318,7 @@ class cyiptModel
 		
 		# Return the model
 		return array (
-			'table' => 'roads',
+			'table' => $this->tablePrefix . 'roads',
 			'fields' => $fields,
 			'constraints' => $constraints,
 			'parameters' => $parameters,
@@ -394,7 +405,7 @@ class cyiptModel
 		
 		# Return the model
 		return array (
-			'table' => 'roads',
+			'table' => $this->tablePrefix . 'roads',
 			'fields' => $fields,
 			'constraints' => $constraints,
 			'parameters' => $parameters,
@@ -456,7 +467,7 @@ class cyiptModel
 		
 		# Return the model
 		return array (
-			'table' => 'roads',
+			'table' => $this->tablePrefix . 'roads',
 			'fields' => $fields,
 			'constraints' => $constraints,
 			'parameters' => $parameters,

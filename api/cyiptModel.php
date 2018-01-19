@@ -167,7 +167,7 @@ class cyiptModel
 		
 		# Return the model
 		return array (
-			'table' => 'schemes',
+			'table' => $this->tablePrefix . 'schemes',
 			'fields' => $fields,
 			'constraints' => $constraints,
 			'parameters' => $parameters,

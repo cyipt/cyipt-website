@@ -62,7 +62,7 @@ var cyipt = (function ($) {
 		],
 		
 		// Beta switch
-		enableBetaSwitch: true,
+		enableBetaSwitch: 'Alpha',
 		
 		// Password protection
 		password: false,

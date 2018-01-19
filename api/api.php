@@ -75,7 +75,7 @@ class api
 		
 		# Set beta if required
 		if (isSet ($_GET['beta']) && $_GET['beta'] == '1') {
-			return $this->cyiptModel->enableBetaMode ();
+			$this->cyiptModel->enableBetaMode ();
 		}
 		
 		# Get the model

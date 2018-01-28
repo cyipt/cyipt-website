@@ -205,6 +205,7 @@ class cyiptModel
 			"{$this->tablePrefix}roadtypes.cyclewayright",
 			#!# This is used only for colouring - ideally should not expose this
 			"CONCAT({$this->tablePrefix}roadtypes.cyclewayleft,' ',{$this->tablePrefix}roadtypes.cyclewayright) AS existing",
+			'osmid',
 		);
 		$constraints = array (
 			"{$this->tablePrefix}roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)",

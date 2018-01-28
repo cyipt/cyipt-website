@@ -169,7 +169,7 @@ var cyipt = (function ($) {
 				['Not Applicable no', '#215cd2']
 			],
 			intervals: true,
-			popupHtml: '<p>{%osmeditlink}</p>'
+			popupHtml: '<p><a class="edit" target="_blank" href="https://www.openstreetmap.org/way/{properties.osmid}">Edit in OSM</a></p>'
 				+ '<table>'
 				+ '<tr><td>Name:</td><td><strong>{properties.name}</strong></td></tr>'
 				+ '<tr><td>Region:</td><td><strong>{properties.region}</strong></td></tr>'

@@ -16,9 +16,9 @@ var cyipt = (function ($) {
 		
 		// Initial lat/lon/zoom of map and tile layer
 		defaultLocation: {
-			latitude: 51.4573,
-			longitude: -2.5738,
-			zoom: 13
+			latitude: 53.690,
+			longitude: -2.142,
+			zoom: 6
 		},
 		defaultTileLayer: 'mapnik',
 		
@@ -54,6 +54,9 @@ var cyipt = (function ($) {
 		// Region switcher
 		regionsFile: '/regions.geojson',
 		regionsField: 'region_name',
+		
+		// Initial view of all regions; will use regionsFile
+		initialRegionsView: true,
 		
 		// Pages
 		pages: [

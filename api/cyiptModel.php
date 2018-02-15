@@ -529,19 +529,19 @@ class cyiptModel
 			# Near
 			case ($this->zoom >= 14 && $this->zoom <= 16):
 				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.1)) AS geometry';
-				$constraints[] = "{$layer} > 100";
+				$constraints[] = "{$layer} > 10";
 				break;
 
 			# Nearer
 			case ($this->zoom >= 11 && $this->zoom <= 13):
 				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.2)) AS geometry';
-				$constraints[] = "{$layer} > 500";
+				$constraints[] = "{$layer} > 50";
 				break;
 
 			# Far
 			case ($this->zoom <= 10):
 				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.3)) AS geometry';
-				$constraints[] = "{$layer} > 1000";
+				$constraints[] = "{$layer} > 100";
 				break;
 
 			# Other

@@ -207,6 +207,29 @@
 										</div>
 									</div>
 
+									<h3 title="Collisions on Road Network"><input type="checkbox" name="show[]" id="show_collisionsroad" /> Collisions Roads <a class="moredetails" data-field="collisionsroad" href="#">[?]</a></h3>
+									<div id="collisionsroad" class="filters">
+										<select id="collisionsroadlayer" name="collisionsroadlayer">
+											<option value="ncollisionsSlight" selected="selected">Slight Collisions</option>
+											<option value="ncollisionsSerious">Serious Collisions</option>
+											<option value="ncollisionsFatal">Fatal Collisions</option>
+											<option value="bikeCasSlight">Slight Bike Casulties</option>
+											<option value="bikeCasSerious">Serious Bike Casulties</option>
+											<option value="bikeCasFatal">Fatal Bike Casulties</option>
+										</select>
+										<p>Note: Zoom in for smaller flows</p>
+										<p>Source: DFT/Stats19</p>
+										<p>Analysis By: CyIPT</p>
+
+										<div class="export button">
+											<p>
+												Export:
+												<img class="csv" src="/js/lib/Leaflet.LayerViewer/images/page_excel.png" title="Export to CSV spreadsheet (for Excel)" />
+												<img class="geojson" src="/js/lib/Leaflet.LayerViewer/images/page_code.png" title="Export to GeoJSON (for GIS systems)" />
+											</p>
+										</div>
+									</div>
+
 									<h3 title="DfT collision data, from STATS19."><input type="checkbox" name="show[]" id="show_collisions" /> Collisions <a class="moredetails" data-field="collisions" href="#">[?]</a></h3>
 									<div id="collisions" class="filters">
 										<p>Years:

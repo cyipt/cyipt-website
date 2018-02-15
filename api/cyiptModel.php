@@ -487,6 +487,93 @@ class cyiptModel
 		);
 	}
 
+  # Collisions Roads
+	public function collisionroadsModel (&$error = false)
+	{
+		# Layer
+		$layers = array (
+			'ncollisionsSlight',
+			'ncollisionsSerious',
+			'ncollisionsFatal',
+			'bikeCasSlight',
+			'bikeCasSerious',
+			'bikeCasFatal'
+
+		);
+		if (!isSet ($this->get['collisionroadslayer']) || !in_array ($this->get['collisionroadslayer'], $layers)) {
+			$error = 'A valid layer must be supplied.';
+			return false;
+		}
+		$layer = $this->get['collisionroadslayer'];
+
+		# Base values
+		$fields = array (
+			// 'id',
+			"{$layer} AS ncollisions"
+		);
+		$constraints = array (
+			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
+		);
+		$parameters = $this->bbox;
+		$limit = 2000;
+
+		# Set filters based on zoom
+		switch (true) {
+
+			# Nearest
+			case ($this->zoom >= 17):
+				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
+				$constraints[] = "{$layer} > 0";
+				break;
+
+			# Near
+			case ($this->zoom >= 14 && $this->zoom <= 16):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.1)) AS geometry';
+				$constraints[] = "{$layer} > 100";
+				break;
+
+			# Nearer
+			case ($this->zoom >= 11 && $this->zoom <= 13):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.2)) AS geometry';
+				$constraints[] = "{$layer} > 500";
+				break;
+
+			# Far
+			case ($this->zoom <= 10):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.3)) AS geometry';
+				$constraints[] = "{$layer} > 1000";
+				break;
+
+			# Other
+			default:
+				$error = 'Please zoom in.';
+				return false;
+		}
+
+		# Return the model
+		return array (
+			'table' => $this->tablePrefix . 'roads',
+			'fields' => $fields,
+			'constraints' => $constraints,
+			'parameters' => $parameters,
+			'limit' => $limit,
+		);
+	}
+
+
+	# Documentation
+	public static function collisionsroadDocumentation ()
+	{
+		return array (
+			'name' => 'Collisions (Roads)',
+			'example' => '/api/v1/collisionroads.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&collisionroadslayer=ncollisionsSlight',
+			'fields' => array (
+				'bbox' => '%bbox',
+				'zoom' => '%zoom',
+				'pctlayer' => array ('type' => 'string', 'values' => 'ncollisionsSlight|ncollisionsSerious|ncollisionsFatal|bikeCasSlight|bikeCasSerious|bikeCasFatal', 'description' => 'Collisions (Roads)', ),
+			),
+		);
+	}
 
 	# Collisions
 	public function collisionsModel (&$error = false)

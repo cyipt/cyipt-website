@@ -187,7 +187,7 @@ var cyipt = (function ($) {
 			lineColourStops: [
 			  ['Missing Width Data', '#e5d0ff'],
 			  ['More than sufficient width', '#6dee09'],
-			  ['Approximately sufficient width', '#fff966'],
+			  ['Approximatly sufficient width', '#fff966'],
 			  ['Width Constrained', '#ff940e'],
 			  ['Insufficient width', '#ff0000'],
 				[14, '#4575b4'],

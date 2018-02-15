@@ -4,16 +4,16 @@
 /*global $, alert, console, window */
 
 var cyipt = (function ($) {
-	
+
 	'use strict';
-	
+
 	// Settings defaults
 	var _settings = {
-		
+
 		// API
 		apiBaseUrl: '/api',
 		apiKey: false,
-		
+
 		// Initial lat/lon/zoom of map and tile layer
 		defaultLocation: {
 			latitude: 53.690,
@@ -21,55 +21,55 @@ var cyipt = (function ($) {
 			zoom: 6
 		},
 		defaultTileLayer: 'mapnik',
-		
+
 		// Default layer(s) ticked
 		defaultLayers: ['schemes'],
-		
+
 		// Send zoom for all API calls
 		sendZoom: true,
-		
+
 		// Geocoder API URL; re-use of settings values represented as placeholders {%apiBaseUrl}, {%apiKey}, {%autocompleteBbox}, are supported
 		geocoderApiUrl: 'https://api.cyclestreets.net/v2/geocoder?key=c047ed46f7b50b18&bounded=1&bbox={%autocompleteBbox}',
-		
+
 		// First-run welcome message
 		firstRunMessageHtml: '<p>Welcome to CyIPT.</p>'
 			+ '<p>CyIPT is a tool which aims to provide an evidence-base for prioritisation of transport infrastructure that will get more people cycling.</p>'
 			+ '<p>Please note that this site is work-in-progress beta.</p>',
-		
+
 		// Standard styling
 		style: {
 			weight: 6,
 			opacity: 0.7
 		},
-		
+
 		// Enable hover
 		hover: true,
-		
+
 		// Drawing
 		enableDrawing: false,
-		
+
 		// Enable map scale
 		enableScale: true,
-		
+
 		// Region switcher
 		regionsFile: '/regions.geojson',
 		regionsField: 'region_name',
-		
+
 		// Initial view of all regions; will use regionsFile
 		initialRegionsView: true,
-		
+
 		// Pages
 		pages: [
 			'about',
 			'contacts'
 		],
-		
+
 		// Beta switch
 		enableBetaSwitch: 'Alpha',
-		
+
 		// Password protection
 		password: false,
-		
+
 		// Tileserver URLs, each as [path, options, label]
 		tileUrls: {
 			mapnik: [
@@ -104,10 +104,10 @@ var cyipt = (function ($) {
 			]
 		}
 	};
-	
+
 	// Layer definitions
 	var _layerConfig = {
-		
+
 		schemes: {
 			apiCall: '/v1/schemes.json',
 			name: 'Schemes',
@@ -125,7 +125,7 @@ var cyipt = (function ($) {
 			],
 			intervals: true
 		},
-		
+
 		recommended: {
 			apiCall: '/v1/recommended.json',
 			name: 'Recommended infrastructure',
@@ -143,7 +143,7 @@ var cyipt = (function ($) {
 			],
 			intervals: true
 		},
-		
+
 		existing: {
 			apiCall: '/v1/existing.json',
 			name: 'Existing infrastructure',
@@ -178,13 +178,18 @@ var cyipt = (function ($) {
 				+ '<tr><td>Existing infrastructure:</td><td><strong>{properties.existing}</strong></td></tr>'
 				+ '</table>'
 		},
-		
+
 		width: {
 			apiCall: '/v1/width.json',
 			name: 'Road widths',
 			description: 'Calculations of the width of roads/paths, which helps determine the potential space available for cycle infrastructure.',
 			lineColourField: 'width',
 			lineColourStops: [
+			  ['Missing Width Data', '#e5d0ff'],
+			  ['More than sufficient width', '#6dee09'],
+			  ['Approximately sufficient width', '#ccac00'],
+			  ['Width Constrained', '#ff940e'],
+			  ['Insufficient width', '#ff0000'],
 				[14, '#4575b4'],
 				[12, '#74add1'],
 				[10, '#abd9e9'],
@@ -195,6 +200,11 @@ var cyipt = (function ($) {
 				[0, '#d73027'],
 			],
 			intervals: [
+			  ['Missing Width Data', '#e5d0ff'],
+			  ['More than sufficient width', '#6dee09'],
+			  ['Approximately sufficient width', '#ccac00'],
+			  ['Width Constrained', '#ff940e'],
+			  ['Insufficient width', '#ff0000'],
 				['14+ m', '#4575b4'],
 				['12-14 m', '#74add1'],
 				['10-12 m', '#abd9e9'],
@@ -205,7 +215,7 @@ var cyipt = (function ($) {
 				['0-2 m', '#d73027'],
 			]
 		},
-		
+
 		pct: {
 			apiCall: '/v1/pct.json',
 			name: 'Propensity to Cycle Tool',
@@ -223,7 +233,7 @@ var cyipt = (function ($) {
 			],
 			intervals: 'range'
 		},
-		
+
 		traffic: {
 			apiCall: '/v1/traffic.json',
 			name: 'Traffic counts',
@@ -239,7 +249,7 @@ var cyipt = (function ($) {
 			],
 			intervals: 'range'
 		},
-		
+
 		collisions: {
 			apiCall: '/v1/collisions.json',
 			name: 'Collisions',
@@ -255,12 +265,12 @@ var cyipt = (function ($) {
 			*/
 		},
 	};
-	
-	
+
+
 	return {
-		
+
 	// Public functions
-		
+
 		// Main function
 		initialise: function (config)
 		{
@@ -270,15 +280,15 @@ var cyipt = (function ($) {
 					_settings[setting] = config[setting];
 				}
 			});
-			
+
 			// Enable accordion
 			cyipt.accordion ();
-			
+
 			// Run the layerviewer for these settings and layers
 			layerviewer.initialise (_settings, _layerConfig);
 		},
-		
-		
+
+
 		// Accordion UI; does not use jQuery UI accordion, as that is not compatible with workable checkbox handling
 		accordion: function ()
 		{
@@ -296,7 +306,7 @@ var cyipt = (function ($) {
 			});
 		}
 	};
-	
+
 } (jQuery));
 
 

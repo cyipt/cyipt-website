@@ -250,6 +250,24 @@ var cyipt = (function ($) {
 			intervals: 'range'
 		},
 
+		collisionsroads: {
+			apiCall: '/v1/collisionroads.json',
+			name: 'Collisions (Roads)',
+			description: 'Data from the DfT-funded Propensity to Cycle Tool (pct.bike).',
+			lineColourField: 'ncollisions',
+			lineColourStops: [
+				[2000, '#fe7fe1'],
+				[50, '#7f7ffe'],
+				[20, '#95adfd'],
+				[15, '#96d6fd'],
+				[10, '#7efefd'],
+				[5, '#d6fe7f'],
+				[1, '#fefe94'],
+				[0, '#cdcdcd']
+			],
+			intervals: 'range'
+		},
+
 		collisions: {
 			apiCall: '/v1/collisions.json',
 			name: 'Collisions',

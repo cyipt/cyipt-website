@@ -488,7 +488,7 @@ class cyiptModel
 	}
 
   # Collisions Roads
-	public function collisionroadsModel (&$error = false)
+	public function collisionsroadModel (&$error = false)
 	{
 		# Layer
 		$layers = array (
@@ -500,11 +500,11 @@ class cyiptModel
 			'bikeCasFatal'
 
 		);
-		if (!isSet ($this->get['collisionroadslayer']) || !in_array ($this->get['collisionroadslayer'], $layers)) {
+		if (!isSet ($this->get['collisionsroadlayer']) || !in_array ($this->get['collisionsroadlayer'], $layers)) {
 			$error = 'A valid layer must be supplied.';
 			return false;
 		}
-		$layer = $this->get['collisionroadslayer'];
+		$layer = $this->get['collisionsroadlayer'];
 
 		# Base values
 		$fields = array (
@@ -566,11 +566,11 @@ class cyiptModel
 	{
 		return array (
 			'name' => 'Collisions (Roads)',
-			'example' => '/api/v1/collisionroads.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&collisionroadslayer=ncollisionsSlight',
+			'example' => '/api/v1/collisionsroad.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&collisionsroadlayer=ncollisionsSlight',
 			'fields' => array (
 				'bbox' => '%bbox',
 				'zoom' => '%zoom',
-				'collisionroadslayer' => array ('type' => 'string', 'values' => 'ncollisionsSlight|ncollisionsSerious|ncollisionsFatal|bikeCasSlight|bikeCasSerious|bikeCasFatal', 'description' => 'Collisions (Roads)', ),
+				'collisionsroadlayer' => array ('type' => 'string', 'values' => 'ncollisionsSlight|ncollisionsSerious|ncollisionsFatal|bikeCasSlight|bikeCasSerious|bikeCasFatal', 'description' => 'Collisions (Roads)', ),
 			),
 		);
 	}

@@ -251,7 +251,7 @@ var cyipt = (function ($) {
 		},
 
 		collisionsroads: {
-			apiCall: '/v1/collisionroads.json',
+			apiCall: '/v1/collisionsroad.json',
 			name: 'Collisions (Roads)',
 			description: 'Collisions mapped to road network',
 			lineColourField: 'ncollisions',

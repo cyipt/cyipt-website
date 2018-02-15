@@ -232,7 +232,7 @@ class cyiptModel
 			return false;
 		}
 		$layer = $this->get['layer'];
-		
+
 		# Base values
 		$fields = array (
 			'name',
@@ -563,28 +563,17 @@ class cyiptModel
 		switch (true) {
 
 			# Nearest
-			case ($this->zoom >= 17):
+			case ($this->zoom >= 14):
 				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
 				$constraints[] = "{$layer} > 0";
 				break;
 
 			# Near
-			case ($this->zoom >= 14 && $this->zoom <= 16):
+			case ($this->zoom >= 13 && $this->zoom <= 15):
 				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.1)) AS geometry';
-				$constraints[] = "{$layer} > 10";
+				$constraints[] = "{$layer} > 0";
 				break;
 
-			# Nearer
-			case ($this->zoom >= 11 && $this->zoom <= 13):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.2)) AS geometry';
-				$constraints[] = "{$layer} > 50";
-				break;
-
-			# Far
-			case ($this->zoom <= 10):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.3)) AS geometry';
-				$constraints[] = "{$layer} > 100";
-				break;
 
 			# Other
 			default:

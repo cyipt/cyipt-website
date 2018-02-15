@@ -570,7 +570,7 @@ class cyiptModel
 			'fields' => array (
 				'bbox' => '%bbox',
 				'zoom' => '%zoom',
-				'pctlayer' => array ('type' => 'string', 'values' => 'ncollisionsSlight|ncollisionsSerious|ncollisionsFatal|bikeCasSlight|bikeCasSerious|bikeCasFatal', 'description' => 'Collisions (Roads)', ),
+				'collisionroadslayer' => array ('type' => 'string', 'values' => 'ncollisionsSlight|ncollisionsSerious|ncollisionsFatal|bikeCasSlight|bikeCasSerious|bikeCasFatal', 'description' => 'Collisions (Roads)', ),
 			),
 		);
 	}

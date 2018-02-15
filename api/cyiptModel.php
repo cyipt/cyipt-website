@@ -354,7 +354,11 @@ class cyiptModel
 			'fields' => array (
 				'bbox' => '%bbox',
 				'zoom' => '%zoom',
-				'widthlayer' => array ('type' => 'string', 'values' => 'roadwidth|widthstatus', 'description' => 'CyIPT layer: road width (Including footway and verges), width status (Is there enough width for proposed infrastrucutre)', ),
+				'widthlayer' => array (
+					'type' => 'string',
+					'values' => 'roadwidth|widthstatus',
+					'description' => 'CyIPT layer: road width (Including footway and verges), width status (Is there enough width for proposed infrastructure)',
+				),
 			),
 		);
 	}

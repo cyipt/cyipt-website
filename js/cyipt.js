@@ -146,6 +146,9 @@ var cyipt = (function ($) {
 
 		existing: {
 			apiCall: '/v1/existing.json',
+			apiFixedParameters: {
+				layer: 'cycleinfrastructure'
+			},
 			name: 'Existing infrastructure',
 			description: 'Existing cycle infrastructure, providing a baseline for improvement.',
 			lineColourField: 'existing',

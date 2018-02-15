@@ -195,26 +195,41 @@ class cyiptModel
 	# Existing infrastructure
 	public function existingModel (&$error = false)
 	{
+		# Layer
+		$layers = array (
+			'cycleinfrastructure' => array (
+				'fields' => array (
+					"{$this->tablePrefix}roadtypes.cyclewayleft",
+					"{$this->tablePrefix}roadtypes.cyclewayright",
+					#!# This is used only for colouring - ideally should not expose this
+					"CONCAT({$this->tablePrefix}roadtypes.cyclewayleft,' ',{$this->tablePrefix}roadtypes.cyclewayright) AS existing",
+				),
+				'constraints' => array (
+					"(
+					       {$this->tablePrefix}roadtypes.cyclewayleft != 'no'
+					    OR {$this->tablePrefix}roadtypes.cyclewayright != 'no'
+					    OR {$this->tablePrefix}roadtypes.roadtype IN ('Cycleway', 'Living Street', 'Segregated Cycleway', 'Segregated Shared Path')
+					 )",
+				),
+			),
+		);
+		if (!isSet ($this->get['layer']) || !array_key_exists ($this->get['layer'], $layers)) {
+			$error = 'A valid layer must be supplied.';
+			return false;
+		}
+		$layer = $this->get['layer'];
+		
 		# Base values
 		$fields = array (
-			// "{$this->tablePrefix}roads.id",
 			'name',
 			'region',
-			// 'existing AS description',
-			"{$this->tablePrefix}roadtypes.cyclewayleft",
-			"{$this->tablePrefix}roadtypes.cyclewayright",
-			#!# This is used only for colouring - ideally should not expose this
-			"CONCAT({$this->tablePrefix}roadtypes.cyclewayleft,' ',{$this->tablePrefix}roadtypes.cyclewayright) AS existing",
-			'osmid',
 		);
+		$fields = array_merge ($fields, $layers[$layer]['fields']);
+		$fields[] = 'osmid';
 		$constraints = array (
 			"{$this->tablePrefix}roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)",
-			"(
-				       {$this->tablePrefix}roadtypes.cyclewayleft != 'no'
-				    OR {$this->tablePrefix}roadtypes.cyclewayright != 'no'
-				    OR {$this->tablePrefix}roadtypes.roadtype IN ('Cycleway', 'Living Street', 'Segregated Cycleway', 'Segregated Shared Path')
-			 )",
 		);
+		$constraints = array_merge ($constraints, $layers[$layer]['constraints']);
 		$parameters = $this->bbox;
 		$limit = false;
 
@@ -259,6 +274,11 @@ class cyiptModel
 			'fields' => array (
 				'bbox' => '%bbox',
 				'zoom' => '%zoom',
+				'layer' => array (
+					'type' => 'string',
+					'values' => 'cycleinfrastructure',
+					'description' => 'Map layer type: Cycle infrastructure',
+				),
 			),
 		);
 	}

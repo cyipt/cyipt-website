@@ -250,7 +250,7 @@ var cyipt = (function ($) {
 			intervals: 'range'
 		},
 
-		collisionsroads: {
+		collisionsroad: {
 			apiCall: '/v1/collisionsroad.json',
 			name: 'Collisions (Roads)',
 			description: 'Collisions mapped to road network',

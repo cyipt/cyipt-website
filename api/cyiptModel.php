@@ -212,7 +212,7 @@ class cyiptModel
 			"(
 				       {$this->tablePrefix}roadtypes.cyclewayleft != 'no'
 				    OR {$this->tablePrefix}roadtypes.cyclewayright != 'no'
-				    OR {$this->tablePrefix}roadtypes.roadtype IN ('Cycleway', 'Living Street', 'Segregated Cycleway', 'Segregated Shared Path', 'Shared Path')
+				    OR {$this->tablePrefix}roadtypes.roadtype IN ('Cycleway', 'Living Street', 'Segregated Cycleway', 'Segregated Shared Path')
 			 )",
 		);
 		$parameters = $this->bbox;

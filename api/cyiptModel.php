@@ -212,6 +212,20 @@ class cyiptModel
 					 )",
 				),
 			),
+			'speedlimits' => array (
+				'fields' => array (
+					'maxspeed',
+				),
+				'constraints' => array (
+				),
+			),
+			'footways' => array (
+				'fields' => array (
+					"{$this->tablePrefix}roadtypes.sidewalk",
+				),
+				'constraints' => array (
+				),
+			),
 		);
 		if (!isSet ($this->get['layer']) || !array_key_exists ($this->get['layer'], $layers)) {
 			$error = 'A valid layer must be supplied.';
@@ -224,12 +238,16 @@ class cyiptModel
 			'name',
 			'region',
 		);
-		$fields = array_merge ($fields, $layers[$layer]['fields']);
+		if ($layers[$layer]['fields']) {
+			$fields = array_merge ($fields, $layers[$layer]['fields']);
+		}
 		$fields[] = 'osmid';
 		$constraints = array (
 			"{$this->tablePrefix}roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)",
 		);
-		$constraints = array_merge ($constraints, $layers[$layer]['constraints']);
+		if ($layers[$layer]['constraints']) {
+			$constraints = array_merge ($constraints, $layers[$layer]['constraints']);
+		}
 		$parameters = $this->bbox;
 		$limit = false;
 
@@ -276,8 +294,8 @@ class cyiptModel
 				'zoom' => '%zoom',
 				'layer' => array (
 					'type' => 'string',
-					'values' => 'cycleinfrastructure',
-					'description' => 'Map layer type: Cycle infrastructure',
+					'values' => 'cycleinfrastructure|speedlimits|footways',
+					'description' => 'Map layer type: Cycle infrastructure / Speed limits / Footways',
 				),
 			),
 		);

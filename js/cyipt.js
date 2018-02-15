@@ -146,9 +146,6 @@ var cyipt = (function ($) {
 
 		existing: {
 			apiCall: '/v1/existing.json',
-			apiFixedParameters: {
-				layer: 'cycleinfrastructure'
-			},
 			name: 'Existing infrastructure',
 			description: 'Existing cycle infrastructure, providing a baseline for improvement.',
 			lineColourField: 'existing',
@@ -179,6 +176,8 @@ var cyipt = (function ($) {
 				+ '<tr><td>Cycleway on left?</td><td><strong>{properties.cyclewayleft}</strong></td></tr>'
 				+ '<tr><td>Cycleway on right?</td><td><strong>{properties.cyclewayright}</strong></td></tr>'
 				+ '<tr><td>Existing infrastructure:</td><td><strong>{properties.existing}</strong></td></tr>'
+				+ '<tr><td>Speed limit:</td><td><strong>{properties.maxspeed}</strong></td></tr>'
+				+ '<tr><td>Footways:</td><td><strong>{properties.sidewalk}</strong></td></tr>'
 				+ '</table>'
 		},
 

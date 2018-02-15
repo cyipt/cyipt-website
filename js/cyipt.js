@@ -253,7 +253,7 @@ var cyipt = (function ($) {
 		collisionsroads: {
 			apiCall: '/v1/collisionroads.json',
 			name: 'Collisions (Roads)',
-			description: 'Data from the DfT-funded Propensity to Cycle Tool (pct.bike).',
+			description: 'Collisions mapped to road network',
 			lineColourField: 'ncollisions',
 			lineColourStops: [
 				[2000, '#fe7fe1'],

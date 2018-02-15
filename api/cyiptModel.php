@@ -210,12 +210,9 @@ class cyiptModel
 		$constraints = array (
 			"{$this->tablePrefix}roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)",
 			"(
-				NOT ({$this->tablePrefix}roadtypes.cyclewayleft = 'no' AND {$this->tablePrefix}roadtypes.cyclewayright = 'no')
-			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Cycleway'
-			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Living Street'
-			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Segregated Cycleway'
-			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Segregated Shared Path'
-			  	    OR {$this->tablePrefix}roadtypes.roadtype = 'Shared Path'
+				       {$this->tablePrefix}roadtypes.cyclewayleft != 'no'
+				    OR {$this->tablePrefix}roadtypes.cyclewayright != 'no'
+				    OR {$this->tablePrefix}roadtypes.roadtype IN ('Cycleway', 'Living Street', 'Segregated Cycleway', 'Segregated Shared Path', 'Shared Path')
 			 )",
 		);
 		$parameters = $this->bbox;

@@ -606,6 +606,74 @@ class cyiptModel
 		);
 	}
 
+  # Collisions Junction
+	public function collisionsjunctionsModel (&$error = false)
+	{
+		# Layer
+		$layers = array (
+			'ncollisions',
+			'bikeCas'
+
+		);
+		if (!isSet ($this->get['collisionsjunctionslayer']) || !in_array ($this->get['collisionsjunctionslayer'], $layers)) {
+			$error = 'A valid layer must be supplied.';
+			return false;
+		}
+		$layer = $this->get['collisionsjunctionslayer'];
+
+		# Base values
+		$fields = array (
+			// 'id',
+			"{$layer} AS ncollisions"
+		);
+		$constraints = array (
+			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
+		);
+		$parameters = $this->bbox;
+		$limit = 2000;
+
+		# Set filters based on zoom
+		switch (true) {
+
+			# Nearest
+			case ($this->zoom >= 12):
+				$fields[] = 'ST_AsGeoJSON(ST_Buffer(geotext, 1)) AS geometry';
+				$constraints[] = "{$layer} > 0";
+				break;
+
+
+			# Other
+			default:
+				$error = 'Please zoom in.';
+				return false;
+		}
+
+		# Return the model
+		return array (
+			'table' => $this->tablePrefix . 'junctions',
+			'fields' => $fields,
+			'constraints' => $constraints,
+			'parameters' => $parameters,
+			'limit' => $limit,
+		);
+	}
+
+
+	# Documentation
+	public static function collisionsjunctionsDocumentation ()
+	{
+		return array (
+			'name' => 'Collisions (Roads)',
+			'example' => '/api/v1/collisionsjunctions.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&collisionsjunctionslayer=ncollisionsSlight',
+			'fields' => array (
+				'bbox' => '%bbox',
+				'zoom' => '%zoom',
+				'collisionsjunctionslayer' => array ('type' => 'string', 'values' => 'ncollisionsSlight|ncollisionsSerious|ncollisionsFatal|bikeCasSlight|bikeCasSerious|bikeCasFatal', 'description' => 'Collisions (Junctions)', ),
+			),
+		);
+	}
+
+
 	# Collisions
 	public function collisionsModel (&$error = false)
 	{

@@ -269,6 +269,23 @@ var cyipt = (function ($) {
 			intervals: 'range'
 		},
 
+		collisionsjunctions: {
+			apiCall: '/v1/collisionsjunctions.json',
+			name: 'Collisions (junctions)',
+			description: 'Collisions mapped to junctions',
+			lineColourField: 'ncollisions',
+			lineColourStops: [
+				[50, '#990000'],
+				[20, '#d7301f'],
+				[15, '#ef6548'],
+				[10, '#fc8d59'],
+				[5, '#fdbb84'],
+				[2, '#fdd49e'],
+				[1, '#fef0d9']
+			],
+			intervals: 'range'
+		},
+
 		collisions: {
 			apiCall: '/v1/collisions.json',
 			name: 'Collisions',

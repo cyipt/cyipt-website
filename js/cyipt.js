@@ -258,14 +258,13 @@ var cyipt = (function ($) {
 			description: 'Collisions mapped to road network',
 			lineColourField: 'ncollisions',
 			lineColourStops: [
-				[2000, '#fe7fe1'],
-				[50, '#7f7ffe'],
-				[20, '#95adfd'],
-				[15, '#96d6fd'],
-				[10, '#7efefd'],
-				[5, '#d6fe7f'],
-				[1, '#fefe94'],
-				[0, '#cdcdcd']
+				[50, '#990000'],
+				[20, '#d7301f'],
+				[15, '#ef6548'],
+				[10, '#fc8d59'],
+				[5, '#fdbb84'],
+				[2, '#fdd49e'],
+				[1, '#fef0d9']
 			],
 			intervals: 'range'
 		},

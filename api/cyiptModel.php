@@ -641,7 +641,7 @@ class cyiptModel
 
 			# Nearest
 			case ($this->zoom >= 12):
-				$fields[] = 'ST_AsGeoJSON(ST_Buffer(geotext, 1)) AS geometry';
+				$fields[] = 'ST_AsGeoJSON(ST_Buffer(geotext, 0.0001)) AS geometry';
 				$constraints[] = "{$layer} > 0";
 				break;
 

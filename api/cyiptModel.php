@@ -611,8 +611,12 @@ class cyiptModel
 	{
 		# Layer
 		$layers = array (
-			'ncollisions',
-			'bikeCas'
+			'ncollisionsSlight',
+			'ncollisionsSerious',
+			'ncollisionsFatal',
+			'bikeCasSlight',
+			'bikeCasSerious',
+			'bikeCasFatal'
 
 		);
 		if (!isSet ($this->get['collisionsjunctionslayer']) || !in_array ($this->get['collisionsjunctionslayer'], $layers)) {

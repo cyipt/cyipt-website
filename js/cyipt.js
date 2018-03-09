@@ -61,7 +61,7 @@ var cyipt = (function ($) {
 		// Pages
 		pages: [
 			'about',
-			'contacts'
+			'contacts',
 			'Manual'
 		],
 

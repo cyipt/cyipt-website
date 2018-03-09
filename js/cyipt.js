@@ -62,6 +62,7 @@ var cyipt = (function ($) {
 		pages: [
 			'about',
 			'contacts'
+			'Manual'
 		],
 
 		// Beta switch

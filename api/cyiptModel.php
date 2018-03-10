@@ -751,6 +751,43 @@ class cyiptModel
 			),
 		);
 	}
+
+
+	# Travel to Work Areas; see: https://en.wikipedia.org/wiki/Travel_to_work_area
+	public function ttwaModel (&$error = false)
+	{
+		# Base values
+		$fields = array (
+			'id',
+			'name',
+			'code',
+			// 'ST_AsGeoJSON (ST_Simplify (geotext, 0.01, true)) AS geometry',
+			'ST_AsGeoJSON (geotext) AS geometry',
+		);
+
+		# Return the model
+		return array (
+			'table' => 'ttwa',
+			'fields' => $fields,
+			'constraints' => array (),
+			'parameters' => array (),
+			'limit' => false,
+		);
+	}
+
+
+	# Documentation
+	public static function ttwaDocumentation ()
+	{
+		return array (
+			'name' => 'Travel to Work Areas (TTWA)',
+			'example' => '/api/v1/ttwa.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15',
+			'fields' => array (
+				'bbox' => '%bbox',	// NB not actually used - added due to API standard
+				'zoom' => '%zoom',	// NB not actually used - added due to API standard
+			),
+		);
+	}
 }
 
 ?>

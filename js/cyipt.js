@@ -52,8 +52,8 @@ var cyipt = (function ($) {
 		enableScale: true,
 
 		// Region switcher
-		regionsFile: '/regions.geojson',
-		regionsField: 'region_name',
+		regionsFile: '/api/v1/ttwa.json?key=c047ed46f7b50b18&zoom=6&bbox=-14.018555,51.658927,8.107910,54.354956',
+		regionsField: 'name',
 
 		// Initial view of all regions; will use regionsFile
 		initialRegionsView: true,

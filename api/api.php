@@ -313,7 +313,7 @@ class api
 		$query = '
 			SELECT ' . implode (', ', $fields) . '
 			FROM ' . $table . '
-			WHERE ' . implode (' AND ', $where) . '
+			' . ($where ? 'WHERE ' . implode (' AND ', $where) : '') . '
 			' . ($limit ? "LIMIT {$limit}" : '') . '
 		;';
 		

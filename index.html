@@ -381,55 +381,52 @@ The purpose of the toolkit is to aid decision makers in finding the best places 
 				<p>The Schemes layer is an aggregation of the recommended infrastructure layer.  Recommendations are made at the road segment level (junction to junction),               and therefore can be very short.  Schemes groups recommended infrastructure together into schemes that could possibly be constructed, and then evaluates              the scheme against a range of criteria.</p>
 
 				<h3 class="recommended">Recommended infrastructure</h3>
-      	<p>This layer shows the type of cycle infrastructure appropriate on each road segment based on guidance from Highways England <a href="http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf">IAN 195/16</a>. Interventions are recommended for each segment based the following criteria:</p>
-      	 <ul>
-
-      <li>Whether the route is on road or off road (e.g. paths)</li>
-      <li>The speed limit</li>
-      <li>The motor traffic level</li>
-      <liT>he number of cyclists using the road (based on PCT Census 2011 scenario)</li>
-
-         </ul>
-      <p>Using this information CyIPT makes one of seven possible recommendations</p>
-      <p>None</p>
-      <p>(Not shown) no specific cycling infrastructure is required</p>
-      <p>Cycle Lanes</p>
-      <p>A painted line on the roadway divides bicycles from other traffic.</p>
-      <p>Cycle Lanes with light segregation</p>
-      <p>Similar to cycle lanes but batons or armadillos are added long the line to reinforce the separation between cyclists and motor traffic</p>
-      <p>Stepped Cycle Tracks</p>
-      <p>Cyclists travel on a slightly elevated lane, above the road traffic but below the pavement.</p>
-      <p>Segregated Cycle Track</p>
-      <p>Cyclists travel in a separate lane physically separated from motor traffic by a hard barrier</p>
-      <p>Cycle Streets</p>
-      <p>These very quiet roads are primarily designed for cycling and walking while still allowing low speed motor traffic. </p>
-      <p>Cycle Lane on Path</p>
-      <p>(Off Road Only) cyclists are separated from pedestrians by a painted line</p>
-      <p>Segregated Cycle Track on Path</p>
-      <p>(Off Road Only) cyclists are separated from pedestrians by a hard barrier</p>
+				<p>This layer shows the type of cycle infrastructure appropriate on each road segment based on guidance from Highways England <a href="http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf">IAN 195/16</a>. Interventions are recommended for each segment based the following criteria:</p>
+				<ul>
+					<li>Whether the route is on road or off road (e.g. paths)</li>
+					<li>The speed limit</li>
+					<li>The motor traffic level</li>
+					<li>The number of cyclists using the road (based on PCT Census 2011 scenario)</li>
+				</ul>
+				<p>Using this information CyIPT makes one of seven possible recommendations:</p>
+				<dl>
+					<dt>None</dt>
+						<dd>(Not shown) no specific cycling infrastructure is required</dd>
+					<dl>Cycle Lanes</dl>
+						<dd>A painted line on the roadway divides bicycles from other traffic.</dd>
+					<dl>Cycle Lanes with light segregation</dl>
+						<dd>Similar to cycle lanes but batons or armadillos are added long the line to reinforce the separation between cyclists and motor traffic</dd>
+					<dl>Stepped Cycle Tracks</dl>
+						<dd>Cyclists travel on a slightly elevated lane, above the road traffic but below the pavement.</dd>
+					<dl>Segregated Cycle Track</dl>
+						<dd>Cyclists travel in a separate lane physically separated from motor traffic by a hard barrier</dd>
+					<dl>Cycle Streets</dl>
+						<dd>These very quiet roads are primarily designed for cycling and walking while still allowing low speed motor traffic.</dd>
+					<dl>Cycle Lane on Path</dl>
+						<dd>(Off Road Only) cyclists are separated from pedestrians by a painted line</dd>
+					<dl>Segregated Cycle Track on Path</dl>
+						<dd>(Off Road Only) cyclists are separated from pedestrians by a hard barrier</dd>
+					</dl>
 
 				<h3 class="existing">Existing infrastructure</h3>
-  				<p>The layer highlights existing cycling infrastructure.  Unlike other cycle maps (e.g. open cycle map) which include designated cycle routes.  This map              only shows physical infrastructure such as cycle lanes and tracks.
-          This data is derived from the Open Street Map and then cleaned by CyIPT so may have inaccuracies. If you see an error, you can click on the road and use            the “Edit in OSM” link to modify the Open Street Map.  The modification will automatically be incorporated into CyIPT at the next rebuild.
-          The layer also gives the option to see the speed limit on each road.  Again, this data is derived from the OSM and a cleaning algorithm to fill in missing          data.
-         </p>
+  				<p>The layer highlights existing cycling infrastructure. Unlike other cycle maps (e.g. OpenCycleMap) which include designated cycle routes, this map only shows physical infrastructure such as cycle lanes and tracks.</p>
+				<p>This data is derived from OpenStreetMap and then cleaned by CyIPT so may have inaccuracies. If you see an error, you can click on the road and use the 'Edit in OSM' link to modify OpenStreetMap. The modification will automatically be incorporated into CyIPT at the next rebuild.</p>
+				<p>The layer also gives the option to see the speed limit on each road. Again, this data is derived from OSM and a cleaning algorithm to fill in missing data.</p>
 
 				<h3 class="width">Road widths</h3>
 				<p>More information about this layer available shortly.</p>
 
 				<h3 class="pct">Propensity to Cycle Tool</h3>
-				<p>This layer shows data from the Propensity to Cycle Tool (www.pct.bike) which has been reanalysed by CyIPT.  The PCT LSOA fastest routes have been matched to the road network to give total counts of cyclists on each road segment.  This is similar to the PCT LSOA route network raster but provides a greater level of spatial detail.
-This layer also allows you to view the straight lines, fastest routes, and quietest routes from the PCT LSOA dataset.
-</p>
+				<p>This layer shows data from the Propensity to Cycle Tool (www.pct.bike) which has been reanalysed by CyIPT.  The PCT LSOA fastest routes have been matched to the road network to give total counts of cyclists on each road segment.  This is similar to the PCT LSOA route network raster but provides a greater level of spatial detail.</p>
+				<p>This layer also allows you to view the straight lines, fastest routes, and quietest routes from the PCT LSOA dataset.</p>
 
 				<h3 class="traffic">Traffic counts</h3>
 				<p>This layer show data from the DFT of traffic counts mapped to the road network.  It is provided at context so show what CyIPT “sees.”  Data is taken from the most recent year available on a road-by-road basis thus the data is not consistent. </p>
 
 				<h3 class="collisions">Collisions</h3>
-				<p>This layer uses the official Stats19 data on road collisions from 1985 to 2015. Collisions are viewable a points, or mapped on the road and junction network.
-When CyIPT matches collisions to a specific road or junction, it considers whether the Stats19 data states the collision occurred at a junction or not.  If the collision occurred at a junction, it is mapped to the nearest junction.  Otherwise, the collision is mapped to the nearest road segment.
-The Stat19 data has some ambiguity in the location of collisions therefore, it is possible that some collision are mapped inaccurately to other nearby roads and junctions.
-</p>
+				<p>This layer uses the official STATS19 data on road collisions from 1985 to 2015. Collisions are viewable a points, or mapped on the road and junction network.</p>
+				<p>When CyIPT matches collisions to a specific road or junction, it considers whether the STATS19 data states the collision occurred at a junction or not.  If the collision occurred at a junction, it is mapped to the nearest junction.  Otherwise, the collision is mapped to the nearest road segment.</p>
+				<p>The STATS19 data has some ambiguity in the location of collisions therefore, it is possible that some collision are mapped inaccurately to other nearby roads and junctions.</p>
 
 			</div>
 		</main>

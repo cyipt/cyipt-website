@@ -67,10 +67,13 @@ var cyipt = (function ($) {
 
 		// Beta switch
 		enableBetaSwitch: 'Alpha',
-
+		
 		// Password protection
 		password: false,
-
+		
+		// Show layer errors as non-modal dialog, not modal popup
+		errorNonModalDialog: true,
+		
 		// Tileserver URLs, each as [path, options, label]
 		tileUrls: {
 			mapnik: [

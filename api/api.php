@@ -42,7 +42,7 @@ class api
 			$this->databaseConnection->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->databaseConnection->setAttribute (PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 		} catch (PDOException $e) {
-			// var_dump ($e->getMessage ());
+			// var_dump ($e->getMessage (), $query);
 			return $this->error ('Unable to connect to the database.');
 		}
 		
@@ -344,7 +344,7 @@ class api
 			}
 			
 		} catch (PDOException $e) {
-			// var_dump ($e->getMessage ());
+			// var_dump ($e->getMessage (), $query);
 			$error = 'An invalid query was sent to the database.';
 			return false;
 		}

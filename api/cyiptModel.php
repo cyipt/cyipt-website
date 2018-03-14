@@ -784,8 +784,7 @@ class cyiptModel
 			'id',
 			'name',
 			'code',
-			// 'ST_AsGeoJSON (ST_Simplify (geotext, 0.01, true)) AS geometry',
-			'ST_AsGeoJSON (geotext) AS geometry',
+			'ST_AsGeoJSON (ST_Simplify (geotext, 0.01, true)) AS geometry',
 		);
 
 		# Return the model

@@ -62,6 +62,7 @@ nav h3 a {font-size: 0.73em; margin-left: 10px;}
 #about {display: none;}
 
 /* Popup styling */
+#map .leaflet-popup-content-wrapper {max-height: 300px; overflow-y: auto;}
 #map .leaflet-popup.schemes {min-width: 500px;}
 #map .leaflet-popup.schemes div.leaflet-popup-content {width: auto !important;}
 #map .leaflet-popup.schemes table tr td:first-child {text-align: right;}

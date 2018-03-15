@@ -111,7 +111,7 @@ var cyipt = (function ($) {
 
 	// Layer definitions
 	var _layerConfig = {
-
+		
 		schemes: {
 			apiCall: '/v1/schemes.json',
 			name: 'Schemes - cost benefit ratio',
@@ -203,16 +203,29 @@ var cyipt = (function ($) {
 				['Not Applicable no', '#215cd2']
 			],
 			intervals: true,
-			popupHtml: '<p><a class="edit" target="_blank" href="https://www.openstreetmap.org/way/{properties.osmid}">Edit in OSM</a></p>'
-				+ '<table>'
-				+ '<tr><td>Name:</td><td><strong>{properties.name}</strong></td></tr>'
-				+ '<tr><td>Region:</td><td><strong>{properties.region}</strong></td></tr>'
-				+ '<tr><td>Cycleway on left?</td><td><strong>{properties.cyclewayleft}</strong></td></tr>'
-				+ '<tr><td>Cycleway on right?</td><td><strong>{properties.cyclewayright}</strong></td></tr>'
-				+ '<tr><td>Existing infrastructure:</td><td><strong>{properties.existing}</strong></td></tr>'
-				+ '<tr><td>Speed limit:</td><td><strong>{properties.maxspeed}</strong></td></tr>'
-				+ '<tr><td>Footways:</td><td><strong>{properties.sidewalk}</strong></td></tr>'
-				+ '</table>'
+			popupSublayerParameter: 'layer',
+			popupHtml: {
+				cycleinfrastructure: '<p><a class="edit" target="_blank" href="https://www.openstreetmap.org/way/{properties.osmid}">Edit in OSM</a></p>'
+					+ '<table>'
+					+ '<tr><td>Name:</td><td><strong>{properties.name}</strong></td></tr>'
+					+ '<tr><td>Region:</td><td><strong>{properties.region}</strong></td></tr>'
+					+ '<tr><td>Cycleway on left?</td><td><strong>{properties.cyclewayleft}</strong></td></tr>'
+					+ '<tr><td>Cycleway on right?</td><td><strong>{properties.cyclewayright}</strong></td></tr>'
+					+ '<tr><td>Existing infrastructure:</td><td><strong>{properties.existing}</strong></td></tr>'
+					+ '</table>',
+				speedlimits: '<p><a class="edit" target="_blank" href="https://www.openstreetmap.org/way/{properties.osmid}">Edit in OSM</a></p>'
+					+ '<table>'
+					+ '<tr><td>Name:</td><td><strong>{properties.name}</strong></td></tr>'
+					+ '<tr><td>Region:</td><td><strong>{properties.region}</strong></td></tr>'
+					+ '<tr><td>Speed limit:</td><td><strong>{properties.maxspeed}</strong></td></tr>'
+					+ '</table>',
+				footways: '<p><a class="edit" target="_blank" href="https://www.openstreetmap.org/way/{properties.osmid}">Edit in OSM</a></p>'
+					+ '<table>'
+					+ '<tr><td>Name:</td><td><strong>{properties.name}</strong></td></tr>'
+					+ '<tr><td>Region:</td><td><strong>{properties.region}</strong></td></tr>'
+					+ '<tr><td>Footways:</td><td><strong>{properties.sidewalk}</strong></td></tr>'
+					+ '</table>'
+			}
 		},
 
 		width: {

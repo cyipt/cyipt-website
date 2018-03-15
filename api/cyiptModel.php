@@ -134,6 +134,8 @@ class cyiptModel
 			// 'groupid',
 			'region',
 			'CAST(cost AS INT)',
+			'costBenRatio',
+			'CAST(totalBen AS INT)',
 			'CAST(costperperson AS INT)',
 			'ncyclebefore',
 			'ncycleafter',
@@ -154,8 +156,6 @@ class cyiptModel
 			'co2saved',
 			'ghgbenefit',
 			'congestionbenefit',
-			'CAST(totalBen AS INT)',
-			'costBenRatio',
 			'ST_AsGeoJSON(geotext) AS geometry',
 		);
 		$constraints = array (

@@ -67,13 +67,13 @@ var cyipt = (function ($) {
 
 		// Beta switch
 		enableBetaSwitch: 'Alpha',
-		
+
 		// Password protection
 		password: false,
-		
+
 		// Show layer errors as non-modal dialog, not modal popup
 		errorNonModalDialog: true,
-		
+
 		// Tileserver URLs, each as [path, options, label]
 		tileUrls: {
 			mapnik: [
@@ -223,7 +223,7 @@ var cyipt = (function ($) {
 			lineColourStops: [
 			  ['Missing Width Data', '#e5d0ff'],
 			  ['More than sufficient width', '#6dee09'],
-			  ['Approximatly sufficient width', '#fff966'],
+			  ['About sufficient width', '#fff966'],
 			  ['Width Constrained', '#ff940e'],
 			  ['Insufficient width', '#ff0000'],
 				[14, '#4575b4'],

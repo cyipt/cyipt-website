@@ -113,21 +113,18 @@ class cyiptModel
 			$error = 'Please zoom in.';
 			return false;
 		}
-
-		# URL parameters
-		if (!isSet ($this->get['costfrom']) || !is_numeric ($this->get['costfrom']) || ($this->get['costfrom'] < 0) || ($this->get['costfrom'] > 999999999)) {
-			$error = 'A valid start cost must be supplied.';
-			return false;
+		
+		# Ensure any supplied fields are numeric
+		$numericFields = array ('costto', 'costbenefitfrom', 'benefitfrom');
+		foreach ($numericFields as $numericField) {
+			if (isSet ($this->get[$numericField])) {
+				if (!is_numeric ($this->get[$numericField])) {
+					$error = 'The {$numericField} value must be numeric.';
+					return false;
+				}
+			}
 		}
-		if (!isSet ($this->get['costto']) || !is_numeric ($this->get['costto']) || ($this->get['costto'] < 0) || ($this->get['costto'] > 999999999)) {
-			$error = 'A valid start cost must be supplied.';
-			return false;
-		}
-		if ($this->get['costfrom'] > $this->get['costto']) {
-			$error = 'The start cost must not be after the finish cost.';
-			return false;
-		}
-
+		
 		# Base values
 		$fields = array (
 			// 'idGlobal AS id',
@@ -158,13 +155,24 @@ class cyiptModel
 			'congestionbenefit',
 			'ST_AsGeoJSON(geotext) AS geometry',
 		);
-		$constraints = array (
-			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
-			'cost BETWEEN :costfrom and :costto'
-		);
+		$constraints[] = 'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)';
 		$parameters = $this->bbox;
-		$parameters['costfrom'] = $this->get['costfrom'];
-		$parameters['costto']   = $this->get['costto'];
+		
+		# Add URL parameters
+		if (isSet ($this->get['costto'])) {
+			$constraints[] = 'cost <= :costto';
+			$parameters['costto'] = $this->get['costto'];
+		}
+		if (isSet ($this->get['costbenefitfrom'])) {
+			$constraints[] = 'costBenRatio >= :costbenefitfrom';
+			$parameters['costbenefitfrom'] = $this->get['costbenefitfrom'];
+		}
+		if (isSet ($this->get['benefitfrom'])) {
+			$constraints[] = 'totalBen >= :benefitfrom';
+			$parameters['benefitfrom'] = $this->get['benefitfrom'];
+		}
+		
+		# Limit
 		$limit = 1000;
 
 		# Set filters based on zoom
@@ -208,8 +216,9 @@ class cyiptModel
 			'fields' => array (
 				'bbox' => '%bbox',
 				'zoom' => '%zoom',
-				'costfrom' => array ('type' => 'int', 'values' => '0-999999999', 'description' => 'Start cost', ),
-				'costto' => array ('type' => 'int', 'values' => '0-999999999', 'description' => 'Finish cost', ),
+				'costto' => array ('type' => 'int', 'values' => '0-999999999', 'description' => 'Maximum cost', ),
+				'costbenefitfrom' => array ('type' => 'int', 'values' => '0-9999', 'description' => 'Cost benefit at least', ),
+				'benefitfrom' => array ('type' => 'int', 'values' => '0-999999999', 'description' => 'Benefit (in £) at least', ),
 			),
 		);
 	}

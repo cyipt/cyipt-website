@@ -75,46 +75,63 @@
 
 									<h3 title="Our recommendation for schemes, which group the proposals for recommended cycle infrastructure together."><input type="checkbox" name="show[]" id="show_schemes" /> Schemes <a class="moredetails" data-field="schemes" href="#">[?]</a></h3>
 									<div id="schemes" class="filters">
-										<p>Cost estimate range:</p>
+										<p>Scheme cost (budget available) up to:</p>
 										<p>
-											<select name="costfrom">
-												<option value=1 selected="selected">Any</option>
-												<option value=50000>£50,000</option>
-												<option value=100000>£100,000</option>
-												<option value=250000>£250,000</option>
-												<option value=500000>£500,000</option>
-												<option value=750000>£750,000</option>
-												<option value=1000000>£1,000,000</option>
-												<option value=2000000>£2,000,000</option>
-												<option value=3000000>£3,000,000</option>
-												<option value=4000000>£4,000,000</option>
-												<option value=5000000>£5,000,000</option>
-												<option value=6000000>£6,000,000</option>
-												<option value=7000000>£7,000,000</option>
-												<option value=8000000>£8,000,000</option>
-												<option value=9000000>£9,000,000</option>
-												<option value=10000000>£10,000,000</option>
-											</select>
-											to
 											<select name="costto">
-												<option value=50000>£50,000</option>
-												<option value=100000>£100,000</option>
-												<option value=250000>£250,000</option>
-												<option value=500000>£500,000</option>
-												<option value=750000>£750,000</option>
-												<option value=1000000>£1,000,000</option>
-												<option value=2000000>£2,000,000</option>
-												<option value=3000000>£3,000,000</option>
-												<option value=4000000>£4,000,000</option>
-												<option value=5000000>£5,000,000</option>
-												<option value=6000000>£6,000,000</option>
-												<option value=7000000>£7,000,000</option>
-												<option value=8000000>£8,000,000</option>
-												<option value=9000000>£9,000,000</option>
-												<option value=10000000>£10,000,000</option>
-												<option value=999999999 selected="selected">Any</option>
+												<option value="" selected="selected"></option>
+												<option value="50000">£50,000</option>
+												<option value="100000">£100,000</option>
+												<option value="250000">£250,000</option>
+												<option value="500000">£500,000</option>
+												<option value="750000">£750,000</option>
+												<option value="1000000">£1,000,000</option>
+												<option value="2000000">£2,000,000</option>
+												<option value="3000000">£3,000,000</option>
+												<option value="4000000">£4,000,000</option>
+												<option value="5000000">£5,000,000</option>
+												<option value="6000000">£6,000,000</option>
+												<option value="7000000">£7,000,000</option>
+												<option value="8000000">£8,000,000</option>
+												<option value="9000000">£9,000,000</option>
+												<option value="10000000">£10,000,000</option>
 											</select>
 										</p>
+										<p>Scheme cost-benefit ratio at least:</p>
+										<p>
+											<select name="costbenefitfrom">
+												<option value=""></option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="5">5</option>
+												<option value="10">10</option>
+												<option value="15">15</option>
+												<option value="30">30</option>
+												<option value="100">100</option>
+											</select>
+										</p>
+
+										<p>Benefits of each scheme at least:</p>
+										<p>
+											<select name="benefitfrom">
+												<option value=""></option>
+												<option value="50000">£50,000</option>
+												<option value="100000">£100,000</option>
+												<option value="250000">£250,000</option>
+												<option value="500000">£500,000</option>
+												<option value="750000">£750,000</option>
+												<option value="1000000">£1,000,000</option>
+												<option value="2000000">£2,000,000</option>
+												<option value="3000000">£3,000,000</option>
+												<option value="4000000">£4,000,000</option>
+												<option value="5000000">£5,000,000</option>
+												<option value="6000000">£6,000,000</option>
+												<option value="7000000">£7,000,000</option>
+												<option value="8000000">£8,000,000</option>
+												<option value="9000000">£9,000,000</option>
+												<option value="10000000">£10,000,000</option>
+											</select>
+										</p>
+
 										<p>Source: CyIPT</p>
 
 										<div class="export button">

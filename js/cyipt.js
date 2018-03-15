@@ -114,18 +114,18 @@ var cyipt = (function ($) {
 
 		schemes: {
 			apiCall: '/v1/schemes.json',
-			name: 'Schemes',
+			name: 'Schemes - cost benefit ratio',
 			description: 'Our recommendation for schemes, which group the proposals for recommended cycle infrastructure together.',
-			lineColourField: 'type',
-			lineColourStops: [
-				['Cycle Lanes', '#ff0000'],
-				['Cycle Lanes with light segregation', '#7f7ffe'],
-				['Cycle Street', '#7fe500'],
-				['Cycle Lane on Path', '#96d6fd'],
-				['Stepped Cycle Tracks', '#fade5b'],
-				['Segregated Cycle Track on Path', '#a020f0'],
-				['Segregated Cycle Track', '#ffc400'],
-				['None', '#cdcdcd']
+			lineColourField: 'costbenratio',
+			lineColourStops: [	// http://blogs.perl.org/users/ovid/2010/12/perl101-red-to-green-gradient.html
+				[100, '#006400'],
+				[30, '#008000'],
+				[15, '#00ff00'],
+				[10, '#7cff00'],
+				[5, '#9fff00'],
+				[2, '#e5ff00'],
+				[1, '#ffd300'],
+				[0, '#ff5700']
 			],
 			'popupLabels': {
 				idGlobal: 'unique ID to each scheme',

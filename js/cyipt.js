@@ -319,17 +319,15 @@ var cyipt = (function ($) {
 		collisions: {
 			apiCall: '/v1/collisions.json',
 			name: 'Collisions',
-			description: 'DfT collision data, from STATS19.'
-			/*
+			description: 'DfT collision data, from STATS19.',
 			iconField: 'severity',
 			icons: {
-				fatal: '/js/lib/leaflet-1.2.0/images/marker-icon.png',	// #!# Should be redIcon
-				serious: '/js/lib/leaflet-1.2.0/images/marker-icon.png',	// #!# Should be orangeIcon
-				slight: '/js/lib/leaflet-1.2.0/images/marker-icon.png',	// #!# Should be yellowIcon
+				fatal: '/images/icon_collision_fatal.svg',
+				serious: '/images/icon_collision_serious.svg',
+				slight: '/images/icon_collision_slight.svg',
 			},
-			iconSize: [25, 41]
-			*/
-		},
+			iconSize: [40, 60]
+		}
 	};
 
 

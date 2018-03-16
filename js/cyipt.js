@@ -191,7 +191,7 @@ var cyipt = (function ($) {
 				['Major road', '#df0000'],
 				['No cycling', '#1f1f1f'],
 				['Living street', '#999999'],
-				['Speed limit / footway lines', 'purple']
+				['Speed limit / footway lines', 'purple']	// Fallback, which will catch those layers
 			],
 			intervals: true,
 			popupSublayerParameter: 'layer',

@@ -190,7 +190,8 @@ var cyipt = (function ($) {
 				['Minor road', '#ff9900'],
 				['Major road', '#df0000'],
 				['No cycling', '#1f1f1f'],
-				['Living street', '#999999']
+				['Living street', '#999999'],
+				['Speed limit / footway lines', 'purple']
 			],
 			intervals: true,
 			popupSublayerParameter: 'layer',

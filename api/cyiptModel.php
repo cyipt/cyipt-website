@@ -234,8 +234,18 @@ class cyiptModel
 					'highway',
 					"{$this->tablePrefix}roadtypes.cyclewayleft",
 					"{$this->tablePrefix}roadtypes.cyclewayright",
-					#!# This is used only for colouring - ideally should not expose this
-					"CONCAT({$this->tablePrefix}roadtypes.cyclewayleft,' ',{$this->tablePrefix}roadtypes.cyclewayright) AS existing",
+					# This CASE statement broadly implements the spec at: https://github.com/cyipt/cyipt-website/issues/23#issuecomment-361231817
+					"CASE
+						WHEN (roadtypes.cyclewayleft = 'track' OR roadtypes.cyclewayright = 'track') THEN 'Track'
+						WHEN roadtypes.roadtype IN ('Segregated Cycleway', 'Cycleway', 'Segregated Shared Path', 'Shared Path') THEN 'Track'
+						WHEN (roadtypes.cyclewayleft = 'lane' OR roadtypes.cyclewayright = 'lane') THEN 'Lane'
+						WHEN (roadtypes.cyclewayleft = 'share_busway' OR roadtypes.cyclewayright = 'share_busway') THEN 'Bus lane'
+						WHEN roadtypes.roadtype IN ('Minor Road - Cycling Allowed', 'Residential Road - Cycling Allowed') THEN 'Minor road'
+						WHEN roadtypes.roadtype = 'Main Road - Cycling Allowed' THEN 'Main road'
+						WHEN roadtypes.roadtype LIKE '%Cycling Forbidden%' THEN 'No cycling'
+						WHEN roadtypes.roadtype = 'Living Street' THEN 'Living street'
+						ELSE 'other'
+					END AS existing"
 				),
 				'constraints' => array (
 					"(

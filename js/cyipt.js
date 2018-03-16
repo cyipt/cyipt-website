@@ -209,9 +209,10 @@ var cyipt = (function ($) {
 					+ '<table>'
 					+ '<tr><td>Name:</td><td><strong>{properties.name}</strong></td></tr>'
 					+ '<tr><td>Region:</td><td><strong>{properties.region}</strong></td></tr>'
+					+ '<tr><td>Highway type:</td><td><strong>{properties.highway}</strong></td></tr>'
+					+ '<tr><td>Existing infrastructure:</td><td><strong>{properties.existing}</strong></td></tr>'
 					+ '<tr><td>Cycleway on left?</td><td><strong>{properties.cyclewayleft}</strong></td></tr>'
 					+ '<tr><td>Cycleway on right?</td><td><strong>{properties.cyclewayright}</strong></td></tr>'
-					+ '<tr><td>Existing infrastructure:</td><td><strong>{properties.existing}</strong></td></tr>'
 					+ '</table>',
 				speedlimits: '<p><a class="edit" target="_blank" href="https://www.openstreetmap.org/way/{properties.osmid}">Edit in OSM</a></p>'
 					+ '<table>'

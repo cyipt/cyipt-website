@@ -231,6 +231,7 @@ class cyiptModel
 		$layers = array (
 			'cycleinfrastructure' => array (
 				'fields' => array (
+					'highway',
 					"{$this->tablePrefix}roadtypes.cyclewayleft",
 					"{$this->tablePrefix}roadtypes.cyclewayright",
 					#!# This is used only for colouring - ideally should not expose this

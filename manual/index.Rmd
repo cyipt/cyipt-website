@@ -1,17 +1,10 @@
 ---
-title: "The Cycling Infrastructure Prioritisation Toolkit: Manual"
-subtitle: Version 0.3
+title: "The Cycling Infrastructure Prioritisation Toolkit: Manual, Version 0.3"
 author: "The CyIPT team"
 date: '`r Sys.Date()`'
 output:
   bookdown::gitbook
-  # word_document: default
-  # pdf_document:
-  #   includes:
-  #     in_header: vignettes/header.tex
-edit: https://github.com/cyipt/cyipt-website/manual/edit/master/%s
-github-repo: "Robinlovelace/geocompr"
-url: 'https\://geocompr.robinlovelace.net'
+github-repo: "cyipt/cyipt-website"
 bibliography: references.bib
 ---
 
@@ -19,7 +12,7 @@ bibliography: references.bib
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Introduction {-}
+# Index {-}
 
 The Cycling Infrastructure Prioritisation Toolkit (CyIPT) is a research project based at the University of Leeds and funded by the Department for Transport (DFT).  The purpose of CyIPT is to develop methods and tools to assist in the design and planning of new cycling infrastructure.  The CyIPT is currently (as of March 2018) a working prototype.  Therefore, any recommendations produced by CyIPT should be subjected to independent assessment before making investment decisions.
 

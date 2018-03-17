@@ -187,9 +187,9 @@ var cyipt = (function ($) {
 				['Track', '#0000ff'],
 				['Lane', '#009fef'],
 				['Bus lane', '#e7e700'],
-				['Minor road', '#ff9900'],
-				['Major road', '#df0000'],
-				['No cycling', '#1f1f1f'],
+				// ['Minor road', '#ff9900'],
+				// ['Major road', '#df0000'],
+				// ['No cycling', '#1f1f1f'],
 				['Living street', '#999999'],
 				['Speed limit / footway lines', 'purple']	// Fallback, which will catch those layers
 			],

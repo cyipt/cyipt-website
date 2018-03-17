@@ -63,8 +63,8 @@
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a><ul>
-<li class="chapter" data-level="0.1" data-path="introduction.html"><a href="introduction.html#feedback"><i class="fa fa-check"></i><b>0.1</b> Feedback</a></li>
-<li class="chapter" data-level="0.2" data-path="introduction.html"><a href="introduction.html#cyipt-team"><i class="fa fa-check"></i><b>0.2</b> CyIPT Team</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#the-cyipt-team"><i class="fa fa-check"></i>The CyIPT Team</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="how-the-cyipt-works.html"><a href="how-the-cyipt-works.html"><i class="fa fa-check"></i><b>1</b> How the CyIPT works</a></li>
 <li class="chapter" data-level="2" data-path="key-concepts.html"><a href="key-concepts.html"><i class="fa fa-check"></i><b>2</b> Key Concepts</a></li>
@@ -88,8 +88,13 @@
 <div id="how-the-cyipt-works" class="section level1">
 <h1><span class="header-section-number">1</span> How the CyIPT works</h1>
 <p>This section gives an overview of how CyIPT works and some of its main limitations. For full details, see the Technical Details section below.</p>
-<p>Figure 1 outlines the basic structure of CyIPT. First CyIPT takes data about each road and path in England and uses it to recommend the approximate type of cycling infrastructure. The recommendation algorithm is based on Highways England’s Interim Advice Note 195/16. The algorithm can make eight possible recommendations (Cycle Lanes, Cycle Lanes with light segregation, Cycle Street, Cycle Land on Path, Stepped Cycle Tracks, Segregated Cycle Track on Path, Segregated Cycle Track, and None).</p>
-<p>Figure 1: Basic CyIPT Workflow</p>
+<p>Figure <a href="how-the-cyipt-works.html#fig:workflow">1.1</a> outlines the basic structure of CyIPT. First CyIPT takes data about each road and path in England and uses it to recommend the approximate type of cycling infrastructure. The recommendation algorithm is based on Highways England’s Interim Advice Note 195/16 <span class="citation">(England 2016)</span>. The algorithm can make eight possible recommendations (Cycle Lanes, Cycle Lanes with light segregation, Cycle Street, Cycle Land on Path, Stepped Cycle Tracks, Segregated Cycle Track on Path, Segregated Cycle Track, and None).</p>
+<div class="figure"><span id="fig:workflow"></span>
+<img src="https://github.com/cyipt/cyipt-website/blob/master/images/workflow.png?raw=true" alt="Schematic overview of the CyIPT."  />
+<p class="caption">
+Figure 1.1: Schematic overview of the CyIPT.
+</p>
+</div>
 <p>Based on the length and type of infrastructure, CyIPT estimate the cost of constructing the recommended new cycling infrastructure. CyIPT take account of existing infrastructure and therefore does not apply a cost of building existing cycle infrastructure if it is of sufficient quality.</p>
 <p>As CyIPT’s recommendations are made for each road segment (junction to junction), they can be for very short sections of road. Therefore, CyIPT has a clustering algorithm, which attempts to take recommendations and group them into coherent schemes that could be constructed. One the schemes have been produced, CyITP estimate the number of additional cyclists the scheme would produce and performed a benefit cost assessment of the schemes to identify the schemes which are most likely to be worth building. The CyIPT process is deterministic, which is to say that it produces the same results each time the model is run, and has therefore been pre-processed by the CyIPT team. The results for England are made available through the CyIPT website (www.cyipt.bike). The CyIPT website also allows for data download and the source code is available at GitHub (<a href="https://github.com/cyipt" class="uri">https://github.com/cyipt</a>).</p>
 </div>

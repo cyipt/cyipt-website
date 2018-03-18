@@ -7,7 +7,7 @@ class api
 	private $databaseConnection;
 	
 	# Supported formats
-	private $formats = array ('json', 'csv');
+	private $formats = array ('json', 'geojson', 'csv');
 	
 	
 	# Defaults
@@ -94,10 +94,16 @@ class api
 		# Output the data
 		switch ($format) {
 			
-			# GeoJSON
+			# GeoJSON (API)
 			case 'json':
 				$geojson = $this->asGeojson ($data);
 				return $this->responseJson ($geojson);
+				break;
+				
+			# GeoJSON (export)
+			case 'geojson':
+				$geojson = $this->asGeojson ($data);
+				return $this->responseJson ($geojson, $_GET['action'] . '.geojson');	// NB $_GET['action'] is validated by this point
 				break;
 				
 			# CSV
@@ -386,10 +392,15 @@ class api
 	
 	
 	# Function to transmit data as JSON
-	private function responseJson ($jsonArray)
+	private function responseJson ($jsonArray, $downloadFile = false /* or filename */)
 	{
 		# Allow any client to connect, and permit on localhost
 		header ('Access-Control-Allow-Origin: *');
+		
+		# If forcing as a download, send the header
+		if ($downloadFile) {
+			header ('Content-disposition: attachment; filename=' . $downloadFile);
+		}
 		
 		# Send the response, encoded as JSON
 		header ('Content-Type: application/json');

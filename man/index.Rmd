@@ -211,7 +211,7 @@ The width status layer compares the estimated width of the road with any propose
 
 ## Propensity to Cycle Tool
 
-The Propensity to Cycle Tool layer takes date from the Propensity to Cycle Tool (PCT) (available at www.pct.bike) and provides an updated version for CyIPT. The layer is analogous to the PCT LSOA route network layer, which can also be accessed as a base map though CyIPT. The difference with the PCT version is that the CyIPT version is matched to the OSM roads and is therefore both more detailed and interactive.
+The Propensity to Cycle Tool layer takes data from the Propensity to Cycle Tool (PCT) (see [www.pct.bike](http://www.pct.bike/)) and provides an updated version for CyIPT. The layer is analogous to the PCT LSOA route network layer, which can also be accessed as a base map though CyIPT. The difference with the PCT version is that the CyIPT version is matched to the OSM roads and is therefore both more detailed and interactive.
 
 # Technical details
 

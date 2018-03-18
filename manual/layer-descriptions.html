@@ -86,6 +86,8 @@
 <li class="chapter" data-level="4.3" data-path="layer-descriptions.html"><a href="layer-descriptions.html#footways"><i class="fa fa-check"></i><b>4.3</b> Footways</a></li>
 <li class="chapter" data-level="4.4" data-path="layer-descriptions.html"><a href="layer-descriptions.html#schemes"><i class="fa fa-check"></i><b>4.4</b> Schemes</a></li>
 <li class="chapter" data-level="4.5" data-path="layer-descriptions.html"><a href="layer-descriptions.html#recommended-infrastructure"><i class="fa fa-check"></i><b>4.5</b> Recommended infrastructure</a></li>
+<li class="chapter" data-level="4.6" data-path="layer-descriptions.html"><a href="layer-descriptions.html#road-widths"><i class="fa fa-check"></i><b>4.6</b> Road widths</a></li>
+<li class="chapter" data-level="4.7" data-path="layer-descriptions.html"><a href="layer-descriptions.html#propensity-to-cycle-tool"><i class="fa fa-check"></i><b>4.7</b> Propensity to Cycle Tool</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>5</b> Technical details</a></li>
 <li class="divider"></li>
@@ -120,7 +122,8 @@
 Figure 4.1: Dropdown menu illustrating available modes in the existing infrastructure layer.
 </p>
 </div>
-<p>For each mode, the underlying data is taken from the Open Street Map (OSM), which is then passed through a cleaning process to correct errors and fill in any missing data. If any values are incorrect in CyIPT (for example an incorrect speed limit) clicking on the road will show a popup including an “Edit in OSM” button. This button will take you to the same road in the OSM website where you can make corrections. These corrections (and any other updates) will be incorporated into CyIPT next time the data is rebuilt.</p>
+<p>For each mode, the underlying data is taken from the Open Street Map (OSM), which is then passed through a cleaning process to correct errors and fill in any missing data.</p>
+<p>If any values are incorrect in CyIPT (for example an incorrect speed limit) clicking on the road will show a popup including an “Edit in OSM” button. This button will take you to the same road in the OSM website where you can make corrections. These corrections (and any other updates) will be incorporated into CyIPT next time the data is rebuilt.</p>
 <div id="cycle-infrastructure" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Cycle infrastructure</h3>
 <p>The cycle infrastructure mode shows physical cycling infrastructure such as cycle lanes and tracks (Figure <a href="layer-descriptions.html#fig:existing-cycling">4.2</a>. It does not show signposted cycle routes (e.g. national cycle network) where there is no physical infrastructure.</p>
@@ -184,6 +187,16 @@ Figure 4.4: The recommended infrastructure layer.
 </p>
 </div>
 <p>It is important to understand that the CyIPT recommendations are based on cycling levels in the 2011 census, and it may therefore underrepresent current cycling levels and infrastructure requirements. For more detail on the recommendation process, see the Technical Details section below.</p>
+</div>
+<div id="road-widths" class="section level2">
+<h2><span class="header-section-number">4.6</span> Road widths</h2>
+<p>The road width layer has two modes (road width, width status). Road width</p>
+<p>The road width layer shows and estimate of the road with based on the OSM. The calculation use standard lane widths and information on the number of lanes and footways to estimate the total width of the carriageway. Width status</p>
+<p>The width status layer compares the estimated width of the road with any proposed new cycling infrastructure to width of the road as measured from the Ordnance Survey MaterMap. This mode helps highlight locations where road space is limited and space reallocation may be required to provide new cycling infrastructure.</p>
+</div>
+<div id="propensity-to-cycle-tool" class="section level2">
+<h2><span class="header-section-number">4.7</span> Propensity to Cycle Tool</h2>
+<p>The Propensity to Cycle Tool layer takes data from the Propensity to Cycle Tool (PCT) (available at www.pct.bike) and provides an updated version for CyIPT. The layer is analogous to the PCT LSOA route network layer, which can also be accessed as a base map though CyIPT. The difference with the PCT version is that the CyIPT version is matched to the OSM roads and is therefore both more detailed and interactive.</p>
 </div>
 </div>
             </section>

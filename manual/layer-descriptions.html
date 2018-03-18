@@ -79,8 +79,11 @@
 <li class="chapter" data-level="3.5" data-path="key-concepts.html"><a href="key-concepts.html#geometry-simplification"><i class="fa fa-check"></i><b>3.5</b> Geometry Simplification</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="layer-descriptions.html"><a href="layer-descriptions.html"><i class="fa fa-check"></i><b>4</b> Layer descriptions</a><ul>
-<li class="chapter" data-level="4.1" data-path="layer-descriptions.html"><a href="layer-descriptions.html#schemes"><i class="fa fa-check"></i><b>4.1</b> Schemes</a></li>
-<li class="chapter" data-level="4.2" data-path="layer-descriptions.html"><a href="layer-descriptions.html#recommended-infrastructure"><i class="fa fa-check"></i><b>4.2</b> Recommended infrastructure</a></li>
+<li class="chapter" data-level="4.1" data-path="layer-descriptions.html"><a href="layer-descriptions.html#existing-infrastructure"><i class="fa fa-check"></i><b>4.1</b> Existing infrastructure</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="layer-descriptions.html"><a href="layer-descriptions.html#cycle-infrastructure"><i class="fa fa-check"></i><b>4.1.1</b> Cycle infrastructure</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="layer-descriptions.html"><a href="layer-descriptions.html#schemes"><i class="fa fa-check"></i><b>4.2</b> Schemes</a></li>
+<li class="chapter" data-level="4.3" data-path="layer-descriptions.html"><a href="layer-descriptions.html#recommended-infrastructure"><i class="fa fa-check"></i><b>4.3</b> Recommended infrastructure</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>5</b> Technical details</a></li>
 <li class="divider"></li>
@@ -106,9 +109,25 @@
 <div id="layer-descriptions" class="section level1">
 <h1><span class="header-section-number">4</span> Layer descriptions</h1>
 <p>The CyIPT website is an interactive map presenting a range of different layers.</p>
+<div id="existing-infrastructure" class="section level2">
+<h2><span class="header-section-number">4.1</span> Existing infrastructure</h2>
+<p>The Existing Infrastructure layer has three modes (Cycle infrastructure, Speed limits, Footways). These modes are intended to help the users understand the current level of provision for active modes, and can be selected using the dropdown menu illustrated in Figure <a href="layer-descriptions.html#fig:existing-dropdown">4.1</a>.</p>
+<div class="figure"><span id="fig:existing-dropdown"></span>
+<img src="../images/existing-dropdown.png" alt="Dropdown menu illustrating available modes in the existing infrastructure layer." width="242" />
+<p class="caption">
+Figure 4.1: Dropdown menu illustrating available modes in the existing infrastructure layer.
+</p>
+</div>
+<p>For each mode, the underlying data is taken from the Open Street Map (OSM), which is then passed through a cleaning process to correct errors and fill in any missing data. If any values are incorrect in CyIPT (for example an incorrect speed limit) clicking on the road will show a popup including an “Edit in OSM” button. This button will take you to the same road in the OSM website where you can make corrections. These corrections (and any other updates) will be incorporated into CyIPT next time the data is rebuilt.</p>
+<div id="cycle-infrastructure" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Cycle infrastructure</h3>
+<p>The cycle infrastructure mode shows physical cycling infrastructure such as cycle lanes and tracks (Figure <a href="#fig:existing-cycling"><strong>??</strong></a>. It does not show signposted cycle routes (e.g. national cycle network) where there is no physical infrastructure.</p>
+<p>This layer shows what CyIPT will consider existing infrastructure when calculating the costs of new/upgraded cycle infrastructure.</p>
+</div>
+</div>
 <div id="schemes" class="section level2">
-<h2><span class="header-section-number">4.1</span> Schemes</h2>
-<p>The Schemes and presents the results of the toolkit for route segments, divided-up into geographically cohesive entities (see Figure <a href="layer-descriptions.html#fig:schemes">4.1</a>. Schemes can be composed of a variety of interventions, which can be:</p>
+<h2><span class="header-section-number">4.2</span> Schemes</h2>
+<p>The Schemes and presents the results of the toolkit for route segments, divided-up into geographically cohesive entities (see Figure <a href="layer-descriptions.html#fig:schemes">4.2</a>. Schemes can be composed of a variety of interventions, which can be:</p>
 <ul>
 <li>A recommendation for new/upgraded cycle infrastructure, or</li>
 <li>Multiple infrastructure types (only the most common is named)</li>
@@ -116,7 +135,7 @@
 <div class="figure"><span id="fig:schemes"></span>
 <img src="../images/layer-schemes.png" alt="The Schemes layer" width="960" />
 <p class="caption">
-Figure 4.1: The Schemes layer
+Figure 4.2: The Schemes layer
 </p>
 </div>
 <p>Schemes covers a defined area providing a route or part of a network. Each scheme is derived from the recommended infrastructure layer (see below) by excluding any roads where the recommended level of cycle infrastructure is equal to or exceeded by the existing infrastructure. Recommendations are then grouped into schemes, to convert recommendations that may only be a few tens of metres into a coherent route or network. Schemes below a threshold length are then excluded.</p>
@@ -139,12 +158,12 @@ Figure 4.1: The Schemes layer
 <p>The filters within the schemes layer can remove schemes from the map based on Cost, Benefit Cost Ratio, and Total Benefits.</p>
 </div>
 <div id="recommended-infrastructure" class="section level2">
-<h2><span class="header-section-number">4.2</span> Recommended infrastructure</h2>
+<h2><span class="header-section-number">4.3</span> Recommended infrastructure</h2>
 <p>The recommended infrastructure layer presents CyIPT’s recommendation for the type of cycle infrastructure required on each road segment. Roads and paths where no cycle infrastructure is required are not show. The recommendations do not take account of any existing infrastructure; therefore, the recommendations may suggest that existing cycle infrastructure remain, be upgraded, or in limited cases be downgraded.</p>
 <div class="figure"><span id="fig:recommended"></span>
 <img src="../images/recommended.png" alt="The recommended infrastructure layer." width="302" />
 <p class="caption">
-Figure 4.2: The recommended infrastructure layer.
+Figure 4.3: The recommended infrastructure layer.
 </p>
 </div>
 <p>It is important to understand that the CyIPT recommendations are based on cycling levels in the 2011 census, and it may therefore underrepresent current cycling levels and infrastructure requirements. For more detail on the recommendation process, see the Technical Details section below.</p>

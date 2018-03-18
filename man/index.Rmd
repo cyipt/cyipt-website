@@ -121,6 +121,29 @@ knitr::include_graphics("../images/geometric-simplification.png")
 
 The CyIPT website is an interactive map presenting a range of different  layers.
 
+## Existing infrastructure
+
+The Existing Infrastructure layer has three modes (Cycle infrastructure, Speed limits, Footways).  These modes are intended to help the users understand the current level of provision for active modes, and can be selected using the dropdown menu illustrated in Figure \@ref(fig:existing-dropdown).
+
+```{r existing-dropdown, fig.cap="Dropdown menu illustrating available modes in the existing infrastructure layer."}
+knitr::include_graphics("../images/existing-dropdown.png")
+```
+
+
+For each mode, the underlying data is taken from the Open Street Map (OSM), which is then passed through a cleaning process to correct errors and fill in any missing data.
+If any values are incorrect in CyIPT (for example an incorrect speed limit) clicking on the road will show a popup including an "Edit in OSM" button.  This button will take you to the same road in the OSM website where you can make corrections.  These corrections (and any other updates) will be incorporated into CyIPT next time the data is rebuilt.
+
+### Cycle infrastructure
+
+The cycle infrastructure mode shows physical cycling infrastructure such as cycle lanes and tracks (Figure \@ref(fig:existing-cycling). It does not show signposted cycle routes (e.g. national cycle network) where there is no physical infrastructure.
+
+```{r existing-cycling, fig.cap="The "}
+
+```
+
+
+This layer shows what CyIPT will consider existing infrastructure when calculating the costs of new/upgraded cycle infrastructure.
+
 ## Schemes
 
 The Schemes and presents the results of the toolkit for route segments, divided-up into geographically cohesive entities (see Figure \@ref(fig:schemes).
@@ -132,7 +155,6 @@ Schemes can be composed of a variety of interventions, which can be:
 ```{r schemes, fig.cap="The Schemes layer"}
 knitr::include_graphics("../images/layer-schemes.png")
 ```
-
 
 Schemes covers a defined area providing a route or part of a network.
 Each scheme is derived from the recommended infrastructure layer (see below) by excluding any roads where the recommended level of cycle infrastructure is equal to or exceeded by the existing infrastructure.  Recommendations are then grouped into schemes, to convert recommendations that may only be a few tens of metres into a coherent route or network. Schemes below a threshold length are then excluded.

@@ -246,39 +246,52 @@ var cyipt = (function ($) {
 			apiCall: '/v1/width.json',
 			name: 'Road widths',
 			description: 'Calculations of the width of roads/paths, which helps determine the potential space available for cycle infrastructure.',
+			sublayerParameter: 'widthlayer',
 			lineColourField: 'width',
-			lineColourStops: [
-			  ['Missing Width Data', '#e5d0ff'],
-			  ['More than sufficient width', '#6dee09'],
-			  ['About sufficient width', '#fff966'],
-			  ['Width Constrained', '#ff940e'],
-			  ['Insufficient width', '#ff0000'],
-				[14, '#4575b4'],
-				[12, '#74add1'],
-				[10, '#abd9e9'],
-				[8, '#e0f3f8'],
-				[6, '#fee090'],
-				[4, '#fdae61'],
-				[2, '#f46d43'],
-				[0, '#d73027'],
-			],
-			intervals: [
-			  ['Missing Width Data', '#e5d0ff'],
-			  ['More than sufficient width', '#6dee09'],
-			  ['About sufficient width', '#fff966'],
-			  ['Width Constrained', '#ff940e'],
-			  ['Insufficient width', '#ff0000'],
-				['14+ m', '#4575b4'],
-				['12-14 m', '#74add1'],
-				['10-12 m', '#abd9e9'],
-				['8-10 m', '#e0f3f8'],
-				['6-8 m', '#fee090'],
-				['4-6 m ', '#fdae61'],
-				['2-4 m', '#f46d43'],
-				['0-2 m', '#d73027'],
-			]
+			lineColourField: {
+				roadwidth: 'width',
+				widthstatus: 'width'
+			},
+			lineColourStops: {
+				roadwidth: [
+					[14, '#4575b4'],
+					[12, '#74add1'],
+					[10, '#abd9e9'],
+					[8, '#e0f3f8'],
+					[6, '#fee090'],
+					[4, '#fdae61'],
+					[2, '#f46d43'],
+					[0, '#d73027']
+				],
+				widthstatus: [
+					['Missing Width Data', '#e5d0ff'],
+					['More than sufficient width', '#6dee09'],
+					['About sufficient width', '#fff966'],
+					['Width Constrained', '#ff940e'],
+					['Insufficient width', '#ff0000']
+				]
+			},
+			intervals: {
+				roadwidth: [
+					['14+ m', '#4575b4'],
+					['12-14 m', '#74add1'],
+					['10-12 m', '#abd9e9'],
+					['8-10 m', '#e0f3f8'],
+					['6-8 m', '#fee090'],
+					['4-6 m ', '#fdae61'],
+					['2-4 m', '#f46d43'],
+					['0-2 m', '#d73027']
+				],
+				widthstatus: [
+					['Missing Width Data', '#e5d0ff'],
+					['More than sufficient width', '#6dee09'],
+					['About sufficient width', '#fff966'],
+					['Width Constrained', '#ff940e'],
+					['Insufficient width', '#ff0000']
+				]
+			}
 		},
-
+		
 		pct: {
 			apiCall: '/v1/pct.json',
 			name: 'Propensity to Cycle Tool',

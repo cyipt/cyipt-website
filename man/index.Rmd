@@ -114,8 +114,27 @@ To allow you to view the results of CyIPT over larger areas, the CyIPT website s
 knitr::include_graphics("../images/geometric-simplification.png")
 ```
 
-
 # Layer descriptions
+
+The CyIPT website is an interactive map presenting a range of different  layers.
+
+## Schemes
+
+The Schemes and presents the results of the toolkit for route segments, divided-up into geographically cohesive entities (see Figure \@ref(fig:schemes).
+Schemes can be composed of a variety of interventions, which can be:
+
+- A recommendation for new/upgraded cycle infrastructure, or
+- Multiple infrastructure types (only the most common is named)
+
+```{r schemes, fig.cap="The Schemes layer"}
+knitr::include_graphics("../images/layer-schemes.png")
+```
+
+
+Schemes covers a defined area providing a route or part of a network.
+Each scheme is derived from the recommended infrastructure layer (see below) by excluding any roads where the recommended level of cycle infrastructure is equal to or exceeded by the existing infrastructure.  Recommendations are then grouped into schemes, to convert recommendations that may only be a few tens of metres into a coherent route or network. Schemes below a threshold length are then excluded.
+
+<!-- Todo: automate the process of adding this paramet (where is it in the code?) -->
 
 # Technical details
 

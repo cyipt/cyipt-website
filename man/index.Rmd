@@ -5,7 +5,8 @@ author: "The CyIPT team"
 date: '`r Sys.Date()`'
 site: bookdown::bookdown_site
 output:
-  bookdown::gitbook
+  bookdown::gitbook:
+    in_header: header.html
 documentclass: book
 github-repo: "cyipt/cyipt-website"
 bibliography: references.bib
@@ -18,7 +19,7 @@ description: "This is the manual of the Cycling Infrastructure Prioritisation To
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Introduction {-}
+# Introduction
 
 The Cycling Infrastructure Prioritisation Toolkit (CyIPT) is a research project based at the University of Leeds and funded by the Department for Transport (DFT).  The purpose of CyIPT is to develop methods and tools to assist in the design and planning of new cycling infrastructure.  The CyIPT is currently (as of March 2018) a working prototype.  Therefore, any recommendations produced by CyIPT should be subjected to independent assessment before making investment decisions.
 
@@ -37,6 +38,10 @@ The code is hosted on GitHub, a platform for software development and collaborat
 - Prof John Parkin, University of the West of England
 - Martin Lucas-Smith, CycleStreets.net
 
+```{r}
+knitr::include_graphics("../images/logo.png")
+```
+
 # How the CyIPT works
 
 This section gives an overview of how CyIPT works and some of its main limitations.  For full details, see the Technical Details section below.
@@ -52,4 +57,10 @@ Based on the length and type of infrastructure, CyIPT estimate the cost of const
 As CyIPT’s recommendations are made for each road segment (junction to junction), they can be for very short sections of road. Therefore, CyIPT has a clustering algorithm, which attempts to take recommendations and group them into coherent schemes that could be constructed. One the schemes have been produced, CyITP estimate the number of additional cyclists the scheme would produce and performed a benefit cost assessment of the schemes to identify the schemes which are most likely to be worth building.
 The CyIPT process is deterministic, which is to say that it produces the same results each time the model is run, and has therefore been pre-processed by the CyIPT team.  The results for England are made available through the CyIPT website (www.cyipt.bike).  The CyIPT website also allows for data download and the source code is available at GitHub (https://github.com/cyipt).
 
-# Another section
+# Key concepts
+
+# Layer descriptions
+
+# Technical details
+
+

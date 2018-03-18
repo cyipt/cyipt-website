@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="key-concepts.html">
+<link rel="prev" href="layer-descriptions.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -94,23 +94,13 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="how-the-cyipt-works" class="section level1">
-<h1><span class="header-section-number">2</span> How the CyIPT works</h1>
-<p>This section gives an overview of how CyIPT works and some of its main limitations. For full details, see the Technical Details section below.</p>
-<p>Figure <a href="how-the-cyipt-works.html#fig:workflow">2.1</a> outlines the basic structure of CyIPT. First CyIPT takes data about each road and path in England and uses it to recommend the approximate type of cycling infrastructure. The recommendation algorithm is based on Highways England’s Interim Advice Note 195/16 <span class="citation">(Highways England <a href="#ref-highwaysengland_interim_2016">2016</a>)</span>. The algorithm can make eight possible recommendations (Cycle Lanes, Cycle Lanes with light segregation, Cycle Street, Cycle Land on Path, Stepped Cycle Tracks, Segregated Cycle Track on Path, Segregated Cycle Track, and None).</p>
-<div class="figure"><span id="fig:workflow"></span>
-<img src="../images/workflow.png" alt="Schematic overview of the CyIPT." width="828" />
-<p class="caption">
-Figure 2.1: Schematic overview of the CyIPT.
-</p>
-</div>
-<p>Based on the length and type of infrastructure, CyIPT estimate the cost of constructing the recommended new cycling infrastructure. CyIPT take account of existing infrastructure and therefore does not apply a cost of building existing cycle infrastructure if it is of sufficient quality.</p>
-<p>As CyIPT’s recommendations are made for each road segment (junction to junction), they can be for very short sections of road. Therefore, CyIPT has a clustering algorithm, which attempts to take recommendations and group them into coherent schemes that could be constructed. One the schemes have been produced, CyITP estimate the number of additional cyclists the scheme would produce and performed a benefit cost assessment of the schemes to identify the schemes which are most likely to be worth building. The CyIPT process is deterministic, which is to say that it produces the same results each time the model is run, and has therefore been pre-processed by the CyIPT team. The results for England are made available through the CyIPT website (www.cyipt.bike). The CyIPT website also allows for data download and the source code is available at GitHub (<a href="https://github.com/cyipt" class="uri">https://github.com/cyipt</a>).</p>
-</div>
-<h3> Technical details</h3>
+<div id="technical-details" class="section level1">
+<h1><span class="header-section-number">5</span> Technical details</h1>
+
 <div id="refs" class="references">
-<div id="ref-highwaysengland_interim_2016">
+<div>
 <p>Highways England. 2016. “Interim Advice Note 195/16: Cycle Traffic and the Strategic Road Network.” Interim 195/16. Highways England. <a href="http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf" class="uri">http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf</a>.</p>
+</div>
 </div>
 </div>
             </section>
@@ -118,8 +108,8 @@ Figure 2.1: Schematic overview of the CyIPT.
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="key-concepts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="layer-descriptions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

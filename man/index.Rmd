@@ -106,6 +106,15 @@ knitr::include_graphics("../images/ratelimited-london.png")
 
 For some layers now data will show until you are zoomed in to a certain level.  While some layers (e.g. Propensity to Cycle Tool layer) provide more detail the further you zoom in.
 
+## Geometry Simplification
+
+To allow you to view the results of CyIPT over larger areas, the CyIPT website simplifies the geometry of the roads when zoomed out.  This simplification can be noticeable when zooming, resulting in curved lines becoming straight.  The simplification process is performed after the analysis has been completed, and therefore does not affect the results.
+
+```{r simp, fig.cap="Example of geometric simplification when zoomed out (left) and full detail when zoomed in (right)."}
+knitr::include_graphics("../images/geometric-simplification.png")
+```
+
+
 # Layer descriptions
 
 # Technical details

@@ -136,6 +136,29 @@ Each scheme is derived from the recommended infrastructure layer (see below) by 
 
 <!-- Todo: automate the process of adding this paramet (where is it in the code?) -->
 
+This final list of schemes is evaluated by estimating the increase in cycling due to the new infrastructure and a range of benefits derived from increase cycling.  The benefits categories within CyIPT are:
+
+- Health benefits from increase exercise
+- Benefits from reduced absenteeism due to improved health
+- Benefits from improved journey quality – Not yet implemented
+- Benefits from reduced road accidents – Simple implementation
+- Benefits from reduced noise – Not yet implemented
+- Benefits from improved air quality - Not yet implemented
+- Benefits from reduced greenhouse gas emissions
+- Benefits from reduced road traffic congestion -  Simple implementation
+- Benefits from indirect taxation - Not yet implemented
+- Benefits from time savings - Not yet implemented
+
+As CyIPT is still in the proof of concept stage, not all the benefits categories have been fully implemented.  Therefor CyIPT is likely to underestimate the benefits for a cycle scheme for a given increase in number of cyclists.
+
+The benefits for the scheme are then compared against the total estimated cost of the scheme to provide benefit cost ratios for each scheme.  Schemes are colour coded based on their benefit cost ratio.
+
+The filters within the schemes layer can remove schemes from the map based on Cost, Benefit Cost Ratio, and Total Benefits.
+
+## Recommended infrastructure
+
+In progress...
+
 # Technical details
 
 

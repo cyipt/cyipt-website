@@ -17,6 +17,9 @@ description: "This is the manual of the Cycling Infrastructure Prioritisation To
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+# build pdf version of manual:
+# bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 ```
 
 # Introduction

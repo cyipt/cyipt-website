@@ -223,6 +223,15 @@ The PCT scenarios provide a useful way to cross validate the CyIPT uptake predic
 
 The PCT team is currently working on updated version of the PCT for Wales, and to include travel to schools.  These are not currently implemented within CyIPT but may be added in the future.
 
+## Traffic counts
+
+The traffic counts layer provides an overview of road traffic levels on selected roads (see Figure \@ref(fig:layer-traffic)). The data source is DFT traffic count data, which CyIPT then matches to the road network. As the DFT data is not provided for all locations in all years, CyIPT takes the most recent available year.  As illustrated in Figure \@ref(fig:layer-traffic) DFT data has good coverage of the strategic road network, but more limited coverage of minor roads.
+
+```{r layer-traffic, fig.cap="The traffic layer."}
+knitr::include_graphics("../images/layer-traffic.png")
+```
+
+
 
 # Technical details
 

@@ -183,8 +183,12 @@ var cyipt = (function ($) {
 			apiCall: '/v1/existing.json',
 			name: 'Existing infrastructure',
 			description: 'Existing cycle infrastructure, providing a baseline for improvement.',
-			intervals: true,
 			sublayerParameter: 'layer',
+			intervals: {
+				cycleinfrastructure: true,
+				speedlimits: true,
+				footways: true
+			},
 			lineColourField: {
 				cycleinfrastructure: 'existing',
 				speedlimits: 'maxspeed',

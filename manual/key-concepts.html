@@ -5,35 +5,35 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>The Cycling Infrastructure Prioritisation Toolkit: Manual, Version 0.3</title>
-  <meta name="description" content="The Cycling Infrastructure Prioritisation Toolkit: Manual, Version 0.3">
+  <title>The Cycling Infrastructure Prioritisation Toolkit: Manual</title>
+  <meta name="description" content="This is the manual of the Cycling Infrastructure Prioritisation Toolkit (CyIPT).">
   <meta name="generator" content="bookdown 0.7.1 and GitBook 2.6.7">
 
-  <meta property="og:title" content="The Cycling Infrastructure Prioritisation Toolkit: Manual, Version 0.3" />
+  <meta property="og:title" content="The Cycling Infrastructure Prioritisation Toolkit: Manual" />
   <meta property="og:type" content="book" />
   
   
-  
+  <meta property="og:description" content="This is the manual of the Cycling Infrastructure Prioritisation Toolkit (CyIPT)." />
   <meta name="github-repo" content="cyipt/cyipt-website" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="The Cycling Infrastructure Prioritisation Toolkit: Manual, Version 0.3" />
+  <meta name="twitter:title" content="The Cycling Infrastructure Prioritisation Toolkit: Manual" />
   
-  
+  <meta name="twitter:description" content="This is the manual of the Cycling Infrastructure Prioritisation Toolkit (CyIPT)." />
   
 
 <meta name="author" content="The CyIPT team">
 
 
-<meta name="date" content="2018-03-17">
+<meta name="date" content="2018-03-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="how-the-cyipt-works.html">
-
+<link rel="prev" href="how-cyipt-works.html">
+<link rel="next" href="layer-descriptions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,6 +50,7 @@
 
 
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -62,12 +63,26 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Index</a><ul>
+<li><a href="./">The CyIPT Manual</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#the-cyipt-team"><i class="fa fa-check"></i>The CyIPT Team</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="how-the-cyipt-works.html"><a href="how-the-cyipt-works.html"><i class="fa fa-check"></i><b>1</b> How the CyIPT works</a></li>
-<li class="chapter" data-level="2" data-path="key-concepts.html"><a href="key-concepts.html"><i class="fa fa-check"></i><b>2</b> Key Concepts</a></li>
+<li class="chapter" data-level="2" data-path="how-cyipt-works.html"><a href="how-cyipt-works.html"><i class="fa fa-check"></i><b>2</b> How CyIPT works</a></li>
+<li class="chapter" data-level="3" data-path="key-concepts.html"><a href="key-concepts.html"><i class="fa fa-check"></i><b>3</b> Key concepts</a><ul>
+<li class="chapter" data-level="3.1" data-path="key-concepts.html"><a href="key-concepts.html#accuracy"><i class="fa fa-check"></i><b>3.1</b> Accuracy</a></li>
+<li class="chapter" data-level="3.2" data-path="key-concepts.html"><a href="key-concepts.html#open-street-map"><i class="fa fa-check"></i><b>3.2</b> Open Street Map</a></li>
+<li class="chapter" data-level="3.3" data-path="key-concepts.html"><a href="key-concepts.html#cycling-flows-from-the-pct"><i class="fa fa-check"></i><b>3.3</b> Cycling Flows from the PCT</a></li>
+<li class="chapter" data-level="3.4" data-path="key-concepts.html"><a href="key-concepts.html#rate-limiting"><i class="fa fa-check"></i><b>3.4</b> Rate Limiting</a></li>
+<li class="chapter" data-level="3.5" data-path="key-concepts.html"><a href="key-concepts.html#geometry-simplification"><i class="fa fa-check"></i><b>3.5</b> Geometry Simplification</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="layer-descriptions.html"><a href="layer-descriptions.html"><i class="fa fa-check"></i><b>4</b> Layer descriptions</a></li>
+<li class="chapter" data-level="5" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>5</b> Technical details</a></li>
+<li class="divider"></li>
+<li><a href="https://cyipt.bike" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -77,7 +92,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Cycling Infrastructure Prioritisation Toolkit: Manual, Version 0.3</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Cycling Infrastructure Prioritisation Toolkit: Manual</a>
           </h1>
         </div>
 
@@ -86,11 +101,56 @@
 
             <section class="normal" id="section-">
 <div id="key-concepts" class="section level1">
-<h1><span class="header-section-number">2</span> Key Concepts</h1>
-<p>TBC.</p>
-<div id="refs" class="references">
-<div>
-<p>Highways England. 2016. “Interim Advice Note 195/16: Cycle Traffic and the Strategic Road Network.” Interim 195/16. Highways England. <a href="http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf" class="uri">http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf</a>.</p>
+<h1><span class="header-section-number">3</span> Key concepts</h1>
+<div id="accuracy" class="section level2">
+<h2><span class="header-section-number">3.1</span> Accuracy</h2>
+<p>While using CyIPT it is important to bear in mind that:</p>
+<ul>
+<li>It was funded under the Innovation Challenge Fund (ICF) and at present should be regarded as a proof of concept prototype demonstrating what is possible.</li>
+<li>As CyIPT is a national tool, it uses national datasets which may be less detailed and up-to-date, than local data sources.</li>
+<li>As CyIPT is a national tool, it has probably had limited human oversight in your area. Results have been ‘sanity checked’ for some areas but we are unable to check if every road in the country has sane results (please report on our <a href="https://github.com/cyipt/cyipt/issues">issue tracker</a> if not).</li>
+<li>CyIPT relies on the OpenStreetMap (OSM), the quality of which varies across the country.</li>
+<li>Currently the results are based on commuter cycling only, meaning other data sources and local knowledge must be used to account for other trip purposes (e.g. recreational cycling, travel to schools, shops). We hope to add travel to school and public transport links in due course.</li>
+<li>The results do not take account of the wider transport and political context.</li>
+</ul>
+<p>While CyIPT provides detailed numbers such as costs and cycling uptake, it is best views as a tool to draw your attention to specific areas that may benefit from improved cycling infrastructure, rather than an automatic transport planner.</p>
+<p>The layers in CyIPT are intend to provide insight into various geographic factors that should inform the decision-making process. For example the traffic counts layer has many roads without any traffic data. This does not mean there is no traffic on these roads. It simply means that CyIPT does not know about the traffic on these roads, and its recommendations will be affected by this lack of knowledge.</p>
+<p>Users should evaluate each recommendation independently, scrutinising how CyIPT came to its conclusion and validating those assumptions.</p>
+</div>
+<div id="open-street-map" class="section level2">
+<h2><span class="header-section-number">3.2</span> Open Street Map</h2>
+<p>CyIPT uses the Open Street Map (<a href="https://www.openstreetmap.org/#map=6/54.910/-3.432" class="uri">https://www.openstreetmap.org/#map=6/54.910/-3.432</a>) to provide the base road and path map of England. CyIPT uses OSM for several reasons: OSM’s open licence allows free use and reuse of all the data; National coverage; OSM has more detail about cycling infrastructure than some official sources.</p>
+<p>However OSM has several limitations, firstly as a crowd sourced dataset the accuracy and detail of OSM is variable. While OSM covers over 99% of the roads in the UK, details such as rad types, speed limits, cycle infrastructure, etc. are far patchier. CyIPT has a built in OSM cleaner that attempts to remove errors and fill in missing data. For example, CyIPT will assume that the speed limit on a residential road is 30 mph unless otherwise specified.</p>
+<p>CyIPT users can improve CyIPT results in their area by updating OSM. The Existing Infrastructure Layer (see below) has a “Edit OSM” button that links directly from any road in CyIPT to the same road in OSM. Updates to OSM are incorporated into CyIPT when the next national rebuild occurs.</p>
+</div>
+<div id="cycling-flows-from-the-pct" class="section level2">
+<h2><span class="header-section-number">3.3</span> Cycling Flows from the PCT</h2>
+<p>CyIPT Uses the Propensity to Cycle Tool (PCT www.pct.bike) to provide data on the existing and future cycling flows on each road. This data is in turn taken from the 2011 census commuting flow data. Therefore:</p>
+<ul>
+<li>CyIPT is biased towards commuter cycling due to using the PCT data.</li>
+<li>CyIPT has a 2011 view of travel patterns but for existing travel and as a baseline for predicting future demand.</li>
+</ul>
+<p>National cycling and travel trends have not changed significantly between 2011 and the present day, however, in local areas travel patterns have changed due to new cycle infrastructure and new housing. Users should apply extra scrutiny to CyIPT results in areas where there have been significant changes since 2011.</p>
+</div>
+<div id="rate-limiting" class="section level2">
+<h2><span class="header-section-number">3.4</span> Rate Limiting</h2>
+<p>To maintain the performance of the CyIPT website, the map data is rate limited. These limits will prevent you from downloading too much data at once. You are most likely to encounter rate limiting when attempting to view large areas. When rate limiting occurs, the data will appear on the map in a patchy or random fashion, as illustrated in Figure <a href="key-concepts.html#fig:ratelim">3.1</a>.</p>
+<div class="figure"><span id="fig:ratelim"></span>
+<img src="../images/ratelimited-london.png" alt="Example of the map of London when rate limited is in effect." width="960" />
+<p class="caption">
+Figure 3.1: Example of the map of London when rate limited is in effect.
+</p>
+</div>
+<p>For some layers now data will show until you are zoomed in to a certain level. While some layers (e.g. Propensity to Cycle Tool layer) provide more detail the further you zoom in.</p>
+</div>
+<div id="geometry-simplification" class="section level2">
+<h2><span class="header-section-number">3.5</span> Geometry Simplification</h2>
+<p>To allow you to view the results of CyIPT over larger areas, the CyIPT website simplifies the geometry of the roads when zoomed out. This simplification can be noticeable when zooming, resulting in curved lines becoming straight. The simplification process is performed after the analysis has been completed, and therefore does not affect the results.</p>
+<div class="figure"><span id="fig:simp"></span>
+<img src="../images/geometric-simplification.png" alt="Example of geometric simplification when zoomed out (left) and full detail when zoomed in (right)." width="350" />
+<p class="caption">
+Figure 3.2: Example of geometric simplification when zoomed out (left) and full detail when zoomed in (right).
+</p>
 </div>
 </div>
 </div>
@@ -99,8 +159,8 @@
           </div>
         </div>
       </div>
-<a href="how-the-cyipt-works.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="how-cyipt-works.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="layer-descriptions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -130,14 +190,13 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/cyipt/cyipt-website/manual/edit/master/%s",
+"link": "https://github.com/cyipt/cyipt-website/edit/master/man/index.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["manual.pdf"],
 "toc": {
 "collapse": "subsection"
-},
-"search": false
+}
 });
 });
 </script>

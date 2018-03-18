@@ -1,0 +1,9 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">The CyIPT Manual</a></li>
+      after: |
+        <li><a href="https://cyipt.bike" target="blank">Published with bookdown</a></li>
+    download: ["pdf"]

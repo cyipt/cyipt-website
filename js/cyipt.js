@@ -178,24 +178,38 @@ var cyipt = (function ($) {
 			],
 			intervals: true
 		},
-
+		
 		existing: {
 			apiCall: '/v1/existing.json',
 			name: 'Existing infrastructure',
 			description: 'Existing cycle infrastructure, providing a baseline for improvement.',
-			lineColourField: 'existing',
-			lineColourStops: [
-				['Track', '#0000ff'],
-				['Lane', '#009fef'],
-				['Bus lane', '#e7e700'],
-				// ['Minor road', '#ff9900'],
-				// ['Major road', '#df0000'],
-				// ['No cycling', '#1f1f1f'],
-				['Living street', '#999999'],
-				['Speed limit / footway lines', 'purple']	// Fallback, which will catch those layers
-			],
 			intervals: true,
-			popupSublayerParameter: 'layer',
+			sublayerParameter: 'layer',
+			lineColourField: {
+				cycleinfrastructure: 'existing',
+				speedlimits: 'maxspeed',
+				footways: 'sidewalk'
+			},
+			lineColourStops: {
+				cycleinfrastructure: [
+					['Track', '#0000ff'],
+					['Lane', '#009fef'],
+					['Bus lane', '#e7e700'],
+					// ['Minor road', '#ff9900'],
+					// ['Major road', '#df0000'],
+					// ['No cycling', '#1f1f1f'],
+					['Living street', '#999999']
+				],
+				speedlimits: [
+					[70, 'red'],
+					[40, 'crimson'],
+					[30, 'orange'],
+					[20, 'green']
+				],
+				footways: [
+					['footway lines', 'purple']
+				]
+			},
 			popupHtml: {
 				cycleinfrastructure: '<p><a class="edit" target="_blank" href="https://www.openstreetmap.org/way/{properties.osmid}">Edit in OSM</a></p>'
 					+ '<table>'
@@ -220,7 +234,7 @@ var cyipt = (function ($) {
 					+ '</table>'
 			}
 		},
-
+		
 		width: {
 			apiCall: '/v1/width.json',
 			name: 'Road widths',

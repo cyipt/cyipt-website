@@ -137,12 +137,21 @@ If any values are incorrect in CyIPT (for example an incorrect speed limit) clic
 
 The cycle infrastructure mode shows physical cycling infrastructure such as cycle lanes and tracks (Figure \@ref(fig:existing-cycling). It does not show signposted cycle routes (e.g. national cycle network) where there is no physical infrastructure.
 
-```{r existing-cycling, fig.cap="The "}
-
+```{r existing-cycling, fig.cap="The 'Cycle infrastructure' mode in the Existing infrastructure layer."}
+knitr::include_graphics("../images/existing-cycling.png")
 ```
 
-
 This layer shows what CyIPT will consider existing infrastructure when calculating the costs of new/upgraded cycle infrastructure.
+
+## Speed limits
+
+The speed limits mode shows the maximum speed limit in miles per hour.
+
+<!-- todo: add images here and below -->
+
+## Footways
+
+The footways mode shows the presence of footways (pavements) on the side of the road.
 
 ## Schemes
 

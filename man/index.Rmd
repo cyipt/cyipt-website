@@ -17,6 +17,9 @@ description: "This is the manual of the Cycling Infrastructure Prioritisation To
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+# build pdf version of manual:
+# bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 ```
 
 # Introduction
@@ -114,8 +117,50 @@ To allow you to view the results of CyIPT over larger areas, the CyIPT website s
 knitr::include_graphics("../images/geometric-simplification.png")
 ```
 
-
 # Layer descriptions
+
+The CyIPT website is an interactive map presenting a range of different  layers.
+
+## Schemes
+
+The Schemes and presents the results of the toolkit for route segments, divided-up into geographically cohesive entities (see Figure \@ref(fig:schemes).
+Schemes can be composed of a variety of interventions, which can be:
+
+- A recommendation for new/upgraded cycle infrastructure, or
+- Multiple infrastructure types (only the most common is named)
+
+```{r schemes, fig.cap="The Schemes layer"}
+knitr::include_graphics("../images/layer-schemes.png")
+```
+
+
+Schemes covers a defined area providing a route or part of a network.
+Each scheme is derived from the recommended infrastructure layer (see below) by excluding any roads where the recommended level of cycle infrastructure is equal to or exceeded by the existing infrastructure.  Recommendations are then grouped into schemes, to convert recommendations that may only be a few tens of metres into a coherent route or network. Schemes below a threshold length are then excluded.
+
+<!-- Todo: automate the process of adding this paramet (where is it in the code?) -->
+
+This final list of schemes is evaluated by estimating the increase in cycling due to the new infrastructure and a range of benefits derived from increase cycling.  The benefits categories within CyIPT are:
+
+- Health benefits from increase exercise
+- Benefits from reduced absenteeism due to improved health
+- Benefits from improved journey quality – Not yet implemented
+- Benefits from reduced road accidents – Simple implementation
+- Benefits from reduced noise – Not yet implemented
+- Benefits from improved air quality - Not yet implemented
+- Benefits from reduced greenhouse gas emissions
+- Benefits from reduced road traffic congestion -  Simple implementation
+- Benefits from indirect taxation - Not yet implemented
+- Benefits from time savings - Not yet implemented
+
+As CyIPT is still in the proof of concept stage, not all the benefits categories have been fully implemented.  Therefor CyIPT is likely to underestimate the benefits for a cycle scheme for a given increase in number of cyclists.
+
+The benefits for the scheme are then compared against the total estimated cost of the scheme to provide benefit cost ratios for each scheme.  Schemes are colour coded based on their benefit cost ratio.
+
+The filters within the schemes layer can remove schemes from the map based on Cost, Benefit Cost Ratio, and Total Benefits.
+
+## Recommended infrastructure
+
+In progress...
 
 # Technical details
 

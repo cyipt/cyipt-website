@@ -44,7 +44,7 @@ This section gives an overview of how CyIPT works and some of its main limitatio
 Figure \@ref(fig:workflow) outlines the basic structure of CyIPT. First CyIPT takes data about each road and path in England and uses it to recommend the approximate type of cycling infrastructure.  The recommendation algorithm is based on Highways England’s Interim Advice Note 195/16 [@highwaysengland_interim_2016]. The algorithm can make eight possible recommendations (Cycle Lanes, Cycle Lanes with light segregation, Cycle Street, Cycle Land on Path, Stepped Cycle Tracks, Segregated Cycle Track on Path, Segregated Cycle Track, and None).
 
 ```{r workflow, fig.cap="Schematic overview of the CyIPT."}
-knitr::include_graphics("https://github.com/cyipt/cyipt-website/blob/master/images/workflow.png?raw=true")
+knitr::include_graphics("../images/workflow.png")
 ```
 
 Based on the length and type of infrastructure, CyIPT estimate the cost of constructing the recommended new cycling infrastructure.  CyIPT take account of existing infrastructure and therefore does not apply a cost of building existing cycle infrastructure if it is of sufficient quality. 

@@ -73,7 +73,7 @@
 <li class="chapter" data-level="2" data-path="how-cyipt-works.html"><a href="how-cyipt-works.html"><i class="fa fa-check"></i><b>2</b> How CyIPT works</a></li>
 <li class="chapter" data-level="3" data-path="key-concepts.html"><a href="key-concepts.html"><i class="fa fa-check"></i><b>3</b> Key concepts</a><ul>
 <li class="chapter" data-level="3.1" data-path="key-concepts.html"><a href="key-concepts.html#accuracy"><i class="fa fa-check"></i><b>3.1</b> Accuracy</a></li>
-<li class="chapter" data-level="3.2" data-path="key-concepts.html"><a href="key-concepts.html#open-street-map"><i class="fa fa-check"></i><b>3.2</b> Open Street Map</a></li>
+<li class="chapter" data-level="3.2" data-path="key-concepts.html"><a href="key-concepts.html#open-street-map"><i class="fa fa-check"></i><b>3.2</b> OpenStreetMap</a></li>
 <li class="chapter" data-level="3.3" data-path="key-concepts.html"><a href="key-concepts.html#cycling-flows-from-the-pct"><i class="fa fa-check"></i><b>3.3</b> Cycling Flows from the PCT</a></li>
 <li class="chapter" data-level="3.4" data-path="key-concepts.html"><a href="key-concepts.html#rate-limiting"><i class="fa fa-check"></i><b>3.4</b> Rate Limiting</a></li>
 <li class="chapter" data-level="3.5" data-path="key-concepts.html"><a href="key-concepts.html#geometry-simplification"><i class="fa fa-check"></i><b>3.5</b> Geometry Simplification</a></li>
@@ -121,8 +121,8 @@
 <p>Users should evaluate each recommendation independently, scrutinising how CyIPT came to its conclusion and validating those assumptions.</p>
 </div>
 <div id="open-street-map" class="section level2">
-<h2><span class="header-section-number">3.2</span> Open Street Map</h2>
-<p>CyIPT uses the Open Street Map (<a href="https://www.openstreetmap.org/#map=6/54.910/-3.432" class="uri">https://www.openstreetmap.org/#map=6/54.910/-3.432</a>) to provide the base road and path map of England. CyIPT uses OSM for several reasons: OSM’s open licence allows free use and reuse of all the data; National coverage; OSM has more detail about cycling infrastructure than some official sources.</p>
+<h2><span class="header-section-number">3.2</span> OpenStreetMap</h2>
+<p>CyIPT uses the OpenStreetMap (<a href="https://www.openstreetmap.org/#map=6/54.910/-3.432" class="uri">https://www.openstreetmap.org/#map=6/54.910/-3.432</a>) to provide the base road and path map of England. CyIPT uses OSM for several reasons: OSM’s open licence allows free use and reuse of all the data; National coverage; OSM has more detail about cycling infrastructure than some official sources.</p>
 <p>However OSM has several limitations, firstly as a crowd sourced dataset the accuracy and detail of OSM is variable. While OSM covers over 99% of the roads in the UK, details such as rad types, speed limits, cycle infrastructure, etc. are far patchier. CyIPT has a built in OSM cleaner that attempts to remove errors and fill in missing data. For example, CyIPT will assume that the speed limit on a residential road is 30 mph unless otherwise specified.</p>
 <p>CyIPT users can improve CyIPT results in their area by updating OSM. The Existing Infrastructure Layer (see below) has a “Edit OSM” button that links directly from any road in CyIPT to the same road in OSM. Updates to OSM are incorporated into CyIPT when the next national rebuild occurs.</p>
 </div>

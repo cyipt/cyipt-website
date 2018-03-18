@@ -73,6 +73,25 @@
 							<div id="sections">
 
 								<div id="accordion">
+								  
+								  									<h3 title="Existing cycle infrastructure, providing a baseline for improvement."><input type="checkbox" name="show[]" id="show_existing" /> Existing infrastructure <a class="moredetails" data-field="existing" href="#">[?]</a></h3>
+									<div id="existing" class="filters">
+										<select id="layer" name="layer">
+											<option value="cycleinfrastructure" selected="selected">Cycle infrastructure</option>
+											<option value="speedlimits">Speed limits</option>
+											<option value="footways">Footways</option>
+										</select>
+										<br>
+										<p>Source: CyIPT</p>
+
+										<div class="export button">
+											<p>
+												Export:
+												<img class="csv" src="/js/lib/Leaflet.LayerViewer/images/page_excel.png" title="Export to CSV spreadsheet (for Excel)" />
+												<img class="geojson" src="/js/lib/Leaflet.LayerViewer/images/page_code.png" title="Export to GeoJSON (for GIS systems)" />
+											</p>
+										</div>
+									</div>
 
 									<h3 title="Our recommendation for schemes, which group the proposals for recommended cycle infrastructure together."><input type="checkbox" name="show[]" id="show_schemes" /> Schemes <a class="moredetails" data-field="schemes" href="#">[?]</a></h3>
 									<div id="schemes" class="filters">
@@ -146,26 +165,6 @@
 
 									<h3 title="Recommended cycle infrastructure, based on our analysis of all the other factors listed."><input type="checkbox" name="show[]" id="show_recommended" /> Recommended infrastructure <a class="moredetails" data-field="recommended" href="#">[?]</a></h3>
 									<div id="recommended" class="filters">
-										<p>Source: CyIPT</p>
-
-										<div class="export button">
-											<p>
-												Export:
-												<img class="csv" src="/js/lib/Leaflet.LayerViewer/images/page_excel.png" title="Export to CSV spreadsheet (for Excel)" />
-												<img class="geojson" src="/js/lib/Leaflet.LayerViewer/images/page_code.png" title="Export to GeoJSON (for GIS systems)" />
-											</p>
-										</div>
-									</div>
-
-
-									<h3 title="Existing cycle infrastructure, providing a baseline for improvement."><input type="checkbox" name="show[]" id="show_existing" /> Existing infrastructure <a class="moredetails" data-field="existing" href="#">[?]</a></h3>
-									<div id="existing" class="filters">
-										<select id="layer" name="layer">
-											<option value="cycleinfrastructure" selected="selected">Cycle infrastructure</option>
-											<option value="speedlimits">Speed limits</option>
-											<option value="footways">Footways</option>
-										</select>
-										<br>
 										<p>Source: CyIPT</p>
 
 										<div class="export button">

@@ -160,7 +160,14 @@ The filters within the schemes layer can remove schemes from the map based on Co
 
 ## Recommended infrastructure
 
-In progress...
+The recommended infrastructure layer presents CyIPT's recommendation for the type of cycle infrastructure required on each road segment.  Roads and paths where no cycle infrastructure is required are not show. The recommendations do not take account of any existing infrastructure; therefore, the recommendations may suggest that existing cycle infrastructure remain, be upgraded, or in limited cases be downgraded.
+
+```{r recommended, fig.cap="The recommended infrastructure layer."}
+knitr::include_graphics("../images/recommended.png")
+```
+
+
+It is important to understand that the CyIPT recommendations are based on cycling levels in the 2011 census, and it may therefore underrepresent current cycling levels and infrastructure requirements.  For more detail on the recommendation process, see the Technical Details section below.
 
 # Technical details
 

@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduction
 
-The Cycling Infrastructure Prioritisation Toolkit (CyIPT) is a research project based at the University of Leeds and funded by the Department for Transport (DFT).  The purpose of CyIPT is to develop methods and tools to assist in the design and planning of new cycling infrastructure.  The CyIPT is currently (as of March 2018) a working prototype.  Therefore, any recommendations produced by CyIPT should be subjected to independent assessment before making investment decisions.
+The Cycling Infrastructure Prioritisation Toolkit (CyIPT) is a research project based at the University of Leeds and funded by the Department for Transport (DFT).  The purpose of CyIPT is to develop methods and tools to assist in the design and planning of new cycling infrastructure.  CyIPT is currently (as of March 2018) a working prototype.  Therefore, any recommendations produced by CyIPT should be subjected to independent assessment before making investment decisions.
 
 ## Feedback {-}
 
@@ -42,13 +42,13 @@ The code is hosted on GitHub, a platform for software development and collaborat
 knitr::include_graphics("../images/logo.png")
 ```
 
-# How the CyIPT works
+# How CyIPT works
 
 This section gives an overview of how CyIPT works and some of its main limitations.  For full details, see the Technical Details section below.
 
 Figure \@ref(fig:workflow) outlines the basic structure of CyIPT. First CyIPT takes data about each road and path in England and uses it to recommend the approximate type of cycling infrastructure.  The recommendation algorithm is based on Highways England’s Interim Advice Note 195/16 [@highwaysengland_interim_2016]. The algorithm can make eight possible recommendations (Cycle Lanes, Cycle Lanes with light segregation, Cycle Street, Cycle Land on Path, Stepped Cycle Tracks, Segregated Cycle Track on Path, Segregated Cycle Track, and None).
 
-```{r workflow, fig.cap="Schematic overview of the CyIPT."}
+```{r workflow, fig.cap="Schematic overview of CyIPT."}
 knitr::include_graphics("../images/workflow.png")
 ```
 
@@ -58,6 +58,53 @@ As CyIPT’s recommendations are made for each road segment (junction to junctio
 The CyIPT process is deterministic, which is to say that it produces the same results each time the model is run, and has therefore been pre-processed by the CyIPT team.  The results for England are made available through the CyIPT website (www.cyipt.bike).  The CyIPT website also allows for data download and the source code is available at GitHub (https://github.com/cyipt).
 
 # Key concepts
+
+## Accuracy
+
+While using CyIPT it is important to bear in mind that:
+
+- It was funded under the Innovation Challenge Fund (ICF) and at present should be regarded as a proof of concept prototype demonstrating what is possible.
+- As CyIPT is a national tool, it uses national datasets which may be less detailed and up-to-date, than local data sources.
+- As CyIPT is a national tool, it has probably had limited human oversight in your area.  Results have been 'sanity checked' for some areas but we are unable to check if every road in the country has sane results (please report on our [issue tracker](https://github.com/cyipt/cyipt/issues) if not).
+- CyIPT relies on the OpenStreetMap (OSM), the quality of which varies across the country.
+- Currently the results are based on commuter cycling only, meaning other data sources and local knowledge must be used to account for other trip purposes (e.g. recreational cycling, travel to schools, shops). We hope to add travel to school and public transport links in due course.
+- The results do not take account of the wider transport and political context.
+
+While CyIPT provides detailed numbers such as costs and cycling uptake, it is best views as a tool to draw your attention to specific areas that may benefit from improved cycling infrastructure, rather than an automatic transport planner.
+
+The layers in CyIPT are intend to provide insight into various geographic factors that should inform the decision-making process. For example the traffic counts layer has many roads without any traffic data.  This does not mean there is no traffic on these roads.  It simply means that CyIPT does not know about the traffic on these roads, and its recommendations will be affected by this lack of knowledge. 
+
+Users should evaluate each recommendation independently, scrutinising how CyIPT came to its conclusion and validating those assumptions.
+
+## Open Street Map
+
+CyIPT uses the Open Street Map (https://www.openstreetmap.org/#map=6/54.910/-3.432) to provide the base road and path map of England. CyIPT uses OSM for several reasons:
+OSM’s open licence allows free use and reuse of all the data;
+National coverage;
+OSM has more detail about cycling infrastructure than some official sources.
+
+However OSM has several limitations, firstly as a crowd sourced dataset the accuracy and detail of OSM is variable.  While OSM covers over 99% of the roads in the UK, details such as rad types, speed limits, cycle infrastructure, etc. are far patchier.  CyIPT has a built in OSM cleaner that attempts to remove errors and fill in missing data.  For example, CyIPT will assume that the speed limit on a residential road is 30 mph unless otherwise specified.
+
+CyIPT users can improve CyIPT results in their area by updating OSM.  The Existing Infrastructure Layer (see below) has a “Edit OSM” button that links directly from any road in CyIPT to the same road in OSM. Updates to OSM are incorporated into CyIPT when the next national rebuild occurs.
+
+## Cycling Flows from the PCT
+
+CyIPT Uses the Propensity to Cycle Tool (PCT www.pct.bike) to provide data on the existing and future cycling flows on each road.  This data is in turn taken from the 2011 census commuting flow data.  Therefore:
+
+- CyIPT is biased towards commuter cycling due to using the PCT data.
+- CyIPT has a 2011 view of travel patterns but for existing travel and as a baseline for predicting future demand.
+
+National cycling and travel trends have not changed significantly between 2011 and the present day, however, in local areas travel patterns have changed due to new cycle infrastructure and new housing.  Users should apply extra scrutiny to CyIPT results in areas where there have been significant changes since 2011.
+
+## Rate Limiting
+
+To maintain the performance of the CyIPT website, the map data is rate limited.  These limits will prevent you from downloading too much data at once.  You are most likely to encounter rate limiting when attempting to view large areas. When rate limiting occurs, the data will appear on the map in a patchy or random fashion, as illustrated in Figure \@ref(fig:ratelim).
+
+```{r ratelim, fig.cap="Example of the map of London when rate limited is in effect."}
+knitr::include_graphics("../images/ratelimited-london.png")
+```
+
+For some layers now data will show until you are zoomed in to a certain level.  While some layers (e.g. Propensity to Cycle Tool layer) provide more detail the further you zoom in.
 
 # Layer descriptions
 

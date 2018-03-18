@@ -23,7 +23,7 @@ var cyipt = (function ($) {
 		defaultTileLayer: 'mapnik',
 
 		// Default layer(s) ticked
-		defaultLayers: ['schemes'],
+		defaultLayers: ['existing'],
 
 		// Send zoom for all API calls
 		sendZoom: true,

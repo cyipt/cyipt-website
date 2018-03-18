@@ -207,7 +207,10 @@ var cyipt = (function ($) {
 					[20, 'green']
 				],
 				footways: [
-					['footway lines', 'purple']
+					['both', 'green'],
+					['left', 'lightgreen'],
+					['no', 'orange'],
+					['Not Applicable', 'gray']
 				]
 			},
 			popupHtml: {

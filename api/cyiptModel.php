@@ -62,17 +62,53 @@ class cyiptModel
 		# Set filters based on zoom
 		switch (true) {
 
-			# Near
-			case ($this->zoom >= 16):
-				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
-				$limit = 2000;
-				break;
-
-			# Far
-			case ($this->zoom >= 11 && $this->zoom <= 15):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.3)) AS geometry';
+			# Max Zoomed Out
+			case ($this->zoom == 11):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 1.760)) AS geometry';
 				$limit = 5000;
 				break;
+
+			case ($this->zoom == 12):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.880)) AS geometry';
+				$limit = 5000;
+				break;
+
+		  case ($this->zoom == 13):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.440)) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom == 14):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.220)) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom == 15):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.110)) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom == 16):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.050)) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom == 17):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.030)) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom == 18):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.010)) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom == 19):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.005)) AS geometry';
+				$limit = 5000;
+				break;
+
+		  #Max Zoomed In
 
 			# Show nothing if too zoomed out
 			default:
@@ -113,7 +149,7 @@ class cyiptModel
 			$error = 'Please zoom in.';
 			return false;
 		}
-		
+
 		# Ensure any supplied fields are numeric
 		$numericFields = array ('costto', 'costbenefitfrom', 'benefitfrom');
 		foreach ($numericFields as $numericField) {
@@ -124,7 +160,7 @@ class cyiptModel
 				}
 			}
 		}
-		
+
 		# Base values
 		$fields = array (
 			// 'idGlobal AS id',
@@ -157,7 +193,7 @@ class cyiptModel
 		);
 		$constraints[] = 'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)';
 		$parameters = $this->bbox;
-		
+
 		# Add URL parameters
 		if (isSet ($this->get['costto'])) {
 			$constraints[] = 'cost <= :costto';
@@ -171,7 +207,7 @@ class cyiptModel
 			$constraints[] = 'totalBen >= :benefitfrom';
 			$parameters['benefitfrom'] = $this->get['benefitfrom'];
 		}
-		
+
 		# Limit
 		$limit = 1000;
 

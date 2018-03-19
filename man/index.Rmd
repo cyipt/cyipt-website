@@ -224,7 +224,7 @@ Common infrastructure types are illustrated in the figures below:
 A painted line on the roadway divides bicycles from other traffic:
 
 ```{r}
-knitr::include_graphics("../images/infrastructure/medium/cyclelane.jpg")
+knitr::include_graphics("../images/infrastructure/large/cyclelane.jpg")
 ```
 
 - Cycle Lanes with light segregation
@@ -232,7 +232,7 @@ knitr::include_graphics("../images/infrastructure/medium/cyclelane.jpg")
 Similar to cycle lanes but batons or armadillos are added long the line to reinforce the separation between cyclists and motor traffic:
 
 ```{r}
-knitr::include_graphics("../images/infrastructure/medium/lightsegregation.jpg")
+knitr::include_graphics("../images/infrastructure/large/lightsegregation.jpg")
 ```
 
 - Stepped Cycle Tracks
@@ -240,7 +240,7 @@ knitr::include_graphics("../images/infrastructure/medium/lightsegregation.jpg")
 Cyclists travel on a slightly elevated lane, above the road traffic but below the pavement:
 
 ```{r}
-knitr::include_graphics("../images/infrastructure/medium/steppedtrack.jpg")
+knitr::include_graphics("../images/infrastructure/large/steppedtrack.jpg")
 ```
 
 - Segregated Cycle Track
@@ -248,7 +248,7 @@ knitr::include_graphics("../images/infrastructure/medium/steppedtrack.jpg")
 Cyclists travel in a separate lane physically separated from motor traffic by a hard barrier:
 
 ```{r}
-knitr::include_graphics("../images/infrastructure/medium/regregatedtrack.jpg")
+knitr::include_graphics("../images/infrastructure/large/regregatedtrack.jpg")
 ```
 
 - Cycle Streets
@@ -256,7 +256,7 @@ knitr::include_graphics("../images/infrastructure/medium/regregatedtrack.jpg")
 These very quiet roads are primarily designed for cycling and walking while still allowing low speed motor traffic:
 
 ```{r}
-knitr::include_graphics("../images/infrastructure/medium/cyclestreet.jpg")
+knitr::include_graphics("../images/infrastructure/large/cyclestreet.jpg")
 ```
 
 - Cycle Lane on Path

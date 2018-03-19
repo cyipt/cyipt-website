@@ -231,7 +231,29 @@ The traffic counts layer provides an overview of road traffic levels on selected
 knitr::include_graphics("../images/layer-traffic.png")
 ```
 
+## Collisions roads
 
+This layer takes the Stats19 data on road collision between 1985 and 2015 and matches collisions that did not occur at a junction to the nearest road (see Figure \@ref(fig:collision-roads)).  The layer provides a count of the total number of collisions that occurred on that road.  These can be filtered by the severity of collisions (slight, serious, fatal) and severity of bike casualties (slight, serious, fatal).
+
+```{r collision-roads, fig.cap="The Collisions Roads layer. This layer should be used in conjunction with the Collision Junctions layer."}
+knitr::include_graphics("../images/layer-collision-roads.png")
+```
+
+## Collisions junctions
+
+This layer takes the Stats19 data on road collision between 1985 and 2015 and matches collisions that did occur at a junction to the nearest junction (see Figure \@ref(fig:collision-junctions)).  The layer provides a count of the total number of collisions that occurred on that road.  These can be filtered by the severity of collisions (slight, serious, fatal) and severity of bike casualties (slight, serious, fatal).
+
+```{r collision-junctions, fig.cap="The Collisions Junctions layer. This layer should be used in conjunction with the Collision Roads layer."}
+knitr::include_graphics("../images/layer-collision-junctions.png")
+```
+
+## Collisions points
+
+This layer shows the locations of all collisions in the Stats19 data from 1985 to 2015, it can be filtered by year and severity (see Figure \@ref(fig:collision-points)).
+
+```{r collision-points, fig.cap="The Collisions Points layer."}
+knitr::include_graphics("../images/layer-collision-points.png")
+```
 
 # Technical details
 

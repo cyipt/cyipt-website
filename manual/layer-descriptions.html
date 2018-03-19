@@ -88,6 +88,10 @@
 <li class="chapter" data-level="4.5" data-path="layer-descriptions.html"><a href="layer-descriptions.html#recommended-infrastructure"><i class="fa fa-check"></i><b>4.5</b> Recommended infrastructure</a></li>
 <li class="chapter" data-level="4.6" data-path="layer-descriptions.html"><a href="layer-descriptions.html#road-widths"><i class="fa fa-check"></i><b>4.6</b> Road widths</a></li>
 <li class="chapter" data-level="4.7" data-path="layer-descriptions.html"><a href="layer-descriptions.html#propensity-to-cycle-tool"><i class="fa fa-check"></i><b>4.7</b> Propensity to Cycle Tool</a></li>
+<li class="chapter" data-level="4.8" data-path="layer-descriptions.html"><a href="layer-descriptions.html#traffic-counts"><i class="fa fa-check"></i><b>4.8</b> Traffic counts</a></li>
+<li class="chapter" data-level="4.9" data-path="layer-descriptions.html"><a href="layer-descriptions.html#collisions-roads"><i class="fa fa-check"></i><b>4.9</b> Collisions roads</a></li>
+<li class="chapter" data-level="4.10" data-path="layer-descriptions.html"><a href="layer-descriptions.html#collisions-junctions"><i class="fa fa-check"></i><b>4.10</b> Collisions junctions</a></li>
+<li class="chapter" data-level="4.11" data-path="layer-descriptions.html"><a href="layer-descriptions.html#collisions-points"><i class="fa fa-check"></i><b>4.11</b> Collisions points</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>5</b> Technical details</a></li>
 <li class="divider"></li>
@@ -196,7 +200,56 @@ Figure 4.4: The recommended infrastructure layer.
 </div>
 <div id="propensity-to-cycle-tool" class="section level2">
 <h2><span class="header-section-number">4.7</span> Propensity to Cycle Tool</h2>
-<p>The Propensity to Cycle Tool layer takes data from the Propensity to Cycle Tool (PCT) (available at www.pct.bike) and provides an updated version for CyIPT. The layer is analogous to the PCT LSOA route network layer, which can also be accessed as a base map though CyIPT. The difference with the PCT version is that the CyIPT version is matched to the OSM roads and is therefore both more detailed and interactive.</p>
+<p>The Propensity to Cycle Tool layer takes data from the Propensity to Cycle Tool (PCT) (see <a href="http://www.pct.bike/">www.pct.bike</a>) and provides an updated version for CyIPT. The layer is analogous to the PCT LSOA route network layer, which can also be accessed as a base map though CyIPT. CyIPT adds value to the PCT data by assigning cycling potential to OSM elements, making this layer more detailed and interactive than the equivalent LSOA layer in the PCT (see Figure <a href="layer-descriptions.html#fig:layer-pct">4.5</a>).</p>
+<div class="figure"><span id="fig:layer-pct"></span>
+<img src="../images/layer-pct.png" alt="The Propensity to Cycle Tool layer." width="960" />
+<p class="caption">
+Figure 4.5: The Propensity to Cycle Tool layer.
+</p>
+</div>
+<p>The PCT layer supports the same five scenarios as the main PCT tool, however only the 2011 census scenario is used within CyIPT. The PCT layer includes a value based rate limiting feature.</p>
+<p>The PCT scenarios provide a useful way to cross validate the CyIPT uptake predictions. CyIPT typically predict that new infrastructure will increase cycling more than the Government Target scenario, but less than the Go Dutch scenario. Forecasts outside this range should be subjected to additional scrutiny. CyIPT makes no account for ebikes, and therefore the PCT ebike scenario is not applicable, however it is provided in the interest of completeness.</p>
+<p>The PCT team is currently working on updated version of the PCT for Wales, and to include travel to schools. These are not currently implemented within CyIPT but may be added in the future.</p>
+</div>
+<div id="traffic-counts" class="section level2">
+<h2><span class="header-section-number">4.8</span> Traffic counts</h2>
+<p>The traffic counts layer provides an overview of road traffic levels on selected roads (see Figure <a href="layer-descriptions.html#fig:layer-traffic">4.6</a>). The data source is DFT traffic count data, which CyIPT then matches to the road network. As the DFT data is not provided for all locations in all years, CyIPT takes the most recent available year. As illustrated in Figure <a href="layer-descriptions.html#fig:layer-traffic">4.6</a> DFT data has good coverage of the strategic road network, but more limited coverage of minor roads.</p>
+<div class="figure"><span id="fig:layer-traffic"></span>
+<img src="../images/layer-traffic.png" alt="The traffic layer." width="960" />
+<p class="caption">
+Figure 4.6: The traffic layer.
+</p>
+</div>
+</div>
+<div id="collisions-roads" class="section level2">
+<h2><span class="header-section-number">4.9</span> Collisions roads</h2>
+<p>This layer takes the Stats19 data on road collision between 1985 and 2015 and matches collisions that did not occur at a junction to the nearest road (see Figure <a href="layer-descriptions.html#fig:collision-roads">4.7</a>). The layer provides a count of the total number of collisions that occurred on that road. These can be filtered by the severity of collisions (slight, serious, fatal) and severity of bike casualties (slight, serious, fatal).</p>
+<div class="figure"><span id="fig:collision-roads"></span>
+<img src="../images/layer-collision-roads.png" alt="The Collisions Roads layer. This layer should be used in conjunction with the Collision Junctions layer." width="960" />
+<p class="caption">
+Figure 4.7: The Collisions Roads layer. This layer should be used in conjunction with the Collision Junctions layer.
+</p>
+</div>
+</div>
+<div id="collisions-junctions" class="section level2">
+<h2><span class="header-section-number">4.10</span> Collisions junctions</h2>
+<p>This layer takes the Stats19 data on road collision between 1985 and 2015 and matches collisions that did occur at a junction to the nearest junction (see Figure <a href="layer-descriptions.html#fig:collision-junctions">4.8</a>). The layer provides a count of the total number of collisions that occurred on that road. These can be filtered by the severity of collisions (slight, serious, fatal) and severity of bike casualties (slight, serious, fatal).</p>
+<div class="figure"><span id="fig:collision-junctions"></span>
+<img src="../images/layer-collision-junctions.png" alt="The Collisions Junctions layer. This layer should be used in conjunction with the Collision Roads layer." width="960" />
+<p class="caption">
+Figure 4.8: The Collisions Junctions layer. This layer should be used in conjunction with the Collision Roads layer.
+</p>
+</div>
+</div>
+<div id="collisions-points" class="section level2">
+<h2><span class="header-section-number">4.11</span> Collisions points</h2>
+<p>This layer shows the locations of all collisions in the Stats19 data from 1985 to 2015, it can be filtered by year and severity (see Figure <a href="layer-descriptions.html#fig:collision-points">4.9</a>).</p>
+<div class="figure"><span id="fig:collision-points"></span>
+<img src="../images/layer-collision-points.png" alt="The Collisions Points layer." width="960" />
+<p class="caption">
+Figure 4.9: The Collisions Points layer.
+</p>
+</div>
 </div>
 </div>
             </section>

@@ -18,8 +18,10 @@ description: "This is the manual of the Cycling Infrastructure Prioritisation To
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
-# build pdf version of manual:
 # bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+# Run the previous command and...
+# Uncomment this line to build pdf version of manual:
+# knitr::opts_chunk$set(echo = FALSE, out.width = "100%")
 ```
 
 # Introduction
@@ -353,7 +355,9 @@ Boundaries file "../cyipt-bigdata/boundaries/TTWA/TTWA_England.Rds"
 **Outputs:**
 
 Region Boundaries "../cyipt-bigdata/osm-raw/region/bounds.Rds"
+
 OSM road network "../cyipt-bigdata/osm-raw/region/osm-lines.Rds"
+
 OSM road junction points "../cyipt-bigdata/osm-raw/region/osm-junction-points.Rds" 
 **Parallelised:**
 

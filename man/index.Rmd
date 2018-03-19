@@ -2,7 +2,7 @@
 title: "The Cycling Infrastructure Prioritisation Toolkit: Manual"
 subtitle: "Version 0.3"
 author: "The CyIPT team"
-date: '`r Sys.Date()`'
+date: 'Last updated: `r Sys.Date()`'
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:

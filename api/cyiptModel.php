@@ -428,17 +428,33 @@ class cyiptModel
 		# Set filters based on zoom
 		switch (true) {
 
-			# Near
-			case ($this->zoom >= 17):
-				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
-				$limit = 2000;
-				break;
-
-			# Far
-			case ($this->zoom >= 15 && $this->zoom <= 16):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.3)) AS geometry';
+			# Max Zoomed Out
+			case ($this->zoom == 11):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00412 )) AS geometry';
 				$limit = 5000;
 				break;
+
+			case ($this->zoom == 12):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00206 )) AS geometry';
+				$limit = 5000;
+				break;
+
+		  case ($this->zoom == 13):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00103 )) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom == 14):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00052 )) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom >= 15):
+				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
+				$limit = 5000;
+				break;
+
+		  #Max Zoomed In
 
 			# Show nothing if too zoomed out
 			default:
@@ -507,29 +523,38 @@ class cyiptModel
 		# Set filters based on zoom
 		switch (true) {
 
-			# Nearest
-			case ($this->zoom >= 17):
-				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
-				$constraints[] = "{$layer} > 0";
+      # Max Zoomed Out
+			case ($this->zoom == 11):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00412 )) AS geometry';
+				$limit = 5000;
+				$constraints[] = "{$layer} > 250";
 				break;
 
-			# Near
-			case ($this->zoom >= 14 && $this->zoom <= 16):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.1)) AS geometry';
+			case ($this->zoom == 12):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00206 )) AS geometry';
+				$limit = 5000;
 				$constraints[] = "{$layer} > 100";
 				break;
 
-			# Nearer
-			case ($this->zoom >= 11 && $this->zoom <= 13):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.2)) AS geometry';
-				$constraints[] = "{$layer} > 500";
+		  case ($this->zoom == 13):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00103 )) AS geometry';
+				$limit = 5000;
+				$constraints[] = "{$layer} > 50";
 				break;
 
-			# Far
-			case ($this->zoom <= 10):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.3)) AS geometry';
-				$constraints[] = "{$layer} > 1000";
+			case ($this->zoom == 14):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00052 )) AS geometry';
+				$limit = 5000;
+				$constraints[] = "{$layer} > 10";
 				break;
+
+			case ($this->zoom >= 15):
+				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
+				$limit = 5000;
+				$constraints[] = "{$layer} > 0";
+				break;
+
+		  #Max Zoomed In
 
 			# Other
 			default:
@@ -581,17 +606,33 @@ class cyiptModel
 		# Set filters based on zoom
 		switch (true) {
 
-			# Near
-			case ($this->zoom >= 13):
+			# Max Zoomed Out
+			case ($this->zoom == 11):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00412 )) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom == 12):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00206 )) AS geometry';
+				$limit = 5000;
+				break;
+
+		  case ($this->zoom == 13):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00103 )) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom == 14):
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00052 )) AS geometry';
+				$limit = 5000;
+				break;
+
+			case ($this->zoom >= 15):
 				$fields[] = 'ST_AsGeoJSON(geotext) AS geometry';
 				$limit = 5000;
 				break;
 
-			# Far
-			case ($this->zoom >= 11 && $this->zoom <= 12):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.2)) AS geometry';
-				$limit = 10000;
-				break;
+		  #Max Zoomed In
 
 			# Show nothing if too zoomed out
 			default:

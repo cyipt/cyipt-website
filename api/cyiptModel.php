@@ -64,22 +64,22 @@ class cyiptModel
 
 			# Max Zoomed Out
 			case ($this->zoom == 11):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00687)) AS geometry';
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00412 )) AS geometry';
 				$limit = 5000;
 				break;
 
 			case ($this->zoom == 12):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00344)) AS geometry';
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00206 )) AS geometry';
 				$limit = 5000;
 				break;
 
 		  case ($this->zoom == 13):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00172)) AS geometry';
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00103 )) AS geometry';
 				$limit = 5000;
 				break;
 
 			case ($this->zoom == 14):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00086)) AS geometry';
+				$fields[] = 'ST_AsGeoJSON(ST_Simplify(geotext, 0.00052 )) AS geometry';
 				$limit = 5000;
 				break;
 

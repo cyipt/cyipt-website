@@ -34,6 +34,9 @@ The code is hosted on GitHub, a platform for software development and collaborat
 - Feedback on CyIPT Results and Methods: [github.com/cyipt/cyipt/issues](https://github.com/cyipt/cyipt/issues) 
 - Feedback on CyIPT website and user interface: [github.com/cyipt/cyipt-website](https://github.com/cyipt/cyipt-website/issues)
 
+Hosting the code on GitHub also enables community contributions.
+If you find any issues on this user manual, for example, please make suggested changes to the source code [here](https://github.com/cyipt/cyipt-website/edit/master/man/index.Rmd) (requires a GitHub username).
+
 ## The CyIPT Team {-}
 
 - Dr Robin Lovelace, University of Leeds
@@ -256,5 +259,85 @@ knitr::include_graphics("../images/layer-collision-points.png")
 ```
 
 # Technical details
+
+CyITP is developed in the R Programming language and is an open source project. The code is available at https://github.com/cyipt. CyIPT consists of two main parts; the R based analysis code, and the website, which is a mixture of HTML/CSS/JavaScript with a PostgreSQL database accessed via a PHP-based API.
+
+This manual focusses on the R based analysis code, as the website exists purely for visualisation and ease of use.
+
+## Data Preparation
+CyIPT is reliant on some pre-existing datasets from third parties. While many of these are publically available, CyIPT required them to be pre-processed before use. These scripts are provided for context, but in most cases, users should download the pre-processed data directly from GitHub.
+
+## CyIPT Master Script
+
+The CyIPT master script https://github.com/cyipt/cyipt/blob/master/scripts/cyipt.R can be used to run the whole CyIPT process.  It manages several global settings.
+
+## Settings
+
+```{r, eval=FALSE}
+skip 
+```
+
+Should the code skip regions that have already been done?
+
+```{r, eval=FALSE, echo=TRUE}
+overwrite
+```
+
+Some stages overwrite existing files, for example by adding an extra column of data.
+Note that not overwriting may cause later stages to fail if they expect earlier stages results to be in the starting file.
+
+```{r, eval=FALSE, echo=TRUE}
+ncores
+```
+
+Some functions use parallel processing how many clusters should be run? This should be less than the number of cores on your computer.
+
+```{r, eval=FALSE, echo=TRUE}
+verbose
+```
+
+Get extra messages and information while CyIPT is running.
+
+```{r, eval=FALSE, echo=TRUE}
+all.regions
+```
+
+Ignore the regions to do file and run for all regions.
+
+## Regions to Do
+If `all.regions = FALSE` CyIPT will choose which regions to run for based on the RegionsToDo file at https://github.com/cyipt/cyipt/blob/master/input-data/RegionsToDo.csv 
+
+Placing `y` in the do column of this csv file will rerun the that region.
+
+CyIPT uses the 2011 travel to work areas produces by the Office for National Statistics (ONS). However it could be changes to accept a different se to regions.
+
+## Libraries
+
+CyIPT requires the following R libraries, which can be installed as follows:
+
+```{r, echo=TRUE}
+pkgs = c("sf",
+         "osmdata",
+         "stringr",
+         "dplyr",
+         "parallel",
+         "xgboost",
+         "igraph",
+         "tmap"
+         )
+```
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages(pkgs)
+```
+
+and loaded as follows:
+
+```{r, message=FALSE, echo=TRUE}
+vapply(pkgs, require, TRUE, character.only = TRUE)
+```
+
+# References
+
 
 

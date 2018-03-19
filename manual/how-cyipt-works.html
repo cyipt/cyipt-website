@@ -25,7 +25,7 @@
 <meta name="author" content="The CyIPT team">
 
 
-<meta name="date" content="2018-03-18">
+<meta name="date" content="2018-03-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,6 +49,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -93,7 +130,13 @@
 <li class="chapter" data-level="4.10" data-path="layer-descriptions.html"><a href="layer-descriptions.html#collisions-junctions"><i class="fa fa-check"></i><b>4.10</b> Collisions junctions</a></li>
 <li class="chapter" data-level="4.11" data-path="layer-descriptions.html"><a href="layer-descriptions.html#collisions-points"><i class="fa fa-check"></i><b>4.11</b> Collisions points</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>5</b> Technical details</a></li>
+<li class="chapter" data-level="5" data-path="technical-details.html"><a href="technical-details.html"><i class="fa fa-check"></i><b>5</b> Technical details</a><ul>
+<li class="chapter" data-level="5.1" data-path="technical-details.html"><a href="technical-details.html#data-preparation"><i class="fa fa-check"></i><b>5.1</b> Data Preparation</a></li>
+<li class="chapter" data-level="5.2" data-path="technical-details.html"><a href="technical-details.html#cyipt-master-script"><i class="fa fa-check"></i><b>5.2</b> CyIPT Master Script</a></li>
+<li class="chapter" data-level="5.3" data-path="technical-details.html"><a href="technical-details.html#settings"><i class="fa fa-check"></i><b>5.3</b> Settings</a></li>
+<li class="chapter" data-level="5.4" data-path="technical-details.html"><a href="technical-details.html#regions-to-do"><i class="fa fa-check"></i><b>5.4</b> Regions to Do</a></li>
+<li class="chapter" data-level="5.5" data-path="technical-details.html"><a href="technical-details.html#libraries"><i class="fa fa-check"></i><b>5.5</b> Libraries</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://cyipt.bike" target="blank">Published with bookdown</a></li>
 
@@ -127,7 +170,7 @@ Figure 2.1: Schematic overview of CyIPT.
 <p>Based on the length and type of infrastructure, CyIPT estimate the cost of constructing the recommended new cycling infrastructure. CyIPT take account of existing infrastructure and therefore does not apply a cost of building existing cycle infrastructure if it is of sufficient quality.</p>
 <p>As CyIPT’s recommendations are made for each road segment (junction to junction), they can be for very short sections of road. Therefore, CyIPT has a clustering algorithm, which attempts to take recommendations and group them into coherent schemes that could be constructed. One the schemes have been produced, CyITP estimate the number of additional cyclists the scheme would produce and performed a benefit cost assessment of the schemes to identify the schemes which are most likely to be worth building. The CyIPT process is deterministic, which is to say that it produces the same results each time the model is run, and has therefore been pre-processed by the CyIPT team. The results for England are made available through the CyIPT website (www.cyipt.bike). The CyIPT website also allows for data download and the source code is available at GitHub (<a href="https://github.com/cyipt" class="uri">https://github.com/cyipt</a>).</p>
 </div>
-<h3> Technical details</h3>
+<h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-highwaysengland_interim_2016">
 <p>Highways England. 2016. “Interim Advice Note 195/16: Cycle Traffic and the Strategic Road Network.” Interim 195/16. Highways England. <a href="http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf" class="uri">http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf</a>.</p>

@@ -24,11 +24,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduction
 
-The Cycling Infrastructure Prioritisation Toolkit (CyIPT) is a research project based at the University of Leeds and funded by the Department for Transport (DFT).  The purpose of CyIPT is to develop methods and tools to assist in the design and planning of new cycling infrastructure.  CyIPT is currently (as of March 2018) a working prototype.  Therefore, any recommendations produced by CyIPT should be subjected to independent assessment before making investment decisions.
+The Cycling Infrastructure Prioritisation Toolkit (CyIPT) is a research project based at the University of Leeds and funded by the Department for Transport (DfT).  The purpose of CyIPT is to develop methods and tools to assist in the design and planning of new cycling infrastructure.  CyIPT is currently (as of March 2018) a working prototype.  Therefore, any recommendations produced by CyIPT should be subjected to independent assessment before making investment decisions.
 
 ## Feedback {-}
 
-CyIPT is a publicly accessible research project based on open source software, the results of which are available in an online map-based tool at [www.cyipt.bike](https://www.cyipt.bike) (currently passwork protected).
+CyIPT is a publicly accessible research project based on open source software, the results of which are available in an online map-based tool at [www.cyipt.bike](https://www.cyipt.bike) (currently password protected).
 
 The code underlying CyIPT is hosted on GitHub, a platform for software development and collaboration that also provides and excellent forum for discussing issues and providing feedback as follows:
 
@@ -81,7 +81,7 @@ While using CyIPT it is important to bear in mind that:
 
 While CyIPT provides detailed numbers such as costs and cycling uptake, it is best views as a tool to draw your attention to specific areas that may benefit from improved cycling infrastructure, rather than an automatic transport planner.
 
-The layers in CyIPT are intend to provide insight into various geographic factors that should inform the decision-making process. For example the traffic counts layer has many roads without any traffic data.  This does not mean there is no traffic on these roads.  It simply means that CyIPT does not know about the traffic on these roads, and its recommendations will be affected by this lack of knowledge. 
+The layers in CyIPT are intended to provide insight into various geographic factors that should inform the decision-making process. For example the traffic counts layer has many roads without any traffic data.  This does not mean there is no traffic on these roads.  It simply means that CyIPT does not know about the traffic on these roads, and its recommendations will be affected by this lack of knowledge. 
 
 Users should evaluate each recommendation independently, scrutinising how CyIPT came to its conclusion and validating those assumptions.
 
@@ -203,7 +203,7 @@ The recommended infrastructure layer presents CyIPT's recommendation for the typ
 knitr::include_graphics("../images/recommended.png")
 ```
 
-It is important to understand that the CyIPT recommendations are based on cycling levels in the 2011 census, and it may therefore underrepresent current cycling levels and infrastructure requirements.  For more detail on the recommendation process, see the Technical Details section below.
+It is important to understand that the CyIPT recommendations are based on cycling levels in the 2011 census, and it may therefore under-represent current cycling levels and infrastructure requirements.  For more detail on the recommendation process, see the Technical Details section below.
 
 ## Road widths
 
@@ -231,7 +231,7 @@ The PCT team is currently working on updated version of the PCT for Wales, and t
 
 ## Traffic counts
 
-The traffic counts layer provides an overview of road traffic levels on selected roads (see Figure \@ref(fig:layer-traffic)). The data source is DFT traffic count data, which CyIPT then matches to the road network. As the DFT data is not provided for all locations in all years, CyIPT takes the most recent available year.  As illustrated in Figure \@ref(fig:layer-traffic) DFT data has good coverage of the strategic road network, but more limited coverage of minor roads.
+The traffic counts layer provides an overview of road traffic levels on selected roads (see Figure \@ref(fig:layer-traffic)). The data source is DfT traffic count data, which CyIPT then matches to the road network. As the DfT data is not provided for all locations in all years, CyIPT takes the most recent available year.  As illustrated in Figure \@ref(fig:layer-traffic) DfT data has good coverage of the strategic road network, but more limited coverage of minor roads.
 
 ```{r layer-traffic, fig.cap="The traffic layer."}
 knitr::include_graphics("../images/layer-traffic.png")
@@ -268,7 +268,7 @@ CyITP is developed in the R Programming language and is an open source project. 
 This manual focusses on the R based analysis code, as the website exists purely for visualisation and ease of use.
 
 ## Data Preparation
-CyIPT is reliant on some pre-existing datasets from third parties. While many of these are publically available, CyIPT required them to be pre-processed before use. These scripts are provided for context, but in most cases, users should download the pre-processed data directly from GitHub.
+CyIPT is reliant on some pre-existing datasets from third parties. While many of these are publicly available, CyIPT required them to be pre-processed before use. These scripts are provided for context, but in most cases, users should download the pre-processed data directly from GitHub.
 
 ## CyIPT Master Script
 
@@ -313,7 +313,7 @@ If `all.regions = FALSE` CyIPT will choose which regions to run for based on the
 
 Placing `y` in the do column of this csv file will rerun the that region.
 
-CyIPT uses the 2011 travel to work areas produces by the Office for National Statistics (ONS). However it could be changes to accept a different se to regions.
+CyIPT uses the 2011 travel to work areas produces by the Office for National Statistics (ONS). Other boundaries could be used in the future.
 
 ## Libraries
 
@@ -396,7 +396,7 @@ The cleaning process consist of the following stages:
 6. Guessing the presence of footways (pavements) with unknown footway status
 7. Summarising the presence of bridges and tunnels
 8. Cleaning the segregation status of cycle infrastructure
-9. Cleating a summary of the road type
+9. Cleaning a summary of the road type
 10. Cleaning and/or guessing the number and nature of lanes in each direction
 11. Cleaning the tagging of cycle infrastructure and improving detail of what is on each side of the road.
 
@@ -547,6 +547,6 @@ CyIPT was developed for England and has several UK biases built in.  For example
 1. All geospatial analysis is perfumed using the British National Grid
 2. Left had driving is assumed
 3. Speed limits are in mph  
-If you wish to use CyIPT outside the UK these assumption will not hold and need to be fixed in the code.
+If you wish to use CyIPT outside the UK these assumptions will not hold and need to be fixed in the code.
 
 # References

@@ -305,6 +305,7 @@ all.regions
 Ignore the regions to do file and run for all regions.
 
 ## Regions to Do
+
 If `all.regions = FALSE` CyIPT will choose which regions to run for based on the RegionsToDo file at https://github.com/cyipt/cyipt/blob/master/input-data/RegionsToDo.csv 
 
 Placing `y` in the do column of this csv file will rerun the that region.
@@ -337,7 +338,210 @@ and loaded as follows:
 vapply(pkgs, require, TRUE, character.only = TRUE)
 ```
 
+## Step 1: Download the Data
+
+https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/download-osm.R
+
+This script downloads the OSM road and path network for each region.
+
+**Inputs:**
+
+`Regions.todo`
+
+Boundaries file "../cyipt-bigdata/boundaries/TTWA/TTWA_England.Rds"
+
+**Outputs:**
+
+Region Boundaries "../cyipt-bigdata/osm-raw/region/bounds.Rds"
+OSM road network "../cyipt-bigdata/osm-raw/region/osm-lines.Rds"
+OSM road junction points "../cyipt-bigdata/osm-raw/region/osm-junction-points.Rds" 
+**Parallelised:**
+
+Yes
+
+## Step 2: Clean the OSM Tags
+
+https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/clean_osm.R
+
+This script “cleans” the OSM data by removing or correcting errors and filling in missing data with best guesses.  Guessing is required, as some later stages of CyIPT require information (such as speed limits) which is not always available.  In isolated cases of incorrect guesses it is best to correct the value in the OSM using the “edit in the OSM” button on the CyIPT website. These corrections will then be incorporated into the next build of CyIPT.  In general cases of CyIPT miss-guessing, please submit and issue via GitHub https://github.com/cyipt/cyipt/issues 
+
+**Inputs:**
+
+`Regions.todo`
+
+OSM road network "../cyipt-bigdata/osm-raw/region/osm-lines.Rds"
+
+**Outputs:**
+
+OSM road network "../cyipt-bigdata/osm-clean/region/osm-lines.Rds"
+
+**Parallelised:**
+
+No
+
+### Detail
+
+The cleaning process consist of the following stages:
+
+1. Removing un-allowed road types (e.g. planned or demolished)
+2. Replacing depreciated highway tags
+3. Cleaning the junction tag
+4. Summarising the one-way nature of roads
+5. Guessing the max speed of roads with an unknown max speed based on road type
+6. Guessing the presence of footways (pavements) with unknown footway status
+7. Summarising the presence of bridges and tunnels
+8. Cleaning the segregation status of cycle infrastructure
+9. Cleating a summary of the road type
+10. Cleaning and/or guessing the number and nature of lanes in each direction
+11. Cleaning the tagging of cycle infrastructure and improving detail of what is on each side of the road.
+
+## Step 3: Get traffic counts
+
+https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/get_traffic.R
+
+This script assigns the point traffic count data to the road network.
+
+**Inputs:**
+
+`Regions.todo`
+
+OSM road network "../cyipt-bigdata/osm-clean/region/osm-lines.Rds"
+
+Traffic Points "../cyipt-bigdata/traffic/traffic.Rds"
+
+**Outputs:**
+
+OSM road network "../cyipt-bigdata/osm-clean/region/osm-lines.Rds"
+
+**Parallelised:**
+
+No
+
+### Details
+
+This scrip divides the point traffic counts based on whether they are on classified (e.g. M21, B340) or unclassified roads. Unclassified road points are matched to the nearest road in the OSM, and therefore the value only extends a short distance from the point location. For classified roads, a series of Voronoi polygons are constructed around the points and all the road segments within each polygon are assigned the value of their nearest point. This provides continuous coverage, but can produce some erroneous results such as off ramps having the same traffic levels as the main carriageways.
+
+In both cases, the script takes the Annual Average Daily Traffic (AADT) value from the most recent available year.  For the strategic road network, data is mostly from 2015/2016, but for minor roads, it can be significantly earlier. For the purposes of CyIPT is the traffic data is mostly used for identify the very busy and most hostile roads, thus this inconstancy of data is not a significant problem.  However, users intending to use the data or method for other purposes should consider the implications of this inconstancy within the data.
+
+## Step 4: Split the lines at each junction
+
+https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/prep_osm.R
+
+This script splits the roads at each junction into road segments. 
+
+**Inputs:**
+
+`Regions.todo`
+
+OSM road network "../cyipt-bigdata/osm-clean/region/osm-lines.Rds"
+
+OSM road junction points "../cyipt-bigdata/osm-raw/region/osm-junction-points.Rds"
+
+**Outputs:**
+
+OSM road network "../cyipt-bigdata/osm-prep/region/osm-lines.Rds"
+
+**Parallelised:**
+
+No
+
+### Details
+
+The splitting of the roads at junctions is mostly required for the later application of the PCT data.  Within the OSM a road may be represented by a single long line crossing several junctions.  However, at each junction cyclists may join or leave the road.  Therefore, it is not appropriate to analyse the road network as it is represented in the OSM.  By splitting the road network into segments it ensures that, the analysis is appropriately detailed.
+Note the splitting is done by cutting tiny holes out of the road lines (r = 0.01m) therefore the lines are no longer touching; this would prevent this dataset being used in a routing engine.
+
+## Step 5: Get the PCT estimate of number of cyclists
+
+https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/get_pct.R
+
+**Inputs:**
+
+`Regions.todo`
+
+OSM road network "../cyipt-bigdata/osm-prep/region/osm-lines.Rds"
+
+PCT LSOA Routes "../cyipt-securedata/pct-routes-all.Rds"
+
+TTWA boundaries "../cyipt-bigdata/boundaries/TTWA/TTWA_England.Rds"
+
+**Outputs:**
+
+OSM road network "../cyipt-bigdata/osm-prep/region/osm-lines.Rds"
+
+PCT LSOA Routes (Regional) "../cyipt-securedata/pct-regions/region.Rds"
+
+PCT to OSM lookup (Regional) "../cyipt-bigdata/osm-prep/region/pct2osm.Rds"
+
+OSM to PCT lookup (regional)  "../cyipt-bigdata/osm-prep/region/osm2pct.Rds"
+
+**Parallelised:**
+
+Yes
+
+### Details
+
+This script matches the Propensity to Cycle Tool (PCT) LSOA route data with individual road segments to count the number of cyclists on each road segment.  Values from each of the five PCT scenarios are recorded:
+
+```
+Census 2011
+Government Target
+Gender Equality
+Go Dutch
+Ebikes
+```
+
+While the matching process is reasonably robust, small errors can occur resulting in missing segments, or double counting. 
+
+As the PCT data was unidirectional routed (A to B, but not B to A) the results are less accurate on dual carriageways.  For example, the PCT is constructed from Census 2011 Origin-Destination data matched to routes produced by CycleStreets.  The Origin and Destinations are Lower Level Super Output Areas.  The census state that 30 people live in LSOA A and work in LSOA B, and 50 people live in LSOA B and work in LSOA A. The CycleStreets provide a route from A to B, and the PCT assign this route a value of 80 (50 + 30).  This method does not therefore take account of the route A to B being different from the route B to A, due to one way streets, roundabouts etc.  Nor does it consider that commuters return home at the end of the day. 
+
+In these cases, the number of cyclists is split between the carriageways with usually with most on one carriageway (see Figure \@ref(fig:unidirectional)). 
+
+```{r unidirectional, fig.cap="Effects of Unidirectional Routing."}
+knitr::include_graphics("../images/unidirectional.png")
+```
+
+## Step 6: Get road width estimates and collisions
+
+```{r, eval=FALSE, echo=TRUE}
+source("scripts/prep_data/get_widths.R")
+source("scripts/prep_data/get_collisions.R")
+```
+
+
+## Step 7: Evaluate Infrastructure Options
+
+```{r, eval=FALSE, echo=TRUE}
+source("scripts/select_infra/select_infra.R")
+```
+
+## Step 8: Compare Widths Needed to Widths Available
+
+```{r, eval=FALSE, echo=TRUE}
+source("scripts/select_infra/compare_widths.R")
+```
+
+## Step 9: Group into schemes
+
+```{r, eval=FALSE, echo=TRUE}
+source("scripts/select_infra/make_schemes2.R")
+```
+
+## Step 10: get uptake and benefits
+
+```{r, eval=FALSE, echo=TRUE}
+source("scripts/uptake/calc_uptake_routechange3.R")
+```
+
+
+# General Comments
+
+## UK emphasis
+
+CyIPT was developed for England and has several UK biases built in.  For example:
+
+1. All geospatial analysis is perfumed using the British National Grid
+2. Left had driving is assumed
+3. Speed limits are in mph  
+If you wish to use CyIPT outside the UK these assumption will not hold and need to be fixed in the code.
+
 # References
-
-
-

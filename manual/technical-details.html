@@ -25,7 +25,6 @@
 <meta name="author" content="The CyIPT team">
 
 
-<meta name="date" content="2018-03-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +32,7 @@
   
   
 <link rel="prev" href="layer-descriptions.html">
-
+<link rel="next" href="general-comments.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -136,7 +135,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.3" data-path="technical-details.html"><a href="technical-details.html#settings"><i class="fa fa-check"></i><b>5.3</b> Settings</a></li>
 <li class="chapter" data-level="5.4" data-path="technical-details.html"><a href="technical-details.html#regions-to-do"><i class="fa fa-check"></i><b>5.4</b> Regions to Do</a></li>
 <li class="chapter" data-level="5.5" data-path="technical-details.html"><a href="technical-details.html#libraries"><i class="fa fa-check"></i><b>5.5</b> Libraries</a></li>
+<li class="chapter" data-level="5.6" data-path="technical-details.html"><a href="technical-details.html#step-1-download-the-data"><i class="fa fa-check"></i><b>5.6</b> Step 1: Download the Data</a></li>
+<li class="chapter" data-level="5.7" data-path="technical-details.html"><a href="technical-details.html#step-2-clean-the-osm-tags"><i class="fa fa-check"></i><b>5.7</b> Step 2: Clean the OSM Tags</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="technical-details.html"><a href="technical-details.html#detail"><i class="fa fa-check"></i><b>5.7.1</b> Detail</a></li>
 </ul></li>
+<li class="chapter" data-level="5.8" data-path="technical-details.html"><a href="technical-details.html#step-3-get-traffic-counts"><i class="fa fa-check"></i><b>5.8</b> Step 3: Get traffic counts</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="technical-details.html"><a href="technical-details.html#details"><i class="fa fa-check"></i><b>5.8.1</b> Details</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="technical-details.html"><a href="technical-details.html#step-4-split-the-lines-at-each-junction"><i class="fa fa-check"></i><b>5.9</b> Step 4: Split the lines at each junction</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="technical-details.html"><a href="technical-details.html#details-1"><i class="fa fa-check"></i><b>5.9.1</b> Details</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="technical-details.html"><a href="technical-details.html#step-5-get-the-pct-estimate-of-number-of-cyclists"><i class="fa fa-check"></i><b>5.10</b> Step 5: Get the PCT estimate of number of cyclists</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="technical-details.html"><a href="technical-details.html#details-2"><i class="fa fa-check"></i><b>5.10.1</b> Details</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="technical-details.html"><a href="technical-details.html#step-6-get-road-width-estimates-and-collisions"><i class="fa fa-check"></i><b>5.11</b> Step 6: Get road width estimates and collisions</a></li>
+<li class="chapter" data-level="5.12" data-path="technical-details.html"><a href="technical-details.html#step-7-evaluate-infrastructure-options"><i class="fa fa-check"></i><b>5.12</b> Step 7: Evaluate Infrastructure Options</a></li>
+<li class="chapter" data-level="5.13" data-path="technical-details.html"><a href="technical-details.html#step-8-compare-widths-needed-to-widths-available"><i class="fa fa-check"></i><b>5.13</b> Step 8: Compare Widths Needed to Widths Available</a></li>
+<li class="chapter" data-level="5.14" data-path="technical-details.html"><a href="technical-details.html#step-9-group-into-schemes"><i class="fa fa-check"></i><b>5.14</b> Step 9: Group into schemes</a></li>
+<li class="chapter" data-level="5.15" data-path="technical-details.html"><a href="technical-details.html#step-10-get-uptake-and-benefits"><i class="fa fa-check"></i><b>5.15</b> Step 10: get uptake and benefits</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="general-comments.html"><a href="general-comments.html"><i class="fa fa-check"></i><b>6</b> General Comments</a><ul>
+<li class="chapter" data-level="6.1" data-path="general-comments.html"><a href="general-comments.html#uk-emphasis"><i class="fa fa-check"></i><b>6.1</b> UK emphasis</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://cyipt.bike" target="blank">Published with bookdown</a></li>
 
@@ -204,12 +225,136 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vapply</span>(pkgs, require, <span class="ot">TRUE</span>, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>##       sf  osmdata  stringr    dplyr parallel  xgboost   igraph     tmap 
 ##     TRUE     TRUE     TRUE     TRUE     TRUE     TRUE     TRUE     TRUE</code></pre>
-
-<div id="refs" class="references">
-<div>
-<p>Highways England. 2016. “Interim Advice Note 195/16: Cycle Traffic and the Strategic Road Network.” Interim 195/16. Highways England. <a href="http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf" class="uri">http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf</a>.</p>
+</div>
+<div id="step-1-download-the-data" class="section level2">
+<h2><span class="header-section-number">5.6</span> Step 1: Download the Data</h2>
+<p><a href="https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/download-osm.R" class="uri">https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/download-osm.R</a></p>
+<p>This script downloads the OSM road and path network for each region.</p>
+<p><strong>Inputs:</strong></p>
+<p><code>Regions.todo</code></p>
+<p>Boundaries file “../cyipt-bigdata/boundaries/TTWA/TTWA_England.Rds”</p>
+<p><strong>Outputs:</strong></p>
+<p>Region Boundaries “../cyipt-bigdata/osm-raw/region/bounds.Rds” OSM road network “../cyipt-bigdata/osm-raw/region/osm-lines.Rds” OSM road junction points “../cyipt-bigdata/osm-raw/region/osm-junction-points.Rds” <strong>Parallelised:</strong></p>
+<p>Yes</p>
+</div>
+<div id="step-2-clean-the-osm-tags" class="section level2">
+<h2><span class="header-section-number">5.7</span> Step 2: Clean the OSM Tags</h2>
+<p><a href="https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/clean_osm.R" class="uri">https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/clean_osm.R</a></p>
+<p>This script “cleans” the OSM data by removing or correcting errors and filling in missing data with best guesses. Guessing is required, as some later stages of CyIPT require information (such as speed limits) which is not always available. In isolated cases of incorrect guesses it is best to correct the value in the OSM using the “edit in the OSM” button on the CyIPT website. These corrections will then be incorporated into the next build of CyIPT. In general cases of CyIPT miss-guessing, please submit and issue via GitHub <a href="https://github.com/cyipt/cyipt/issues" class="uri">https://github.com/cyipt/cyipt/issues</a></p>
+<p><strong>Inputs:</strong></p>
+<p><code>Regions.todo</code></p>
+<p>OSM road network “../cyipt-bigdata/osm-raw/region/osm-lines.Rds”</p>
+<p><strong>Outputs:</strong></p>
+<p>OSM road network “../cyipt-bigdata/osm-clean/region/osm-lines.Rds”</p>
+<p><strong>Parallelised:</strong></p>
+<p>No</p>
+<div id="detail" class="section level3">
+<h3><span class="header-section-number">5.7.1</span> Detail</h3>
+<p>The cleaning process consist of the following stages:</p>
+<ol style="list-style-type: decimal">
+<li>Removing un-allowed road types (e.g. planned or demolished)</li>
+<li>Replacing depreciated highway tags</li>
+<li>Cleaning the junction tag</li>
+<li>Summarising the one-way nature of roads</li>
+<li>Guessing the max speed of roads with an unknown max speed based on road type</li>
+<li>Guessing the presence of footways (pavements) with unknown footway status</li>
+<li>Summarising the presence of bridges and tunnels</li>
+<li>Cleaning the segregation status of cycle infrastructure</li>
+<li>Cleating a summary of the road type</li>
+<li>Cleaning and/or guessing the number and nature of lanes in each direction</li>
+<li>Cleaning the tagging of cycle infrastructure and improving detail of what is on each side of the road.</li>
+</ol>
 </div>
 </div>
+<div id="step-3-get-traffic-counts" class="section level2">
+<h2><span class="header-section-number">5.8</span> Step 3: Get traffic counts</h2>
+<p><a href="https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/get_traffic.R" class="uri">https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/get_traffic.R</a></p>
+<p>This script assigns the point traffic count data to the road network.</p>
+<p><strong>Inputs:</strong></p>
+<p><code>Regions.todo</code></p>
+<p>OSM road network “../cyipt-bigdata/osm-clean/region/osm-lines.Rds”</p>
+<p>Traffic Points “../cyipt-bigdata/traffic/traffic.Rds”</p>
+<p><strong>Outputs:</strong></p>
+<p>OSM road network “../cyipt-bigdata/osm-clean/region/osm-lines.Rds”</p>
+<p><strong>Parallelised:</strong></p>
+<p>No</p>
+<div id="details" class="section level3">
+<h3><span class="header-section-number">5.8.1</span> Details</h3>
+<p>This scrip divides the point traffic counts based on whether they are on classified (e.g. M21, B340) or unclassified roads. Unclassified road points are matched to the nearest road in the OSM, and therefore the value only extends a short distance from the point location. For classified roads, a series of Voronoi polygons are constructed around the points and all the road segments within each polygon are assigned the value of their nearest point. This provides continuous coverage, but can produce some erroneous results such as off ramps having the same traffic levels as the main carriageways.</p>
+<p>In both cases, the script takes the Annual Average Daily Traffic (AADT) value from the most recent available year. For the strategic road network, data is mostly from 2015/2016, but for minor roads, it can be significantly earlier. For the purposes of CyIPT is the traffic data is mostly used for identify the very busy and most hostile roads, thus this inconstancy of data is not a significant problem. However, users intending to use the data or method for other purposes should consider the implications of this inconstancy within the data.</p>
+</div>
+</div>
+<div id="step-4-split-the-lines-at-each-junction" class="section level2">
+<h2><span class="header-section-number">5.9</span> Step 4: Split the lines at each junction</h2>
+<p><a href="https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/prep_osm.R" class="uri">https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/prep_osm.R</a></p>
+<p>This script splits the roads at each junction into road segments.</p>
+<p><strong>Inputs:</strong></p>
+<p><code>Regions.todo</code></p>
+<p>OSM road network “../cyipt-bigdata/osm-clean/region/osm-lines.Rds”</p>
+<p>OSM road junction points “../cyipt-bigdata/osm-raw/region/osm-junction-points.Rds”</p>
+<p><strong>Outputs:</strong></p>
+<p>OSM road network “../cyipt-bigdata/osm-prep/region/osm-lines.Rds”</p>
+<p><strong>Parallelised:</strong></p>
+<p>No</p>
+<div id="details-1" class="section level3">
+<h3><span class="header-section-number">5.9.1</span> Details</h3>
+<p>The splitting of the roads at junctions is mostly required for the later application of the PCT data. Within the OSM a road may be represented by a single long line crossing several junctions. However, at each junction cyclists may join or leave the road. Therefore, it is not appropriate to analyse the road network as it is represented in the OSM. By splitting the road network into segments it ensures that, the analysis is appropriately detailed. Note the splitting is done by cutting tiny holes out of the road lines (r = 0.01m) therefore the lines are no longer touching; this would prevent this dataset being used in a routing engine.</p>
+</div>
+</div>
+<div id="step-5-get-the-pct-estimate-of-number-of-cyclists" class="section level2">
+<h2><span class="header-section-number">5.10</span> Step 5: Get the PCT estimate of number of cyclists</h2>
+<p><a href="https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/get_pct.R" class="uri">https://github.com/cyipt/cyipt/blob/master/scripts/prep_data/get_pct.R</a></p>
+<p><strong>Inputs:</strong></p>
+<p><code>Regions.todo</code></p>
+<p>OSM road network “../cyipt-bigdata/osm-prep/region/osm-lines.Rds”</p>
+<p>PCT LSOA Routes “../cyipt-securedata/pct-routes-all.Rds”</p>
+<p>TTWA boundaries “../cyipt-bigdata/boundaries/TTWA/TTWA_England.Rds”</p>
+<p><strong>Outputs:</strong></p>
+<p>OSM road network “../cyipt-bigdata/osm-prep/region/osm-lines.Rds”</p>
+<p>PCT LSOA Routes (Regional) “../cyipt-securedata/pct-regions/region.Rds”</p>
+<p>PCT to OSM lookup (Regional) “../cyipt-bigdata/osm-prep/region/pct2osm.Rds”</p>
+<p>OSM to PCT lookup (regional) “../cyipt-bigdata/osm-prep/region/osm2pct.Rds”</p>
+<p><strong>Parallelised:</strong></p>
+<p>Yes</p>
+<div id="details-2" class="section level3">
+<h3><span class="header-section-number">5.10.1</span> Details</h3>
+<p>This script matches the Propensity to Cycle Tool (PCT) LSOA route data with individual road segments to count the number of cyclists on each road segment. Values from each of the five PCT scenarios are recorded:</p>
+<pre><code>Census 2011
+Government Target
+Gender Equality
+Go Dutch
+Ebikes</code></pre>
+<p>While the matching process is reasonably robust, small errors can occur resulting in missing segments, or double counting.</p>
+<p>As the PCT data was unidirectional routed (A to B, but not B to A) the results are less accurate on dual carriageways. For example, the PCT is constructed from Census 2011 Origin-Destination data matched to routes produced by CycleStreets. The Origin and Destinations are Lower Level Super Output Areas. The census state that 30 people live in LSOA A and work in LSOA B, and 50 people live in LSOA B and work in LSOA A. The CycleStreets provide a route from A to B, and the PCT assign this route a value of 80 (50 + 30). This method does not therefore take account of the route A to B being different from the route B to A, due to one way streets, roundabouts etc. Nor does it consider that commuters return home at the end of the day.</p>
+<p>In these cases, the number of cyclists is split between the carriageways with usually with most on one carriageway (see Figure <a href="technical-details.html#fig:unidirectional">5.1</a>).</p>
+<div class="figure"><span id="fig:unidirectional"></span>
+<img src="../images/unidirectional.png" alt="Effects of Unidirectional Routing." width="960" />
+<p class="caption">
+Figure 5.1: Effects of Unidirectional Routing.
+</p>
+</div>
+</div>
+</div>
+<div id="step-6-get-road-width-estimates-and-collisions" class="section level2">
+<h2><span class="header-section-number">5.11</span> Step 6: Get road width estimates and collisions</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;scripts/prep_data/get_widths.R&quot;</span>)
+<span class="kw">source</span>(<span class="st">&quot;scripts/prep_data/get_collisions.R&quot;</span>)</code></pre></div>
+</div>
+<div id="step-7-evaluate-infrastructure-options" class="section level2">
+<h2><span class="header-section-number">5.12</span> Step 7: Evaluate Infrastructure Options</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;scripts/select_infra/select_infra.R&quot;</span>)</code></pre></div>
+</div>
+<div id="step-8-compare-widths-needed-to-widths-available" class="section level2">
+<h2><span class="header-section-number">5.13</span> Step 8: Compare Widths Needed to Widths Available</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;scripts/select_infra/compare_widths.R&quot;</span>)</code></pre></div>
+</div>
+<div id="step-9-group-into-schemes" class="section level2">
+<h2><span class="header-section-number">5.14</span> Step 9: Group into schemes</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;scripts/select_infra/make_schemes2.R&quot;</span>)</code></pre></div>
+</div>
+<div id="step-10-get-uptake-and-benefits" class="section level2">
+<h2><span class="header-section-number">5.15</span> Step 10: get uptake and benefits</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;scripts/uptake/calc_uptake_routechange3.R&quot;</span>)</code></pre></div>
 </div>
 </div>
             </section>
@@ -217,8 +362,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="layer-descriptions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="layer-descriptions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="general-comments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -251,7 +396,7 @@ gitbook.start({
 "link": "https://github.com/cyipt/cyipt-website/edit/master/man/index.Rmd",
 "text": "Edit"
 },
-"download": ["manual.pdf"],
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

@@ -25,7 +25,6 @@
 <meta name="author" content="The CyIPT team">
 
 
-<meta name="date" content="2018-03-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -136,7 +135,29 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.3" data-path="technical-details.html"><a href="technical-details.html#settings"><i class="fa fa-check"></i><b>5.3</b> Settings</a></li>
 <li class="chapter" data-level="5.4" data-path="technical-details.html"><a href="technical-details.html#regions-to-do"><i class="fa fa-check"></i><b>5.4</b> Regions to Do</a></li>
 <li class="chapter" data-level="5.5" data-path="technical-details.html"><a href="technical-details.html#libraries"><i class="fa fa-check"></i><b>5.5</b> Libraries</a></li>
+<li class="chapter" data-level="5.6" data-path="technical-details.html"><a href="technical-details.html#step-1-download-the-data"><i class="fa fa-check"></i><b>5.6</b> Step 1: Download the Data</a></li>
+<li class="chapter" data-level="5.7" data-path="technical-details.html"><a href="technical-details.html#step-2-clean-the-osm-tags"><i class="fa fa-check"></i><b>5.7</b> Step 2: Clean the OSM Tags</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="technical-details.html"><a href="technical-details.html#detail"><i class="fa fa-check"></i><b>5.7.1</b> Detail</a></li>
 </ul></li>
+<li class="chapter" data-level="5.8" data-path="technical-details.html"><a href="technical-details.html#step-3-get-traffic-counts"><i class="fa fa-check"></i><b>5.8</b> Step 3: Get traffic counts</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="technical-details.html"><a href="technical-details.html#details"><i class="fa fa-check"></i><b>5.8.1</b> Details</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="technical-details.html"><a href="technical-details.html#step-4-split-the-lines-at-each-junction"><i class="fa fa-check"></i><b>5.9</b> Step 4: Split the lines at each junction</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="technical-details.html"><a href="technical-details.html#details-1"><i class="fa fa-check"></i><b>5.9.1</b> Details</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="technical-details.html"><a href="technical-details.html#step-5-get-the-pct-estimate-of-number-of-cyclists"><i class="fa fa-check"></i><b>5.10</b> Step 5: Get the PCT estimate of number of cyclists</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="technical-details.html"><a href="technical-details.html#details-2"><i class="fa fa-check"></i><b>5.10.1</b> Details</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="technical-details.html"><a href="technical-details.html#step-6-get-road-width-estimates-and-collisions"><i class="fa fa-check"></i><b>5.11</b> Step 6: Get road width estimates and collisions</a></li>
+<li class="chapter" data-level="5.12" data-path="technical-details.html"><a href="technical-details.html#step-7-evaluate-infrastructure-options"><i class="fa fa-check"></i><b>5.12</b> Step 7: Evaluate Infrastructure Options</a></li>
+<li class="chapter" data-level="5.13" data-path="technical-details.html"><a href="technical-details.html#step-8-compare-widths-needed-to-widths-available"><i class="fa fa-check"></i><b>5.13</b> Step 8: Compare Widths Needed to Widths Available</a></li>
+<li class="chapter" data-level="5.14" data-path="technical-details.html"><a href="technical-details.html#step-9-group-into-schemes"><i class="fa fa-check"></i><b>5.14</b> Step 9: Group into schemes</a></li>
+<li class="chapter" data-level="5.15" data-path="technical-details.html"><a href="technical-details.html#step-10-get-uptake-and-benefits"><i class="fa fa-check"></i><b>5.15</b> Step 10: get uptake and benefits</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="general-comments.html"><a href="general-comments.html"><i class="fa fa-check"></i><b>6</b> General Comments</a><ul>
+<li class="chapter" data-level="6.1" data-path="general-comments.html"><a href="general-comments.html#uk-emphasis"><i class="fa fa-check"></i><b>6.1</b> UK emphasis</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>7</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://cyipt.bike" target="blank">Published with bookdown</a></li>
 
@@ -170,7 +191,7 @@ Figure 2.1: Schematic overview of CyIPT.
 <p>Based on the length and type of infrastructure, CyIPT estimate the cost of constructing the recommended new cycling infrastructure. CyIPT take account of existing infrastructure and therefore does not apply a cost of building existing cycle infrastructure if it is of sufficient quality.</p>
 <p>As CyIPT’s recommendations are made for each road segment (junction to junction), they can be for very short sections of road. Therefore, CyIPT has a clustering algorithm, which attempts to take recommendations and group them into coherent schemes that could be constructed. One the schemes have been produced, CyITP estimate the number of additional cyclists the scheme would produce and performed a benefit cost assessment of the schemes to identify the schemes which are most likely to be worth building. The CyIPT process is deterministic, which is to say that it produces the same results each time the model is run, and has therefore been pre-processed by the CyIPT team. The results for England are made available through the CyIPT website (www.cyipt.bike). The CyIPT website also allows for data download and the source code is available at GitHub (<a href="https://github.com/cyipt" class="uri">https://github.com/cyipt</a>).</p>
 </div>
-<h3>References</h3>
+<h3> References</h3>
 <div id="refs" class="references">
 <div id="ref-highwaysengland_interim_2016">
 <p>Highways England. 2016. “Interim Advice Note 195/16: Cycle Traffic and the Strategic Road Network.” Interim 195/16. Highways England. <a href="http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf" class="uri">http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf</a>.</p>
@@ -215,7 +236,7 @@ gitbook.start({
 "link": "https://github.com/cyipt/cyipt-website/edit/master/man/index.Rmd",
 "text": "Edit"
 },
-"download": ["manual.pdf"],
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

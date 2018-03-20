@@ -950,11 +950,11 @@ class cyiptModel
 		# Manual query
 		$query = "SELECT
 			(SELECT COUNT(*) FROM schemes) AS totalSchemes,
-			(SELECT SUM( CAST (cost AS INT) ) FROM schemes) AS totalCost,
+			(SELECT SUM(cost) / 1000000000 FROM schemes) AS totalCostBillion,
 			(SELECT (SELECT SUM( CAST (cost AS INT) ) FROM schemes) / (SELECT COUNT(*) FROM schemes)) AS averageCostPerScheme,
 			(SELECT SUM( CAST (length AS INT) / 1000 ) FROM schemes) AS totalLengthKm,
 			(SELECT ROUND ((SELECT SUM( CAST (length AS INT) / 1000 ) FROM schemes) / (SELECT COUNT(*) FROM schemes), 1)) AS averageLengthKmPerScheme,
-			(SELECT SUM( CAST (totalBen AS INT) ) FROM schemes) AS totalBenefits,
+			(SELECT SUM(totalBen) / 1000000000 FROM schemes) AS totalBenefitsBillion,
 			(SELECT (SELECT SUM( CAST (totalBen AS INT) ) FROM schemes) / (SELECT COUNT(*) FROM schemes) ) AS averageBenefitsPerScheme,
 			(SELECT ROUND (CAST (AVG(costBenRatio) AS NUMERIC), 1) FROM schemes) AS averageBenefitCostRatio
 		;";

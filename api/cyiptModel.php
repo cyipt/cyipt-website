@@ -330,24 +330,24 @@ class cyiptModel
 		# Set filters based on zoom
 		switch (true) {
 
-    # Max Zoomed Out
+			# Max zoomed out
 			case ($this->zoom == 11):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify({$this->tablePrefix}roads.geotext, 0.00412 )) AS geometry';
+				$fields[] = "ST_AsGeoJSON(ST_Simplify({$this->tablePrefix}roads.geotext, 0.00412 )) AS geometry";
 				$limit = 5000;
 				break;
 
 			case ($this->zoom == 12):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify({$this->tablePrefix}roads.geotext, 0.00206 )) AS geometry';
+				$fields[] = "ST_AsGeoJSON(ST_Simplify({$this->tablePrefix}roads.geotext, 0.00206 )) AS geometry";
 				$limit = 5000;
 				break;
 
-		  case ($this->zoom == 13):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify({$this->tablePrefix}roads.geotext, 0.00103 )) AS geometry';
+			case ($this->zoom == 13):
+				$fields[] = "ST_AsGeoJSON(ST_Simplify({$this->tablePrefix}roads.geotext, 0.00103 )) AS geometry";
 				$limit = 5000;
 				break;
 
 			case ($this->zoom == 14):
-				$fields[] = 'ST_AsGeoJSON(ST_Simplify({$this->tablePrefix}roads.geotext, 0.00052 )) AS geometry';
+				$fields[] = "ST_AsGeoJSON(ST_Simplify({$this->tablePrefix}roads.geotext, 0.00052 )) AS geometry";
 				$limit = 5000;
 				break;
 

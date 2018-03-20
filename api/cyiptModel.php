@@ -317,7 +317,7 @@ class cyiptModel
 		if ($layers[$layer]['fields']) {
 			$fields = array_merge ($fields, $layers[$layer]['fields']);
 		}
-		$fields[] = 'osmid';
+		$fields[] = 'CAST (osmid AS INT)';
 		$constraints = array (
 			"{$this->tablePrefix}roads.geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)",
 		);

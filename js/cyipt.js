@@ -384,10 +384,10 @@ var cyipt = (function ($) {
 					_settings[setting] = config[setting];
 				}
 			});
-
+			
 			// Enable accordion
 			cyipt.accordion ();
-
+			
 			// Run the layerviewer for these settings and layers
 			layerviewer.initialise (_settings, _layerConfig);
 		},

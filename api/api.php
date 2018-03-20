@@ -115,6 +115,10 @@ class api
 				return $this->responseJson ($geojson, $_GET['action'] . '.geojson');	// NB $_GET['action'] is validated by this point
 				break;
 				
+			# Flat JSON
+			case 'flatjson':
+				return $this->responseJson ($data);
+				
 			# CSV
 			case 'csv':
 				$csv = $this->asCsv ($data);

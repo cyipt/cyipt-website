@@ -95,6 +95,11 @@ class api
 			return $this->error ($error);
 		}
 		
+		# If the model specifies an output format, use that
+		if (isSet ($model['format'])) {
+			$format = $model['format'];
+		}
+		
 		# Output the data
 		switch ($format) {
 			

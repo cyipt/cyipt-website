@@ -95,6 +95,12 @@ class api
 			return $this->error ($error);
 		}
 		
+		# Determine if a singular result should be returned; currently only supported for getData()
+		$singular = (isSet ($model['singular']) && $model['singular']);
+		if ($singular) {
+			$data = $data[0];
+		}
+		
 		# If the model specifies an output format, use that
 		if (isSet ($model['format'])) {
 			$format = $model['format'];

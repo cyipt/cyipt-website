@@ -962,6 +962,7 @@ class cyiptModel
 		# Return the model
 		return array (
 			'query' => $query,
+			'singular' => true,
 			'format' => 'flatjson',
 		);
 	}

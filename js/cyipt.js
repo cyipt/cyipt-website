@@ -130,12 +130,10 @@ var cyipt = (function ($) {
 			],
 			'popupLabels': {
 				idGlobal: 'unique ID to each scheme',
-				cost: 'Cost',
-				costperperson: 'Cost per person',
-				groupid: 'Unique ID to each scheme',
-				region: 'Region name (Travel to Work Area)',
 				cost: 'Total cost in £',
 				costperperson: 'Cost divided by the number of new cyclists',
+				groupid: 'Unique ID to each scheme',
+				region: 'Region name (Travel to Work Area)',
 				ncyclebefore: 'Number of people cycling through the scheme before',
 				ncycleafter: 'Number of people cycling through the scheme after',
 				infratype: 'Summary name of infrastructure type (take the most common type of mixed schemes)',
@@ -247,7 +245,6 @@ var cyipt = (function ($) {
 			name: 'Road widths',
 			description: 'Calculations of the width of roads/paths, which helps determine the potential space available for cycle infrastructure.',
 			sublayerParameter: 'widthlayer',
-			lineColourField: 'width',
 			lineColourField: {
 				roadwidth: 'width',
 				widthstatus: 'width'

@@ -205,11 +205,10 @@ var cyipt = (function ($) {
 					['Living street', '#999999']
 				],
 				speedlimits: [
-					[50, 'red'],
+					[70, 'red'],
 					[40, 'crimson'],
 					[30, 'orange'],
-					[20, 'green'],
-					[10, 'blue']
+					[20, 'green']
 				],
 				footways: [
 					['both', 'green'],

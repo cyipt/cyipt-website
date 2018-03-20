@@ -131,7 +131,7 @@ class cyiptModel
 		}
 
 		# Ensure any supplied fields are numeric
-		$numericFields = array ('costto', 'costbenefitfrom', 'benefitfrom');
+		$numericFields = array ('costto', 'benefitcostfrom', 'benefitfrom');
 		foreach ($numericFields as $numericField) {
 			if (isSet ($this->get[$numericField])) {
 				if (!is_numeric ($this->get[$numericField])) {
@@ -147,7 +147,7 @@ class cyiptModel
 			// 'groupid',
 			'region',
 			'CAST(cost AS INT)',
-			'costBenRatio',
+			'costBenRatio',		// NB Needs to be renamed to benefitCostRatio, i.e. BCR not CBR)
 			'CAST(totalBen AS INT)',
 			'CAST(costperperson AS INT)',
 			'ncyclebefore',
@@ -179,9 +179,9 @@ class cyiptModel
 			$constraints[] = 'cost <= :costto';
 			$parameters['costto'] = $this->get['costto'];
 		}
-		if (isSet ($this->get['costbenefitfrom'])) {
-			$constraints[] = 'costBenRatio >= :costbenefitfrom';
-			$parameters['costbenefitfrom'] = $this->get['costbenefitfrom'];
+		if (isSet ($this->get['benefitcostfrom'])) {
+			$constraints[] = 'costBenRatio >= :benefitcostfrom';
+			$parameters['benefitcostfrom'] = $this->get['benefitcostfrom'];
 		}
 		if (isSet ($this->get['benefitfrom'])) {
 			$constraints[] = 'totalBen >= :benefitfrom';
@@ -250,7 +250,7 @@ class cyiptModel
 				'bbox' => '%bbox',
 				'zoom' => '%zoom',
 				'costto' => array ('type' => 'int', 'values' => '0-999999999', 'description' => 'Maximum cost', ),
-				'costbenefitfrom' => array ('type' => 'int', 'values' => '0-9999', 'description' => 'Cost benefit at least', ),
+				'benefitcostfrom' => array ('type' => 'int', 'values' => '0-9999', 'description' => 'Benefit-cost ratio (BCR) at least', ),
 				'benefitfrom' => array ('type' => 'int', 'values' => '0-999999999', 'description' => 'Benefit (in £) at least', ),
 			),
 		);

@@ -942,6 +942,43 @@ class cyiptModel
 			),
 		);
 	}
+
+
+	# Status
+	public function statusModel (&$error = false)
+	{
+		# Manual query
+		$query = "SELECT
+			(SELECT COUNT(*) FROM schemes) AS totalSchemes,
+			(SELECT SUM( CAST (cost AS INT) ) FROM schemes) AS totalCost,
+			(SELECT (SELECT SUM( CAST (cost AS INT) ) FROM schemes) / (SELECT COUNT(*) FROM schemes)) AS averageCostPerScheme,
+			(SELECT SUM( CAST (length AS INT) / 1000 ) FROM schemes) AS totalLengthKm,
+			(SELECT ROUND ((SELECT SUM( CAST (length AS INT) / 1000 ) FROM schemes) / (SELECT COUNT(*) FROM schemes), 1)) AS averageLengthKmPerScheme,
+			(SELECT SUM( CAST (totalBen AS INT) ) FROM schemes) AS totalBenefits,
+			(SELECT (SELECT SUM( CAST (totalBen AS INT) ) FROM schemes) / (SELECT COUNT(*) FROM schemes) ) AS averageBenefitsPerScheme,
+			(SELECT ROUND (CAST (AVG(costBenRatio) AS NUMERIC), 1) FROM schemes) AS averageBenefitCostRatio
+		;";
+
+		# Return the model
+		return array (
+			'query' => $query,
+			'format' => 'flatjson',
+		);
+	}
+
+
+	# Documentation
+	public static function statusDocumentation ()
+	{
+		return array (
+			'name' => 'Status',
+			'example' => '/api/v1/status.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15',
+			'fields' => array (
+				'bbox' => '%bbox',	// NB not actually used - added due to API standard
+				'zoom' => '%zoom',	// NB not actually used - added due to API standard
+			),
+		);
+	}
 }
 
 ?>

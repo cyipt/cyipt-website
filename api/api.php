@@ -86,7 +86,11 @@ class api
 		// var_dump ($model);
 		
 		# Get the data
-		$data = $this->select ($model['table'], $model['fields'], $model['constraints'], $model['limit'], $model['parameters'], $error);
+		if (isSet ($model['query'])) {
+			$data = $this->getData ($model['query']);
+		} else {
+			$data = $this->select ($model['table'], $model['fields'], $model['constraints'], $model['limit'], $model['parameters'], $error);
+		}
 		if ($error) {
 			return $this->error ($error);
 		}

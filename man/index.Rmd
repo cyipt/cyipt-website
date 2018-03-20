@@ -131,13 +131,40 @@ The CyIPT website is an interactive map presenting a range of different  layers.
 
 The Existing Infrastructure layer has three modes (Cycle infrastructure, Speed limits, Footways).  These modes are intended to help the users understand the current level of provision for active modes, and can be selected using the dropdown menu illustrated in Figure \@ref(fig:existing-dropdown).
 
-```{r existing-dropdown, fig.cap="Dropdown menu illustrating available modes in the existing infrastructure layer."}
+```{r existing-dropdown, fig.cap="Dropdown menu illustrating available modes in the existing infrastructure layer.", out.width="30%"}
 knitr::include_graphics("../images/existing-dropdown.png")
 ```
 
 For each mode, the underlying data is taken from the Open Street Map (OSM), which is then passed through a cleaning process to correct errors and fill in any missing data.
 
-If any values are incorrect in CyIPT (for example an incorrect speed limit) clicking on the road will show a popup including an "Edit in OSM" button.  This button will take you to the same road in the OSM website where you can make corrections.  These corrections (and any other updates) will be incorporated into CyIPT next time the data is rebuilt.
+If any values are incorrect in CyIPT (for example an incorrect speed limit) clicking on the road will show a popup including an "Edit in OSM" button (see Figure \@ref(fig:osm-edit)).
+
+
+```{r osm-edit, fig.cap="The Edit OSM button in the Existing infrastructure layer (see red circle). The presence of a cycle path is clear from the satellite layer (in the blue circle)."}
+knitr::include_graphics("../images/existing-edit.png")
+```
+
+This button should take you to the same road in the OSM website where you can make corrections (alternatively navigate to the path manually on OSM).
+To edit OSM data you need to log-in (register as a new user at [www.osm.org](http://osm.org/)) and then click on the "Edit" button on the OSM website (see Figure \@ref(fig:osm-edit-button)).
+
+```{r osm-edit-button, fig.cap="The Edit OSM button in the Existing infrastructure layer."}
+knitr::include_graphics("../images/osm-edit-button.png")
+```
+
+This will allow you to change attributes of existing links or, if necessary, add a new link.
+Figure \@ref(fig:existing-edit-lane), for example, shows how to add a cycle lane to an existing way which was not tagged as having any cycling infrastructure.
+This will improve the results of CyIPT the next time it's built.
+
+```{r existing-edit-lane, fig.cap="Illustration of adding a cycle lane in OSM in Leeds - real world example."}
+knitr::include_graphics("../images/existing-edit-lane.png")
+```
+
+For more information on editing OSM please refer to the following links:
+
+- The `Cycleway=` key on the [OSM Wiki](https://wiki.openstreetmap.org/wiki/Key:cycleway).
+- The [Cycle Mapping for Cycle Routing](https://www.cyclestreets.net/getmapping/guide/CycleMappingGuide.pdf) by CycleStreets.net
+- 
+
 
 ### Cycle infrastructure
 

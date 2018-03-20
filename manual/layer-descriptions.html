@@ -185,20 +185,46 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">4.1</span> Existing infrastructure</h2>
 <p>The Existing Infrastructure layer has three modes (Cycle infrastructure, Speed limits, Footways). These modes are intended to help the users understand the current level of provision for active modes, and can be selected using the dropdown menu illustrated in Figure <a href="layer-descriptions.html#fig:existing-dropdown">4.1</a>.</p>
 <div class="figure"><span id="fig:existing-dropdown"></span>
-<img src="../images/existing-dropdown.png" alt="Dropdown menu illustrating available modes in the existing infrastructure layer." width="242" />
+<img src="../images/existing-dropdown.png" alt="Dropdown menu illustrating available modes in the existing infrastructure layer." width="30%" />
 <p class="caption">
 Figure 4.1: Dropdown menu illustrating available modes in the existing infrastructure layer.
 </p>
 </div>
 <p>For each mode, the underlying data is taken from the Open Street Map (OSM), which is then passed through a cleaning process to correct errors and fill in any missing data.</p>
-<p>If any values are incorrect in CyIPT (for example an incorrect speed limit) clicking on the road will show a popup including an “Edit in OSM” button. This button will take you to the same road in the OSM website where you can make corrections. These corrections (and any other updates) will be incorporated into CyIPT next time the data is rebuilt.</p>
+<p>If any values are incorrect in CyIPT (for example an incorrect speed limit) clicking on the road will show a popup including an “Edit in OSM” button (see Figure <a href="layer-descriptions.html#fig:osm-edit">4.2</a>).</p>
+<div class="figure"><span id="fig:osm-edit"></span>
+<img src="../images/existing-edit.png" alt="The Edit OSM button in the Existing infrastructure layer (see red circle). The presence of a cycle path is clear from the satellite layer (in the blue circle)." width="721" />
+<p class="caption">
+Figure 4.2: The Edit OSM button in the Existing infrastructure layer (see red circle). The presence of a cycle path is clear from the satellite layer (in the blue circle).
+</p>
+</div>
+<p>This button should take you to the same road in the OSM website where you can make corrections (alternatively navigate to the path manually on OSM). To edit OSM data you need to log-in (register as a new user at <a href="http://osm.org/">www.osm.org</a>) and then click on the “Edit” button on the OSM website (see Figure <a href="layer-descriptions.html#fig:osm-edit-button">4.3</a>).</p>
+<div class="figure"><span id="fig:osm-edit-button"></span>
+<img src="../images/osm-edit-button.png" alt="The Edit OSM button in the Existing infrastructure layer." width="712" />
+<p class="caption">
+Figure 4.3: The Edit OSM button in the Existing infrastructure layer.
+</p>
+</div>
+<p>This will allow you to change attributes of existing links or, if necessary, add a new link. Figure <a href="layer-descriptions.html#fig:existing-edit-lane">4.4</a>, for example, shows how to add a cycle lane to an existing way which was not tagged as having any cycling infrastructure. This will improve the results of CyIPT the next time it’s built.</p>
+<div class="figure"><span id="fig:existing-edit-lane"></span>
+<img src="../images/existing-edit-lane.png" alt="Illustration of adding a cycle lane in OSM in Leeds - real world example." width="712" />
+<p class="caption">
+Figure 4.4: Illustration of adding a cycle lane in OSM in Leeds - real world example.
+</p>
+</div>
+<p>For more information on editing OSM please refer to the following links:</p>
+<ul>
+<li>The <code>Cycleway=</code> key on the <a href="https://wiki.openstreetmap.org/wiki/Key:cycleway">OSM Wiki</a>.</li>
+<li>The <a href="https://www.cyclestreets.net/getmapping/guide/CycleMappingGuide.pdf">Cycle Mapping for Cycle Routing</a> by CycleStreets.net</li>
+<li></li>
+</ul>
 <div id="cycle-infrastructure" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Cycle infrastructure</h3>
-<p>The cycle infrastructure mode shows physical cycling infrastructure such as cycle lanes and tracks (Figure <a href="layer-descriptions.html#fig:existing-cycling">4.2</a>. It does not show signposted cycle routes (e.g. national cycle network) where there is no physical infrastructure.</p>
+<p>The cycle infrastructure mode shows physical cycling infrastructure such as cycle lanes and tracks (Figure <a href="layer-descriptions.html#fig:existing-cycling">4.5</a>. It does not show signposted cycle routes (e.g. national cycle network) where there is no physical infrastructure.</p>
 <div class="figure"><span id="fig:existing-cycling"></span>
 <img src="../images/existing-cycling.png" alt="The 'Cycle infrastructure' mode in the Existing infrastructure layer." width="960" />
 <p class="caption">
-Figure 4.2: The ‘Cycle infrastructure’ mode in the Existing infrastructure layer.
+Figure 4.5: The ‘Cycle infrastructure’ mode in the Existing infrastructure layer.
 </p>
 </div>
 <p>This layer shows what CyIPT will consider existing infrastructure when calculating the costs of new/upgraded cycle infrastructure.</p>
@@ -215,7 +241,7 @@ Figure 4.2: The ‘Cycle infrastructure’ mode in the Existing infrastructure l
 </div>
 <div id="schemes" class="section level2">
 <h2><span class="header-section-number">4.4</span> Schemes</h2>
-<p>The Schemes and presents the results of the toolkit for route segments, divided-up into geographically cohesive entities (see Figure <a href="layer-descriptions.html#fig:schemes">4.3</a>. Schemes can be composed of a variety of interventions, which can be:</p>
+<p>The Schemes and presents the results of the toolkit for route segments, divided-up into geographically cohesive entities (see Figure <a href="layer-descriptions.html#fig:schemes">4.6</a>. Schemes can be composed of a variety of interventions, which can be:</p>
 <ul>
 <li>A recommendation for new/upgraded cycle infrastructure, or</li>
 <li>Multiple infrastructure types (only the most common is named)</li>
@@ -223,7 +249,7 @@ Figure 4.2: The ‘Cycle infrastructure’ mode in the Existing infrastructure l
 <div class="figure"><span id="fig:schemes"></span>
 <img src="../images/layer-schemes.png" alt="The Schemes layer" width="830" />
 <p class="caption">
-Figure 4.3: The Schemes layer
+Figure 4.6: The Schemes layer
 </p>
 </div>
 <p>Schemes covers a defined area providing a route or part of a network. Each scheme is derived from the recommended infrastructure layer (see below) by excluding any roads where the recommended level of cycle infrastructure is equal to or exceeded by the existing infrastructure. Recommendations are then grouped into schemes, to convert recommendations that may only be a few tens of metres into a coherent route or network. Schemes below a threshold length are then excluded.</p>
@@ -251,7 +277,7 @@ Figure 4.3: The Schemes layer
 <div class="figure"><span id="fig:recommended"></span>
 <img src="../images/recommended.png" alt="The recommended infrastructure layer." width="302" />
 <p class="caption">
-Figure 4.4: The recommended infrastructure layer.
+Figure 4.7: The recommended infrastructure layer.
 </p>
 </div>
 <p>It is important to understand that the CyIPT recommendations are based on cycling levels in the 2011 census, and it may therefore under-represent current cycling levels and infrastructure requirements. For more detail on the recommendation process, see the Technical Details section below.</p>
@@ -309,11 +335,11 @@ Figure 4.4: The recommended infrastructure layer.
 </div>
 <div id="propensity-to-cycle-tool" class="section level2">
 <h2><span class="header-section-number">4.7</span> Propensity to Cycle Tool</h2>
-<p>The Propensity to Cycle Tool layer takes data from the Propensity to Cycle Tool (PCT) (see <a href="http://www.pct.bike/">www.pct.bike</a>) and provides an updated version for CyIPT. The layer is analogous to the PCT LSOA route network layer, which can also be accessed as a base map though CyIPT. CyIPT adds value to the PCT data by assigning cycling potential to OSM elements, making this layer more detailed and interactive than the equivalent LSOA layer in the PCT (see Figure <a href="layer-descriptions.html#fig:layer-pct">4.5</a>).</p>
+<p>The Propensity to Cycle Tool layer takes data from the Propensity to Cycle Tool (PCT) (see <a href="http://www.pct.bike/">www.pct.bike</a>) and provides an updated version for CyIPT. The layer is analogous to the PCT LSOA route network layer, which can also be accessed as a base map though CyIPT. CyIPT adds value to the PCT data by assigning cycling potential to OSM elements, making this layer more detailed and interactive than the equivalent LSOA layer in the PCT (see Figure <a href="layer-descriptions.html#fig:layer-pct">4.8</a>).</p>
 <div class="figure"><span id="fig:layer-pct"></span>
 <img src="../images/layer-pct.png" alt="The Propensity to Cycle Tool layer." width="960" />
 <p class="caption">
-Figure 4.5: The Propensity to Cycle Tool layer.
+Figure 4.8: The Propensity to Cycle Tool layer.
 </p>
 </div>
 <p>The PCT layer supports the same five scenarios as the main PCT tool, however only the 2011 census scenario is used within CyIPT. The PCT layer includes a value based rate limiting feature.</p>
@@ -322,41 +348,41 @@ Figure 4.5: The Propensity to Cycle Tool layer.
 </div>
 <div id="traffic-counts" class="section level2">
 <h2><span class="header-section-number">4.8</span> Traffic counts</h2>
-<p>The traffic counts layer provides an overview of road traffic levels on selected roads (see Figure <a href="layer-descriptions.html#fig:layer-traffic">4.6</a>). The data source is DfT traffic count data, which CyIPT then matches to the road network. As the DfT data is not provided for all locations in all years, CyIPT takes the most recent available year. As illustrated in Figure <a href="layer-descriptions.html#fig:layer-traffic">4.6</a> DfT data has good coverage of the strategic road network, but more limited coverage of minor roads.</p>
+<p>The traffic counts layer provides an overview of road traffic levels on selected roads (see Figure <a href="layer-descriptions.html#fig:layer-traffic">4.9</a>). The data source is DfT traffic count data, which CyIPT then matches to the road network. As the DfT data is not provided for all locations in all years, CyIPT takes the most recent available year. As illustrated in Figure <a href="layer-descriptions.html#fig:layer-traffic">4.9</a> DfT data has good coverage of the strategic road network, but more limited coverage of minor roads.</p>
 <div class="figure"><span id="fig:layer-traffic"></span>
 <img src="../images/layer-traffic.png" alt="The traffic layer." width="960" />
 <p class="caption">
-Figure 4.6: The traffic layer.
+Figure 4.9: The traffic layer.
 </p>
 </div>
 </div>
 <div id="collisions-roads" class="section level2">
 <h2><span class="header-section-number">4.9</span> Collisions roads</h2>
-<p>This layer takes the Stats19 data on road collision between 1985 and 2015 and matches collisions that did not occur at a junction to the nearest road (see Figure <a href="layer-descriptions.html#fig:collision-roads">4.7</a>). The layer provides a count of the total number of collisions that occurred on that road. These can be filtered by the severity of collisions (slight, serious, fatal) and severity of bike casualties (slight, serious, fatal).</p>
+<p>This layer takes the Stats19 data on road collision between 1985 and 2015 and matches collisions that did not occur at a junction to the nearest road (see Figure <a href="layer-descriptions.html#fig:collision-roads">4.10</a>). The layer provides a count of the total number of collisions that occurred on that road. These can be filtered by the severity of collisions (slight, serious, fatal) and severity of bike casualties (slight, serious, fatal).</p>
 <div class="figure"><span id="fig:collision-roads"></span>
 <img src="../images/layer-collision-roads.png" alt="The Collisions Roads layer. This layer should be used in conjunction with the Collision Junctions layer." width="960" />
 <p class="caption">
-Figure 4.7: The Collisions Roads layer. This layer should be used in conjunction with the Collision Junctions layer.
+Figure 4.10: The Collisions Roads layer. This layer should be used in conjunction with the Collision Junctions layer.
 </p>
 </div>
 </div>
 <div id="collisions-junctions" class="section level2">
 <h2><span class="header-section-number">4.10</span> Collisions junctions</h2>
-<p>This layer takes the Stats19 data on road collision between 1985 and 2015 and matches collisions that did occur at a junction to the nearest junction (see Figure <a href="layer-descriptions.html#fig:collision-junctions">4.8</a>). The layer provides a count of the total number of collisions that occurred on that road. These can be filtered by the severity of collisions (slight, serious, fatal) and severity of bike casualties (slight, serious, fatal).</p>
+<p>This layer takes the Stats19 data on road collision between 1985 and 2015 and matches collisions that did occur at a junction to the nearest junction (see Figure <a href="layer-descriptions.html#fig:collision-junctions">4.11</a>). The layer provides a count of the total number of collisions that occurred on that road. These can be filtered by the severity of collisions (slight, serious, fatal) and severity of bike casualties (slight, serious, fatal).</p>
 <div class="figure"><span id="fig:collision-junctions"></span>
 <img src="../images/layer-collision-junctions.png" alt="The Collisions Junctions layer. This layer should be used in conjunction with the Collision Roads layer." width="960" />
 <p class="caption">
-Figure 4.8: The Collisions Junctions layer. This layer should be used in conjunction with the Collision Roads layer.
+Figure 4.11: The Collisions Junctions layer. This layer should be used in conjunction with the Collision Roads layer.
 </p>
 </div>
 </div>
 <div id="collisions-points" class="section level2">
 <h2><span class="header-section-number">4.11</span> Collisions points</h2>
-<p>This layer shows the locations of all collisions in the Stats19 data from 1985 to 2015, it can be filtered by year and severity (see Figure <a href="layer-descriptions.html#fig:collision-points">4.9</a>).</p>
+<p>This layer shows the locations of all collisions in the Stats19 data from 1985 to 2015, it can be filtered by year and severity (see Figure <a href="layer-descriptions.html#fig:collision-points">4.12</a>).</p>
 <div class="figure"><span id="fig:collision-points"></span>
 <img src="../images/layer-collision-points.png" alt="The Collisions Points layer." width="960" />
 <p class="caption">
-Figure 4.9: The Collisions Points layer.
+Figure 4.12: The Collisions Points layer.
 </p>
 </div>
 </div>

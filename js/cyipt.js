@@ -385,9 +385,6 @@ var cyipt = (function ($) {
 			// Enable accordion
 			cyipt.accordion ();
 			
-			// Set status values in front page text
-			cyipt.setStatus ();
-			
 			// Run the layerviewer for these settings and layers
 			layerviewer.initialise (_settings, _layerConfig);
 		},
@@ -407,29 +404,6 @@ var cyipt = (function ($) {
 						panel.style.maxHeight = panel.scrollHeight + 'px';
 					}
 				});
-			});
-		},
-		
-		
-		// Function to set status values
-		setStatus: function ()
-		{
-			// Load the GeoJSON file
-			$.ajax({
-				url: '/api/v1/status.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15',
-				dataType: (layerviewer.browserSupportsCors () ? 'json' : 'jsonp'),	// Fall back to JSON-P for IE9
-				error: function (jqXHR, error, exception) {
-					vex.dialog.alert ('Error: could not statistics data.');
-				},
-				success: function (data, textStatus, jqXHR) {
-					
-					// Get home content, and replace the placeholders with the retrieved values
-					var protection = $('#protection').html();
-					$.each (data, function (key, value) {
-						protection = protection.replace('{$' + key + '}', layerviewer.number_format (value));
-					});
-					$('#protection').html (protection);
-				}
 			});
 		}
 	};

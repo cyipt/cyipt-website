@@ -1,0 +1,5 @@
+book_filename: "manual"
+delete_merged_file: true
+edit: https://github.com/cyipt/cyipt-website/edit/master/man/%s
+output_dir: ../report1
+repo: https://github.com/cyipt/phase1-report/

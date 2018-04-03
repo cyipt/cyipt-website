@@ -7,7 +7,7 @@ date: 'Last updated: `r Sys.Date()`'
 # output: bookdown::gitbook
 # documentclass: book
 # github-repo: "cyipt/cyipt-website"
-# bibliography: references.bib
+bibliography: ../man/references.bib
 # biblio-style: apalike
 # link-citations: yes
 # description: "This is the manual of the Cycling Infrastructure Prioritisation Toolkit (CyIPT)."
@@ -27,8 +27,18 @@ knitr::opts_chunk$set(echo = FALSE)
 The Cycling Infrastructure Prioritisation Toolkit (CyIPT) is a research project led by the University of Leeds and funded by the Department for Transport (DfT).  The purpose of CyIPT is to develop methods and tools to assist in the design and planning of new cycling infrastructure.
 
 CyIPT was funded by the Innovation Challenge Fund (ICF) to demonstrate the readiness of technology to automate the early stages of the planning process for cycling infrastructure --- scheme evaluation.
+The aim was to:
 
-# Prior work
+> tackle the challenge that cycling uptake is often limited by infrastructural barriers which could be remediated cost-effectively, yet investment is often spent on less cost-effective interventions, based on assessment of only a few options.
+
+This aim builds on the work already on the Propensity to Cycle Tool (PCT) to estimate the *potential* for cycling uptake nationwide .
+[@departmentfortransport_national_2016].
+The PCT does this by analysing origin-destination data on travel patterns to identify trips that could be replaced by cycling nationally, down to the route-network level [@lovelace_propensity_2017].
+While the PCT focusses on *where* to prioritise a core cycling network, CyIPT focusses on *what* to build and *when*, in terms of prioritisation.
+
+<!-- ## The relationship between cycling infrastructure and cycling uptake -->
+
+<!-- [@marques_how_2015] -->
 
 # Method
 

@@ -1,4 +1,4 @@
-book_filename: "manual"
+book_filename: "report"
 delete_merged_file: true
 edit: https://github.com/cyipt/cyipt-website/edit/master/man/%s
 output_dir: ../report1

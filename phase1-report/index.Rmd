@@ -90,15 +90,114 @@ This allowed for the automatic calculation of road widths nationwide.
 To make the results intuitive and avoid any potential licencing issues with OS data the results of these calculations are presented approximately and in relation to new infrastructure, ranging from "Insufficient" to "More than sufficient" width (see the CyIPT Manual, section [4.6](https://www.cyipt.bike/manual/layer-descriptions.html#road-widths)).
 
 Another major challenge was the estimation of uptake following new infrastructure.
+It is well-known that building appropriate infrastructure (protected cycleways) in appropriate places can lead to dramatic uptake of cycling, as illustrated by the example of Seville, Spain.
+Despite high temperatures, cycling levels in the city quadrupled following investment in a carefully planned route network (illustrated in Figure \@ref(fig:sevnet)).
+This network represents around 0.3 m of segregated cycle infrastructure per person (~200 km divided among the city's ~700,000 people) from less than 2% before 2006 to more than 8% (in the survey month of November) following infrastructure investment [@marques_how_2015].
+
+```{r sevnet, fig.cap="The core cycling network in Seville, composed of the basic (77 km) and complementary (120 km) protected cycle path network, which led to cycling increasing fourfold."}
+# (120 + 77) * 100 / 700
+knitr::include_graphics("~/ATFutures/who/fig/sevnet2.png")
+# knitr::include_graphics("https://raw.githubusercontent.com/ATFutures/who/master/fig/sevnet2.png")
+```
+
+Translating knowledge of the success of Seville's infrastructure provision into practice is not a simple process. 
+A simplistic approach would be to divide the increase in cycling levels (around 6 percentage points) by the length of new infrastructure (around 200 km), which would imply that new infrastructure leads to cycling uptake at a rate of around one percentage point per 30 km of cycling provision.
+
+Of course the world is not that simple: assuming this relationship found in Seville holds everywhere would be naive, not only due to cultural differences between the UK and Spain but also due to a number of measurable differences between paths constructed in one place that may not apply in another:
+
+- Level of cycling potential: clearly a cycle path constructed where there is high latent demand will attract more use than a path constructed where there is little demand.
+- Type of infrastructure: high quality, wide, protected cycleways can be expected to have a greater impact on cycling levels than thin unprotected cycle lanes, for example.
+- The conditions on the rest of the route beyond the interventions are likely to play a role. Cycling infrastructure that takes you onto busy roads is likely to generate less uptake than infrastructure that takes you onto quiet 20 mph streets, for example.
+
+Each of these factors was accounted for using an uptake model that used historic interventions (between 2011 and 2001) to predict change in cycling between the 2001 and 2011 census, at the MSOA origin-destination level. 
+An illustration of the input datasets that allowed this model is presented at the regional level in Figure \@ref(fig:uptake-la).
+
+```{r uptake-la, fig.cap="Illustration of the relationship between infrastructure creation (2001 - 2011 - source Sustrans and Transport Direct) and change in cycling levels over the same period (source: origin-destination data from Wicid). Named regions had levels of cycling uptake and levels of infrastructure provision above the median."}
+knitr::include_graphics("~/cyipt/cyipt-website/images/ttwa-uptake.png")
+```
+
+Figure \@ref(fig:uptake-bris) illustrates how the data look at the local level, with individual origin-destination pairs 'exposed' to infrastructure clear from where they crossed the grey blobs (representing interventions).
+The fact that the dependent variable (cycling uptake) operates at a different level from the primary dependent variable (new cycling infrastructure) poses a question:
+how to measure 'exposure' to new infrastructure?
+
+A number of approaches were tested, including the length of infrastructure within a buffer of the straight line representing each OD pair, and the average proximity to new infrastructure for each OD pair.
+In the end, however, a more narrow definition of exposure was used: length of new infrastructure present *on the fastest route* for each OD pair.
+Although more restrictive, this definition had the advantage that it was directly applicable to the input data used by CyIPT.
+Furthermore, it allowed additional variables such as the % of the trip after intervention that could be made on roads with low speed limits.
+It was found that low speed limits of the route was a powerful predictor of cycling uptake following new infrastructure.
+To model this the % of the route at different speed limits was used as an *interaction variable* that diminished the effectiveness of new infrastructure for fast (40 mph+) roads and increased the effectivenss of new infrastructure in cases where the % of the route that was on low speed limit roads was high.
+
+```{r uptake-bris, fig.cap="Illustration of the input data at the local level in Bristol."}
+u = "https://github.com/cyipt/cyipt/raw/master/historic-uptake_files/figure-markdown_strict/unnamed-chunk-2-5.png"
+# knitr::include_graphics(u)
+knitr::include_graphics("~/cyipt/cyipt/historic-uptake_files/figure-markdown_strict/unnamed-chunk-2-5.png")
+```
+
+To present the results of the uptake model on the map a slider was used to allow the user to select how much funding they had available per scheme.
+A dropdown menu was used to filter-out schemes depending on their associated BCRs.
+This method of selecting schemes can be used to interactively identify worthwhile schemes in the city of interest, with promising schemes for Bristol illustrated in Figure \@ref(fig:bcr).
+
+```{r bcr, fig.cap="Schemes with high estimated BCRs illustrated for Bristol, selected using the BCR dropdown menu in the Schemes layer."}
+knitr::include_graphics("../images/bcr.png")
+```
 
 # Results
 
 The overall result of the project is a prototype national map for cycling infrastructure prioritisataion, in-line with the initial aim of the project.
 As described in the CyIPT Manual and shown on the main panel at [www.cyipt.bike](https://www.cyipt.bike/#6/53.690/-2.142/mapnik), there are 9 layers available to the user providing an unprecedented level of data access of relevance to cycle planning in a single place.
 
+The headline figures of the results are as follows:
 
+- 9342 schemes recommended across England
+- costing an average of £730,000 and with a total cost of £6.8 Bn
+- with an average length of 1.1 km and a total length of 10,600 km
+- average estimated benefits were £1,467,000 and total benefits of £13.7 Bn
+- the average estimated BCR was 14
+
+These statistics may sound far-fetched but they are illustrative of the kind of investment that may be needed for a national cycling revolution of the type seen in The Netherlands after investment in cycling infrastructure began in the mid 1970s [@pucher_making_2008].
+The construction of 10,000+ km of cycleways, for example, may seem like a tall order but even if such a network were built England would have a cycle network half the size of the Dutch cycle network in absolute terms --- The Netherlands had 18,948 km of cycleways in 1996 [@pucher_making_2008] which has since grown further --- and around 1/6^th^ the size of the Dutch cycleway network per person, with England's population of 53 million 3 times larger than Holland's with 17 million.
+
+As expected the BCR results favour schemes that are close to the centre of major cities, illustrating the fact that there is most unmet demand near city centres.
+To some extent this result reflects the fact that the CyIPT is based on cycling levels from the commute layer of the PCT:
+using the planned school layer from the PCT Phase III will likely show a more nuanced distribution of BCRs also emphasising residential areas surrounding major secondary schools (which were found to have higher cycling potential than primary schools, on average).
+
+An important aspect of the project was that the results were checked by key stakeholders at different points during the project.
+Zsolt Schuller, for example, provided feedback on the results for Exeter.
+Overall he found the tool encouraged him to look at possible schemes that had previously been given little attention:
+
+> this could be useful even if just to act as leverage in encouraging Local Authorities to revisit locations of where schemes may or may not have been considered in the past (Zsolt Schuller)
+
+More detailed feedback was provided for a number of specific roads, leading to some changes to CyIPT, and illustrating how CyIPT could be used in practice.
+The following quote, for example, refers to the results for Heavitree Road:
+
+> Highlights good options along long stretches of route. Does still recommend lanes through difficult section which is useful to generate discussion about what could be done (Zsolt Schuller)
+
+Many other people provided formal and informal feedback on the project, including:
+
+- Chris Mason, Bristol City Council
+- Jonathan Fingland, Greater Manchester Cycle Campaign
+- Simon Nutall, Cambridge Cycle Campaign
+- Chris Peck, the LCWIP Consortium
 
 ## The CyIPT workshop
+
+A key part of the initial funding proposal was the presentation of the prototype tool to stakeholders working in the area of planning for active transport.
+To that end an end-of-project workshop was held on the 23^rd^ March in Leeds.
+40 participants attended the event from a range of backgrounds, primarily local authority transport planners, transport planning consultancies, advocacy groups and academia.
+
+To put the project in contect we organised a range of speakers (not just from the CyIPT team) to present tools for the LCWIP process.
+Topics presented to attendees included:
+
+
+- Overview of the landscape of tools supporting LCWIPs (Kaylisha Archer, DfT): 10:00 - 10:15
+- The LCWIP process (Chris Peck, LCWIP Consortium) and Q&A on LCWIP (Adrian Lord, PJA and others): 10:15 - 10:30
+- Network modelling to target cycling and walking policies (Crispin Cooper, University of Cardiff): 10:30 - 10:45
+- How to design and build good walking and cycling infrastructure (John Parkin, University of West of England): 10:45 - 11:00
+- How can the CyIPT help prioritise investments - a case study (Zsolt Schuller): 12:30 - 12:50
+
+The afternoon of the workshop was spent using the tool.
+Participants split-up into teams of 4 - 5 and used the tool to help answer specific questions related to infrastructure prioritisation in a city of their choice.
+They also provided more formal feedback in a short survey, which provides a strong basis for next steps, discussed in the subsequent section.
 
 # Discussion and next steps
 

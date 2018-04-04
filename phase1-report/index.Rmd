@@ -5,8 +5,8 @@ author: "The CyIPT team, led by University of Leeds"
 date: 'Last updated: `r Sys.Date()`'
 # site: bookdown::bookdown_site
 # output: bookdown::gitbook
-# documentclass: book
 # github-repo: "cyipt/cyipt-website"
+# documentclass: book
 bibliography: ../man/references.bib
 biblio-style: apalike
 link-citations: yes
@@ -329,7 +329,7 @@ CyIPT was funded as an Innovation project and therefore was not designed to be u
 - c2. Refine Benefits Calculation (20 days)
 - c3. Refine Costs Calculation (20 days)
 - c4. Further enhancements of User Interface (20 days)
-- c5. Create manual, testing with stakeholders in a workshop and refinement (15 days)
+- c5. Update manual, testing with stakeholders in a workshop and refinement (15 days)
 - c6. Full GDS compliance (10 days)
 - c7. Deployment on a public-facing website (5 days)
 
@@ -362,7 +362,7 @@ These three improvements would collectively cost around **£125k**, and would ma
 
 New functionality can be added to CyIPT using the existing data sources that CyIPT has produced.
 
-- n1.  Improved collisions analysis, improvements in UI and analysis techniques could allow CyIPT to match and exceed the existing capabilities of services such as crash map. (30 days) 
+- n1.  Improved collisions analysis, improvements in UI and analysis techniques, including the provision of estimated level of risk, could allow CyIPT to match and exceed the existing capabilities of services such as crash map. (30 days) 
 - n2. Additional scenarios of infrastructure change (e.g. 'government target') (20 days)
 - n3. Assessment of cycling 'Level of Service' using the TfL's Cycling Level of Service (CLoS) metric or similar (40 days)
 - n4. The detection and evaluation of missing links (40 days)
@@ -411,10 +411,6 @@ The priority is to deploy and refine the existing work so the LCWIP process can 
 
 We have already developed details on the break-down of the bullet-points in the previous section, which we can share and refine. 
 At present, however, this represents a solid wish-list of work we would be able to provide in preparation for Phase II of CyIPT that will be of use to the LCWIP process.
-
-Options for next steps:
-
-- Identify ways to automate the production of street width constraints, e.g. by creating an interfact to the code underlying the streetmix website.
 
 During the final months of the CyIPT project and following the successful CyIPT workshop plans for follow-on work are in motion.
 It seems there is high demand for the type of interactive evidence on infrastructure options provided by CyIPT and there are many options for taking the project forward.

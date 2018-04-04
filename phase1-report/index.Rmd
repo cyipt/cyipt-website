@@ -14,7 +14,7 @@ link-citations: yes
 ---
 
 ```{r, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, out.width = "100%")
 
 # bookdown::render_book("index.Rmd", "bookdown::pdf_book")
 # Run the previous command and...
@@ -44,8 +44,8 @@ A schematic diagram was prepared for the original plan, which provides an opport
 - **Outputs:** As planned the outputs are available in an on-line mapping tool available (although currently password-protected) at [www.cyipt.bike](http://cyipt.bike/).
 
 ```{r schematic, fig.cap="Schematic diagram of CyIPT presented in the initial work plan.", out.width="100%"}
-knitr::include_graphics("https://raw.githubusercontent.com/cyipt/cyipt/master/figures/schematic-flow-diagram.png")
-# knitr::include_graphics("~/cyipt/cyipt/figures/schematic-flow-diagram.png")
+# knitr::include_graphics("https://raw.githubusercontent.com/cyipt/cyipt/master/figures/schematic-flow-diagram.png")
+knitr::include_graphics("~/cyipt/cyipt/figures/schematic-flow-diagram.png")
 ```
 
 The CyIPT tool delivers on the aim of providing an accessible evidence-base to identify cost-effective areas to intervene in a way that is scalable and consistent nationwide.
@@ -59,7 +59,7 @@ For the first time it combines geographic data on many factors related to cyclin
 - Collisions: The level of danger to people cycling on the road network should be a major consideration when prioritising where to invest, and in what. A crash hotspot is likely to need remedial attention in terms of road speeds or junction design whereas relatively high crash rates along an entire road may indicate the need for a protected cycleway or an alternative route clearly signposted away from fast moving traffic. CyIPT provides three collision layers: at the road segment, junction and individual crash level.
 
 By visualising each of these layers (many of which have sub-layers and alternative options) interactively, planners can ensure that their decisions are based on a wide range evidence.
-The range of layers available mean that documentation of the tool is vital, meaning that, although it was not written-into the original specification, a detailed manual was written to accompany the CyIPT website. This is available at [cyipt.bike/manual](https://www.cyipt.bike/manual/), and should be read as a document providing technical detail to accompany this relatively high-level report.
+The range of layers available mean that documentation of the tool is vital, meaning that, although it was not written-into the original specification, a detailed (~30 page) Manual was written to accompany the CyIPT website. This is available at [cyipt.bike/manual](https://www.cyipt.bike/manual/), and should be read as a document providing technical detail to accompany this relatively high-level report.
 
 The CyIPT was designed to be used. In keeping with the saying "actions speak louder than words", we therefore reading this report in tandem with using the tool, which can be found at [www.cyipt.bike](https://www.cyipt.bike/).
 
@@ -78,8 +78,15 @@ To visualise the availability/unavailability of street space the website [street
 Although promising for visualising roads on a one-by-one basis, we decided not to streetmix in the final version because we could not find ways to automate the production of road width types.
 
 ```{r streetmix, fig.cap="Example visualisation from the streetmix website. Could this be a way to help stakeholders assess width constraints?"}
-knitr::include_graphics("https://www.cyipt.bike/images/streetmix-example.png")
+# knitr::include_graphics("https://www.cyipt.bike/images/streetmix-example.png")
+knitr::include_graphics("../images/streetmix-example.png")
 ```
+
+To overcome the road-widths challenge we turned to Ordnance Survey (OS) data.
+We used the rule that width is approximately the area of a polygon divided by the half of the perimeter length in combination with polygons provided by OS representing the public domain of roads.
+This allowed for the automatic calculation of road widths nationwide.
+To make the results intuitive and avoid any potential licencing issues with OS data the results of these calculations are presented approximately and in relation to new infrastructure, ranging from "Insufficient" to "More than sufficient" width (see the CyIPT Manual, section [4.6](https://www.cyipt.bike/manual/layer-descriptions.html#road-widths)).
+
 
 
 # Results

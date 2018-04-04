@@ -102,11 +102,12 @@
 <p>OpenStreetMap (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type and other features.</p>
 <p>A major challenge early on was calculation of road widths, or rather the width of road space available to construct new cycle infrastructure. To visualise the availability/unavailability of street space the website <a href="https://streetmix.net/-/553093">streetmix.net</a> (see Figure <a href="method.html#fig:streetmix">2.1</a>). Although promising for visualising roads on a one-by-one basis, we decided not to streetmix in the final version because we could not find ways to automate the production of road width types.</p>
 <div class="figure"><span id="fig:streetmix"></span>
-<img src="https://www.cyipt.bike/images/streetmix-example.png" alt="Example visualisation from the streetmix website. Could this be a way to help stakeholders assess width constraints?"  />
+<img src="../images/streetmix-example.png" alt="Example visualisation from the streetmix website. Could this be a way to help stakeholders assess width constraints?" width="100%" />
 <p class="caption">
 Figure 2.1: Example visualisation from the streetmix website. Could this be a way to help stakeholders assess width constraints?
 </p>
 </div>
+<p>To overcome the road-widths challenge we turned to Ordnance Survey (OS) data. We used the rule that width is approximately the area of a polygon divided by the half of the perimeter length in combination with polygons provided by OS representing the public domain of roads. This allowed for the automatic calculation of road widths nationwide. To make the results intuitive and avoid any potential licencing issues with OS data the results of these calculations are presented approximately and in relation to new infrastructure, ranging from “Insufficient” to “More than sufficient” width (see the CyIPT Manual, section <a href="https://www.cyipt.bike/manual/layer-descriptions.html#road-widths">4.6</a>).</p>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">

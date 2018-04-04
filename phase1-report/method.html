@@ -97,6 +97,25 @@
             <section class="normal" id="section-">
 <div id="method" class="section level1">
 <h1><span class="header-section-number">2</span> Method</h1>
+<p>The CyIPT is a big data project, meaning much of the work involved accessing, colating, cleaning and pre-processing data. The initial plan was to build CyIPT completely for a single region (Bristol) before creating a national version. In practice it became clear that time was better invested in ‘optimising early’ to create methods that would scale nationally from the beginning meaning that, although we did use Bristol as the main case study city, we were aiming to create a nationally scalable product all along, avoiding problems associated with scaling-up later down the line.</p>
+<p>This involved getting-up-to-speed with software for handling OSM data such as the <strong>osmdata</strong> R package <span class="citation">(Padgham et al. <a href="#ref-Padgham2017">2017</a>)</span> and ‘simple features’, a new class system for spatial data in the R programming language <span class="citation">(R Core Team <a href="#ref-rcoreteam_language_2017">2017</a>)</span>.</p>
+<p>OpenStreetMap (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type and other features.</p>
+<p>A major challenge early on was calculation of road widths, or rather the width of road space available to construct new cycle infrastructure. To visualise the availability/unavailability of street space the website <a href="https://streetmix.net/-/553093">streetmix.net</a> (see Figure <a href="method.html#fig:streetmix">2.1</a>). Although promising for visualising roads on a one-by-one basis, we decided not to streetmix in the final version because we could not find ways to automate the production of road width types.</p>
+<div class="figure"><span id="fig:streetmix"></span>
+<img src="https://www.cyipt.bike/images/streetmix-example.png" alt="Example visualisation from the streetmix website. Could this be a way to help stakeholders assess width constraints?"  />
+<p class="caption">
+Figure 2.1: Example visualisation from the streetmix website. Could this be a way to help stakeholders assess width constraints?
+</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Padgham2017">
+<p>Padgham, Mark, Robin Lovelace, Maëlle Salmon, and Bob Rudis. 2017. “Osmdata.” <em>The Journal of Open Source Software</em> 2 (14). doi:<a href="https://doi.org/10.21105/joss.00305">10.21105/joss.00305</a>.</p>
+</div>
+<div id="ref-rcoreteam_language_2017">
+<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
 </div>
             </section>
 

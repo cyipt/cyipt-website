@@ -69,7 +69,18 @@ The CyIPT is a big data project, meaning much of the work involved accessing, co
 The initial plan was to build CyIPT completely for a single region (Bristol) before creating a national version.
 In practice it became clear that time was better invested in 'optimising early' to create methods that would scale nationally from the beginning meaning that, although we did use Bristol as the main case study city, we were aiming to create a nationally scalable product all along, avoiding problems associated with scaling-up later down the line.
 
-OpenStreetMap (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type etc.
+This involved getting-up-to-speed with software for handling OSM data such as the **osmdata** R package [@Padgham2017] and 'simple features', a new class system for spatial data in the R programming language [@rcoreteam_language_2017].
+
+OpenStreetMap (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type and other features.
+
+A major challenge early on was calculation of road widths, or rather the width of road space available to construct new cycle infrastructure.
+To visualise the availability/unavailability of street space the website [streetmix.net](https://streetmix.net/-/553093) (see Figure \@ref(fig:streetmix)).
+Although promising for visualising roads on a one-by-one basis, we decided not to streetmix in the final version because we could not find ways to automate the production of road width types.
+
+```{r streetmix, fig.cap="Example visualisation from the streetmix website. Could this be a way to help stakeholders assess width constraints?"}
+knitr::include_graphics("https://www.cyipt.bike/images/streetmix-example.png")
+```
+
 
 # Results
 
@@ -93,6 +104,10 @@ The next steps for CyIPT can be taken in a range of directions, but they should 
 An important aspect of CyIPT Phase I is that recommendations are based on *existing levels of cycling* (or rather cycle commuting along the fastest route in 2011).
 For this reason the results of CyIPT can be seen as the network that cities *should already have* for a given level of cycling, accounting only for commuter cycling.
 This suggests that adding new cycling potential layers such as cycle to school (e.g. made available by PCT Phase III) and new scenarios moving beyond existing levels of cycling as next steps.
+
+Options for next steps:
+
+- Identify ways to automate the production of street width constraints, e.g. by creating an interfact to the code underlying the streetmix website.
 
 During the final months of the CyIPT project and following the successful CyIPT workshop plans for follow-on work are in motion.
 It seems there is high demand for the type of interactive evidence on infrastructure options provided by CyIPT and there are many options for taking the project forward.

@@ -65,7 +65,18 @@ The CyIPT was designed to be used. In keeping with the saying "actions speak lou
 
 # Method
 
+The CyIPT is a big data project, meaning much of the work involved accessing, colating, cleaning and pre-processing data.
+The initial plan was to build CyIPT completely for a single region (Bristol) before creating a national version.
+In practice it became clear that time was better invested in 'optimising early' to create methods that would scale nationally from the beginning meaning that, although we did use Bristol as the main case study city, we were aiming to create a nationally scalable product all along, avoiding problems associated with scaling-up later down the line.
+
+OpenStreetMap (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type etc.
+
 # Results
+
+The overall result of the project is a prototype national map for cycling infrastructure prioritisataion, in-line with the initial aim of the project.
+As described in the CyIPT Manual and shown on the main panel at [www.cyipt.bike](https://www.cyipt.bike/#6/53.690/-2.142/mapnik), there are 9 layers available to the user providing an unprecedented level of data access of relevance to cycle planning in a single place.
+
+
 
 ## The CyIPT workshop
 

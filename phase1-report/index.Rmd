@@ -16,6 +16,8 @@ link-citations: yes
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, out.width = "100%")
 
+# compile with:
+# bookdown::render_book("index.Rmd")
 # bookdown::render_book("index.Rmd", "bookdown::pdf_document2")
 # Run the previous command and...
 # Uncomment this line to build pdf version of manual:
@@ -87,7 +89,7 @@ We used the rule that width is approximately the area of a polygon divided by th
 This allowed for the automatic calculation of road widths nationwide.
 To make the results intuitive and avoid any potential licencing issues with OS data the results of these calculations are presented approximately and in relation to new infrastructure, ranging from "Insufficient" to "More than sufficient" width (see the CyIPT Manual, section [4.6](https://www.cyipt.bike/manual/layer-descriptions.html#road-widths)).
 
-
+Another major challenge was the estimation of uptake following new infrastructure.
 
 # Results
 

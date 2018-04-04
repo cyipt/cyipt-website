@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>The Cycling Infrastructure Prioritisation Toolkit: Phase I report</title>
-  <meta name="description" content="This is the manual of the Cycling Infrastructure Prioritisation Toolkit (CyIPT).">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <title>The Cycling Infrastructure Prioritisation Toolkit</title>
+  <meta name="description" content="The Cycling Infrastructure Prioritisation Toolkit">
+  <meta name="generator" content="bookdown 0.7.5 and GitBook 2.6.7">
 
-  <meta property="og:title" content="The Cycling Infrastructure Prioritisation Toolkit: Phase I report" />
+  <meta property="og:title" content="The Cycling Infrastructure Prioritisation Toolkit" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is the manual of the Cycling Infrastructure Prioritisation Toolkit (CyIPT)." />
-  <meta name="github-repo" content="cyipt/cyipt-website" />
+  
+  
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="The Cycling Infrastructure Prioritisation Toolkit: Phase I report" />
+  <meta name="twitter:title" content="The Cycling Infrastructure Prioritisation Toolkit" />
   
-  <meta name="twitter:description" content="This is the manual of the Cycling Infrastructure Prioritisation Toolkit (CyIPT)." />
+  
   
 
 <meta name="author" content="The CyIPT team">
@@ -31,7 +31,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="prior-work.html">
+<link rel="prev" href="index.html">
 <link rel="next" href="results.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -66,16 +66,15 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="prior-work.html"><a href="prior-work.html"><i class="fa fa-check"></i><b>2</b> Prior work</a></li>
-<li class="chapter" data-level="3" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>3</b> Method</a></li>
-<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a><ul>
-<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#the-cyipt-workshop"><i class="fa fa-check"></i><b>4.1</b> The CyIPT workshop</a></li>
+<li class="chapter" data-level="2" data-path="method.html"><a href="method.html"><i class="fa fa-check"></i><b>2</b> Method</a></li>
+<li class="chapter" data-level="3" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>3</b> Results</a><ul>
+<li class="chapter" data-level="3.1" data-path="results.html"><a href="results.html#the-cyipt-workshop"><i class="fa fa-check"></i><b>3.1</b> The CyIPT workshop</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="next-steps.html"><a href="next-steps.html"><i class="fa fa-check"></i><b>5</b> Next steps</a><ul>
-<li class="chapter" data-level="" data-path="next-steps.html"><a href="next-steps.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
-<li class="chapter" data-level="" data-path="next-steps.html"><a href="next-steps.html#the-cyipt-core-team"><i class="fa fa-check"></i>The CyIPT Core Team</a></li>
+<li class="chapter" data-level="4" data-path="discussion-and-next-steps.html"><a href="discussion-and-next-steps.html"><i class="fa fa-check"></i><b>4</b> Discussion and next steps</a><ul>
+<li class="chapter" data-level="" data-path="discussion-and-next-steps.html"><a href="discussion-and-next-steps.html#feedback"><i class="fa fa-check"></i>Feedback</a></li>
+<li class="chapter" data-level="" data-path="discussion-and-next-steps.html"><a href="discussion-and-next-steps.html#the-cyipt-core-team"><i class="fa fa-check"></i>The CyIPT Core Team</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
+<li class="chapter" data-level="5" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>5</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://cyipt.bike" target="blank">Published with bookdown</a></li>
 
@@ -88,7 +87,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Cycling Infrastructure Prioritisation Toolkit: Phase I report</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Cycling Infrastructure Prioritisation Toolkit</a>
           </h1>
         </div>
 
@@ -97,14 +96,34 @@
 
             <section class="normal" id="section-">
 <div id="method" class="section level1">
-<h1><span class="header-section-number">3</span> Method</h1>
+<h1><span class="header-section-number">2</span> Method</h1>
+<p>The CyIPT is a big data project, meaning much of the work involved accessing, colating, cleaning and pre-processing data. The initial plan was to build CyIPT completely for a single region (Bristol) before creating a national version. In practice it became clear that time was better invested in ‘optimising early’ to create methods that would scale nationally from the beginning meaning that, although we did use Bristol as the main case study city, we were aiming to create a nationally scalable product all along, avoiding problems associated with scaling-up later down the line.</p>
+<p>This involved getting-up-to-speed with software for handling OSM data such as the <strong>osmdata</strong> R package <span class="citation">(Padgham et al. <a href="#ref-Padgham2017">2017</a>)</span> and ‘simple features’, a new class system for spatial data in the R programming language <span class="citation">(R Core Team <a href="#ref-rcoreteam_language_2017">2017</a>)</span>.</p>
+<p>OpenStreetMap (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type and other features.</p>
+<p>A major challenge early on was calculation of road widths, or rather the width of road space available to construct new cycle infrastructure. To visualise the availability/unavailability of street space the website <a href="https://streetmix.net/-/553093">streetmix.net</a> (see Figure <a href="method.html#fig:streetmix">2.1</a>). Although promising for visualising roads on a one-by-one basis, we decided not to streetmix in the final version because we could not find ways to automate the production of road width types.</p>
+<div class="figure"><span id="fig:streetmix"></span>
+<img src="../images/streetmix-example.png" alt="Example visualisation from the streetmix website. Could this be a way to help stakeholders assess width constraints?" width="100%" />
+<p class="caption">
+Figure 2.1: Example visualisation from the streetmix website. Could this be a way to help stakeholders assess width constraints?
+</p>
+</div>
+<p>To overcome the road-widths challenge we turned to Ordnance Survey (OS) data. We used the rule that width is approximately the area of a polygon divided by the half of the perimeter length in combination with polygons provided by OS representing the public domain of roads. This allowed for the automatic calculation of road widths nationwide. To make the results intuitive and avoid any potential licencing issues with OS data the results of these calculations are presented approximately and in relation to new infrastructure, ranging from “Insufficient” to “More than sufficient” width (see the CyIPT Manual, section <a href="https://www.cyipt.bike/manual/layer-descriptions.html#road-widths">4.6</a>).</p>
+</div>
+<h3> References</h3>
+<div id="refs" class="references">
+<div id="ref-Padgham2017">
+<p>Padgham, Mark, Robin Lovelace, Maëlle Salmon, and Bob Rudis. 2017. “Osmdata.” <em>The Journal of Open Source Software</em> 2 (14). doi:<a href="https://doi.org/10.21105/joss.00305">10.21105/joss.00305</a>.</p>
+</div>
+<div id="ref-rcoreteam_language_2017">
+<p>R Core Team. 2017. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="prior-work.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -138,7 +157,7 @@ gitbook.start({
 "link": "https://github.com/cyipt/cyipt-website/edit/master/man/index.Rmd",
 "text": "Edit"
 },
-"download": ["manual.pdf"],
+"download": ["report.pdf"],
 "toc": {
 "collapse": "subsection"
 }

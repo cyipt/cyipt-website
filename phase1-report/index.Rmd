@@ -16,7 +16,7 @@ link-citations: yes
 ```{r, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, out.width = "100%")
 
-# bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+# bookdown::render_book("index.Rmd", "bookdown::pdf_document2")
 # Run the previous command and...
 # Uncomment this line to build pdf version of manual:
 # knitr::opts_chunk$set(echo = FALSE, out.width = "100%")

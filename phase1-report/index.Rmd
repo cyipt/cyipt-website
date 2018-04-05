@@ -72,7 +72,7 @@ For ToC see front page. List of Figures:
 
 ## Overview of the project
 
-The overall purpose of the project was to demonstrate that it is possible to produce software capable of making automated reccomendations for the best locations to build new cycling infrastrucutre. This was achived though the prototype www.cyipt.bike website, which presents an interactive map of England, showing the most promising schemes and other relevant information.
+The overall purpose of the project was to demonstrate that it is possible to produce software capable of making automated recommendations for the best locations to build new cycling infrastructure. This was achieved through the prototype www.cyipt.bike website, which presents an interactive map of England, showing the most promising schemes and other relevant information.
 
 ## Project objectives and intended audience
 
@@ -100,12 +100,12 @@ The methodology involved developing and implementing methods for processing rout
 ## Most important findings and conclusions 
 
 The most important finding is that the vision driving CyIPT --- automation of a-priori scheme evaluation during the initial stages of the planning process --- can feasibly be implemented and scaled nationwide using existing datasets and digital technologies.
-Feedback from key stakeholders suggests that the CyIPT project results is likely to be useful in the planning process and there was high demand for a publicly accessible version of the tool.
+Feedback from key stakeholders suggests that the CyIPT project results are likely to be useful in the planning process and there was high demand for a publicly accessible version of the tool.
 
 ## Main recommendations/next steps
 
 Based on experience with CyIPT to-date we recommend that the project is taken forward to Phase II.
-That will allow the team to act on valuable feedback collected during the end of project workshop and meet the requirements of GDS to allow the CyIPT to be made publicly accessible. More detailed reccomnedations are provided at the end of this report.
+That will allow the team to act on valuable feedback collected during the end of project workshop and meet the requirements of GDS to allow the CyIPT to be made publicly accessible. More detailed recommendations are provided at the end of this report.
 
 \newpage
 
@@ -116,7 +116,7 @@ The Cycling Infrastructure Prioritisation Toolkit (CyIPT) is a research project 
 CyIPT was funded by the Innovation Challenge Fund (ICF) to demonstrate the readiness of technology to automate the early stages of the planning process for cycling infrastructure --- scheme evaluation.
 The aim was to:
 
-> tackle the challenge that cycling uptake is often limited by infrastructural barriers which could be remediated cost-effectively, yet investment is often spent on less cost-effective interventions, based on assessment of only a few options.
+> tackle the challenge that cycling uptake is often limited by infrastructural barriers which could be remediated cost-effectively, yet investment is often spent on less cost-effective interventions, based on an assessment of only a few options.
 
 This aim builds on the work already on the Propensity to Cycle Tool (PCT) to estimate the *potential* for cycling uptake nationwide
 [@departmentfortransport_national_2016].
@@ -128,7 +128,7 @@ A schematic diagram was prepared for the original plan, which provides an opport
 - **Classification:** We have automated the classification of segments and schemes using algorithms developed for the project.
 - **Interventions:** The type of interventions recommended by CyIPT for any particular road segment are derived from advice provided by a Highways England Interim Advice Note  [@_interim_2016].
 - **Evaluation:** Benefit-cost ratios (BCRs) are estimated based on costs taken from a DfT-funded report on typical costs of cycle infrastructure [@transportforqualityoflife_typical_2016].
-- **Outputs:** As planned the outputs are available in an on-line mapping tool available (although currently password-protected) at [www.cyipt.bike](http://cyipt.bike/).
+- **Outputs:** As planned the outputs are available in an online mapping tool available (although currently password-protected) at [www.cyipt.bike](http://cyipt.bike/).
 
 ```{r schematic, fig.cap="Schematic diagram of CyIPT presented in the initial work plan.", out.width="100%"}
 # knitr::include_graphics("https://raw.githubusercontent.com/cyipt/cyipt/master/figures/schematic-flow-diagram.png")
@@ -136,31 +136,31 @@ knitr::include_graphics("~/cyipt/cyipt/figures/schematic-flow-diagram.png")
 ```
 
 The CyIPT tool delivers on the aim of providing an accessible evidence-base to identify cost-effective areas to intervene in a way that is scalable and consistent nationwide.
-For the first time it combines geographic data on many factors related to cycling at the road level, including:
+For the first time, it combines geographic data on many factors related to cycling at the road level, including:
 
 - Existing infrastructure: seeing gaps in existing cycling networks can help decide how to join them up.
-- Possible schemes: CyIPT prevents 'information overload' and provides intuitive schemes by aggregating recommenended infrastructure (another layer representing the same data on a segment-by-segment basis) into schemes that can be viewed as a layer in the interactive map, with associated estimated costs and benefits.
+- Possible schemes: CyIPT prevents 'information overload' and provides intuitive schemes by aggregating recommended infrastructure (another layer representing the same data on a segment-by-segment basis) into schemes that can be viewed as a layer in the interactive map, with associated estimated costs and benefits.
 - Road widths: this is a crucial consideration when deciding whether or not new cycleways can be provided on existing roads, or whether an alternative solution, such as road-space-reallocation will be needed.
 - Cycling potential: the existing level of cycling and future potential on the road network should be central when developing strategic cycling networks.
-- Traffic counts: an important consideration when deciding what to build is prevailing motor traffic. If speeds and volumes are low, protected cycleways are seldom necessary. If they are high, and contain many large vehicles, by contrast, physical protection is all-but essential if any infrastructure is to be provides on the road in question. Traffic counts were taken from the DfT's AADT dataset and assigned to the road network. This accounts for a large portion of the Strategic Road Network (SRN) but is limited on smaller roads.
-- Collisions: The level of danger to people cycling on the road network should be a major consideration when prioritising where to invest, and in what. A crash hotspot is likely to need remedial attention in terms of road speeds or junction design whereas relatively high crash rates along an entire road may indicate the need for a protected cycleway or an alternative route clearly signposted away from fast moving traffic. CyIPT provides three collision layers: at the road segment, junction and individual crash level.
+- Traffic counts: an important consideration when deciding what to build is prevailing motor traffic. If speeds and volumes are low, protected cycleways are seldom necessary. If they are high, and contain many large vehicles, by contrast, physical protection is all-but-essential if any infrastructure is to be provided on the road in question. Traffic counts were taken from the DfT's AADT dataset and assigned to the road network. This accounts for a large portion of the Strategic Road Network (SRN) but is limited on smaller roads.
+- Collisions: The level of danger to people cycling on the road network should be a major consideration when prioritising where to invest, and in what. A crash hotspot is likely to need remedial attention in terms of road speeds or junction design whereas relatively high crash rates along an entire road may indicate the need for a protected cycleway or an alternative route clearly signposted away from fast-moving traffic. CyIPT provides three collision layers: at the road segment, junction and individual crash level.
 
 By visualising each of these layers (many of which have sub-layers and alternative options) interactively, planners can ensure that their decisions are based on a wide range evidence.
-The range of layers available mean that documentation of the tool is vital, meaning that, although it was not written-into the original specification, a draft (~30 page) Manual was written to accompany the CyIPT website. This is available at [cyipt.bike/manual](https://www.cyipt.bike/manual/), and should be read as a document providing technical detail to accompany this relatively high-level report.
+The range of layers available means that documentation of the tool is vital, meaning that, although it was not written into the original specification, a draft (~30 page) Manual was written to accompany the CyIPT website. This is available at [cyipt.bike/manual](https://www.cyipt.bike/manual/), and should be read as a document providing technical detail to accompany this relatively high-level report.
 
 \newpage
 
 # Method
 
-The CyIPT is a big data project, meaning much of the work involved accessing, colating, cleaning and pre-processing data.
+The CyIPT is a big data project, meaning much of the work involved accessing, collating, cleaning and pre-processing data.
 The initial plan was to build CyIPT completely for a single region (Bristol) before creating a national version.
 In practice it became clear that time was better invested in 'optimising early' to create methods that would scale nationally from the beginning meaning that, although we did use Bristol as the main case study city, we were aiming to create a nationally scalable product all along, avoiding problems associated with scaling-up later down the line.
 
 This involved working with software for handling OSM data such as the **osmdata** R package [@Padgham2017] and 'simple features', a new class system for spatial data in the R programming language [@rcoreteam_language_2017].
 
-Open Street Map (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type and other features. The decison to use Open Street Map, rather an alternatives shuch as Ordnance Survey data, was due to the higher levles of detail about cycling networks provided in the OSM, and the flexible licencing terms of OSM data.
+Open Street Map (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type and other features. The decision to use Open Street Map, rather an alternatives such as Ordnance Survey data, was due to the higher levels of detail about cycling networks provided in the OSM, and the flexible licencing terms of OSM data.
 
-A major challenge early on was calculation of road widths, or rather the width of road space available to construct new cycle infrastructure.
+A major challenge early on was the calculation of road widths, or rather the width of road space available to construct new cycle infrastructure.
 To visualise the availability/unavailability of street space the website [streetmix.net](https://streetmix.net/-/553093) (see Figure \@ref(fig:streetmix)).
 Although promising for visualising roads on a one-by-one basis, we decided not to streetmix in the final version because we could not find ways to automate the production of road width types.
 
@@ -169,7 +169,7 @@ Although promising for visualising roads on a one-by-one basis, we decided not t
 knitr::include_graphics("../images/streetmix-example.png")
 ```
 
-To overcome the road-widths challenge we turned to Ordnance Survey (OS) data. The CyIPT Team has access to a 2005 copy of the OS MasterMap for England. Code was developed to measure the width of the road polygon in the MasterMap and assign that value to the line representation of the road in the OSM.
+To overcome the road-widths challenge we turned to Ordnance Survey (OS) data. The CyIPT Team has access to a 2005 copy of the OS MasterMap for England. The code was developed to measure the width of the road polygon in the MasterMap and assign that value to the line representation of the road in the OSM.
 
 To make the results intuitive and avoid any potential licencing issues with OS data the results of these calculations are presented approximately and in relation to new infrastructure, ranging from "Insufficient" to "More than sufficient" width (see the CyIPT Manual, section [4.6](https://www.cyipt.bike/manual/layer-descriptions.html#road-widths)).
 
@@ -189,9 +189,9 @@ A simplistic approach would be to divide the increase in cycling levels (around 
 
 Assuming this relationship found in Seville holds everywhere would be naive, not only due to cultural differences between the UK and Spain but also due to a number of measurable differences between paths constructed in one place that may not apply in another:
 
-- Level of cycling potential: clearly a cycle path constructed where there is high latent demand will attract more use than a path constructed where there is little demand.
+- Level of cycling potential: clearly a cycle path constructed where there is high latent demand will attract more users than a path constructed where there is little demand.
 - Type of infrastructure: high quality, wide, protected cycleways can be expected to have a greater impact on cycling levels than thin unprotected cycle lanes, for example.
-- The conditions on the rest of the route beyond the interventions are likely to play a role. For example, cycling infrastructure that allows cyclist to avoid busy roads is likely to generate more uptake than infrastructure that subsitutes for existing quiet 20 mph streets.
+- The conditions on the rest of the route beyond the interventions are likely to play a role. For example, cycling infrastructure that allows a cyclist to avoid busy roads is likely to generate more uptake than infrastructure that substitutes for existing quiet 20 mph streets.
 
 Each of these factors was accounted for using an uptake model that used historic interventions (between 2011 and 2001) to predict change in cycling between the 2001 and 2011 census, at the MSOA origin-destination level. 
 An illustration of the input datasets that allowed this model is presented at the regional level in Figure \@ref(fig:uptake-la).
@@ -207,9 +207,9 @@ how to measure 'exposure' to new infrastructure?
 A number of approaches were tested, including the length of infrastructure within a buffer of the straight line representing each OD pair, and the average proximity to new infrastructure for each OD pair.
 In the end, however, a more narrow definition of exposure was used: length of new infrastructure present *on the fastest route* for each OD pair.
 Although more restrictive, this definition had the advantage that it was directly applicable to the input data used by CyIPT.
-Furthermore, it allowed additional variables such as the % of the trip after intervention that could be made on roads with low speed limits.
-It was found that low speed limits of the route was a powerful predictor of cycling uptake following new infrastructure.
-To model this the % of the route at different speed limits was used as an *interaction variable* that diminished the effectiveness of new infrastructure for fast (40 mph+) roads and increased the effectivenss of new infrastructure in cases where the % of the route that was on low speed limit roads was high.
+Furthermore, it allowed additional variables such as the % of the trip after an intervention that could be made on roads with low speed limits.
+It was found that low speed limits of the route were a powerful predictor of cycling uptake following new infrastructure.
+To model this the % of the route at different speed limits was used as an *interaction variable* that diminished the effectiveness of new infrastructure for fast (40 mph+) roads and increased the effectiveness of new infrastructure in cases where the % of the route that was on low speed limit roads was high.
 
 ```{r uptake-bris, fig.cap="Illustration of the input data at the local level in Bristol."}
 u = "https://github.com/cyipt/cyipt/raw/master/historic-uptake_files/figure-markdown_strict/unnamed-chunk-2-5.png"
@@ -218,7 +218,7 @@ knitr::include_graphics("~/cyipt/cyipt/historic-uptake_files/figure-markdown_str
 ```
 
 To present the results of the uptake model on the map a slider was used to allow the user to select how much funding they had available per scheme.
-A dropdown menu was used to filter-out schemes depending on their associated BCRs.
+A drop-down menu was used to filter-out schemes depending on their associated BCRs.
 This method of selecting schemes can be used to interactively identify worthwhile schemes in the city of interest, with promising schemes for Bristol illustrated in Figure \@ref(fig:bcr).
 
 ```{r bcr, fig.cap="Schemes with high estimated BCRs illustrated for Bristol, selected using the BCR dropdown menu in the Schemes layer."}
@@ -229,7 +229,7 @@ knitr::include_graphics("../images/bcr.png")
 
 # Results
 
-The overall result of the project is a prototype national map for cycling infrastructure prioritisataion, in-line with the initial aim of the project.
+The overall result of the project is a prototype national map for cycling infrastructure prioritisation, in-line with the initial aim of the project.
 As described in the CyIPT Manual and shown on the main panel at [www.cyipt.bike](https://www.cyipt.bike/#6/53.690/-2.142/mapnik), there are 9 layers available to the user providing an unprecedented level of data access of relevance to cycle planning in a single place.
 
 The headline figures of the results are as follows:
@@ -241,10 +241,10 @@ The headline figures of the results are as follows:
 - the median estimated BCR was 1.51
 
 These numbers may sound large but they are illustrative of the kind of investment that may be needed for a national cycling revolution.
-Investment of this type is not unprecedented: in The Netherlands investment in cycling infrastructure on this scale began in the mid 1970s and is a major factor explaining the nation's high cycling levels and associated high levels of public health [@pucher_making_2008].
+Investment of this type is not unprecedented: in The Netherlands investment in cycling infrastructure on this scale began in the mid-1970s and is a major factor explaining the nation's high cycling levels and associated high levels of public health [@pucher_making_2008].
 The construction of 10,000+ km of cycleways, for example, may seem like a tall order but even if such a network were built England would have a cycle network half the size of the Dutch cycle network in absolute terms --- The Netherlands had 18,948 km of cycleways in 1996 [@pucher_making_2008] which has since grown further --- and around 1/6^th^ the size of the Dutch cycleway network per person, with England's population of 53 million 3 times larger than Holland's with 17 million.
 
-It should also be noted that CyIPT evaluates each scheme in isolation, and therefore is unable to evaluate network effects where the construction of mulitple linked schemes result in a greater increase that would be expected from each indervidual scheme. For example, An average CyIPT scheme of about 1.1 km would only increase cycling by 20%, which is to be expected as it could only benefit a small number of travellers. Ftuhermore a CyIPT use data from the PCT it only considers commutters and thus the impact on other type of jounrey is not considered.
+It should also be noted that CyIPT evaluates each scheme in isolation, and therefore is unable to evaluate network effects where the construction of multiple linked schemes result in a greater increase that would be expected from each individual scheme. For example, An average CyIPT scheme of about 1.1 km would only increase cycling by 20%, which is to be expected as it could only benefit a small number of travellers. Furthermore, a CyIPT use data from the PCT it only considers commuters and thus the impact on other types of journey is not considered.
 
 As expected the BCR results favour schemes that are close to the centre of major cities, illustrating the fact that there is most unmet demand near city centres.
 To some extent this result reflects the fact that the CyIPT is based on cycling levels from the commute layer of the PCT:
@@ -259,7 +259,7 @@ Overall he found the tool encouraged him to look at possible schemes that had pr
 More detailed feedback was provided for a number of specific roads, leading to some changes to CyIPT, and illustrating how CyIPT could be used in practice.
 The following quote, for example, refers to the results for Heavitree Road:
 
-> Highlights good options along long stretches of route. Does still recommend lanes through difficult section which is useful to generate discussion about what could be done (Zsolt Schuller)
+> Highlights good options along long stretches of the route. Does still recommend lanes through a difficult section which is useful to generate discussion about what could be done (Zsolt Schuller)
 
 Many other people provided formal and informal feedback on the project, including:
 
@@ -271,10 +271,10 @@ Many other people provided formal and informal feedback on the project, includin
 ## The CyIPT workshop
 
 A key part of the initial funding proposal was the presentation of the prototype tool to stakeholders working in the area of planning for active transport.
-To that end an end-of-project workshop was held on the 23^rd^ March in Leeds.
+To that end, an end-of-project workshop was held on the 23^rd^ March in Leeds.
 40 participants attended the event from a range of backgrounds, primarily local authority transport planners, transport planning consultancies, advocacy groups and academia.
 
-To put the project in contect we organised a range of speakers (not just from the CyIPT team) to present tools for the LCWIP process.
+To put the project in context we organised a range of speakers (not just from the CyIPT team) to present tools for the LCWIP process.
 Topics presented to attendees included:
 
 
@@ -288,14 +288,14 @@ The afternoon of the workshop was spent using the tool.
 Participants split-up into teams of 4 - 5 and used the tool to help answer specific questions related to infrastructure prioritisation in a city of their choice.
 They also provided more formal feedback in a short survey, which provides a strong basis for next steps, discussed in the subsequent section.
 
-Feedback from the suvery was very positive, for example all responded rate the schemes and reccomended infrastrucutre layers as useful or very useful.
+Feedback from the survey was very positive, for example, all responded rate the schemes and recommended infrastructure layers as useful or very useful.
 
 \newpage
 
 # Discussion and next steps
 
-A number of innovations have been developed for CyIPT and from the results of the workshop it seems that there is high demand for them among practitioners.
-CyIPT has demonstrated that it *is* possible to automate the first stage of the planning process for cycling, enabling planners to focus their skills where they are most needed: in evaluating the technical and economic feasibility of schemes that *are known* to make sense based on some of the best availabe data.
+A number of innovations have been developed for CyIPT and from the results of the workshop, it seems that there is high demand for them among practitioners.
+CyIPT has demonstrated that it *is* possible to automate the first stage of the planning process for cycling, enabling planners to focus their skills where they are most needed: in evaluating the technical and economic feasibility of schemes that *are known* to make sense based on some of the best available data.
 CyIPT works nationally and includes a wide range of data sources, but it should not be seen as a finished product.
 
 This section discusses some of the limitations of CyIPT after this initial Phase I.
@@ -303,12 +303,12 @@ This discussion feeds directly into the identification of areas in which there i
 The next steps for CyIPT can be taken in a range of directions, but they should be informed by an honest appraisal of the limitations of the project (and modelling overall) for planning for cycling and an understanding of the resource requirements for different directions of travel in terms of time and public investment in decision-making tools.
 
 An important aspect of CyIPT Phase I is that recommendations are based on *existing levels of cycling* (or rather cycle commuting along the fastest route in 2011).
-For this reason the results of CyIPT can be seen as the network that cities *should already have* for a given level of cycling, accounting only for commuter cycling.
+For this reason, the results of CyIPT can be seen as the network that cities *should already have* for a given level of cycling, accounting only for commuter cycling.
 This suggests that adding new cycling potential layers such as cycle to school (e.g. made available by PCT Phase III) and new scenarios moving beyond existing levels of cycling as next steps.
 
-## Outline of proposal for Phase II
+## Outline of a proposal for Phase II
 
-In Phase I we demonstrated the advantages of a single nationwide map layer that allows transport decisions to be made at any geographic scale, without having to first select the 'region' in which work is planned to take place as the PCT does: often strategic cycling plans cover multiple regions.  This allows transport planning to reflect local travel patterns rather than being constrained by administrative or funding boundaries.
+In Phase I, we demonstrated the advantages of a single nationwide map layer that allows transport decisions to be made at any geographic scale, without having to first select the 'region' in which work is planned to take place as the PCT does: often strategic cycling plans cover multiple regions.  This allows transport planning to reflect local travel patterns rather than being constrained by administrative or funding boundaries.
 
 Furthermore, the CyIPT demonstrates the benefits of showing multiple **data inputs** overlaid on a single map.
 The PCT focusses attention on the potential for cycling uptake but we have learned that decision-makers require more data than current and possible future cycling behaviour.
@@ -337,7 +337,7 @@ CyIPT was funded as an Innovation project and therefore was not designed to be u
 
 This work will allow the value already generated by the £90k CyIPT project to be captured in a way that allows Local Authorities to benefit from it in the long-term.
 This represents the baseline or 'stage 1' of follow-on project building on the work already done with CyIPT.  
-**At an estimated day rate of £500/day this would cost around £60k**.
+**At an estimated daily rate of £500/day this would cost around £60k**.
 We would suggest that server hosting and maintenance costs of around £5k/year would be included in this project to ensure the resources are available in the future, for 3 years for example.
 We believe that if we front-load the work represented in c1 to c7 **a publicly accessible version of CyIPT could be complete within 6 months of commencing the project** and potentially earlier.
 Our ability to deploy Big Data projects is illustrated by the fact that we already have deployed a prototype of CyIPT nationwide.
@@ -364,7 +364,7 @@ These three improvements would collectively cost around **£125k**, and would ma
 
 New functionality can be added to CyIPT using the existing data sources that CyIPT has produced.
 
-- n1.  Improved collisions analysis, improvements in UI and analysis techniques, including the provision of estimated level of risk, could allow CyIPT to match and exceed the existing capabilities of services such as crash map. (30 days) 
+- n1.  Improved collisions analysis, improvements in UI and analysis techniques, including the provision of an estimated level of risk, could allow CyIPT to match and exceed the existing capabilities of services such as crash map. (30 days) 
 - n2. Additional scenarios of infrastructure change (e.g. 'government target') (20 days)
 - n3. Assessment of cycling 'Level of Service' using the TfL's Cycling Level of Service (CLoS) metric or similar (40 days)
 - n4. The detection and evaluation of missing links (40 days)
@@ -378,7 +378,7 @@ It is well known and demonstrable that the more information that decision-makers
 CyIPT moves in the right direction in terms of providing more data to decision-makers but more data sources would greatly benefit the decision-making process, including:
 
 - d1. Data on the provision of cycle parking spaces in relation to estimates of current and future demand (30 days)
-- d2. Inclusion of improved traffic data, e.g. HALOGEN (30 days)
+- d2. The inclusion of improved traffic data, e.g. HALOGEN (30 days)
 - d3. Improved road width data, replace 2005 data with current data and get permission from OS for publication (30 days)
 - d4. Overlay with air pollution data, and localised air pollution analysis (60 days)
 - d5. Addition of travel to school data (dependant on PCT Phase III) (30 days)
@@ -396,13 +396,13 @@ We do not expect all options in the above 'menu' would be taken but it's worth c
 
 ## Other possibilities
 
-Beyond the options outlined in the previous sections we have some more 'blue-skies' ideas about integrating cycling analysis into broader multi-mode travel analysis and transport models.
+Beyond the options outlined in the previous sections, we have some more 'blue-skies' ideas about integrating cycling analysis into broader multi-mode travel analysis and transport models.
 This would require a full research stage that would take longer to complete than the options outlined above and we're not proposing it as a near-term option but something to consider, e.g. linked-in with the National Transport Model team at DfT.
 
-We could look at evaluation of walking infrastructure, this would involve adding a full walking evaluation into the existing CyIPT toolkit.
-A future possibility in the longer term, after the successor of CyIPT is secure, would be to integrate CyIPT with existing transport models used by transport planning authorities.
+We could look at the evaluation of walking infrastructure, this would involve adding a full walking evaluation into the existing CyIPT toolkit.
+A future possibility in the longer term, after the successor of CyIPT, is secure, would be to integrate CyIPT with existing transport models used by transport planning authorities.
 One question that often comes up is: where would re-allocating road space be acceptable from an economic perspective? Thus a wider stage could look at the potential impact of cycling uptake and infrastructure impact on motor traffic, and hence transport-related air pollution.
-The most ambitious idea is to integrate CyIPT with full multi-modal transport models, or to redesign existing transport models based on our experience with the PCT and CyIPT.
+The most ambitious idea is to integrate CyIPT with full multi-modal transport models or to redesign existing transport models based on our experience with the PCT and CyIPT.
 
 These further possibilities would be research-driven, meaning there would be a potential to apply for academic research funding to develop the underlying research, e.g. from the Engineering and Physical Sciences Research Council (EPSRC).
 
@@ -421,7 +421,7 @@ It seems there is high demand for the type of interactive evidence on infrastruc
 
 CyIPT is a publicly accessible research project based on open source software, the results of which are available in an online map-based tool at [www.cyipt.bike](https://www.cyipt.bike) (currently password protected).
 
-The code underlying CyIPT is hosted on GitHub, a platform for software development and collaboration that also provides and excellent forum for discussing issues and providing feedback as follows:
+The code underlying CyIPT is hosted on GitHub, a platform for software development and collaboration that also provides and an excellent forum for discussing issues and providing feedback as follows:
 
 - Feedback on CyIPT Results and Methods: [github.com/cyipt/cyipt/issues](https://github.com/cyipt/cyipt/issues) 
 - Feedback on CyIPT website and user interface: [github.com/cyipt/cyipt-website](https://github.com/cyipt/cyipt-website/issues)
@@ -429,7 +429,7 @@ The code underlying CyIPT is hosted on GitHub, a platform for software developme
 Hosting the code on GitHub also enables community contributions.
 If you find any issues on this user manual, for example, suggested changes to the source code are welcome [here](https://github.com/cyipt/cyipt-website/edit/master/man/index.Rmd), which requires a GitHub username from [github.com](https://github.com/).
 
-Alternatively we welcome your feedback at info@cyipt.bike.
+Alternatively, we welcome your feedback at info@cyipt.bike.
 
 ```{r}
 knitr::include_graphics("../images/logo.png")

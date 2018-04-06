@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = FALSE, out.width = "100%")
 # compile with:
 # bookdown::render_book("index.Rmd")
 # bookdown::render_book("index.Rmd", "bookdown::pdf_document2")
+# bookdown::render_book("index.Rmd", "bookdown::word_document2")
 # Run the previous command and...
 # Uncomment this line to build pdf version of manual:
 # knitr::opts_chunk$set(echo = FALSE, out.width = "100%")
@@ -130,7 +131,7 @@ A schematic diagram was prepared for the original plan, which provides an opport
 - **Evaluation:** Benefit-cost ratios (BCRs) are estimated based on costs taken from a DfT-funded report on typical costs of cycle infrastructure [@transportforqualityoflife_typical_2016].
 - **Outputs:** As planned the outputs are available in an online mapping tool available (although currently password-protected) at [www.cyipt.bike](http://cyipt.bike/).
 
-```{r schematic, fig.cap="Schematic diagram of CyIPT presented in the initial work plan.", out.width="100%"}
+```{r schematic, fig.cap="Schematic diagram of CyIPT presented in the initial work plan.", out.width="70%"}
 # knitr::include_graphics("https://raw.githubusercontent.com/cyipt/cyipt/master/figures/schematic-flow-diagram.png")
 knitr::include_graphics("~/cyipt/cyipt/figures/schematic-flow-diagram.png")
 ```
@@ -298,7 +299,7 @@ A number of innovations have been developed for CyIPT and from the results of th
 CyIPT has demonstrated that it *is* possible to automate the first stage of the planning process for cycling, enabling planners to focus their skills where they are most needed: in evaluating the technical and economic feasibility of schemes that *are known* to make sense based on some of the best available data.
 CyIPT works nationally and includes a wide range of data sources, but it should not be seen as a finished product.
 
-This section discusses some of the limitations of CyIPT after this initial Phase I.
+This section discusses some limitations of CyIPT after this initial Phase I.
 This discussion feeds directly into the identification of areas in which there is great potential for further development of the tool.
 The next steps for CyIPT can be taken in a range of directions, but they should be informed by an honest appraisal of the limitations of the project (and modelling overall) for planning for cycling and an understanding of the resource requirements for different directions of travel in terms of time and public investment in decision-making tools.
 
@@ -399,14 +400,22 @@ We do not expect all options in the above 'menu' would be taken but it's worth c
 Beyond the options outlined in the previous sections, we have some more 'blue-skies' ideas about integrating cycling analysis into broader multi-mode travel analysis and transport models.
 This would require a full research stage that would take longer to complete than the options outlined above and we're not proposing it as a near-term option but something to consider, e.g. linked-in with the National Transport Model team at DfT.
 
-We could look at the evaluation of walking infrastructure, this would involve adding a full walking evaluation into the existing CyIPT toolkit.
-A future possibility in the longer term, after the successor of CyIPT, is secure, would be to integrate CyIPT with existing transport models used by transport planning authorities.
+We could look at the evaluation of infrastructure from a **walking perspective**.
+Following discussion at the CyIPT workshop, a promising method to do this would be to integrate the methods underlying the sDNA tool into CyIPT.
+This would have the advantages of:
+
+- Using a tried-and-tested model for walking accessibility that has been verified using multiple data sources by Crispin Cooper.
+- Making use of the existing infrastructure of CyIPT to present results on walking, rather than creating *another* tool.
+
+For these reasons it seems adding walking evaluation into the existing CyIPT toolkit is an interesting future direction of travel for CyIPT, which could lead to a name change for the project (e.g. to the Cycling and Walking Infrastructure Prioritisation Toolkit, CWIPT).
+
+A future possibility in the longer term, after the successor of CyIPT is secure, would be to integrate CyIPT with existing **multi-modal transport models** used by transport planning authorities.
 One question that often comes up is: where would re-allocating road space be acceptable from an economic perspective? Thus a wider stage could look at the potential impact of cycling uptake and infrastructure impact on motor traffic, and hence transport-related air pollution.
 The most ambitious idea is to integrate CyIPT with full multi-modal transport models or to redesign existing transport models based on our experience with the PCT and CyIPT.
 
 These further possibilities would be research-driven, meaning there would be a potential to apply for academic research funding to develop the underlying research, e.g. from the Engineering and Physical Sciences Research Council (EPSRC).
 
-## Summary
+## Summary of next steps
 
 There are many directions in which we can extend the CyIPT and this document outlines some of the most desirable in terms of benefits for the LCWIP process, building on our existing work.
 The priority is to deploy and refine the existing work so the LCWIP process can benefit from the work already done at the earliest possible stage.

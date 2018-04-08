@@ -159,7 +159,7 @@ In practice it became clear that time was better invested in 'optimising early' 
 
 This involved working with software for handling OSM data such as the **osmdata** R package [@Padgham2017] and 'simple features', a new class system for spatial data in the R programming language [@rcoreteam_language_2017].
 
-Open Street Map (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type and other features. The decision to use Open Street Map, rather an alternatives such as Ordnance Survey data, was due to the higher levels of detail about cycling networks provided in the OSM, and the flexible licencing terms of OSM data.
+OpenStreetMap (OSM) data was downloaded in bulk and a much work was put into cleaning the user-contributed tags that define road type and other features. The decision to use OpenStreetMap, rather an alternatives such as Ordnance Survey data, was due to the higher levels of detail about cycling networks provided in the OSM, and the flexible licencing terms of OSM data.
 
 A major challenge early on was the calculation of road widths, or rather the width of road space available to construct new cycle infrastructure.
 To visualise the availability/unavailability of street space the website [streetmix.net](https://streetmix.net/-/553093) (see Figure \@ref(fig:streetmix)).

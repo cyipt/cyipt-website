@@ -133,7 +133,7 @@ A schematic diagram was prepared for the original plan, which provides an opport
 - **Evaluation:** Benefit-cost ratios (BCRs) are estimated based on costs taken from a DfT-funded report on typical costs of cycle infrastructure [@transportforqualityoflife_typical_2016].
 - **Outputs:** As planned the outputs are available in an online mapping tool available (although currently password-protected) at [www.cyipt.bike](http://cyipt.bike/).
 
-```{r schematic, fig.cap="Schematic diagram of CyIPT presented in the initial work plan.", out.width="70%"}
+```{r schematic, fig.cap="Schematic diagram of CyIPT presented in the initial work plan.", out.width="70%", fig.pos="h"}
 # knitr::include_graphics("https://raw.githubusercontent.com/cyipt/cyipt/master/figures/schematic-flow-diagram.png")
 knitr::include_graphics("~/cyipt/cyipt/figures/schematic-flow-diagram.png")
 ```

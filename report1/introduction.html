@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="method.html">
-<link rel="next" href="discussion-and-next-steps.html">
+<link rel="prev" href="executive-summary.html">
+<link rel="next" href="method.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -111,55 +111,52 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="results" class="section level1">
-<h1><span class="header-section-number">5</span> Results</h1>
-<p>The overall result of the project is a prototype national map for cycling infrastructure prioritisation, in-line with the initial aim of the project. As described in the CyIPT Manual and shown on the main panel at <a href="https://www.cyipt.bike/#6/53.690/-2.142/mapnik">www.cyipt.bike</a>, there are nine layers available to the user, providing an unprecedented level of data access of relevance to cycle planning in a single place.</p>
-<p>The headline figures of the results are as follows:</p>
-<ul>
-<li>9,342 schemes recommended across England</li>
-<li>costing an average of £730,000 and with a total cost of £6.8bn</li>
-<li>with an average length of 1.1 km and a total length of 10,600 km</li>
-<li>average estimated benefits were £1,467,000 and total benefits of £13.7bn</li>
-<li>the median estimated BCR was 1.51.</li>
-</ul>
-<p>These numbers may sound large but they are illustrative of the kind of investment that may be needed for a national cycling revolution. Investment of this type is not unprecedented: in The Netherlands, investment in cycling infrastructure on this scale began in the mid-1970s and is a major factor explaining the nation’s high cycling levels and associated high levels of public health <span class="citation">(Pucher and Buehler <a href="#ref-pucher_making_2008">2008</a>)</span>. The construction of 10,000+ km of cycleways, for example, may seem like a tall order but even if such a network were built England would have a cycle network half the size of the Dutch cycle network in absolute terms — The Netherlands had 18,948 km of cycleways in 1996 <span class="citation">(Pucher and Buehler <a href="#ref-pucher_making_2008">2008</a>)</span> which has since grown further — and around 1/6<sup>th</sup> the size of the Dutch cycleway network per person, with England’s population of 53 million 3 times larger than Holland’s with 17 million. In this connection, it is also worth noting the outcome of the All-Party Parliamentary Cycling Group ‘<a href="https://allpartycycling.org/inquiry/">Get Britain Cycling</a>’ report, which recommended an initial investment level of at least £10 per person per year.</p>
-<p>It should also be noted that CyIPT evaluates each scheme in isolation, and therefore is unable to evaluate network effects where the construction of multiple linked schemes result in a greater increase that would be expected from each individual scheme. For example, an average CyIPT scheme of about 1.1 km would only increase cycling by 20%, which is to be expected as it could only benefit a small number of travellers. Related to this, CyIPT may propose two nearby schemes independently, where only one would in practice be needed due to their proximity; further work would be able to address this. Furthermore, as CyIPT uses data from the PCT it only considers commuters and thus the impact on other types of journey is not considered.</p>
-<p>As expected the BCR results favour schemes that are close to the centre of major cities, illustrating the fact that there is most unmet demand near city centres. To some extent this result reflects the fact that the CyIPT is based on cycling levels from the commute layer of the PCT: using the planned school layer from the PCT Phase III will likely show a more nuanced distribution of BCRs also emphasising residential areas surrounding major schools.</p>
-<p>An important aspect of the project was that the results were evaluated by key stakeholders at different points during the project. Zsolt Schuller, for example, provided feedback on the results for Exeter. Overall, he found the tool encouraged him to look at possible schemes that had previously been given little attention:</p>
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">3</span> Introduction</h1>
+<p>The Cycling Infrastructure Prioritisation Toolkit (CyIPT) is a research project led by the University of Leeds and funded by the Department for Transport (DfT). The purpose of CyIPT is to develop methods and tools to assist in the design, planning and prioritisation of new cycling infrastructure.</p>
+<p>CyIPT was funded by the Innovation Challenge Fund (ICF) to demonstrate the readiness of technology to automate the early stages of the planning process for cycling infrastructure — scheme evaluation. The aim was to:</p>
 <blockquote>
-<p>this could be useful even if just to act as leverage in encouraging Local Authorities to revisit locations of where schemes may or may not have been considered in the past (Zsolt Schuller)</p>
+<p>tackle the challenge that cycling uptake is often limited by infrastructural barriers which could be remediated cost-effectively, yet investment is often spent on less cost-effective interventions, based on an assessment of only a few options.</p>
 </blockquote>
-<p>More detailed feedback was provided for a number of specific roads, leading to some changes to CyIPT, and illustrating how CyIPT could be used in practice. The following quote, for example, refers to the results for Heavitree Road:</p>
-<blockquote>
-<p>Highlights good options along long stretches of the route. Does still recommend lanes through a difficult section which is useful to generate discussion about what could be done (Zsolt Schuller)</p>
-</blockquote>
-<p>Many other people provided formal and informal feedback on the project, including:</p>
+<p>This aim builds on the work already on the Propensity to Cycle Tool (PCT) to estimate the <em>potential</em> for cycling uptake nationwide <span class="citation">(Department for Transport <a href="#ref-departmentfortransport_national_2016">2016</a>)</span>. The PCT does this by analysing origin-destination data on travel patterns to identify trips that could be replaced by cycling nationally, down to the route-network level <span class="citation">(Lovelace et al. <a href="#ref-lovelace_propensity_2017">2017</a>)</span>. While the PCT focusses on <em>where</em> to prioritise a core cycling network, CyIPT focusses on <em>what</em> to build and <em>when</em>, in terms of prioritisation.</p>
+<p>A schematic diagram was prepared for the original plan, which provides an opportunity to reflect on the extent to which we have delivered on the four components envisaged at the project’s inception (Figure <a href="introduction.html#fig:schematic">3.1</a>):</p>
 <ul>
-<li>Chris Mason, Bristol City Council</li>
-<li>Jonathan Fingland, Greater Manchester Cycle Campaign</li>
-<li>Simon Nuttall, Cambridge Cycling Campaign / CycleStreets</li>
-<li>Chris Peck, the LCWIP Consortium</li>
+<li><strong>Classification:</strong> We have automated the classification of segments and schemes using algorithms developed for the project.</li>
+<li><strong>Interventions:</strong> The type of interventions recommended by CyIPT for any particular road segment are derived from advice provided by a Highways England Interim Advice Note <span class="citation">(Highways England <a href="#ref-_interim_2016">2016</a>)</span>.</li>
+<li><strong>Evaluation:</strong> Benefit-cost ratios (BCRs) are estimated based on costs taken from a DfT-funded report on typical costs of cycle infrastructure <span class="citation">(Transport for quality of life <a href="#ref-transportforqualityoflife_typical_2016">2016</a>)</span>.</li>
+<li><strong>Outputs:</strong> As planned the outputs are available in an online mapping tool available (although currently password-protected) at <a href="http://cyipt.bike/">www.cyipt.bike</a>.</li>
 </ul>
-<div id="the-cyipt-workshop" class="section level2">
-<h2><span class="header-section-number">5.1</span> The CyIPT workshop</h2>
-<p>A key part of the initial funding proposal was the presentation of the prototype tool to stakeholders working in the area of planning for active transport. To that end, an end-of-project workshop was held on the 23<sup>rd</sup> March in Leeds. 40 participants attended the event from a range of backgrounds, primarily local authority transport planners, transport planning consultancies, advocacy groups and academia.</p>
-<p>To put the project in context we organised a range of speakers (not just from the CyIPT team) to present tools for the LCWIP process. Topics presented to attendees included:</p>
-<ul>
-<li>Overview of the landscape of tools supporting LCWIPs (Kaylisha Archer, DfT): 10:00 - 10:15</li>
-<li>The LCWIP process (Chris Peck, LCWIP Consortium) and Q&amp;A on LCWIP (Adrian Lord, PJA and others): 10:15 - 10:30</li>
-<li>Network modelling to target cycling and walking policies (Crispin Cooper, University of Cardiff): 10:30 - 10:45</li>
-<li>How to design and build good walking and cycling infrastructure (John Parkin, University of West of England): 10:45 - 11:00</li>
-<li>How can the CyIPT help prioritise investments - a case study (Zsolt Schuller): 12:30 - 12:50</li>
-</ul>
-<p>The afternoon of the workshop was spent using the tool. Participants split-up into teams of 4 - 5 and used the tool to help answer specific questions related to infrastructure prioritisation in a city of their choice. They also provided more formal feedback in a short survey, which provides a strong basis for next steps, discussed in the subsequent section.</p>
-<p>Feedback from the survey was very positive, for example, all those who responded rated the schemes and recommended infrastructure layers as useful or very useful.</p>
-
+<div class="figure"><span id="fig:schematic"></span>
+<img src="/home/robin/cyipt/cyipt/figures/schematic-flow-diagram.png" alt="Schematic diagram of CyIPT presented in the initial work plan." width="70%" />
+<p class="caption">
+Figure 3.1: Schematic diagram of CyIPT presented in the initial work plan.
+</p>
 </div>
+<p>The CyIPT tool delivers on the aim of providing an accessible evidence-base to identify cost-effective areas to intervene in a way that is scalable and consistent nationwide. For the first time, it combines geographic data on many factors related to cycling at the road level, including:</p>
+<ul>
+<li>Existing infrastructure: seeing gaps in existing cycling networks can help decide how to join them up.</li>
+<li>Possible schemes: CyIPT prevents ‘information overload’ and provides intuitive schemes by aggregating recommended infrastructure (another layer representing the same data on a segment-by-segment basis) into schemes that can be viewed as a layer in the interactive map, with associated estimated costs and benefits.</li>
+<li>Road widths: this is a crucial consideration when deciding whether or not new cycleways can be provided on existing roads, or whether an alternative solution, such as road-space-reallocation will be needed.</li>
+<li>Cycling potential: the existing level of cycling and future potential on the road network should be central when developing strategic cycling networks.</li>
+<li>Traffic counts: an important consideration when deciding what to build is prevailing motor traffic. If speeds and volumes are low, protected cycleways are seldom necessary. If they are high, and contain many large vehicles, by contrast, physical protection is all-but-essential if any infrastructure is to be provided on the road in question. Traffic counts were taken from the DfT’s AADT dataset and assigned to the road network. This accounts for a large portion of the Strategic Road Network (SRN) but is limited on smaller roads.</li>
+<li>Collisions: The level of danger to people cycling on the road network should be a major consideration when prioritising where to invest, and in what. A crash hotspot is likely to need remedial attention in terms of road speeds or junction design whereas relatively high crash rates along an entire road may indicate the need for a protected cycleway or an alternative route clearly signposted away from fast-moving traffic. CyIPT provides three collision layers: at the road segment, junction and individual crash level.</li>
+</ul>
+<p>By visualising each of these layers (many of which have sub-layers and alternative options) interactively, planners can ensure that their decisions are based on a wide range evidence. The range of layers available means that documentation of the tool is vital, meaning that, although it was not written into the original specification, a draft (~30 page) Manual was written to accompany the CyIPT website. This is available at <a href="https://www.cyipt.bike/manual/">cyipt.bike/manual</a>, and should be read as a document providing technical detail to accompany this relatively high-level report.</p>
+
 </div>
 <h3> References</h3>
 <div id="refs" class="references">
-<div id="ref-pucher_making_2008">
-<p>Pucher, John, and Ralph Buehler. 2008. “Making Cycling Irresistible: Lessons from the Netherlands, Denmark and Germany.” <em>Transport Reviews</em> 28: 495–528. <a href="http://www.vtpi.org/irresistible.pdf" class="uri">http://www.vtpi.org/irresistible.pdf</a>.</p>
+<div id="ref-departmentfortransport_national_2016">
+<p>Department for Transport. 2016. “National Propensity to Cycle Tool Project: Full Report with Annexes.” Active Travel. Predicting the Demand for Cycling. Department for Transport. <a href="https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/510268/national-propensity-to-cycle-full-report.pdf" class="uri">https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/510268/national-propensity-to-cycle-full-report.pdf</a>.</p>
+</div>
+<div id="ref-lovelace_propensity_2017">
+<p>Lovelace, Robin, Anna Goodman, Rachel Aldred, Nikolai Berkoff, Ali Abbas, and James Woodcock. 2017. “The Propensity to Cycle Tool: An Open Source Online System for Sustainable Transport Planning.” <em>Journal of Transport and Land Use</em> 10 (1). doi:<a href="https://doi.org/10.5198/jtlu.2016.862">10.5198/jtlu.2016.862</a>.</p>
+</div>
+<div id="ref-_interim_2016">
+<p>Highways England. 2016. “Interim Advice Note 195/16: Cycle Traffic and the Strategic Road Network.” Interim 195/16. Highways England. <a href="http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf" class="uri">http://www.standardsforhighways.co.uk/ha/standards/ians/pdfs/ian195.pdf</a>.</p>
+</div>
+<div id="ref-transportforqualityoflife_typical_2016">
+<p>Transport for quality of life. 2016. “Typical Costs of Cycling Interventions: Interim Analysis of Cycle City Ambition Schemes.” Interim SO17265. Department for Transport.</p>
 </div>
 </div>
             </section>
@@ -167,8 +164,8 @@
           </div>
         </div>
       </div>
-<a href="method.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="discussion-and-next-steps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="executive-summary.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="method.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="executive-summary.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="introduction.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -111,61 +111,51 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">The Cycling Infrastructure Prioritisation Toolkit</h1>
-<h3 class="subtitle"><em>DfT Innovation Challenge Fund Grant (December 2016) Final Report</em></h3>
-<h4 class="author"><em>The CyIPT team, led by University of Leeds</em></h4>
-<h4 class="date"><em>Last updated: 2018-04-09</em></h4>
+<div id="executive-summary" class="section level1">
+<h1><span class="header-section-number">2</span> Executive summary</h1>
+<div id="overview-of-the-project" class="section level2">
+<h2><span class="header-section-number">2.1</span> Overview of the project</h2>
+<p>The overall purpose of the project was to demonstrate that it is possible to produce software capable of making automated recommendations for the best locations to build new cycling infrastructure. This has been achieved through the prototype www.cyipt.bike website, which presents an interactive map of England, showing the most promising schemes and other relevant information.</p>
 </div>
-<div id="project-overview" class="section level1">
-<h1><span class="header-section-number">1</span> Project overview</h1>
-<p>Timeframe of the project and date of the report:</p>
+<div id="project-objectives-and-intended-audience" class="section level2">
+<h2><span class="header-section-number">2.2</span> Project objectives and intended audience</h2>
+<p>To meet the overarching aim, the research met the following objectives:</p>
 <ul>
-<li>The project ran from March 2017 until March 2018</li>
+<li>Classify geographic data on the route network into discrete features that represent potential barriers to cycling uptake.</li>
+<li>Filter from the multitude of barriers generated in the previous stage based on data on cycling potential (from the PCT) and a proxy for road safety (road traffic casualty data)</li>
+<li>Identify interventions on the filtered set of barriers that would alleviate these barriers to cycling by overlying cycling potential at the desire line and route network level. For instance, a busy road running in the same direction as cycling desire lines, for example, could result in the identification of a segregated cycle path parallel to the road. A barrier running perpendicular to cycling desire lines could lead to the addition of ‘missing links’, e.g. the creation of a route connecting two proximate cycle paths.</li>
+<li>For each intervention, estimate costs based on recently-collated data presented in Taylor and Hiblin (2016), and from data that has been used as part of the National Cycling and Walking Infrastructure Plan project for the DfT as developed by Phil Jones Associates.</li>
+<li>For each intervention, estimate cycling uptake by re-running a regression model on the modified route network for all trips affected by the intervention.</li>
+<li>Analyse the estimated cost-effectiveness of all schemes on the route network and validate the results of known interventions.</li>
+<li>Elicit feedback from experts, practitioners (including Leeds City Council and the Urban Transport Group – see Letters of Support) and the DfT after the 3-month report and prototype results are complete. Refine the method based on feedback from the validation stage.</li>
+<li>Optimise the method on a high-performance computer (HPC) infrastructure at the Leeds Institute for Data Analytics (LIDA).</li>
+<li>Run the method for all of England and save the results in appropriate formats and levels of aggregation.</li>
+<li>Visualise the results in an online interactive map allowing decision-makers to prioritise the most cost-effective schemes.</li>
+<li>Make the data available for practitioners, researchers and other projects in a user-friendly form, e.g. via an online Application Programming Interface (API), whose results can also be used in GIS systems.</li>
 </ul>
-<p>Locations (country, region, etc.) of the project:</p>
-<ul>
-<li>Leeds, West Yorkshire UK (University of Leeds)</li>
-<li>Cambridge (CycleStreets.net)</li>
-<li>Bristol (University of West of England)</li>
-</ul>
-<p>Names and/or organisations of project team:</p>
-<ul>
-<li>Dr Robin Lovelace, University of Leeds</li>
-<li>Dr Malcolm Morgan, University of Leeds</li>
-<li>Prof John Parkin, University of the West of England</li>
-<li>Martin Lucas-Smith, CycleStreets.net</li>
-</ul>
-<p>Table of contents which also lists Tables, Graphs, Figures and Annexes:</p>
-<p>For ToC see front page. List of Figures:</p>
-<ul>
-<li>Figure <a href="introduction.html#fig:schematic">3.1</a></li>
-<li>Figure <a href="method.html#fig:streetmix">4.1</a></li>
-<li>Figure <a href="method.html#fig:sevnet">4.2</a></li>
-<li>Figure <a href="method.html#fig:uptake-la">4.3</a></li>
-<li>Figure <a href="method.html#fig:uptake-bris">4.4</a></li>
-<li>Figure <a href="method.html#fig:bcr">4.5</a></li>
-</ul>
-<p>1.5. List of acronyms</p>
-<ul>
-<li>API: Application programming interface</li>
-<li>BCR: Benefit-cost ratio</li>
-<li>CyIPT: Cycling Infrastructure Prioritisation Toolkit</li>
-<li>DfT: Department for Transport</li>
-<li>GDS: Government Digital Services</li>
-<li>GIS: Geographic information system</li>
-<li>ICF: Innovation Challenge Fund</li>
-<li>OSM: OpenStreetMap</li>
-</ul>
+<p>The intended audience is professionals and informed stakeholders working to increase the level of cycling in cities across England and beyond.</p>
+</div>
+<div id="project-methodology" class="section level2">
+<h2><span class="header-section-number">2.3</span> Project methodology</h2>
+<p>The methodology involved developing and implementing methods for processing route infrastructure data at a national scale, developing methods for estimating levels of cycling to be expected from specific interventions, and web development methods to deploy the results in an online, interactive mapping portal.</p>
+</div>
+<div id="most-important-findings-and-conclusions" class="section level2">
+<h2><span class="header-section-number">2.4</span> Most important findings and conclusions</h2>
+<p>The most important finding is that the vision driving CyIPT — automation of a-priori scheme evaluation during the initial stages of the planning process — can feasibly be implemented and scaled nationwide using existing datasets and digital technologies. Feedback from key stakeholders suggests that the CyIPT project results are likely to be useful in the planning process and there was high demand for a publicly-accessible version of the tool.</p>
+</div>
+<div id="main-recommendationsnext-steps" class="section level2">
+<h2><span class="header-section-number">2.5</span> Main recommendations/next steps</h2>
+<p>Based on experience with CyIPT to date, we recommend that the project is taken forward to Phase II. That will allow the team to act on valuable feedback collected during the end of project workshop and meet the requirements of GDS to allow the CyIPT to be made publicly-accessible. More detailed recommendations are provided at the end of this report.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="executive-summary.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

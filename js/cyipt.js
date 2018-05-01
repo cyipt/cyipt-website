@@ -251,14 +251,14 @@ var cyipt = (function ($) {
 			},
 			lineColourStops: {
 				roadwidth: [
-					[14, '#4575b4'],
-					[12, '#74add1'],
-					[10, '#abd9e9'],
-					[8, '#e0f3f8'],
-					[6, '#fee090'],
-					[4, '#fdae61'],
-					[2, '#f46d43'],
-					[0, '#d73027']
+					[21, 'green'],
+					[18, '#4575b4'],
+					[15, '#74add1'],
+					[12, '#abd9e9'],
+					[10, '#e0f3f8'],
+					[8, '#fee090'],
+					[6, '#fdae61'],
+					[0, '#f46d43']
 				],
 				widthstatus: [
 					['Missing Width Data', '#e5d0ff'],
@@ -270,14 +270,14 @@ var cyipt = (function ($) {
 			},
 			intervals: {
 				roadwidth: [
-					['14+ m', '#4575b4'],
-					['12-14 m', '#74add1'],
-					['10-12 m', '#abd9e9'],
-					['8-10 m', '#e0f3f8'],
-					['6-8 m', '#fee090'],
-					['4-6 m ', '#fdae61'],
-					['2-4 m', '#f46d43'],
-					['0-2 m', '#d73027']
+					['21+ m', 'green'],
+					['18-21 m', '#4575b4'],
+					['15-18 m', '#74add1'],
+					['12-15 m', '#abd9e9'],
+					['10-12 m', '#e0f3f8'],
+					['8-10 m ', '#fee090'],
+					['6-8 m', '#fdae61'],
+					['0-6 m', '#f46d43']
 				],
 				widthstatus: [
 					['Missing Width Data', '#e5d0ff'],

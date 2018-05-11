@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cycling Infrastructure Prioritisation Toolkit (CyIPT)</title>
+
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116095304-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116095304-1');
+    </script>
+
+
+
+		<!-- Dependencies -->
+		<link rel="stylesheet" href="/js/lib/leaflet-1.2.0/leaflet.css" />
+		<script src="/js/lib/leaflet-1.2.0/leaflet.js"></script>
+		<script src="/js/lib/jquery-3.2.1/jquery-3.2.1.min.js"></script>
+		<script src="/js/lib/leaflet-providers/leaflet-providers.js"></script>
+		<script src="/js/lib/leaflet-fullHash/leaflet-fullHash.js"></script>
+		<script src="/js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.js"></script>
+		<link rel="stylesheet" href="/js/lib/leaflet-locatecontrol/dist/L.Control.Locate.min.css" />
+		<link rel="stylesheet" href="/js/lib/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<script src="/js/lib/js-cookie/js.cookie.js"></script>
+		<script src="/js/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="/js/lib/jquery-ui-1.12.1/themes/base/jquery-ui.css" />
+		<script src="/js/lib/vex-js/4.1.0/dist/js/vex.combined.min.js"></script>
+		<link rel="stylesheet" href="/js/lib/vex-js/4.1.0/dist/css/vex.css" />
+		<link rel="stylesheet" href="/js/lib/vex-js/4.1.0/dist/css/vex-theme-plain.css" />
+		<script src="/js/lib/jsSHA/src/sha256.js"></script>
+
+		<!-- LayerViewer library, providing the application logic -->
+		<script src="/js/lib/Leaflet.LayerViewer/src/Leaflet.LayerViewer.js?2"></script>
+		<link rel="stylesheet" type="text/css" href="/js/lib/Leaflet.LayerViewer/src/Leaflet.LayerViewer.css?2" />
+		<script src="/js/lib/Leaflet.LayerViewer/lib/geocoder.js"></script>
+
+		<!-- CyIPT web application -->
+		<script src="/.config.js"></script>
+		<script src="/js/cyipt.js"></script>
+		<link rel="stylesheet" href="/css/main.css" />
+		<link rel="stylesheet" href="/css/fonts.css" />
+		<script>
+  			$(function() {
+  				cyipt.initialise(config);
+  			});
+		</script>
+
+	</head>
+
+	<body>
+
+		<header>
+			<div id="logo"><a href="/"><img src="/images/logo_small.png" alt="CyIPT logo" /></a></div>
+			<ul id="menu">
+				<li><a href="#about">About</a></li>
+				<li><a href="#contacts">Contacts</a></li>
+				<li><a href="/manual/" target="_blank">Manual</a></li>
+				<li><a href="#survey">Survey</a></li>
+			</ul>
+			<h1><a href="/">Cycling Infrastructure Prioritisation Toolkit (CyIPT)</a></h1>
+			<p>A DfT-funded research project at the University of Leeds</p>
+		</header>
+
+		<main>
+
+		  <h2>Zsolt Schuller</h2>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/f7aR0DhYDaU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+      <h2>Robin Lovelace</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/vjRwOGl6WCg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+			<h2>Malcolm Morgan</h2>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/pzvu0A5mPMQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+			<h2>John Parkin</h2>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/1evuijsvwV0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+			<h2>Crispin Cooper</h2>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/cGIHhf8kTdU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+			<h2>Kaylisha Archer</h2>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/uEO-1UTh1UY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+		</main>
+
+		<footer>
+			<p>University of Leeds, with project partners: CycleStreets, University of the West of England, and Phil Jones Associates &nbsp;||&nbsp; Funded by the UK Department for Transport  &nbsp;||&nbsp; <a href="/api/">API</a> &nbsp;||&nbsp; <a href="https://github.com/cyipt/">Open source, open data</a></p>
+		</footer>
+
+	</body>
+</html>

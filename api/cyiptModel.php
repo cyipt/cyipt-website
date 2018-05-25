@@ -896,13 +896,13 @@ class cyiptModel
 	{
 		return array (
 			'name' => 'Collisions',
-			'example' => '/api/v1/collisions.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&yearfrom=2013&yearto=2015&severity=1',
+			'example' => '/api/v1/collisions.json?bbox=-2.6404,51.4698,-2.5417,51.4926&zoom=15&yearfrom=2013&yearto=2015&severity=fatal',
 			'fields' => array (
 				'bbox' => '%bbox',
 				'zoom' => '%zoom',
 				'yearfrom' => array ('type' => 'int', 'values' => '1985-2015', 'description' => 'Start year', ),
 				'yearto' => array ('type' => 'int', 'values' => '1985-2015', 'description' => 'Finish year', ),
-				'severity' => array ('type' => 'int', 'values' => '1|2|3', 'description' => 'Severity: 1 (fatal), 2 (serious), 3 (slight)', ),
+				'severity' => array ('type' => 'string', 'values' => 'fatal|serious|slight', 'description' => 'Severity, based on STATS19 value', ),
 			),
 		);
 	}

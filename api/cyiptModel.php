@@ -412,6 +412,7 @@ class cyiptModel
 		$limit = false;
 
 		# Layer
+		# See: https://github.com/cyipt/cyipt-website/issues/24
 		$layers = array (
 			'roadwidth' => 'calcwidthnow',
 			'widthstatus' => 'widthstatus',

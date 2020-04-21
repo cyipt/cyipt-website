@@ -406,7 +406,7 @@ class cyiptModel
 		);
 		$constraints = array (
 			'geotext && ST_MakeEnvelope(:w, :s, :e, :n, 4326)',
-			"recommended != 'None'",
+			//"recommended != 'None'",
 		);
 		$parameters = $this->bbox;
 		$limit = false;
